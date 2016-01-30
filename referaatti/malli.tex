@@ -31,6 +31,9 @@
 \usepackage{microtype}
 \usepackage{amsfonts,amsmath,amssymb,amsthm,booktabs,color,enumitem,graphicx}
 \usepackage[pdftex,hidelinks]{hyperref}
+\usepackage{microtype}
+
+\DisableLigatures[?,!]{encoding=T1}
 
 % Automatically set the PDF metadata fields
 \makeatletter
@@ -71,8 +74,8 @@
 % The following commands define the information used to generate title and
 % abstract pages. The following entries should be always specified:
 
-\title{Esimerkkiotsikko}
-\author{Eija Esimerkki}
+\title{The Functional Architecture Modeling Method applied on Web Browsers}
+\author{Kristian Wahlroos - 014417003}
 \date{\today}
 \level{Referaatti}
 
@@ -119,11 +122,17 @@
 
 \mainmatter       % clear page, start arabic page numbering
 
-\section{Johdanto}
-
 % Write some science here.
 
-Tähän tulee referaatti. HUOM. poista väliotsikot...
+Wilbert Seelen, Shaheen Syedin ja Sjaak Brinkkemperin julkaisemassa tutkimuksessa ``The Functional Architecture Modeling Method applied on Web Browsers`` vuodelta 2014 ottaa analysoitavaksi ``Functional Architecture Modelling``-mallin, jonka pohja luotiin Sjaak Brinkkemperin ja Stella Pachidin julkaisussa ``Functional Architecture Modeling for the Software Product Industry`` vuodelta 2010. Tutkimuksessa myös kerrotaan menetelmä luoda funktionaalinen malli järjestelmästä. Itse analysointi julkaisussa tapahtuu tapaustutkimuksen kautta, jossa analysoidaan mallin toimivuutta luomalla funktionaalinen malli kuvitteellisesta web-selaimesta, johon on lisätty sama toiminnallisuus kuin oikean maailman selaimessa olisi. Tätä mallia verrataan toiseen tutkimukseen, jossa koodianalyysi-työkalulla luotiin korkean tason malli oikean maailman web-selaimen lähdekoodista. Funktionaalinen malli koettiin onnistuneeksi, koska mallit vastasivat loppuanalyysissä toisiaan.\\
+
+Tutkimus ``The Functional Architecture Modeling Method applied on Web Browsers`` alkaa kertomalla, että arkkitehtuurin design ja dokumentointi on projekteissa usein keskeneräistä tai puuttuu jopa kokonaan. Tähän ongelmaan he esittävät ratkaisuksi funktionaalisen arkkitehtuurin mallinnuksen. He väittävät, että tämä arkkitehtuurin mallinnustapa on virtaviivaistettu tyyli, joka antaa tilaa nopeille arkkitehtuurin iteraatiolle, koska keskittyminen on ollut mallin helppokäyttöisyydessä ja kommunikaatioon tärkeydessä. Tämä uusi malli myös yhdistää funktionaalista ja teknistä arkkitehtuuria ja antaa visualisaation järjestelmän ydin toiminnallisuuteen ja sen avulla nähdään järjestelmän eri osien lopulliset tarkoitukset.  
+
+Tutkimuksen tarkoituksena on ollut pienentää dokumentoinnin ja lopullisen toiminnallisuuden välistä kuilua tämän uuden mallin avulla. He jatkavat kertomalla, että itse mallilla on kaksi päätarkoitusta: mahdollistaa selkeä korkean tason näkymä projektiin sekä sen avulla voidaan pitää yllä hyviä käytänneitä ohjelmoinnissa, koska se pakottaa jakamaan toteutettavan järjestelmän toiminnallisiin moduuleihin jo projektin alkuvaiheessa. He määrittelevät seuraavaksi vastattavan tutkimuskysymyksen muodossa ``Miten toiminnallisuutta voidaan ilmaista ohjelmistoarkkitehtuurien malleissa?``, johon he vastaavat, että adaptoimalla Brinkkeemperin ja Pachidin luomaa metodia. 
+
+Seuraavaksi he etsivät nykyisestä kirjallisuudesta materiaalia tutkimuksen tueksi  funktionaalisen arkkitehtuurin mallinnuksesta ja vaatimuksista ohjelmistoarkkitehtuurin mallinnuksessa. Funktionaalisen arkkitehtuurin mallinuksesta he viittaavat Brinkkemperin tutkimukseen, jossa tutkittiin funktionaalisen arkkitehtuurin diagrammien käyttöä ja jonka tulos oli, että niiden käyttö on rajoittunutta tiettyihin alueisiin ja usein rakenteiltaan sekavahkoa. He jatkavat viittaamalla myös Vlietin tutkimukseen, jossa tultiin päätelmään, että arkkitehtuurin suunnittelun pitäisi sijaita vaatimusten keräysten ja teknisen suunnittelun välissä. Vaatimuksista he ottavat esille ADL-mallien (Architecture Description Language) ongelmia; ADL yrittää mallintaa koko järjestelmän arkkitehtuuria laajamittaisesti, ADL ei täytä suunnittelijoiden vaatimuksia, vaikeasti ymmärrettävä sekä ADL tukee vain yhtä näkymää. He nostavatkin esille UML-mallin, josta on tullut nykypäivänä niin sanottu ``de facto`` -standardi arkkitehtuurin kuvauksessa. Syy tähän on, että UML on kevyempi käyttää ja visuaalisen muotonsa takia helpommin lähestyttävä.       
+ 
+
 
 
 

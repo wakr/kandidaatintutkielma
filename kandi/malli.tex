@@ -32,6 +32,10 @@
 \usepackage{amsfonts,amsmath,amssymb,amsthm,booktabs,color,enumitem,graphicx}
 \usepackage[pdftex,hidelinks]{hyperref}
 
+%\usepackage[sort]{natbib} uncomment for a harvard-style
+\usepackage[square,sort,comma,numbers]{natbib}
+
+
 % Automatically set the PDF metadata fields
 \makeatletter
 \AtBeginDocument{\hypersetup{pdftitle = {\@title}, pdfauthor = {\@author}}}
@@ -127,7 +131,7 @@
 
 % Write some science here.
 
-Esimerkkilause ja lähdeviite~\cite{esimerkki}.
+Esimerkkilause ja lähdeviite~\cite{esimerkki} ja \cite{esimerkki2}.
 jäsennelty asianmukaisesti (kenelle, miksi, millaisessa ympäristössä; ratkaisun lähestymistapa; tutkimuskysymys, tulokset ja impakti; loppulukujen roolitus).
 
 
@@ -141,8 +145,11 @@ Keskimmäiset luvut keskittyvät kukin "opettamaan" lukijalle yhden osakysymykse
 Viimeistä edellinen luku on varsinaisen kontribuution koti: vertailu, soveltaminen, osien synteesi ja mahdolliset evaluointimenetelmät ja -tulokset pääroolissa.
 
 \section{Ohjelmistojen arkkitehtuuri}
+Arkkitehtuuri ohjelmistoissa on \citep[pp. 10-12]{gorton_understanding_2011}
+
+
 \subsection{Historia}
-\subsection{Kuvaustyylit}
+\subsection{Kuvaustyylit/Näkymät}
 
 \section{Ohjelmistojen laadulliset tekijät}
 \subsection{Arviointi}
@@ -175,6 +182,7 @@ Muistuttaa mieleen tutkimuskysymyksen, mainitsee tärkeimmät tulokset ja niiden
 % instead.
 
 \bibliographystyle{babalpha-lf}
+%\bibliographystyle{apsr}
 \bibliography{references-fi}
 
 

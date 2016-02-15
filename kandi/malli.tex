@@ -144,12 +144,41 @@ Keskimmäiset luvut keskittyvät kukin "opettamaan" lukijalle yhden osakysymykse
 
 Viimeistä edellinen luku on varsinaisen kontribuution koti: vertailu, soveltaminen, osien synteesi ja mahdolliset evaluointimenetelmät ja -tulokset pääroolissa.
 
-\section{Ohjelmistojen arkkitehtuuri}
-Arkkitehtuuri ohjelmistoissa on \citep[pp. 10-12]{gorton_understanding_2011}
+\section{Ohjelmistoarkkitehtuuri}
+Jeejee. Paltu.
+
+\subsection{Ohjelmistojen arkkitehtuuri käsitteenä}
+Arkkitehtuuri ohjelmistoissa on käsite, josta moni on tietoinen mutta joka ei ole kovin yksiselitteinen ja joskus jopa vaikeaa pukea konkreettisiksi asioiksi. Arkkitehtuuri voidaan nimittäin nähdä karkeasti neljästä eri näkökulmasta  \citep[s. 2-7]{gorton_understanding_2011}:  ohjelmiston rakenteen kuvaajana, kuvaajana ohjelmiston komponenttien välisille suhteille, mallina joka ottaa huomioon ei-toiminnalliset (non-functional) vaatimukset ja abstraktiona. 
+
+% kappaleessa selitetään myös riippuvuuksien vähentämisestä
+\paragraph{Rakenteen kuvaaja}
+Arkkitehtuuri määrittelee ohjelmistojärjestelmän sisäistä rakennetta, joka koostuu useista komponenteista sekä moduuleista. Erilaiset moduulit tekevät tiettyä työtä ja täten erilaiset vastuut on jaettu ohjelmistojärjestelmän sisällä loogiisiin kokoelmiin ja kokoelmat tarjoavat halutun toiminnallisuuden.
+
+% kappaleessa myös patterneja
+\paragraph{Komponenttien välisien suhteiden kuvaaja}
+Komponenttien välisen kommunikaation mallintaminen tulee vastaan, kun ohjelmistojärjestelmää jaetaan erilaisiin komponentteihin. Tavoitteena on kertoa mitkä komponentit tai moduulit ovat vuorovaikutuksessa toistensa kanssa ja millä tavoin. 
+
+% kappaleessa ei-toiminnallisten vaatimuksien jako kolmeen eri luokkaan
+\paragraph{Mallina, joka konkretisoi ei-toiminnalliset vaatimukset}
+Arkkitehtuurin avulla voidaan määrittää miten ohjelma suorittaa sille määrättyä tehtävää sen sijasta, että mallinnettaisiin mitä ohjelma tekee. 
+
+\paragraph{Abstraktiona}
+Arkkitehtuurin avulla voidaan abstrahoida osakkaille (stakeholder) ja muille kehittäjille ohjelmistojärjestelmä helpommin lähestyttäväksi, jolloin kommunikaatio helpottuu. Abstrahoinnin avulla pystytään yksinkertaistamaan järjestelmän konkreettista toteutusta ja suorittamaan arkkitehtuurista erittelyä (architectural decomposition), jossa muodostetaan epärelevanteista komponenteista mustia laatikoita (black box). Mustien laatikoiden ideana on piilottaa komponenttien sisäistä toteutusta eri tasoilla, jolloin arkkitehtuurista voidaan muodostaa eri abstraktiotason malleja.
+
+\subsection{Kuvaustyylit/Näkymät}
+% sama lähde kuin aiemmin + Software systems architecture 2nd ed.
+\cite{Rozanski:2011:SSA:2072649}
+
+\subsection{Arkkitehtuuri osana ohjelmistonkehitystä}
+
+
+\subsection{Vaatimukset}
+Vaatimusten keräys vs ei-toiminnalliset vs toiminnalliset.
+
 
 
 \subsection{Historia}
-\subsection{Kuvaustyylit/Näkymät}
+
 
 \section{Ohjelmistojen laadulliset tekijät}
 \subsection{Arviointi}

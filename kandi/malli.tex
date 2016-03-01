@@ -172,7 +172,7 @@ Tässä tutkimuksessa noudatetaan vahvasti IEEE:n määritelmiä \citep[s. 3-4]{
 
 \paragraph{Arkkitehtuuri} Järjestelmän komponenttien ja niitä yhdistävien yhteyksien luoma joukko, jotka sijoittuvat tiettyyn ympäristöön.  
 
-\paragraph{Näkymä} Kuvaus järjestelmästä niin, että se ottaa huomioon vain tietyt asiat.
+\paragraph{Näkymä} Kuvaus järjestelmästä niin, että se ottaa huomioon vain tietyn joukon asioita.
 
 
 \section{Ohjelmistoarkkitehtuuri}
@@ -211,6 +211,8 @@ Näistä kahdesta eri jaottelusta ohjelmistoarkkitehtuuriin voidaan nähdä merk
 
 Arkkitehtuurin kuvaaminen sallii kommunikoinnin eri sidosryhmien välille ja mahdollistaa järjestelmän tarkastelemisen vain niiltä osin, jotka tiettyä sidosryhmää kiinnostaa \citetext{\citealp[s. 329]{ARaHVeSCiSDu}; \citealp[s. 60]{Brondum:2010:TAV:1833335.1833344}}. Kuvaaminen tapahtuu näkymien avulla, jotka auttavat erottelemaan (separation of concerns) arkkitehtuuria pienempiin palasiin \citep[s. 2]{Galster:2011:DTC:2031759.2031761}. Itse näkymät luodaan taas käyttämällä ennaltamäärättyjä näkökulmia, jotka edustavat tiettyä tai useampaa sidosryhmälle tärkeää asiaa. 
 
+Hyvä kommunikointi sidosryhmien kanssa on aina tärkeää, joista ääripäinä ovat kehittäjät ja asiakkaat. Kehittäjät haluavat usein todella tarkkaa usean eri tason ja näkökulman abstraktia kuvausta luotavasta järjestelmästä \citep[s. 120]{Ran:1998:ASV:288408.288438} tai ymmärtääkseen jo valmiiksi luotua järjestelmää \cite{ARaHVeSCiSDu}, kun taas asiakkaat haluavat nähdä järjestelmän toiminnallisuuden juuri heitä koskevien asioiden kannalta ja usein mahdollisimman korkealla tasolla.
+
 \subsubsection{Näkymät}
 Arkkitehtuuristen näkymien tehtävänä on kuvata ne näkökulmat arkkitehtuurista, jotka ovat merkityksellisiä itse asialle, jota näkymä haluaa painottaa \citetext{\citealp[s. 34]{Rozanski:2011:SSA:2072649}; \citealp[s. 15]{may2005survey}}. Yksi tunnetuimmista määritelmistä arkkitehtuuriselle näkymälle on Krutchenin 4+1 näkymämalli (4+1 View Model) \citep[s.7-8]{gorton_understanding_2011}. 
 
@@ -220,7 +222,7 @@ Muita näkymämalleja arkkitehtuuriin on useita, joista jokainen kuitenkin tuo e
 
 Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa sekä heikkoutensa. Yhteensä viittä eri mallia vertailtiin Mayn tutkimuksessa \cite{may2005survey}, jossa kartoitettiin mahdollisimman laajaa näkymien muodostamaa näkökulmien joukkoa, jotka kattaisivat mahdollisimman laajalti ohjelmistoarkkitehtuurin aluetta (domain). Vertailtavat arkkitehtuurit olivat 4+1-malli, SEI:n (Software Engineering Institute) \textit{Views and Beyond}-malli, ISO:n (International Organization for Standardization) \textit{Reference Model of Open Distributed Processing}, Siemens'n \textit{Four View Model} ja \textit{Rational Architecture Description Specification}. Malleja vertailtiin tutkimalla, että kuinka niiden tarjoamat näkökulmat painottavat kolmeen eri kategoriaan liittyviä asioita: sidosryhmät, laadulliset tekijät ja rakenteelliset ominaisuudet. Joukko, joka painotti mahdollisimman laajasti jokaisen osa-alueen ominaisuuksia muodostettiin lopulta seuraavista osista: \textit{Views and Beyond} -mallin kaikki kolme näkymää ja \textit{Rational ADS}:n vaatimukset-näkökulma (requirements viewpoint). Syy miksi juuri nämä valittiin oli se, että \textit{Views and Beyond} sopii erittäin hyvin mallin pohjaksi, koska se kuvaa järjestelmän rakennetta kattavasti, sen näkökulmat ovat itsenäisiä ja se kokonaisuudessaan limittyy hyvin 4+1-mallin sekä Siemens'n mallin kanssa. Kuitenkaan se ei sisällä tarvittavia näkymiä kuvaamaan eri sidosryhmille tärkeitä asioita, kuten esimerkiksi loppukäyttäjiä varten oleva näkymä puuttuu kokonaan. Tämän takia mukaan on otettu \textit{Rational ADS}, jonka vaatimukset-näkökulma koostuu neljästä eri näkymästä: ei-toiminnalliset vaatimukset, alue (domain), käyttötapaus ja käyttökokemus. 
 
-Kommunikointi tärkeiden sidosryhmien kanssa on tärkeää, joista ääripäinä ovat kehittäjät ja asiakkaat. Kehittäjät haluavat usein todella tarkkaa usean eri tason ja näkökulman abstraktia kuvausta luotavasta järjestelmästä \citep[s. 120]{Ran:1998:ASV:288408.288438} tai ymmärtääkseen jo valmiiksi luotua järjestelmää \cite{ARaHVeSCiSDu}, kun taas asiakkaat haluavat nähdä järjestelmän toiminnallisuuden juuri heitä koskevien asioiden kannalta ja usein mahdollisimman korkealla tasolla.
+
 
 \subsubsection{Näkökulmat}
 Rozanskin ja ym. \citep[s. 36-42]{Rozanski:2011:SSA:2072649} määrittelevät, että näkökulmat (viewpoints) liittyvät vahvasti arkkitehtuurisiin näkymiin. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko voidaan taas jakaa seitsemään eri osaan: kontekstinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, kehittämisellinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa kehittämisen sekä funktionaalisuuden näkökolmaan. Kehittämisen näkökulmaan siksi, koska se kommunikoi niiden sidosryhmien kanssa, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas kuvailee muunmuassa järjestelmän suorituksenaikaisia komponentteja sekä niiden rajapintoja.
@@ -237,25 +239,27 @@ from which to develop individual views by establishing the purposes and audience
 
 Ohjelmistoarkkitehtuuri toimii siltana ohjelmakoodin ja ohjelmalle asetettujen vaatimusten välillä \citep[s. 94]{Garlan:2000:SAR:336512.336537}, joten on luonnollista, että näkymä luodaan näiden pohjalta. Sitä luodessa on myös otettava huomioon kenelle näkymä on tarkoitettu, minkälaisia asioita halutaan näkymän painottavan ja millä abstraktiotasolla näkymän tulisi olla. 
 
-Esimerkiksi ohjelmakoodin kautta luotava UML-malli saattaa olla näkymä projektin rakenteeseen uusia ohjelmoijia varten, jotta voitaisiin helposti esittää kyseisen ohjelmistojärjestelmän päärajapinnat. Tällaisen mallin päätarkoitus on kuvata ohjelmistojärjestelmän rakennetta, mutta abstrahoida pois kaikki turhat tarkan kuvaukset luokista, joilla ei ole juuri sillä hetkellä merkitystä. 
+Esimerkiksi ohjelmakoodin kautta luotava UML-malli saattaa olla näkymä projektin rakenteeseen uusia ohjelmoijia varten, jotta voitaisiin helposti esittää kyseisen ohjelmistojärjestelmän päärajapinnat. Tällaisen mallin päätarkoitus on kuvata ohjelmistojärjestelmän rakennetta, mutta abstrahoida pois kaikki turhan tarkat kuvaukset komponenteista, joilla ei ole juuri sillä hetkellä merkitystä. 
 
-Aloittaessa arkkitehtuuri tyhjästä 
 %Chapt. 7 & 8 + Arch views -paperi + What is an architectural description?
-
-
-
+Jos järjestelmää ei ole vielä olemassa lainkaan, voidaan järjestelmän arkkitehtuuria lähteä ensin rakentamaan iteratiivisesti kolmen eri vaiheen kautta \citep[s. 97-115]{gorton_understanding_2011}: määritellään arkkitehtuuriset vaatimukset; luodaan rakenne, joka tukee näitä vaatimuksia; testataan, että rakenne tukee vaatimuksia. Arkkitehtuurille asetetut vaatimukset syntyvät toiminnallisten ja sidosryhmien asettamien vaatimusten tuloksena, koska ne yhdessä luovat tärkeimmät vaatimukset ja rajoitukset ohjelmistojärjestelmälle. Esimerkkinä järjestelmälle asetettavista vaatimuksista saattaa olla, että sen on pystyttävä tukemaan useita eri käyttöliittymiä. Tämä vaatimus voidaan taas ryhmittää tiettyyn laatuvaatimukseen, kuten useat muutkin järjestelmälle asetetut vaatimukset \citep[s. 117]{Ran:1998:ASV:288408.288438}. Tässä tapauksessa vaatimus ryhmitettäisiin muokattavuus-laatuvaatimuksen alle. Seuraavassa vaiheessa valitaan tätä laatuvaatimusta tukeva tyyli (architectural style), jota koko järjestelmä joutuu noudattamaan. Esimerkiksi N-tason -malli tukee muokattavuutta hyvin \citep[s. 103]{gorton_understanding_2011}. Tämän jälkeen järjestelmän keskeisimmät komponentit suunnitellaan ja sijoitetaan ne oikeisiin alueisiin, jotka valittu arkkitehtuurinen tyyli tuo tullessaan. Komponenttien väliset suhteet mallinnetaan pitämällä vastuut erillään, suhteet mahdollisimman vähäisinä sekä käyttämällä hyödyksi piilottamista (architectural decomposition). Lopuksi pystytään luomaan skenaarioita ja testaamaan niiden avulla, että onko luotu arkkitehtuuri sopiva. Komponenttien määrittely mahdollistaa arkkitehtuurin rakenteen kuvaamisen ja siten järjestelmästä on mahdollista luoda erilaisia näkymiä erilaisille sidosryhmille. Rakennetta pystytään kuvaamaan N-tason -mallin avulla erittäin korkealla tasolla, jos halutaan tuoda esille juurikin näkökulma muokattavuuteen, mutta myös matalemmalla tasolla, kun ohjelmistokehittäjä haluaa ymmärtää miten komponentit kommunikoivat keskenään.
 
 \section{Ohjelmistojen laadulliset tekijät}
-\subsection{Laadullisten vaatimusten keräys}
+
+Miten jaettu? Miten voidaan jakaa? Miten tuodaan esille? 
+
+\subsection{Laatuvaatimukset}
 \subsection{Toiminnalliset ja ei-toiminnalliset vaatimukset}
 \subsection{Tradeoffit}
 \subsection{Arviointi}
 
 \section{Testattavuus laadullisena tekijänä}
+Testattavuus luetaan kuuluvan ylläpidettävyyden alle. Mitä on testaus järjestelmissä? 
 \subsection{Testattavuuden merkitys}
 
 \section{Arkkitehtuurin vaikutus testattavuuteen}
-\subsection{Jotain}
+\subsection{Hyvä testattavuus?}
+\subsection{Arkkitehtuuriset hajut}
 
 
 \section{Yhteenveto}

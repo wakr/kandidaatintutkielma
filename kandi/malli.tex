@@ -247,8 +247,10 @@ Keräys? Muodostus? Ryhmittely?
 \subsection{Tradeoffit}
 \subsection{Arviointi}
 
+\newpage
+
 \section{Testattavuus laadullisena tekijänä}
-Testattavuus luetaan kuuluvan ylläpidettävyyden alle. Mitä on testaus järjestelmissä? 
+Testattavuus luetaan kuuluvan ylläpidettävyyden alle (Characteristics of Software Quality). Mitä on testaus järjestelmissä? 
 \\
 
 Yksikkö vs integraatio vs regressio testauksessa.
@@ -276,10 +278,21 @@ Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti lu
 
 Vaikeasti testattavan komponentin ominaisuuksia: testisyöte tuottaa eri ajoilla eri tuloksia, testisyöte ei ikinä tuota asiaa x (epäkonsistentti ulostulo). \citep{Freedman:1991:TSC:126218.126229} 
 
+\^\ Mistä johtuu?
 
-\subsection{Design for maintainability}
 
-lol.
+\subsubsection{Metrics for maintainability}
+
+Ylläpidettävyyttä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Sitä voidaan mitata arkkitehtuurisista elementeistä seuraavien mittarien avulla \citep[s. 3]{bengtsson1998towards}: metodien määrä elementin rajapinnassa; paikkamerkkien (placeholder) määrä arkkitehtuurisille elementeille, joiden avulla elementti parametrisoidaan; elementtien välisten viestien määrä; elementtityyppien määrä, joita tarkasteltava elementti toteuttaa (implement); elementtien määrä, mitkä toteuttavat tarkasteltavan elementin tyypin; saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin; elementin metodien ja parametrien määrä. 
+
+Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiiksi luotu ja sen avulla voidaan tuoda ongelmakohtia esille ohjelmistojärjestelmässä, koska moni metriikoista määrittää järjestelmän sisäistä riippuvuusastetta. Tietyt komponentit nimittäin voivat olla suunniteltu pidettäväksi erillään, mutta silti analyysin seurauksena voidaan löytää ongelmakohtia.  
+
+\subsubsection{Metrics for testability}
+
+Tutkimalla testattavuutta alemmalla tasolla voidaan olio-pohjaisista järjestelmistä havaita seuraavat testaukseen vaikuttavat tekijät \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}: metodien määrä luokassa; kaikki metodit luokkahierarkiassa, jotka suoritetaan "in response to a message to an object of that class or by some method in that class"; luokkien määrä, johon luokalla on kytkentää; periytymisaste eli kuinka monta luokkaa on luokan periytymishierarkiassa. 
+
+Valitsemalla näistä samat mittarit, jotka leikkaavat ylläpidettävyyden kanssa, niin testattavuuden kannalta relevanteiksi, myös arkkitehtuuritasolla näkyviksi, saadaan: metodien määrä luokassa; peritymisaste; rajapinnan tarjoavien metodien koko; kytkentäaste muihin luokkiin; metodien määrä, jotka luokkaan kohdistuvien pyyntöjen toimesta luokkahierarkiassa. Kaikki nämä ovat havaittavissa järjestelmän rakenteellisessa mallissa, jossa komponentit ovat mallinnettu ja yhteydet luotu. "Miksi edellämainitut huonontavat testattavuutta?"
+
 
 \subsubsection{Design for testability}
 
@@ -288,12 +301,14 @@ Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{
 
 \section{Arkkitehtuurin vaikutus testattavuuteen}
 Modulaarisuus, mah. vähän riippuvuuksia. Miten tulee esille arkkitehtuurin kuvauksissa? Näkymät?
+\\
 
 Mikä tekee yhdestä arkkitehtuurista testattavamman, kuin toisen? -> Tyylien käyttö parantaa testattavuutta, \citep{Eickelmann:1996:MOS:243327.243602} 
 
 Testattavuus tulee ilmi korkealla tasolla integraatiotestauksessa \citep{Eickelmann:1996:MOS:243327.243602} -> komponenttien rajapintojen toimivuus, miten komponetit antavat datan ja kontrollin eteenpäin.
 
 Kolmentyyppisiä kriittisiä moduuleita: tehtävä, turvallisuus ja pääsykriittiset moduulit \citep{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuurisellakin tasolla nämä pitäisi pitää erillään muista moduuleista.
+
 
 
 
@@ -304,6 +319,9 @@ Testattavuuden parantaminen erillisen patternin avulla \citep{coelho_improving_2
 Tietyt arkkitehtuuriset tyylit sopivat tiettyihin testaustapoihin (critical module, sandwich, top-down, bottom-up, thread, big bang) \citep{Eickelmann:1996:MOS:243327.243602}. Kolmeen ensimmäiseen liittyvät vahvasti stubit ja test driverit. 
 
 -> tyylin tunnistaminen?
+
+
+
 
 \subsection{Arkkitehtuuriset hajut}
 Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}

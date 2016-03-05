@@ -285,13 +285,14 @@ Vaikeasti testattavan komponentin ominaisuuksia: testisyöte tuottaa eri ajoilla
 
 Ylläpidettävyyttä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Sitä voidaan mitata arkkitehtuurisista elementeistä seuraavien mittarien avulla \citep[s. 3]{bengtsson1998towards}: metodien määrä elementin rajapinnassa; paikkamerkkien (placeholder) määrä arkkitehtuurisille elementeille, joiden avulla elementti parametrisoidaan; elementtien välisten viestien määrä; elementtityyppien määrä, joita tarkasteltava elementti toteuttaa (implement); elementtien määrä, mitkä toteuttavat tarkasteltavan elementin tyypin; saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin; elementin metodien ja parametrien määrä. 
 
-Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiiksi luotu ja sen avulla voidaan tuoda ongelmakohtia esille ohjelmistojärjestelmässä, koska moni metriikoista määrittää järjestelmän sisäistä riippuvuusastetta. Tietyt komponentit nimittäin voivat olla suunniteltu pidettäväksi erillään, mutta silti analyysin seurauksena voidaan löytää ongelmakohtia.  
+Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiiksi luotu. Näkymän avulla voidaan tuoda ongelmakohtia esille ohjelmistojärjestelmässä, koska moni metriikoista määrittää järjestelmän sisäistä riippuvuusastetta ja mitä suurempi aste on, sitä suurempi on mahdollisuus, ettei järjestelmä oli kovin ylläpidettävä.
 
 \subsubsection{Metrics for testability}
 
-Tutkimalla testattavuutta alemmalla tasolla voidaan olio-pohjaisista järjestelmistä havaita seuraavat testaukseen vaikuttavat tekijät \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}: metodien määrä luokassa; kaikki metodit luokkahierarkiassa, jotka suoritetaan "in response to a message to an object of that class or by some method in that class"; luokkien määrä, johon luokalla on kytkentää; periytymisaste eli kuinka monta luokkaa on luokan periytymishierarkiassa. 
+Tutkimalla testattavuutta alemmalla tasolla voidaan olio-pohjaisista järjestelmistä havaita seuraavat testaukseen vaikuttavat tekijät \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}: metodien määrä luokassa; metodien määrä luokkahierarkiassa, jotka suoritetaan, kun luokan metodi suoritetaan; luokkien määrä, johon luokalla on kytkentää; periytymisaste eli kuinka monta luokkaa on luokan periytymishierarkiassa. Syy miksi nämä ovat negatiivisia asioita testauksen kannalta on, että suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
 
-Valitsemalla näistä samat mittarit, jotka leikkaavat ylläpidettävyyden kanssa, niin testattavuuden kannalta relevanteiksi, myös arkkitehtuuritasolla näkyviksi, saadaan: metodien määrä luokassa; peritymisaste; rajapinnan tarjoavien metodien koko; kytkentäaste muihin luokkiin; metodien määrä, jotka luokkaan kohdistuvien pyyntöjen toimesta luokkahierarkiassa. Kaikki nämä ovat havaittavissa järjestelmän rakenteellisessa mallissa, jossa komponentit ovat mallinnettu ja yhteydet luotu. "Miksi edellämainitut huonontavat testattavuutta?"
+Valitsemalla näistä samat mittarit, jotka leikkaavat ylläpidettävyyden kanssa, saadan testattavuuden kannalta relevanteiksi, myös jopa arkkitehtuuritasolla näkyviksi: peritymisaste; rajapinnan tarjoavien metodien määrä; kytkentäaste muihin luokkiin; metodien määrä, jotka luokkaan kohdistuvien pyyntöjen toimesta suoritetaan luokkahierarkiassa. Näitä mittareita pystytään tarkastelemaan esimerkiksi UML-mallin avulla luotujen mallien avulla. 
+
 
 
 \subsubsection{Design for testability}
@@ -324,7 +325,10 @@ Tietyt arkkitehtuuriset tyylit sopivat tiettyihin testaustapoihin (critical modu
 
 
 \subsection{Arkkitehtuuriset hajut}
-Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}
+Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
+
+\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
+
 
 \section{Pohdinta}
 

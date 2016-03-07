@@ -250,12 +250,14 @@ Keräys? Muodostus? Ryhmittely?
 \newpage
 
 \section{Testattavuus laadullisena tekijänä}
-Testattavuus luetaan kuuluvan ylläpidettävyyden alle (Characteristics of Software Quality) ja on täten yksi laatuvaatimus. Kuitenkaan se laatuvaatimuksena ei asiakkaalle ole edes aina kovin näkyvä, mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattava järjestelmä on nimittäin myös vaikeasti ylläpidettävä, ja ylläpidettävä järjestelmä on sekä asiakkaalle, että kehittäjällä tärkeä ominaisuus.
+Testattavuus luetaan kuuluvan ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Kuitenkaan se laatuvaatimuksena ei asiakkaalle ole edes aina kovin näkyvä, mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattava järjestelmä on nimittäin myös vaikeasti ylläpidettävä, ja ylläpidettävä järjestelmä on sekä asiakkaalle, että kehittäjällä tärkeä ominaisuus.
 
 % Yksikkö vs integraatio vs regressio testauksessa.
-Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi todella yleistä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien toiminnallisuutta, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Kuitenkin voidaan sanoa, että testaus löytää itse viat, mutta testattavuus  paikat, joissa viat voivat sijaita \citep{Voas:1995:STN:624607.625469}. Testattavuuden voidaankin sanoa tukevan itse testausta ja testausprosessia.
+Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi todella yleistä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä löytän itse viat, mutta testattavuus  paikat, joissa viat voivat sijaita \citep{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
 
-Testattavuuden arvioimisen tarkoituksena on analysoida ohjelmaa siten, että voidaan määritellä onko järjestelmän laatu hyvä \citep[s. 20]{Voas:1995:STN:624607.625469}.
+Testattavuuden arvioimisen tarkoituksena on analysoida ohjelmaa siten, että voidaan määritellä onko järjestelmän laatu hyvä \citep[s. 20]{Voas:1995:STN:624607.625469}. Analysoinnin apuna voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: hallittavuus, havaittavuus ja efortti, joka tarvitaan suorittamaan tietty testi.  
+
+Huonosti testattava järjestelmä tuottaa paljon ongelmia sekä kehityksen aikana, että kehityksen jälkeen. Kehityksen aikana tulevat ongelmat 
 
 Tiedon piiloitus vaikeuttaa testausta \citep[s. 22]{Voas:1995:STN:624607.625469} -> implisiittinen vs eksplisiittinen tiedon katoaminen. Strategiat näiden kontrollointiin \citep[s. 23]{Voas:1995:STN:624607.625469}
 
@@ -265,11 +267,17 @@ Tiedon piiloitus vaikeuttaa testausta \citep[s. 22]{Voas:1995:STN:624607.625469}
 % Mitä huono testattavuus voi tarkoittaa järjestelmän kannalta?
 Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden huononemista. Se saattaa myös aiheuttaa jatkuvaa ongelmaa kehityksen kannalta, koska 
 
+\subsection{Huono testattavuus}
+Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
+
 
 
 \subsection{Hyvä testattavuus}
 
 Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
+
+Jo suunnitteluvaiheessa voidaan kiinnittää huomiota testattavuuteen ja näin parantaa itse testausprosessia. Decomposition, moduulien korkeat DRR (domain/range -ratio), korkean DRR:n omaavat moduulit mah. pieniksi ja eriytetyiksi, hyvä rajapinta joka paljastaa tarpeeksi moduulin sisäistä tilaa \citep[s. 117]{voas_improving_1992}.
+
 
 Observability -> mahdotonta, jos ei inputtia \& Controllability. Side-effects reduce testability -> useat riippuvuudet, joita vaikea hallita?
 
@@ -300,7 +308,9 @@ Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{
 
 
 \section{Arkkitehtuurin vaikutus testattavuuteen}
-Modulaarisuus, mah. vähän riippuvuuksia. Miten tulee esille arkkitehtuurin kuvauksissa? Näkymät?
+%Modulaarisuus, mah. vähän riippuvuuksia. Miten tulee esille arkkitehtuurin kuvauksissa? Näkymät?
+
+Testattavuus tulee esille arkkitehtuurisella tasolla hieman erilailla, kun ohjelmakooditasolla. Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja sitä tutkitaan komponenttitasolla, jota tukee erittäin hyvin UML-kaaviot, joiden avulla ohjelmistojärjestelmän rakenne saadaan kuvattua. 
 \\
 
 Mikä tekee yhdestä arkkitehtuurista testattavamman, kuin toisen? -> Tyylien käyttö parantaa testattavuutta, \citep{Eickelmann:1996:MOS:243327.243602} 
@@ -320,13 +330,35 @@ Tietyt arkkitehtuuriset tyylit sopivat tiettyihin testaustapoihin (critical modu
 
 -> tyylin tunnistaminen?
 
+\subsection{Sunnittelumallien vaikutus testaukseen}
+
+Mitä on? Miten vaikuttaa rakenteeseen? Mitä  hyötyä? \citep{baudry_measuring_2003}.
+
+Composition-patternin analyysi -> kansio sisältää useita tiedostoja ja kansioita -> sykli. Voidaan helpottaa lisäämällä rajoite (constraint) tai rajapinta mielummin kuin abstraktiluokka. 
+
+Vaikeita patterneita testata: Mediator (similar to Observer) \& Visitor.
+
+\subsection{UML}
+
+UML + graph model to compute all possible anti-patterns that affect testability \citep{baudry_testability_2002}.
+
+UML:n parantaminen uusilla notaatioilla \citep[s. 4]{baudry_measuring_2003}. \textbf{create}  luokka A luo luokan B, \textbf{use}  luokka A voi kutsua mitä tahansa, paitsi B:n konstruktoria. \textbf{use\_consult}  kutsumat metodit, jotka eivät koskaan muokkaa B:n sisäistä tilaa, \textbf{use\_def} -> jos vähintään yksi metodi muokkaa B:n tilaa.
+
 
 
 
 \subsection{Arkkitehtuuriset hajut}
+
+Arkkitehtuuriset suunnittelupäätökset, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuteen sekä ylläpidettävyyteen. Hajut eivät ole virheitä vaan vaikuttavat negatiivisesti laatuun \citep[s. 1]{de_andrade_architectural_2014}. Arkkitehtuuriset hajut eroavat koodihajuista abstraktiotasolla. Syitä arkkitehtuurisille hajuille on \citep[s. 2]{de_andrade_architectural_2014}: suunnittelumalli väärässä kontekstissa; design abstractions käyttö niin, että niillä on ei-haluttuja vaikutuksia; design abstractions käyttö väärällä rakeisuuden (granularity) tasolla. 
+
 Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
 
 \citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
+
+Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. 
+
+Viisi hajua (4 + 1 for spl) \citep{garcia_toward_2009}: Connector envy (komponenteilla liikaa toiminnallisuutte suhteissa niiden konnektoreihin), Scattered Parasitic Functionality (korkean tason asia jaettu usealle eri komponentille -> väh. yhdellä komponentilla useita vastuita, komponentit tässä riippuvaisia toisistaan), Ambiguous Interfaces (komponentti tarjoaa vain yhden geneerisen sisääntulopisteen [entry-point]), Extraneous Adjacent Connector (kaksi eri tyypin konnektoria yhdistää kaksi komponenttia toisiinsa), Feature Concentration (SPL). 
+
 
 
 \section{Pohdinta}

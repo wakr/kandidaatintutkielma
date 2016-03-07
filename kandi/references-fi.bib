@@ -1,13 +1,3 @@
-@book{esimerkki,
-  title = {Graph Theory},
-  author = {Reinhard Diestel},
-  publisher = {Springer},
-  year = {2005},
-  address = {Berliini},
-  edition = {3.}
-}
-
-
 @incollection{gorton_understanding_2011,
 	title = {Understanding Software Architecture},
 	rights = {©2011 Springer-Verlag Berlin Heidelberg},
@@ -48,6 +38,7 @@
 }
 
 @article{ieee_2000,
+	author= {IEEE},
 	title = {{IEEE} Recommended Practice for Architectural Description of Software-Intensive Systems},
 	doi = {10.1109/IEEESTD.2000.91944},
 	abstract = {This recommended practice addresses the activities of the creation, analysis, and sustainment of architectures of software-intensive systems, and the recording of such architectures in terms of architectural descriptions . A conceptual framework for architectural description is established. The content of an architectural description is defined. Annexes provide the rationale for key concepts and terminology, the relationships to other standards, and examples of usage.},
@@ -151,6 +142,14 @@ month={Sept},
  keywords = {software architecture, software design, software engineering}
 } 
 
+% standardit
+
+@article{ISO/IEC25010:2011,
+	title={ISO/IEC 25010:2011 Systems and software engineering -- Systems and software Quality Requirements and Evaluation (SQuaRE) -- System and software quality models},
+	author={ISO},
+	year={2011}
+}
+
 % ylläpidettävyys
 
 @inproceedings{bengtsson1998towards,
@@ -223,6 +222,45 @@ month={Sept},
  address = {Los Alamitos, CA, USA}
 } 
 
+@inproceedings{voas_improving_1992,
+	title = {Improving the software development process using testability research},
+	url = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=285852},
+	pages = {114--121},
+	booktitle = {Software Reliability Engineering, 1992. Proceedings., Third International Symposium on},
+	publisher = {{IEEE}},
+	author = {Voas, Jeffrey M. and Miller, Keith W.},
+	urldate = {2016-03-02},
+	date = {1992},
+	file = {00285852.pdf:files/119/00285852.pdf:application/pdf}
+}
+
+% design pattern testattavuus
+
+@inproceedings{baudry_measuring_2003,
+	title = {Measuring and improving design patterns testability},
+	url = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1232455},
+	pages = {50--59},
+	booktitle = {Software Metrics Symposium, 2003. Proceedings. Ninth International},
+	publisher = {{IEEE}},
+	author = {Baudry, Benoit and Traon, Yves Le and Sunyé, Gerson and Jézéquel, Jean-Marc},
+	urldate = {2016-03-05},
+	date = {2003},
+	file = {01232455.pdf:files/15/01232455.pdf:application/pdf}
+}
+
+@inproceedings{baudry_testability_2002,
+	title = {Testability analysis of a {UML} class diagram},
+	doi = {10.1109/METRIC.2002.1011325},
+	abstract = {Design-for-testability is a very important issue in software engineering. It becomes crucial in the case of {OO} designs where control flows are generally not hierarchical, but are diffuse and distributed over the whole architecture. We concentrate on detecting, pinpointing and suppressing potential testability weaknesses of a {UML} class diagram. The attribute significant from design testability is called "class interaction": it appears when potentially concurrent client/supplier relationships between classes exist in the system. These interactions point out parts of the design that need to be improved, driving structural modifications or constraint specifications, to reduce the final testing effort.},
+	eventtitle = {Eighth {IEEE} Symposium on Software Metrics, 2002. Proceedings},
+	pages = {54--63},
+	booktitle = {Eighth {IEEE} Symposium on Software Metrics, 2002. Proceedings},
+	author = {Baudry, B. and Traon, Y. Le and Sunye, G.},
+	date = {2002},
+	keywords = {class interaction, Collaboration, Computer architecture, constraint specifications, control flows, Costs, design-for-testability, diagrams, formal specification, Life testing, object oriented designs, object-oriented programming, program testing, software architecture, Software design, Software Engineering, Software testing, specification languages, System testing, testability, {UML} class diagram, Unified modeling language},
+	file = {IEEE Xplore Abstract Record:files/21/abs_all.html:text/html;IEEE Xplore Full Text PDF:files/20/Baudry et al. - 2002 - Testability analysis of a UML class diagram.pdf:application/pdf}
+}
+
 % arkkitehtuuriset hajut 
 
 @INPROCEEDINGS{HotSpot, 
@@ -255,6 +293,35 @@ month={May}
  publisher = {ACM},
  address = {New York, NY, USA}
 } 
+
+% Arkkitehtuuriset hajut
+
+@inproceedings{de_andrade_architectural_2014,
+	title = {Architectural bad smells in software product lines: an exploratory study},
+	isbn = {978-1-4503-2523-3},
+	url = {http://dl.acm.org/citation.cfm?doid=2578128.2578237},
+	doi = {10.1145/2578128.2578237},
+	shorttitle = {Architectural bad smells in software product lines},
+	pages = {1--6},
+	publisher = {{ACM} Press},
+	author = {de Andrade, Hugo Sica and Almeida, Eduardo and Crnkovic, Ivica},
+	urldate = {2016-03-05},
+	date = {2014},
+	langid = {english},
+	file = {a12-de_andrade.pdf:files/17/a12-de_andrade.pdf:application/pdf}
+}
+
+@incollection{garcia_toward_2009,
+	title = {Toward a catalogue of architectural bad smells},
+	url = {http://link.springer.com/chapter/10.1007/978-3-642-02351-4_10},
+	pages = {146--162},
+	booktitle = {Architectures for adaptive software systems},
+	publisher = {Springer},
+	author = {Garcia, Joshua and Popescu, Daniel and Edwards, George and Medvidovic, Nenad},
+	urldate = {2016-03-05},
+	date = {2009},
+	file = {chp%3A10.1007%2F978-3-642-02351-4_10.pdf:files/3/chp%3A10.1007%2F978-3-642-02351-4_10.pdf:application/pdf}
+}
 
 @inproceedings{garcia_identifying_2009,
 	title = {Identifying Architectural Bad Smells},

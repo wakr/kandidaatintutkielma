@@ -250,29 +250,34 @@ Keräys? Muodostus? Ryhmittely?
 \newpage
 
 \section{Testattavuus laadullisena tekijänä}
-Testattavuus luetaan kuuluvan ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Kuitenkaan se laatuvaatimuksena ei asiakkaalle ole edes aina kovin näkyvä, mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattava järjestelmä on nimittäin myös vaikeasti ylläpidettävä, ja ylläpidettävä järjestelmä on sekä asiakkaalle, että kehittäjällä tärkeä ominaisuus.
+Testattavuus luetaan kuuluvan ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Kuitenkaan se laatuvaatimuksena ei esimerkiksi asiakkaalle ole edes aina kovin näkyvä, mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattava järjestelmä on myös vaikeasti ylläpidettävä, ja ylläpidettävä järjestelmä on sekä asiakkaalle, että kehittäjällä tärkeä ominaisuus.
 
 % Yksikkö vs integraatio vs regressio testauksessa.
-Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi todella yleistä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä löytän itse viat, mutta testattavuus  paikat, joissa viat voivat sijaita \citep{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
+Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi yleisintä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä siis löytän itse viat, mutta testattavuus paikat, joissa viat voivat sijaita \citep[s. 19]{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
 
-Testattavuuden arvioimisen tarkoituksena on analysoida ohjelmaa siten, että voidaan määritellä onko järjestelmän laatu hyvä \citep[s. 20]{Voas:1995:STN:624607.625469}. Analysoinnin apuna voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: hallittavuus, havaittavuus ja efortti, joka tarvitaan suorittamaan tietty testi.  
+Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee miten mahdollista testien tuloksia on tarkastella ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää, että vaikuttavatko tietyt syötteet testituloksiin ja hallittavuus sitä, että kuinka helppo on tuottaa jokin tietty tulos syötteestä \citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
 
-Huonosti testattava järjestelmä tuottaa paljon ongelmia sekä kehityksen aikana, että kehityksen jälkeen. Kehityksen aikana tulevat ongelmat 
-
-Tiedon piiloitus vaikeuttaa testausta \citep[s. 22]{Voas:1995:STN:624607.625469} -> implisiittinen vs eksplisiittinen tiedon katoaminen. Strategiat näiden kontrollointiin \citep[s. 23]{Voas:1995:STN:624607.625469}
 
 
 
 \subsection{Testattavuuden merkitys}
 % Mitä huono testattavuus voi tarkoittaa järjestelmän kannalta?
-Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden huononemista. Se saattaa myös aiheuttaa jatkuvaa ongelmaa kehityksen kannalta, koska 
+Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden huononemista ja täten aiheuttaa jatkuvaa ongelmaa kehityksen kannalta, koska testaus on usein tapahtuvaa toimintaa, jonka tarkoituksena on löytää vikoja järjestelmästä. Myöhäisessä vaiheessa löydetty vika saattaa tulla erittäin kalliiksi ja viedä pois useita työtunteja, jotka olisi pystytty käyttämään johonkin tuottavampaan tekemiseen, jos vaikeasti testattava järjestelmä ei olisi ongelman löytämistä hidastanut.
 
 \subsection{Huono testattavuus}
+
+%Tiedon piiloitus vaikeuttaa testausta \citep[s. 22]{Voas:1995:STN:624607.625469} -> implisiittinen vs eksplisiittinen tiedon katoaminen. Strategiat näiden kontrollointiin \citep[s. 23]{Voas:1995:STN:624607.625469}
+
+Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. \citep{Voas:1995:STN:624607.625469} listaa näistä implisiittisen ja eksplisiittisen tiedon katoamisen, joka vaikeuttaa testaamista
+
+
 Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
 
 
 
 \subsection{Hyvä testattavuus}
+
+Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
 Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
 
@@ -302,7 +307,7 @@ Valitsemalla näistä samat mittarit, jotka leikkaavat ylläpidettävyyden kanss
 
 
 
-\subsubsection{Design for testability}
+\subsection{Design for testability}
 
 Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
@@ -355,7 +360,7 @@ Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_
 
 \citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
 
-Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. 
+Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. Maintainability. Case: Notepad SPL. Komponenttimalli + arkkitehtuurin malli. \textbf{1} testability connector envy: Combining product construction capabilities and connector responsibilities represent a reduction in testability because application functionalities and interaction functionalities cannot be seperately tested. \textbf{2}: Ambiguous interfaces 1kpl. \textbf{3}: Feature Concentration -> paljon toiminnallisuutta yhteen komponenttiin sidottuna -> vaikeuttaa maintainability.  
 
 Viisi hajua (4 + 1 for spl) \citep{garcia_toward_2009}: Connector envy (komponenteilla liikaa toiminnallisuutte suhteissa niiden konnektoreihin), Scattered Parasitic Functionality (korkean tason asia jaettu usealle eri komponentille -> väh. yhdellä komponentilla useita vastuita, komponentit tässä riippuvaisia toisistaan), Ambiguous Interfaces (komponentti tarjoaa vain yhden geneerisen sisääntulopisteen [entry-point]), Extraneous Adjacent Connector (kaksi eri tyypin konnektoria yhdistää kaksi komponenttia toisiinsa), Feature Concentration (SPL). 
 

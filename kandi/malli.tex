@@ -86,7 +86,7 @@
 
 % The following can be used to specify keywords and classification of the paper:
 
-\keywords{ohjelmistoarkkitehtuuri, testattavuus}
+\keywords{ohjelmistoarkkitehtuuri, testattavuus, näkymä}
 
 % classification according to ACM Computing Classification System (http://www.acm.org/about/class/)
 % This is probably mostly relevant for computer scientists
@@ -148,7 +148,7 @@
 
 Ohjelmistoarkkitehtuuri on ohjelmistojen ymmärtämisen kannalta tärkeä konsepti, josta jokaisen ohjelmoijan pitäisi olla tietoinen, sillä jokaisella ohjelmistojärjestelmällä on oma arkkitehtuurinsa \citep[s. 4]{ieee_2000}. Suunnittelematon arkkitehtuuri eli niin sanottu \textit{Big Ball of Mud} saattaa pahimmassa tapauksessa olla yksi epäonnistuneen projektin tunnusmerkkejä, kun taas hyvin muodostettu arkkitehtuuri auttaa eri sidosryhmien välisessä kommunikaatiossa, tekee tuotettavasta ohjelmistojärjestelmästä helposti lähestyttävän, helpottaa ohjelmiston testausta sekä validointia ja on yksi suurimmista onnistumistekijöistä projektin jatkon kannalta. 
 
-Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi ja siihen kuuluu vahvasti ohjelmistojen testattavuus, joka taas vaatimuksena on lähempänä ohjelmoijaa, kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee, että kuinka helppoa järjestelmää on ylipäätänsä testata. Kuitenkin arkkitehtuurin ja testattavuuden yhteys on häilyvä, vaikka arkkitehtuuri koskee jokaista kehittäjää. Tämä tutkimus pyrkii selventämään arkkitehtuurin ja testattavuuden suhdetta ja sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa. 
+Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi ja siihen kuuluu vahvasti ohjelmistojen testattavuus, joka taas vaatimuksena on lähempänä ohjelmoijaa, kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee, että kuinka helppoa järjestelmää on ylipäätänsä testata. Kuitenkin arkkitehtuurin ja testattavuuden yhteys on hieman häilyvä, vaikka arkkitehtuuri koskee jokaista kehittäjää. Tämä tutkimus pyrkii selventämään arkkitehtuurin ja testattavuuden suhdetta ja sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa. 
 
 \subsection{Tutkimuskysymys}
 Tutkimus vastaa kysymykseen \textit{miten testattavuus näkyy ohjelmistojen arkkitehtuurissa}. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: \textit{mitä on testattavuus ohjelmistojärjestelmissä, miten arkkitehtuuria voidaan kuvata, miten arkkitehtuurista luotu näkymä kertoo jotain järjestelmän testattavuudesta}. 
@@ -216,7 +216,7 @@ Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin so
 
 
 \subsubsection{Näkökulmat}
-Rozanskin ja ym. \citep[s. 36-42]{Rozanski:2011:SSA:2072649} määrittelevät, että näkökulmat (viewpoints) liittyvät vahvasti arkkitehtuurisiin näkymiin. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko voidaan taas jakaa seitsemään eri osaan: kontekstinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, kehittämisellinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa kehittämisen sekä funktionaalisuuden näkökolmaan. Kehittämisen näkökulmaan siksi, koska se ottaa huomieen niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muunmuassa järjestelmän suorituksenaikaisia komponentteja sekä niiden rajapintoja.
+Rozanskin ja ym. \citep[s. 36-42]{Rozanski:2011:SSA:2072649} määrittelevät, että näkökulmat (viewpoints) liittyvät vahvasti arkkitehtuurisiin näkymiin. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko voidaan taas jakaa seitsemään eri osaan: kontekstinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, kehittämisellinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa kehittämisen sekä funktionaalisuuden näkökulmaan. Kehittämisen näkökulmaan siksi, koska se ottaa huomieen niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muunmuassa järjestelmän suorituksenaikaisia komponentteja sekä niiden rajapintoja.
 
 % 4210 ISO
 IEEE:n virallinen määritelmä näkokulmalle on \textit{a specification of the conventions for constructing and using a view. A pattern or template
@@ -266,16 +266,33 @@ Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden hu
 
 \subsection{Huono testattavuus}
 
-%Tiedon piiloitus vaikeuttaa testausta \citep[s. 22]{Voas:1995:STN:624607.625469} -> implisiittinen vs eksplisiittinen tiedon katoaminen. Strategiat näiden kontrollointiin \citep[s. 23]{Voas:1995:STN:624607.625469}
+Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep[s. 20-22]{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Jälkimmäinen on hyvin yleinen tapa olio-ohjelmoinnissa ja liiallinen tiedon piilotus tuottaa vaikeuksia testauksessa, koska hallittavuus heikkenee. 
 
-Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. \citep{Voas:1995:STN:624607.625469} listaa näistä implisiittisen ja eksplisiittisen tiedon katoamisen, joka vaikeuttaa testaamista
+Ongelmat syötteiden ja tulosten tarkastelussa johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää \citep[s. 554]{Freedman:1991:TSC:126218.126229} ja vaikeasti testattavan komponentin ominaisuuksiksi voidaankin määritellä sen sisältävän ulos- ja sisääntulo parametrien epäjohdonmukaisuuksia. Toisinsanoen vaikeasti testattava komponentti siis tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
 
+% Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
 
-Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
+Tarkasteltaessa hieman korkeammalla tasolla, voidaan negatiivista testattavuutta nähdä myös olio-ohjelmoinnissa luokkatasolla. \citep[s. 3]{baudry_measuring_2003} määrittelee testattavuuden anti-mallin (testability anti-pattern), jossa testattavuuteen negatiivisesti vaikuttavat kaksi suurta tekijää: luokkien välinen suuri interaktio ja itsekäyttö. Syitä näiden esiintymiselle voi olla: luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja paljon komponentteja, jotka kommunikoivat keskenään. Tämä vaikeuttaa paljon vastuiden jakamista ja kasvattaa testitapausten määrää. 
 
+% Test critical dependencies
+%Testi-kriittiset riippuvuudet \citep{Jungmayr:2002}.
 
+Erilaisia testattavuuteen vaikuttavia mittareita on tutkittu paljon ja olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}:
+
+\begin{itemize}
+	\item metodien määrä luokassa
+	\item metodien määrä luokkahierarkiassa, jotka suoritetaan, kun luokan metodi suoritetaan
+	\item luokkien määrä, johon luokalla on kytkentää
+	\item periytymisaste
+\end{itemize}
+
+Syy miksi nämä ovat negatiivisia asioita testauksen kannalta on, että suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
+
+% Testattavuuden mittareita lisää \citep{Bruntink:2004}.
 
 \subsection{Hyvä testattavuus}
+
+
 
 Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
@@ -284,16 +301,12 @@ Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
 Jo suunnitteluvaiheessa voidaan kiinnittää huomiota testattavuuteen ja näin parantaa itse testausprosessia. Decomposition, moduulien korkeat DRR (domain/range -ratio), korkean DRR:n omaavat moduulit mah. pieniksi ja eriytetyiksi, hyvä rajapinta joka paljastaa tarpeeksi moduulin sisäistä tilaa \citep[s. 117]{voas_improving_1992}.
 
 
-Observability -> mahdotonta, jos ei inputtia \& Controllability. Side-effects reduce testability -> useat riippuvuudet, joita vaikea hallita?
-
-Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin. 
-
-Vaikeasti testattavan komponentin ominaisuuksia: testisyöte tuottaa eri ajoilla eri tuloksia, testisyöte ei ikinä tuota asiaa x (epäkonsistentti ulostulo). \citep{Freedman:1991:TSC:126218.126229} 
-
-\^\ Mistä johtuu?
+Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin \citep[s. 554]{Freedman:1991:TSC:126218.126229}
 
 
 \subsubsection{Metrics for maintainability}
+
+% Kuuluu ehkä paremmin arkkitehtuurin alle
 
 Ylläpidettävyyttä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Sitä voidaan mitata arkkitehtuurisista elementeistä seuraavien mittarien avulla \citep[s. 3]{bengtsson1998towards}: metodien määrä elementin rajapinnassa; paikkamerkkien (placeholder) määrä arkkitehtuurisille elementeille, joiden avulla elementti parametrisoidaan; elementtien välisten viestien määrä; elementtityyppien määrä, joita tarkasteltava elementti toteuttaa (implement); elementtien määrä, mitkä toteuttavat tarkasteltavan elementin tyypin; saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin; elementin metodien ja parametrien määrä. 
 
@@ -301,7 +314,6 @@ Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiik
 
 \subsubsection{Metrics for testability}
 
-Tutkimalla testattavuutta alemmalla tasolla voidaan olio-pohjaisista järjestelmistä havaita seuraavat testaukseen vaikuttavat tekijät \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}: metodien määrä luokassa; metodien määrä luokkahierarkiassa, jotka suoritetaan, kun luokan metodi suoritetaan; luokkien määrä, johon luokalla on kytkentää; periytymisaste eli kuinka monta luokkaa on luokan periytymishierarkiassa. Syy miksi nämä ovat negatiivisia asioita testauksen kannalta on, että suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
 
 Valitsemalla näistä samat mittarit, jotka leikkaavat ylläpidettävyyden kanssa, saadan testattavuuden kannalta relevanteiksi, myös jopa arkkitehtuuritasolla näkyviksi: peritymisaste; rajapinnan tarjoavien metodien määrä; kytkentäaste muihin luokkiin; metodien määrä, jotka luokkaan kohdistuvien pyyntöjen toimesta suoritetaan luokkahierarkiassa. Näitä mittareita pystytään tarkastelemaan esimerkiksi UML-mallin avulla luotujen mallien avulla. 
 

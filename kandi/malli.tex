@@ -270,25 +270,7 @@ Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivise
 
 Ongelmat syötteiden ja tulosten tarkastelussa johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää \citep[s. 554]{Freedman:1991:TSC:126218.126229} ja vaikeasti testattavan komponentin ominaisuuksiksi voidaankin määritellä sen sisältävän ulos- ja sisääntulo parametrien epäjohdonmukaisuuksia. Toisinsanoen vaikeasti testattava komponentti siis tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
 
-% Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
 
-Tarkasteltaessa hieman korkeammalla tasolla, voidaan negatiivista testattavuutta nähdä myös olio-ohjelmoinnissa luokkatasolla. \citep[s. 3]{baudry_measuring_2003} määrittelee testattavuuden anti-mallin (testability anti-pattern), jossa testattavuuteen negatiivisesti vaikuttavat kaksi suurta tekijää: luokkien välinen suuri interaktio ja itsekäyttö. Syitä näiden esiintymiselle voi olla: luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja paljon komponentteja, jotka kommunikoivat keskenään. Tämä vaikeuttaa paljon vastuiden jakamista ja kasvattaa testitapausten määrää. 
-
-% Test critical dependencies
-%Testi-kriittiset riippuvuudet \citep{Jungmayr:2002}.
-
-Erilaisia testattavuuteen vaikuttavia mittareita on tutkittu paljon ja olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}:
-
-\begin{itemize}
-	\item metodien määrä luokassa
-	\item metodien määrä luokkahierarkiassa, jotka suoritetaan, kun luokan metodi suoritetaan
-	\item luokkien määrä, johon luokalla on kytkentää
-	\item periytymisaste
-\end{itemize}
-
-Syy miksi nämä ovat negatiivisia asioita testauksen kannalta on, että suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
-
-% Testattavuuden mittareita lisää \citep{Bruntink:2004}.
 
 \subsection{Hyvä testattavuus}
 
@@ -303,20 +285,50 @@ Jo suunnitteluvaiheessa voidaan kiinnittää huomiota testattavuuteen ja näin p
 
 Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin \citep[s. 554]{Freedman:1991:TSC:126218.126229}
 
+\subsection{Testattavuuden mittaaminen}
 
-\subsubsection{Metrics for maintainability}
-
-% Kuuluu ehkä paremmin arkkitehtuurin alle
-
-Ylläpidettävyyttä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Sitä voidaan mitata arkkitehtuurisista elementeistä seuraavien mittarien avulla \citep[s. 3]{bengtsson1998towards}: metodien määrä elementin rajapinnassa; paikkamerkkien (placeholder) määrä arkkitehtuurisille elementeille, joiden avulla elementti parametrisoidaan; elementtien välisten viestien määrä; elementtityyppien määrä, joita tarkasteltava elementti toteuttaa (implement); elementtien määrä, mitkä toteuttavat tarkasteltavan elementin tyypin; saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin; elementin metodien ja parametrien määrä. 
-
-Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiiksi luotu. Näkymän avulla voidaan tuoda ongelmakohtia esille ohjelmistojärjestelmässä, koska moni metriikoista määrittää järjestelmän sisäistä riippuvuusastetta ja mitä suurempi aste on, sitä suurempi on mahdollisuus, ettei järjestelmä oli kovin ylläpidettävä.
-
-\subsubsection{Metrics for testability}
+% Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
 
 
-Valitsemalla näistä samat mittarit, jotka leikkaavat ylläpidettävyyden kanssa, saadan testattavuuden kannalta relevanteiksi, myös jopa arkkitehtuuritasolla näkyviksi: peritymisaste; rajapinnan tarjoavien metodien määrä; kytkentäaste muihin luokkiin; metodien määrä, jotka luokkaan kohdistuvien pyyntöjen toimesta suoritetaan luokkahierarkiassa. Näitä mittareita pystytään tarkastelemaan esimerkiksi UML-mallin avulla luotujen mallien avulla. 
+Erilaisia testattavuuteen vaikuttavia mittareita on tutkittu paljon ja olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}:
 
+\begin{itemize}
+	\item metodien määrä luokassa
+	\item metodien määrä luokkahierarkiassa, jotka suoritetaan, kun luokan metodi suoritetaan
+	\item luokkien määrä, johon luokalla on kytkentää
+	\item periytymisaste
+\end{itemize}
+
+\noindent
+Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
+
+% Testattavuuden mittareita lisää \citep{Bruntink:2004}.
+
+Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määritelty \citep[s. 9]{Bruntink:2004}. Siinä testitapausten kasvuun ja pituuteen vaikuttivat luokan: 
+
+\begin{itemize}
+	\item toisten luokkien määrä, joita luokka kutsuu tai jonka kenttiin se viittaa
+	\item koko (rivien määrä)
+	\item omien metodien määrä ja muiden luokkien metodien määrä, joita omat metodit käyttävät
+\end{itemize} 
+
+On kuitenkin huomattavaa, että nämä ovat mittareita, joita voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla. Osaa pystytään kuitenkin mittamaan myös UML:n luokkakaavion avulla ja se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep[s. ]{baudry_testability_2002}. \citep[s. 3]{baudry_measuring_2003} määritteleekin testattavuuden anti-mallin (testability anti-pattern), jossa testattavuuteen negatiivisesti vaikuttavat kaksi suurta tekijää: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja komponenttien välinen suuri kommunikaatiotaso. Nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
+
+% UML \citep{baudry_testability_2002}
+
+UML-kaaviosta on mahdollista nähdä erilaisia asioita, kuin suoraan lähdekoodista. UML:n luokkakaavio toimiessa abstraktiivisena näkymänä suoraan lähdekoodiin, se tuo hieman korkeamman tason näkymän järjestelmään, mutta ilman liiallista tiedon piilottamista. Asioita, joita voidaan havaita UML:n avulla ja jotka vaikuttavat testattavuuteen negatiivisesti, esittää \citep{baudry_testability_2002} välttäväksi:
+
+\begin{itemize}
+	\item Kompleksiset perintäsuhteet
+	\item Abstraktien luokkien käyttö rajapintojen sijasta
+	\item 
+\end{itemize}
+
+
+% Class Dependency Graph from UML?
+
+% Test critical dependencies
+%Testi-kriittiset riippuvuudet \citep{Jungmayr:2002}.
 
 
 \subsection{Design for testability}
@@ -336,7 +348,13 @@ Testattavuus tulee ilmi korkealla tasolla integraatiotestauksessa \citep{Eickelm
 
 Kolmentyyppisiä kriittisiä moduuleita: tehtävä, turvallisuus ja pääsykriittiset moduulit \citep{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuurisellakin tasolla nämä pitäisi pitää erillään muista moduuleista.
 
+\subsubsection{Metrics for maintainability}
 
+% Kuuluu ehkä paremmin arkkitehtuurin alle
+
+Ylläpidettävyyttä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Sitä voidaan mitata arkkitehtuurisista elementeistä seuraavien mittarien avulla \citep[s. 3]{bengtsson1998towards}: metodien määrä elementin rajapinnassa; paikkamerkkien (placeholder) määrä arkkitehtuurisille elementeille, joiden avulla elementti parametrisoidaan; elementtien välisten viestien määrä; elementtityyppien määrä, joita tarkasteltava elementti toteuttaa (implement); elementtien määrä, mitkä toteuttavat tarkasteltavan elementin tyypin; saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin; elementin metodien ja parametrien määrä. 
+
+Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiiksi luotu. Näkymän avulla voidaan tuoda ongelmakohtia esille ohjelmistojärjestelmässä, koska moni metriikoista määrittää järjestelmän sisäistä riippuvuusastetta ja mitä suurempi aste on, sitä suurempi on mahdollisuus, ettei järjestelmä oli kovin ylläpidettävä.
 
 
 \subsection{Hyvä testattavuus arkkitehtuurissa?}

@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: malli.aux
+The style file: apsr.bst
+Database file #1: references-fi.bib
+Warning--empty booktitle in de_andrade_architectural_2014
+You've used 26 entries,
+            2874 wiz_defined-function locations,
+            823 strings with 10632 characters,
+and the built_in function-call counts, 101002 in all, are:
+= -- 16356
+> -- 1215
+< -- 0
++ -- 7462
+- -- 433
+* -- 8371
+:= -- 20189
+add.period$ -- 123
+call.type$ -- 26
+change.case$ -- 339
+chr.to.int$ -- 26
+cite$ -- 27
+duplicate$ -- 567
+empty$ -- 1083
+format.name$ -- 470
+if$ -- 18418
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 27
+newline$ -- 138
+num.names$ -- 291
+pop$ -- 169
+preamble$ -- 1
+purify$ -- 390
+quote$ -- 0
+skip$ -- 491
+stack$ -- 0
+substring$ -- 22692
+swap$ -- 164
+text.length$ -- 364
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 102
+warning$ -- 1
+while$ -- 632
+width$ -- 0
+write$ -- 430
+(There was 1 warning)

@@ -1,0 +1,32 @@
+\BOOKMARK [1][-]{section.1}{Johdanto}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Tutkimuskysymys}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Tutkimusmenetelm\344}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Rajaus}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Tutkimuksen rakenne}{section.1}% 5
+\BOOKMARK [1][-]{section.2}{Ohjelmistoarkkitehtuuri}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Ohjelmistojen arkkitehtuuri k\344sitteen\344}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Arkkitehtuurin kuvaus}{section.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.1}{N\344kym\344t}{subsection.2.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.2.2}{N\344k\366kulmat}{subsection.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{N\344kym\344n luominen}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{Ohjelmistojen laadulliset tekij\344t}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Laatuvaatimukset}{section.3}% 13
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Toiminnalliset}{subsection.3.1}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Ei-toiminnalliset vaatimukset}{subsection.3.1}% 15
+\BOOKMARK [2][-]{subsection.3.2}{Tradeoffit}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.3}{Arviointi}{section.3}% 17
+\BOOKMARK [1][-]{section.4}{Testattavuus laadullisena tekij\344n\344}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Testattavuuden merkitys}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.2}{Huono testattavuus}{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Hyv\344 testattavuus}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.4}{Testattavuuden mittaaminen}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.5}{Design for testability}{section.4}% 23
+\BOOKMARK [1][-]{section.5}{Arkkitehtuurin vaikutus testattavuuteen}{}% 24
+\BOOKMARK [2][-]{subsubsection.5.0.1}{Metrics for maintainability}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.1}{Hyv\344 testattavuus arkkitehtuurissa?}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.2}{Sunnittelumallien vaikutus testaukseen}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.3}{UML}{section.5}% 28
+\BOOKMARK [2][-]{subsection.5.4}{Arkkitehtuuriset hajut}{section.5}% 29
+\BOOKMARK [1][-]{section.6}{Pohdinta}{}% 30
+\BOOKMARK [1][-]{section.7}{Yhteenveto}{}% 31
+\BOOKMARK [1][-]{section*.2}{L\344hteet}{}% 32

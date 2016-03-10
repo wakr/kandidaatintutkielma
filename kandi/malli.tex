@@ -313,29 +313,27 @@ Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määrite
 
 Nämä kaikki edellämainitut mittarit ovat ominaisuuksiltaan sellaisia, joita voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla. Usein ohjelmistokehittäjät joutuvat tilanteisiin, joissa ainoa järkevä näkymä järjestelmään on abstraktilla tasolla oleva luokkakaavio.
 
-\subsection{UML-kaavio testattavuuden tukemisessa}
+\subsection{UML-kaavio testattavuuden havaitsemisessa}
 
 UML-luokkakaavio on todella yleisesti käytössä oleva ja juuri sen avulla nähdään hyvin järjestelmän rakennetta. Se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep[s. ]{baudry_testability_2002}. \citep[s. 3]{baudry_measuring_2003} määritteleekin testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa testattavuuteen negatiivisesti vaikuttaa kaksi suurta tekijää: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja komponenttien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
 % UML \citep{baudry_testability_2002}
 
-UML-kaaviosta on mahdollista nähdä erilaisia asioita, kuin suoraan lähdekoodista. UML:n luokkakaavio toimiessa abstraktiivisena näkymänä suoraan lähdekoodiin, se tuo hieman korkeamman tason näkymän järjestelmään, mutta ilman liiallista tiedon piilottamista. Asioita, joita voidaan havaita UML:n avulla ja luokkakaaviosta luotavalla riippuvuusgraafilla esittää \citep{baudry_testability_2002}:
+UML-kaaviosta on mahdollista nähdä erilaisia asioita, kuin suoraan lähdekoodista. UML:n luokkakaavio toimiessa abstraktiivisena näkymänä suoraan lähdekoodiin, se tuo hieman korkeamman tason näkymän järjestelmään, mutta ilman liiallista tiedon piilottamista. Asioita, joita voidaan havaita UML:n avulla ja luokkakaaviosta luotavalla riippuvuusgraafilla esittää \citep{baudry_testability_2002} seuraaviksi:
 
 \begin{itemize} 
 	\item kompleksiset perintäsuhteet
-	\item abstraktien luokkien käyttö rajapintojen sijasta
+	\item abstraktien luokkien liikakäyttö rajapintojen sijasta
 \end{itemize}
 
 
-% Class Dependency Graph from UML?
+Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittisten riippuvuuksien poistoa. Luokkakaaviosta saatavia mittareita tunnistetaan kolme kappaletta: 
 
-% Test critical dependencies
-%Testi-kriittiset riippuvuudet \citep{Jungmayr:2002}.
-
-Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittisten riippuvuuksien poistoa. 
-
-
-
+\begin{itemize}
+	\item komponenttien keskimääräinen riippuvuuksien määrä
+	\item komponenttien määrä riippuvuussykleissä
+	\item \textit{feedback-riippuvuuksien\footnote{\textit{Feedback-riippuvuus} on syklinen riippuvuussuhde komponenttien välillä, jotka kuuluvat sellaiseen riippuvuussykliin, josta poistamalla jokin riippuvuus saadaan rikottua sykli.}}  määrä 
+\end{itemize}
 
 
 %\subsection{Design for testability}
@@ -359,7 +357,7 @@ Testattavuus tulee ilmi korkealla tasolla integraatiotestauksessa \citep{Eickelm
 
 Kolmentyyppisiä kriittisiä moduuleita: tehtävä, turvallisuus ja pääsykriittiset moduulit \citep{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuurisellakin tasolla nämä pitäisi pitää erillään muista moduuleista.
 
-\subsubsection{Metrics for maintainability}
+\subsection{Metrics for maintainability}
 
 % Kuuluu ehkä paremmin arkkitehtuurin alle
 

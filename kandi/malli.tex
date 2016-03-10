@@ -263,6 +263,7 @@ Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria 
 Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep{Freedman:1991:TSC:126218.126229}
 
 
+
 \subsection{Hyvä testattavuus}
 
 Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
@@ -278,7 +279,7 @@ Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti lu
 
 Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep[s. 20-22]{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Jälkimmäinen on hyvin yleinen tapa olio-ohjelmoinnissa ja liiallinen tiedon piilotus tuottaa vaikeuksia testauksessa, koska hallittavuus heikkenee. 
 
-Ongelmat syötteiden ja tulosten tarkastelussa johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää \citep[s. 554]{Freedman:1991:TSC:126218.126229} ja vaikeasti testattavan komponentin ominaisuuksiksi voidaankin määritellä sen sisältävän ulos- ja sisääntulo parametrien epäjohdonmukaisuuksia. Toisinsanoen vaikeasti testattava komponentti siis tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
+Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää \citep[s. 554]{Freedman:1991:TSC:126218.126229} ja vaikeasti testattavan komponentin ominaisuuksiksi voidaankin määritellä sen sisältävän ulos- ja sisääntulo parametrien epäjohdonmukaisuuksia. Toisinsanoen vaikeasti testattava komponentti siis tuottaa eri tuloksia eri ajoilla, tai ei ikinä tuota haluttua tulosta.   
 
 
 
@@ -318,12 +319,11 @@ UML-luokkakaavio on todella yleisesti käytössä oleva ja juuri sen avulla näh
 
 % UML \citep{baudry_testability_2002}
 
-UML-kaaviosta on mahdollista nähdä erilaisia asioita, kuin suoraan lähdekoodista. UML:n luokkakaavio toimiessa abstraktiivisena näkymänä suoraan lähdekoodiin, se tuo hieman korkeamman tason näkymän järjestelmään, mutta ilman liiallista tiedon piilottamista. Asioita, joita voidaan havaita UML:n avulla ja jotka vaikuttavat testattavuuteen negatiivisesti, esittää \citep{baudry_testability_2002} välttäväksi:
+UML-kaaviosta on mahdollista nähdä erilaisia asioita, kuin suoraan lähdekoodista. UML:n luokkakaavio toimiessa abstraktiivisena näkymänä suoraan lähdekoodiin, se tuo hieman korkeamman tason näkymän järjestelmään, mutta ilman liiallista tiedon piilottamista. Asioita, joita voidaan havaita UML:n avulla ja luokkakaaviosta luotavalla riippuvuusgraafilla esittää \citep{baudry_testability_2002}:
 
-\begin{itemize}
-	\item Kompleksiset perintäsuhteet
-	\item Abstraktien luokkien käyttö rajapintojen sijasta
-	\item 
+\begin{itemize} 
+	\item kompleksiset perintäsuhteet
+	\item abstraktien luokkien käyttö rajapintojen sijasta
 \end{itemize}
 
 
@@ -331,8 +331,12 @@ UML-kaaviosta on mahdollista nähdä erilaisia asioita, kuin suoraan lähdekoodi
 
 % Test critical dependencies
 %Testi-kriittiset riippuvuudet \citep{Jungmayr:2002}.
-\noindent
-lol.
+
+Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittisten riippuvuuksien poistoa. 
+
+
+
+
 
 %\subsection{Design for testability}
 

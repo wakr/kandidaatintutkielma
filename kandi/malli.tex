@@ -250,31 +250,20 @@ Keräys? Muodostus? Ryhmittely?
 \newpage
 
 \section{Testattavuus laadullisena tekijänä}
-Testattavuus luetaan kuuluvan ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Kuitenkaan se laatuvaatimuksena ei esimerkiksi asiakkaalle ole edes aina kovin näkyvä, mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattava järjestelmä on myös vaikeasti ylläpidettävä, ja ylläpidettävä järjestelmä on sekä asiakkaalle, että kehittäjällä tärkeä ominaisuus.
+Testattavuus luetaan kuuluvan ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Kuitenkaan se laatuvaatimuksena ei esimerkiksi asiakkaalle ole edes aina kovin näkyvä, mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattavaa järjestelmää on myös vaikea ylläpitää, ja ylläpidettävä järjestelmä on sekä asiakkaalle että kehittäjälle tärkeä ominaisuus.
 
 % Yksikkö vs integraatio vs regressio testauksessa.
 Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi yleisintä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä siis löytän itse viat, mutta testattavuus paikat, joissa viat voivat sijaita \citep[s. 19]{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
 
+
+\subsection{Testaamisen arviointi}
+
 Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee miten mahdollista testien tuloksia on tarkastella ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää, että vaikuttavatko tietyt syötteet testituloksiin ja hallittavuus sitä, että kuinka helppo on tuottaa jokin tietty tulos syötteestä \citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
 
-
-
-
-\subsection{Testattavuuden merkitys}
-% Mitä huono testattavuus voi tarkoittaa järjestelmän kannalta?
-Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden huononemista ja täten aiheuttaa jatkuvaa ongelmaa kehityksen kannalta, koska testaus on usein tapahtuvaa toimintaa, jonka tarkoituksena on löytää vikoja järjestelmästä. Myöhäisessä vaiheessa löydetty vika saattaa tulla erittäin kalliiksi ja viedä pois useita työtunteja, jotka olisi pystytty käyttämään johonkin tuottavampaan tekemiseen, jos vaikeasti testattava järjestelmä ei olisi ongelman löytämistä hidastanut.
-
-\subsection{Huono testattavuus}
-
-Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep[s. 20-22]{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Jälkimmäinen on hyvin yleinen tapa olio-ohjelmoinnissa ja liiallinen tiedon piilotus tuottaa vaikeuksia testauksessa, koska hallittavuus heikkenee. 
-
-Ongelmat syötteiden ja tulosten tarkastelussa johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää \citep[s. 554]{Freedman:1991:TSC:126218.126229} ja vaikeasti testattavan komponentin ominaisuuksiksi voidaankin määritellä sen sisältävän ulos- ja sisääntulo parametrien epäjohdonmukaisuuksia. Toisinsanoen vaikeasti testattava komponentti siis tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
-
+Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep{Freedman:1991:TSC:126218.126229}
 
 
 \subsection{Hyvä testattavuus}
-
-
 
 Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
@@ -284,6 +273,15 @@ Jo suunnitteluvaiheessa voidaan kiinnittää huomiota testattavuuteen ja näin p
 
 
 Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin \citep[s. 554]{Freedman:1991:TSC:126218.126229}
+
+\subsection{Huono testattavuus}
+
+Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep[s. 20-22]{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Jälkimmäinen on hyvin yleinen tapa olio-ohjelmoinnissa ja liiallinen tiedon piilotus tuottaa vaikeuksia testauksessa, koska hallittavuus heikkenee. 
+
+Ongelmat syötteiden ja tulosten tarkastelussa johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää \citep[s. 554]{Freedman:1991:TSC:126218.126229} ja vaikeasti testattavan komponentin ominaisuuksiksi voidaankin määritellä sen sisältävän ulos- ja sisääntulo parametrien epäjohdonmukaisuuksia. Toisinsanoen vaikeasti testattava komponentti siis tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
+
+
+
 
 \subsection{Testattavuuden mittaaminen}
 
@@ -312,7 +310,11 @@ Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määrite
 	\item omien metodien määrä ja muiden luokkien metodien määrä, joita omat metodit käyttävät
 \end{itemize} 
 
-On kuitenkin huomattavaa, että nämä ovat mittareita, joita voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla. Osaa pystytään kuitenkin mittamaan myös UML:n luokkakaavion avulla ja se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep[s. ]{baudry_testability_2002}. \citep[s. 3]{baudry_measuring_2003} määritteleekin testattavuuden anti-mallin (testability anti-pattern), jossa testattavuuteen negatiivisesti vaikuttavat kaksi suurta tekijää: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja komponenttien välinen suuri kommunikaatiotaso. Nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
+Nämä kaikki edellämainitut mittarit ovat ominaisuuksiltaan sellaisia, joita voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla. Usein ohjelmistokehittäjät joutuvat tilanteisiin, joissa ainoa järkevä näkymä järjestelmään on abstraktilla tasolla oleva luokkakaavio.
+
+\subsection{UML-kaavio testattavuuden tukemisessa}
+
+UML-luokkakaavio on todella yleisesti käytössä oleva ja juuri sen avulla nähdään hyvin järjestelmän rakennetta. Se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep[s. ]{baudry_testability_2002}. \citep[s. 3]{baudry_measuring_2003} määritteleekin testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa testattavuuteen negatiivisesti vaikuttaa kaksi suurta tekijää: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja komponenttien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
 % UML \citep{baudry_testability_2002}
 
@@ -329,11 +331,16 @@ UML-kaaviosta on mahdollista nähdä erilaisia asioita, kuin suoraan lähdekoodi
 
 % Test critical dependencies
 %Testi-kriittiset riippuvuudet \citep{Jungmayr:2002}.
+\noindent
+lol.
 
+%\subsection{Design for testability}
 
-\subsection{Design for testability}
+%Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
-Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{Voas:1995:STN:624607.625469}. 
+\subsection{Testattavuuden merkitys}
+% Mitä huono testattavuus voi tarkoittaa järjestelmän kannalta?
+Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden huononemista ja täten aiheuttaa jatkuvaa ongelmaa kehityksen kannalta, koska testaus on usein tapahtuvaa toimintaa, jonka tarkoituksena on löytää vikoja järjestelmästä. Myöhäisessä vaiheessa löydetty vika saattaa tulla erittäin kalliiksi ja viedä pois useita työtunteja, jotka olisi pystytty käyttämään johonkin tuottavampaan tekemiseen, jos vaikeasti testattava järjestelmä ei olisi ongelman löytämistä hidastanut.
 
 
 \section{Arkkitehtuurin vaikutus testattavuuteen}

@@ -260,7 +260,9 @@ Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan,
 
 Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee miten mahdollista testien tuloksia on tarkastella ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää, että vaikuttavatko tietyt syötteet testituloksiin ja hallittavuus sitä, että kuinka helppo on tuottaa jokin tietty tulos syötteestä \citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
 
-Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep{Freedman:1991:TSC:126218.126229}
+%Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep[s. 20-21]{Voas:1995:STN:624607.625469}
+
+Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo, jonka avulla voidaan havaita sekä implisiittistä tiedonkatoamista \citep[s. 20-22]{Voas:1995:STN:624607.625469}, että arvioida järjestelmän havaittavuutta \citep[s. 1]{Jungmayr:2002}. \textit{Domain-to-range} -arvo saadaan vertailemalla komponenttien tulosteen (ouput) mahtavuutta syötteeseen (input).  
 
 
 

@@ -238,7 +238,6 @@ Jos järjestelmää ei ole vielä olemassa lainkaan, voidaan järjestelmän arkk
 
 \section{Ohjelmistojen laadulliset tekijät}
 
-Miten voidaan jakaa? Miten tuodaan esille? 
 
 \subsection{Laatuvaatimukset}
 Keräys? Muodostus? Ryhmittely?
@@ -247,7 +246,6 @@ Keräys? Muodostus? Ryhmittely?
 \subsection{Tradeoffit}
 \subsection{Arviointi}
 
-\newpage
 
 \section{Testattavuus laadullisena tekijänä}
 Testattavuus luetaan kuuluvan ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Kuitenkaan se laatuvaatimuksena ei esimerkiksi asiakkaalle ole edes aina kovin näkyvä, mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattavaa järjestelmää on myös vaikea ylläpitää, ja ylläpidettävä järjestelmä on sekä asiakkaalle että kehittäjälle tärkeä ominaisuus.
@@ -262,7 +260,7 @@ Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria 
 
 %Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep[s. 20-21]{Voas:1995:STN:624607.625469}
 
-Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo, jonka avulla voidaan havaita sekä implisiittistä tiedonkatoamista \citep[s. 20-22]{Voas:1995:STN:624607.625469}, että arvioida järjestelmän havaittavuutta \citep[s. 1]{Jungmayr:2002}. \textit{Domain-to-range} -arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon.  
+Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan havaita sekä implisiittistä tiedonkatoamista \citep[s. 20-22]{Voas:1995:STN:624607.625469}, että arvioida järjestelmän havaittavuutta \citep[s. 1]{Jungmayr:2002}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon.  
 
 
 
@@ -270,14 +268,20 @@ Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo, j
 
 %Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
-Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa järjestelmien laatua \citep[s. 20]{Voas:1995:STN:624607.625469}. Se on siis tavoiteltava ominaisuus jokaisessa ohjelmistojärjestelmässä, mutta sen määritteleminen riippuu usein aina kontekstista. 
+Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa järjestelmien laatua \citep[s. 20]{Voas:1995:STN:624607.625469}. Se on siis tavoiteltava ominaisuus jokaisessa ohjelmistojärjestelmässä, mutta hyvän testattavuuden saavuttaminen on aina ohjelmistöjärjestelmäkohtaista. Onkin tästä syystä mielekkäämpää tarkastella mikä luo yleisesti järjestelmissä hyvää testattavuutta. 
 
-%Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
+%Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin \citep[s. 554]{Freedman:1991:TSC:126218.126229}
 
 %Jo suunnitteluvaiheessa voidaan kiinnittää huomiota testattavuuteen ja näin parantaa itse testausprosessia. Decomposition, moduulien korkeat DRR (domain/range -ratio), korkean DRR:n omaavat moduulit mah. pieniksi ja eriytetyiksi, hyvä rajapinta joka paljastaa tarpeeksi moduulin sisäistä tilaa \citep[s. 117]{voas_improving_1992}.
 
 
-%Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin \citep[s. 554]{Freedman:1991:TSC:126218.126229}
+%Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
+
+\citep[s. 554]{Freedman:1991:TSC:126218.126229} on määritellyt testattavan komponentin ominaisuuksiksi: luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavia; testitapaukset eivät ala toistamaan itseään; havaittavat ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota seuraaviin tekijöihin \citep[s. 117]{voas_improving_1992}: dekomposition mahdollisuus; tunnistaa moduulit, joiden DRR-arvo on korkea ja tehdä ne mahdollisimman pieniksi ja yksinkertaisiksi; rajapinta korkean DRR-arvon moduuleille siten, että rajapinta paljastaa tarpeeksi tietoa; eriyttää korkean DRR-arvon moduulit toisistaan \citep[s. 23]{Voas:1995:STN:624607.625469}. 
+
+
+
+
 
 \subsection{Huono testattavuus}
 
@@ -293,7 +297,7 @@ Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtav
 % Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
 
 
-Erilaisia testattavuuteen vaikuttavia mittareita on tutkittu paljon ja olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}:
+Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}:
 
 \begin{itemize}
 	\item metodien määrä luokassa
@@ -339,28 +343,29 @@ Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittist
 	\item \textit{feedback-riippuvuuksien\footnote{\textit{Feedback-riippuvuus} on syklinen riippuvuussuhde komponenttien välillä, jotka kuuluvat sellaiseen riippuvuussykliin, josta poistamalla jokin riippuvuus saadaan purettua sykli täysin.}}  määrä 
 \end{itemize}
 
-\
 
 %\subsection{Design for testability}
 
 %Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
-\subsection{Testattavuuden merkitys}
+%\subsection{Testattavuuden merkitys}
 % Mitä huono testattavuus voi tarkoittaa järjestelmän kannalta?
-Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden huononemista ja täten aiheuttaa jatkuvaa ongelmaa kehityksen kannalta, koska testaus on usein tapahtuvaa toimintaa, jonka tarkoituksena on löytää vikoja järjestelmästä. Myöhäisessä vaiheessa löydetty vika saattaa tulla erittäin kalliiksi ja viedä pois useita työtunteja, jotka olisi pystytty käyttämään johonkin tuottavampaan tekemiseen, jos vaikeasti testattava järjestelmä ei olisi ongelman löytämistä hidastanut.
+%Huono testattavuus voi tarkoittaa järjestelmän kannalta ylläpidettävyyden huononemista ja täten aiheuttaa jatkuvaa ongelmaa kehityksen kannalta, koska testaus on usein tapahtuvaa toimintaa, jonka tarkoituksena on löytää vikoja järjestelmästä. Myöhäisessä vaiheessa löydetty vika saattaa tulla erittäin kalliiksi ja viedä pois useita työtunteja, jotka olisi pystytty käyttämään johonkin tuottavampaan tekemiseen, jos vaikeasti testattava järjestelmä ei olisi ongelman löytämistä hidastanut.
 
 
 \section{Arkkitehtuurin vaikutus testattavuuteen}
 %Modulaarisuus, mah. vähän riippuvuuksia. Miten tulee esille arkkitehtuurin kuvauksissa? Näkymät?
 
-Testattavuus tulee esille arkkitehtuurisella tasolla hieman erilailla, kun ohjelmakooditasolla. Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja sitä tutkitaan komponenttitasolla, jota tukee erittäin hyvin UML-kaaviot, joiden avulla ohjelmistojärjestelmän rakenne saadaan kuvattua. 
-\\
+%Testattavuus tulee ilmi korkealla tasolla integraatiotestauksessa \citep{Eickelmann:1996:MOS:243327.243602} -> komponenttien rajapintojen toimivuus, miten komponetit antavat datan ja kontrollin eteenpäin.
 
-Mikä tekee yhdestä arkkitehtuurista testattavamman, kuin toisen? -> Tyylien käyttö parantaa testattavuutta, \citep{Eickelmann:1996:MOS:243327.243602} 
+Testattavuus tulee esille arkkitehtuurisella tasolla hieman erilailla, kun ohjelmakooditasolla ja usein onkin, että ohjelmakoodia ei tietyllä hetkellä ole edes saatavilla tai sen täydellinen läpikäynti veisi paljon aikaa. Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja sitä voidaan tutkia komponenttitasolla, jota tukee erittäin hyvin UML-kaaviot. UML-kaavioiden avulla ohjelmistojärjestelmän rakenne saadaan hyvin kuvattua eri tasoisilla näkymillä ja näkökulmilla. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi myös korkealla tasolla integraatiotestauksen aikana, kun komponenttien rajapintojen toimivuus sekä komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}.
 
-Testattavuus tulee ilmi korkealla tasolla integraatiotestauksessa \citep{Eickelmann:1996:MOS:243327.243602} -> komponenttien rajapintojen toimivuus, miten komponetit antavat datan ja kontrollin eteenpäin.
 
-Kolmentyyppisiä kriittisiä moduuleita: tehtävä, turvallisuus ja pääsykriittiset moduulit \citep{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuurisellakin tasolla nämä pitäisi pitää erillään muista moduuleista.
+%Mikä tekee yhdestä arkkitehtuurista testattavamman, kuin toisen? -> Tyylien käyttö parantaa testattavuutta, \citep{Eickelmann:1996:MOS:243327.243602} 
+
+
+
+%Kolmentyyppisiä kriittisiä moduuleita: tehtävä, turvallisuus ja pääsykriittiset moduulit \citep{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuurisellakin tasolla nämä pitäisi pitää erillään muista moduuleista.
 
 \subsection{Metrics for maintainability}
 
@@ -372,6 +377,8 @@ Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiik
 
 
 \subsection{Hyvä testattavuus arkkitehtuurissa?}
+
+
 
 Testattavuuden parantaminen erillisen patternin avulla \citep{coelho_improving_2005}. 
 
@@ -411,6 +418,8 @@ Viisi hajua (4 + 1 for spl) \citep{garcia_toward_2009}: Connector envy (komponen
 
 
 \section{Pohdinta}
+
+Metriikat + riippuvuusgraph.
 
 \section{Yhteenveto}
 "puoli sivua"

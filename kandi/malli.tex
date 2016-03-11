@@ -154,15 +154,15 @@ Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaati
 Tutkimus vastaa kysymykseen \textit{miten testattavuus näkyy ohjelmistojen arkkitehtuurissa}. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: \textit{mitä on testattavuus ohjelmistojärjestelmissä, miten arkkitehtuuria voidaan kuvata, miten arkkitehtuurista luotu näkymä kertoo jotain järjestelmän testattavuudesta}. 
 
 \subsection{Tutkimusmenetelmä}
-Tutkimuskysymykseen vastataan kirjallisuuskatsauksen avulla ja tutkimalla, että mitkä arkkitehtuuriset päätökset ja elementit ovat hyvän testattavuuden tekijöitä. Hyvän testattavuuden havaitsemiseen etsitään näkymää nykyisistä menetelmistä kuvata arkkitehtuuria. Näitä menetelmiä ovat pääasiassa erilaisten näkymien ja näkökulmien joukko, joista tässä tutkimuksessa pyritään etsimään kehittäjän näkökulmasta kaikista relevantein kokoelma.
+Tutkimuskysymykseen vastataan kirjallisuuskatsauksen avulla ja tutkimalla, että mitkä arkkitehtuuriset päätökset ja elementit ovat hyvän sekä huonon testattavuuden tekijöitä. Testattavuuden havaitsemiseen etsitään näkymää nykyisistä menetelmistä kuvata arkkitehtuuria. Näitä menetelmiä ovat pääasiassa erilaisten näkymien ja näkökulmien joukko, joiden avulla saadaan abstrahoitua järjestelmän lähdekoodia arkkitehtuurisempaan muotoon.
 
 \subsection{Rajaus}
 
-Tutkimuksessa keskitytään pääosin ainoastaan oliopohjaisen arkkitehtuurin kuvaamiseen ja sen yleisimpiin käytänteisiin. Testaustavoista on keskitytty yksikkö -ja hyväksymistesteihin. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois.
+Tutkimuksessa keskitytään pääosin ainoastaan oliopohjaisen arkkitehtuuriin ja sen kuvaamiseen. Testaustavoista on keskitytty yksikkö -ja integraatiotestaukseen. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois, koska ne eivät tarjoa visuaalista näkymää arkkitehtuuriin.
 
 \subsection{Tutkimuksen rakenne}
 
-Kappaleessa 2 käydään läpi ohjelmistoarkkitehtuuria käsitteenä ja luodaan pohja eri kuvaustavoille ohjelmistoarkkitehtuuria varten. Samalla kuvataan, että miten ja mistä näkymä voidaan luoda ohjelmistojärjestelmälle. Kappale 3 keskittyy ohjelmistolle asetettaviin laadullisiin vaatimuksiin, joista kappale 4 tarkentaa testattavuutta. Kappale 5 etsii arkkitehtuurin ja testattavuuden välistä suhdetta ja viimeinen kappale keskittyy testattavuuden parantamiseen arkkitehtuurin avulla.
+Kappaleessa 2 käydään läpi ohjelmistoarkkitehtuuria käsitteenä ja luodaan pohja eri kuvaustavoille ohjelmistoarkkitehtuuria varten. Samalla kuvataan, että miten ja mistä näkymä voidaan luoda ohjelmistojärjestelmälle. Kappale 3 keskittyy ohjelmistolle asetettaviin laadullisiin vaatimuksiin, joista kappale 4 tarkentaa testattavuutta. Kappale 5 etsii arkkitehtuurin ja testattavuuden välistä suhdetta.
 
 
 \section{Ohjelmistoarkkitehtuuri}
@@ -216,7 +216,7 @@ Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin so
 
 
 \subsubsection{Näkökulmat}
-Rozanskin ja ym. \citep[s. 36-42]{Rozanski:2011:SSA:2072649} määrittelevät, että näkökulmat (viewpoints) liittyvät vahvasti arkkitehtuurisiin näkymiin. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko voidaan taas jakaa seitsemään eri osaan: kontekstinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, kehittämisellinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa kehittämisen sekä funktionaalisuuden näkökulmaan. Kehittämisen näkökulmaan siksi, koska se ottaa huomieen niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muunmuassa järjestelmän suorituksenaikaisia komponentteja sekä niiden rajapintoja.
+Rozanskin ja ym. \citep[s. 36-42]{Rozanski:2011:SSA:2072649} määrittelevät, että näkökulmat (viewpoints) liittyvät vahvasti arkkitehtuurisiin näkymiin. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko voidaan taas jakaa seitsemään eri osaan: kontekstinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, kehittämisellinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa kehittämisen sekä funktionaalisuuden näkökulmaan. Kehittämisen näkökulmaan siksi, koska se ottaa huomioon niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muunmuassa järjestelmän suorituksenaikaisia komponentteja sekä niiden rajapintoja.
 
 % 4210 ISO
 IEEE:n virallinen määritelmä näkokulmalle on \textit{a specification of the conventions for constructing and using a view. A pattern or template
@@ -262,20 +262,22 @@ Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria 
 
 %Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep[s. 20-21]{Voas:1995:STN:624607.625469}
 
-Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo, jonka avulla voidaan havaita sekä implisiittistä tiedonkatoamista \citep[s. 20-22]{Voas:1995:STN:624607.625469}, että arvioida järjestelmän havaittavuutta \citep[s. 1]{Jungmayr:2002}. \textit{Domain-to-range} -arvo saadaan vertailemalla komponenttien tulosteen (ouput) mahtavuutta syötteeseen (input).  
+Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo, jonka avulla voidaan havaita sekä implisiittistä tiedonkatoamista \citep[s. 20-22]{Voas:1995:STN:624607.625469}, että arvioida järjestelmän havaittavuutta \citep[s. 1]{Jungmayr:2002}. \textit{Domain-to-range} -arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon.  
 
 
 
 \subsection{Hyvä testattavuus}
 
-Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
+%Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
-Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
+Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa järjestelmien laatua \citep[s. 20]{Voas:1995:STN:624607.625469}. Se on siis tavoiteltava ominaisuus jokaisessa ohjelmistojärjestelmässä, mutta sen määritteleminen riippuu usein aina kontekstista. 
 
-Jo suunnitteluvaiheessa voidaan kiinnittää huomiota testattavuuteen ja näin parantaa itse testausprosessia. Decomposition, moduulien korkeat DRR (domain/range -ratio), korkean DRR:n omaavat moduulit mah. pieniksi ja eriytetyiksi, hyvä rajapinta joka paljastaa tarpeeksi moduulin sisäistä tilaa \citep[s. 117]{voas_improving_1992}.
+%Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
+
+%Jo suunnitteluvaiheessa voidaan kiinnittää huomiota testattavuuteen ja näin parantaa itse testausprosessia. Decomposition, moduulien korkeat DRR (domain/range -ratio), korkean DRR:n omaavat moduulit mah. pieniksi ja eriytetyiksi, hyvä rajapinta joka paljastaa tarpeeksi moduulin sisäistä tilaa \citep[s. 117]{voas_improving_1992}.
 
 
-Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin \citep[s. 554]{Freedman:1991:TSC:126218.126229}
+%Testattavan komponentin ominaisuudet: testitapaukset ovat pieniä ja helposti luotavia, testitapaukset eivät ole itseään toistavia, ongelmat on helppo jäljittää tiettyihin komponentteihin \citep[s. 554]{Freedman:1991:TSC:126218.126229}
 
 \subsection{Huono testattavuus}
 
@@ -334,9 +336,10 @@ Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittist
 \begin{itemize}
 	\item komponenttien keskimääräinen riippuvuuksien määrä
 	\item komponenttien määrä riippuvuussykleissä
-	\item \textit{feedback-riippuvuuksien\footnote{\textit{Feedback-riippuvuus} on syklinen riippuvuussuhde komponenttien välillä, jotka kuuluvat sellaiseen riippuvuussykliin, josta poistamalla jokin riippuvuus saadaan rikottua sykli.}}  määrä 
+	\item \textit{feedback-riippuvuuksien\footnote{\textit{Feedback-riippuvuus} on syklinen riippuvuussuhde komponenttien välillä, jotka kuuluvat sellaiseen riippuvuussykliin, josta poistamalla jokin riippuvuus saadaan purettua sykli täysin.}}  määrä 
 \end{itemize}
 
+\
 
 %\subsection{Design for testability}
 

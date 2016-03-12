@@ -354,37 +354,38 @@ Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittist
 
 
 \section{Arkkitehtuurin vaikutus testattavuuteen}
-%Modulaarisuus, mah. vähän riippuvuuksia. Miten tulee esille arkkitehtuurin kuvauksissa? Näkymät?
 
-%Testattavuus tulee ilmi korkealla tasolla integraatiotestauksessa \citep{Eickelmann:1996:MOS:243327.243602} -> komponenttien rajapintojen toimivuus, miten komponetit antavat datan ja kontrollin eteenpäin.
-
-Testattavuus tulee esille arkkitehtuurisella tasolla hieman erilailla, kun ohjelmakooditasolla ja usein onkin, että ohjelmakoodia ei tietyllä hetkellä ole edes saatavilla tai sen täydellinen läpikäynti veisi paljon aikaa. Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja sitä voidaan tutkia komponenttitasolla, jota tukee erittäin hyvin UML-kaaviot. UML-kaavioiden avulla ohjelmistojärjestelmän rakenne saadaan hyvin kuvattua eri tasoisilla näkymillä ja näkökulmilla. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi myös korkealla tasolla integraatiotestauksen aikana, kun komponenttien rajapintojen toimivuus sekä komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}.
+Testattavuus tulee esille arkkitehtuurisella tasolla hieman erilailla, kun ohjelmakooditasolla ja usein onkin, että ohjelmakoodia ei tietyllä hetkellä ole edes saatavilla tai sen täydellinen läpikäynti veisi paljon aikaa. Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja sitä voidaan tutkia komponenttitasolla, jota tukee erittäin hyvin UML-kaaviot. UML-kaavioiden avulla ohjelmistojärjestelmän rakenne saadaan hyvin kuvattua eritasoisilla näkymillä ja näkökulmilla. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi myös korkealla tasolla integraatiotestauksen aikana, kun komponenttien rajapintojen toimivuus sekä komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}.
 
 
-%Mikä tekee yhdestä arkkitehtuurista testattavamman, kuin toisen? -> Tyylien käyttö parantaa testattavuutta, \citep{Eickelmann:1996:MOS:243327.243602} 
-
-
-
-%Kolmentyyppisiä kriittisiä moduuleita: tehtävä, turvallisuus ja pääsykriittiset moduulit \citep{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuurisellakin tasolla nämä pitäisi pitää erillään muista moduuleista.
-
-\subsection{Metrics for maintainability}
-
-% Kuuluu ehkä paremmin arkkitehtuurin alle
-
-Ylläpidettävyyttä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Sitä voidaan mitata arkkitehtuurisista elementeistä seuraavien mittarien avulla \citep[s. 3]{bengtsson1998towards}: metodien määrä elementin rajapinnassa; paikkamerkkien (placeholder) määrä arkkitehtuurisille elementeille, joiden avulla elementti parametrisoidaan; elementtien välisten viestien määrä; elementtityyppien määrä, joita tarkasteltava elementti toteuttaa (implement); elementtien määrä, mitkä toteuttavat tarkasteltavan elementin tyypin; saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin; elementin metodien ja parametrien määrä. 
-
-Mittaaminen on mahdollista tehdä ilman lähdekoodia, jos näkymä on jo valmiiksi luotu. Näkymän avulla voidaan tuoda ongelmakohtia esille ohjelmistojärjestelmässä, koska moni metriikoista määrittää järjestelmän sisäistä riippuvuusastetta ja mitä suurempi aste on, sitä suurempi on mahdollisuus, ettei järjestelmä oli kovin ylläpidettävä.
-
+Arkkitehtuuriset tyylit parantavat järjestelmän järjestelmän laadullisia ominaisuuksia ja tuovat järjestelmään yhdenmukaisen konseptin, jota koko järjestelmän toteutus noudattaa. Erilaiset tyylit paranantavat myös erilaisia testausstrategioita \citep[s. 66]{Eickelmann:1996:MOS:243327.243602}. 
 
 \subsection{Hyvä testattavuus arkkitehtuurissa?}
 
+%Tietyt arkkitehtuuriset tyylit sopivat tiettyihin testaustapoihin (critical module, sandwich, top-down, bottom-up, thread, big bang) \citep{Eickelmann:1996:MOS:243327.243602}. Kolmeen ensimmäiseen liittyvät vahvasti stubit ja test driverit. 
+
+%Testattavuuden parantaminen erillisen patternin avulla \citep{coelho_improving_2005}.
+
+Hyvään testattavuuteen arkkitehtuurisella tasolla vaikuttaa paljon oikean tyylin vaikuttaminen oikeaan tilanteeseen ja niiden täsmällinen noudattaminen. 
 
 
-Testattavuuden parantaminen erillisen patternin avulla \citep{coelho_improving_2005}. 
 
-Tietyt arkkitehtuuriset tyylit sopivat tiettyihin testaustapoihin (critical module, sandwich, top-down, bottom-up, thread, big bang) \citep{Eickelmann:1996:MOS:243327.243602}. Kolmeen ensimmäiseen liittyvät vahvasti stubit ja test driverit. 
+\subsection{Arkkitehtuurin testattavuuden mittaaminen}
 
--> tyylin tunnistaminen?
+Koska testattavuus kuuluu ylläpidettävyyteen, niin sitä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Seuraavat mittarit on luotu arvioimaan ylläpidettävyyttä arkkitehtuurisella tasolla koskien arkkitehtuurisia elementtejä \citep[s. 3-4]{bengtsson1998towards}:
+
+\begin{itemize}
+	\item metodien määrä elementin rajapinnassa
+	\item paikkamerkkien (placeholder) määrä arkkitehtuurisille elementeille, joiden avulla elementti parametrisoidaan
+	\item elementistä lähtevien viestien määrä
+	\item elementtityyppien määrä, joita tarkasteltava elementti toteuttaa (implement)
+	\item elementtien määrä, mitkä toteuttavat tarkasteltavan elementin tyypin
+	\item saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin
+	\item elementin metodien ja parametrien määrä
+\end{itemize}
+
+On selvää, että nämä mittarit ovat osittain hyvin samankaltaisia, kun kappaleessa 4 määritellyt mittarit testattavuuden mittaamiseen. Tämä samankaltaisuus johtuu siitä, että asiat jotka vaikuttavat järjestelmän arkkitehtuurin ylläpidettävyyteen, vaikuttavat myös järjestelmän testattavuuteen.
+
 
 \subsection{Sunnittelumallien vaikutus testaukseen}
 

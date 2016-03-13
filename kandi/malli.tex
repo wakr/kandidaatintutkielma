@@ -309,6 +309,15 @@ Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on eri
 \noindent
 Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
 
+\citep[s. 3-4]{Khan:2009:MBT:1507195.1507204} käyttää taas seuraavaa neljää metriikkaa laskeakseen testattavuutta järjestelmissä, jotka vahvasti korreloivat edellisiin metriikoihin: 
+
+\begin{itemize}
+	\item enkapsulaation taso
+	\item uudelleenkäytön taso
+	\item kytkennän taso
+	\item koheesion taso
+\end{itemize}   
+
 % Testattavuuden mittareita lisää \citep{Bruntink:2004}.
 
 Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määritelty \citep[s. 9]{Bruntink:2004}. Siinä testitapausten kasvuun ja pituuteen vaikuttivat luokan: 
@@ -366,12 +375,11 @@ Arkkitehtuuriset tyylit parantavat järjestelmän järjestelmän laadullisia omi
 
 %Testattavuuden parantaminen erillisen patternin avulla \citep{coelho_improving_2005}.
 
-Hyvään testattavuuteen arkkitehtuurisella tasolla vaikuttaa paljon oikean tyylin valitseminen oikeaan tilanteeseen ja tyylien tuomien rajoitteiden oikeaoppinen noudattaminen. 
+Hyvään testattavuuteen arkkitehtuurisella tasolla vaikuttaa paljon oikean tyylin valitseminen oikeaan tilanteeseen ja tyylien tuomien rajoitteiden oikeaoppinen noudattaminen \citep{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuuri on myös pitänyt dokumentoida jollain tavalla, jotta testattavuutta pystyttäisiin arvioimaan \citep[s. 6]{mari_impact_2003}. Itse testauksessa luotavien testien isolaation mahdollistaminen sekä hallittavuus ja havaittavuus, jotka ovat myös ohjelmakooditasolla tärkeitä, ovat merkkejä hyvästä testattavuudesta arkkitehtuurisella tasolla.
 
-Testauksessa luotavien testien isolaation mahdollistaminen sekä hallittavuus ja havaittavuus, ovat merkkejä hyvästä testattavuudesta myös arkkitehtuurisella tasolla.
+%Hyvä testattavuus -> monitoroitavuus (komponenttien Built-In-Test) \citep{mari_impact_2003}. 
 
-Hyvä testattavuus -> monitoroitavuus (komponenttien Built-In-Test) \citep{mari_impact_2003}. 
-
+Järjestelmän tarkasteltavuus (monitorability) on yksi osatekijä ylläpidettävyydessä ja se vaikuttaa positiivisesti testattavuuteenkin \citep[s. 4]{mari_impact_2003}. Tarkasteltavuus voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen ja järjestelmätasoinen yhteistoiminnallisuus. Onkin siis testattavuuden kannalta hyvää, jos komponenteista löytyy aputoiminnallisuutta testausprosessia varten ja tämä toiminnallisuus voi olla esimerkiksi ylimääräisiä testausrajapintoja tai komponentteja tukemaan jotain edellämainitusta kolmesta tarkasteltavuuden luokasta. Yksi todella yleinen käytänne on esimerkiksi erilaisten tynkäluokkien (stub) käyttö, jossa testausta varten voidaan polymorfismia käyttää hyödyksi niin, että vaativat luokan riippuvuudet saadaan korvattua testien ajaksi jollain yksinkertaisemmalla toteutuksella. Tämä ominaisuus vaatii järjestelmältä löyhiä riippuvuuksia rajapintojen muodossa.
 
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen}

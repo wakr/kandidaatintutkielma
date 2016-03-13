@@ -82,17 +82,23 @@
 \date{\today}
 \level{Kandidaatintutkielma}
 
-\abstract{tiivistelmä (100-200 sanaa; kenelle, miksi, millaisessa ympäristössä; tutkimuskysymys; tulokset; impakti)}
+% ; kenelle, miksi, millaisessa ympäristössä; tutkimuskysymys; tulokset; impakti)
+
+\abstract{tiivistelmä (100-200 sanaa)}
 
 % The following can be used to specify keywords and classification of the paper:
 
-\keywords{ohjelmistoarkkitehtuuri, testattavuus, näkymä}
+\keywords{ohjelmistoarkkitehtuuri, testattavuus, näkymä, näkökulma}
 
 % classification according to ACM Computing Classification System (http://www.acm.org/about/class/)
 % This is probably mostly relevant for computer scientists
 % uncomment the following; contents of \classification will be printed under the abstract with a title
-% "ACM Computing Classification System (CCS):"
-% \classification{}
+% "ACM Computing Classification System (CCS):" 
+ 
+ \classification{
+	Software and its engineering $\rightarrow$ System description languages 	\\
+	Software and its engineering $\rightarrow$ Software defect analysis
+ }
 % If the automatic page number counting is not working as desired in your case,
 % uncomment the following to manually set the number of pages displayed in the abstract page:
 %
@@ -151,14 +157,14 @@ Ohjelmistoarkkitehtuuri on ohjelmistojen ymmärtämisen kannalta tärkeä konsep
 Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi ja siihen kuuluu vahvasti ohjelmistojen testattavuus, joka taas vaatimuksena on lähempänä ohjelmoijaa, kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee, että kuinka helppoa järjestelmää on ylipäätänsä testata. Kuitenkin arkkitehtuurin ja testattavuuden yhteys on hieman häilyvä, vaikka arkkitehtuuri koskee jokaista kehittäjää. Tämä tutkimus pyrkii selventämään arkkitehtuurin ja testattavuuden suhdetta ja sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa. 
 
 \subsection{Tutkimuskysymys}
-Tutkimus vastaa kysymykseen \textit{miten testattavuus näkyy ohjelmistojen arkkitehtuurissa}. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: \textit{mitä on testattavuus ohjelmistojärjestelmissä, miten arkkitehtuuria voidaan kuvata, miten arkkitehtuurista luotu näkymä kertoo jotain järjestelmän testattavuudesta}. 
+Tutkimus vastaa kysymykseen \textit{miten testattavuus näkyy ohjelmistojen arkkitehtuurissa}. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: \textit{mitä on testattavuus ohjelmistojärjestelmissä, miten arkkitehtuuria voidaan kuvata, miten ohjelmistojärjestelmästä luotu näkymä kertoo jotain järjestelmän testattavuudesta}. 
 
 \subsection{Tutkimusmenetelmä}
 Tutkimuskysymykseen vastataan kirjallisuuskatsauksen avulla ja tutkimalla, että mitkä arkkitehtuuriset päätökset ja elementit ovat hyvän sekä huonon testattavuuden tekijöitä. Testattavuuden havaitsemiseen etsitään näkymää nykyisistä menetelmistä kuvata arkkitehtuuria. Näitä menetelmiä ovat pääasiassa erilaisten näkymien ja näkökulmien joukko, joiden avulla saadaan abstrahoitua järjestelmän lähdekoodia arkkitehtuurisempaan muotoon.
 
 \subsection{Rajaus}
 
-Tutkimuksessa keskitytään pääosin ainoastaan oliopohjaisen arkkitehtuuriin ja sen kuvaamiseen. Testaustavoista on keskitytty yksikkö -ja integraatiotestaukseen. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois, koska ne eivät tarjoa visuaalista näkymää arkkitehtuuriin.
+Tutkimuksessa keskitytään pääosin ainoastaan oliopohjaisen arkkitehtuuriin ja sen kuvaamistapoihin. Testaustavoista on tuotu esille yksikkö -ja integraatiotestaus. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois, koska ne eivät tarjoa visuaalista näkymää arkkitehtuuriin. Myöskään erilaisia arkkitehtuurisia tyylejä ei vertailla tutkimuksessa testattavuuden kannalta, vaan tutkimus keskittyy nimenomaan ohjelmistojärjestelmän konkreettisen rakenteen arvioimiseen testattavuuden kannalta.
 
 \subsection{Tutkimuksen rakenne}
 

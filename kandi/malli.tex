@@ -380,15 +380,15 @@ Nämä kaikki edellämainitut mittarit ovat ominaisuuksiltaan sellaisia, että n
 
 \subsection{UML-kaavio testattavuuden havaitsemisessa}
 
-UML-luokkakaavio on todella yleisesti käytössä oleva mallinnustapa, ja juuri sen avulla nähdään hyvin järjestelmän rakennetta. Se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep[s. ]{baudry_testability_2002}. \citep[s. 3]{baudry_measuring_2003} määritteleekin testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja komponenttien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
+UML-luokkakaavio on todella yleisesti käytössä oleva mallinnustapa, ja juuri sen avulla nähdään hyvin järjestelmän rakennetta. Se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002}. \citep[s. 3]{baudry_measuring_2003} määritteleekin testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja komponenttien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
 % UML \citep{baudry_testability_2002}
 
-UML-kaaviosta on mahdollista nähdä eri asioita kuin suoraan lähdekoodista. UML:n luokkakaavio toimiessa abstraktiivisena näkymänä suoraan lähdekoodiin se tuo hieman korkeamman tason näkymän järjestelmään mutta ilman liiallista tiedon piilottamista. Asioita, joita voidaan havaita UML:n avulla ja luokkakaaviosta luotavalla riippuvuusgraafilla esittävät \citep{baudry_testability_2002} seuraaviksi:
+UML-kaaviosta on mahdollista nähdä eri asioita kuin suoraan lähdekoodista. UML:n luokkakaavio toimiessa abstraktiivisena näkymänä suoraan lähdekoodiin se tuo hieman korkeamman tason näkymän järjestelmään mutta ilman liiallista tiedon piilottamista. Asioita, joita voidaan havaita UML:n avulla luotavasta riippuvuusgraafilla esittävät \citep{baudry_testability_2002} seuraaviksi
 
 \begin{itemize} 
 	\item kompleksiset perintäsuhteet
-	\item abstraktien luokkien liikakäyttö rajapintojen sijasta
+	\item abstraktien luokkien liikakäyttö rajapintojen sijasta.
 \end{itemize}
 
 

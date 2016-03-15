@@ -473,15 +473,15 @@ Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää seuraavien metrii
 	\item komponenttien välinen riippuvuuksien hajauma.
 \end{itemize}
 
-Itse arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan luetella olevan \citep{garcia_identifying_2009}
+Itse arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunnistetaan ainakin \citep{garcia_identifying_2009}
 
 \begin{itemize}
 	\item \textit{connector envy}
-	\item \textit{scattered parasitic functionality}
+	\item \textit{scattered parasitic functionality}.
 \end{itemize}
 
 \noindent
-lol.
+\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä pitäisi jättää konnektorin toteutettavaksi, koska kyseinen tilanne huonontaa testattavuutta. Testattavuus huononee, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia, jolloin ei pystytä varmasti sanomaan, että mikä kohta komponentissa oli virheellinen. \textit{Scattered parasitic functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain ortoginaalisesta vastuusta. Testattavuus kärsii tästä, koska yksi vastuun vaihdos tai rikkoutuminen vaikuttaa laajalla alueella ja on vaikeaa määrittää vian alkuperä. 
 
 
 %\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.

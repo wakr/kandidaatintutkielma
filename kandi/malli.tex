@@ -435,7 +435,7 @@ Järjestelmän tarkasteltavuus (monitorability) on yksi osatekijä ylläpidettä
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen}
 
-Koska testattavuus kuuluu ylläpidettävyyteen, sitä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään esimerkiksi UML-rakennekaavion avulla järjestelmän rakennetta. Seuraavat mittarit on luotu arvioimaan ylläpidettävyyttä arkkitehtuurisella tasolla koskien arkkitehtuurisia elementtejä \citep[s. 3-4]{bengtsson1998towards}:
+Koska testattavuus kuuluu ylläpidettävyyteen, sitä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään järjestelmän rakennetta korkealla tasolla. Seuraavat mittarit on luotu arvioimaan ylläpidettävyyttä arkkitehtuurisella tasolla koskien arkkitehtuurisia elementtejä \citep[s. 3-4]{bengtsson1998towards}:
 
 \begin{itemize}
 	\item metodien määrä elementin rajapinnassa
@@ -449,36 +449,90 @@ Koska testattavuus kuuluu ylläpidettävyyteen, sitä voidaan mitata arkkitehtuu
 
 On selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa 4 määritellyt mittarit testattavuuden mittaamiseen. Tämä samankaltaisuus johtuu siitä, että asiat, jotka vaikuttavat järjestelmän arkkitehtuurin ylläpidettävyyteen, vaikuttavat myös järjestelmän testattavuuteen.
 
+\subsection{Arkkitehtuuriset hajut}
+
+Mittareiden ohella arkkitehtuurisiin hajuihin on alettu kinnittää huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuten sekä ylläpidettävyyteen negatiivisesti. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muunmuassa 
+
+\begin{itemize}
+	\item suunnittelumalli väärässä kontekstissa
+	\item suunnitteluabstrahoinnin (design abstraction) käyttö niin, että sillä on ei-toivottuja vaikutuksia
+	\item suunnitteluabstrahoinnin käyttö väärällä tarkkuuden tasolla 
+\end{itemize} 
+
+%Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
+
+Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää seuraavien metriikoiden avulla \citep[s. 1093]{bertran_detecting_2011}
+
+\begin{itemize}
+	\item ei-haluttujen asiakas-komponenttien (client component) määrä
+	\item luokan riippuvuusten määrä, jotka ovat ei-haluttuja
+	\item luokan vastuiden määrä
+	\item komponentin vastuiden määrä
+	\item komponentin konnektoreiden määrä
+	\item komponentin erilaisten konnektoreiden määrä
+	\item komponenttien välinen riippuvuuksien hajauma.
+\end{itemize}
+
+Itse arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan luetella olevan \citep{garcia_identifying_2009}
+
+\begin{itemize}
+	\item \textit{connector envy}
+	\item \textit{scattered parasitic functionality}
+\end{itemize}
+
+\noindent
+lol.
+
+
+%\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
+
+%Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. Maintainability. Case: Notepad SPL. Komponenttimalli + arkkitehtuurin malli. \textbf{1} testability connector envy: Combining product construction capabilities and connector responsibilities represent a reduction in testability because application functionalities and interaction functionalities cannot be seperately tested. \textbf{2}: Ambiguous interfaces 1kpl. \textbf{3}: Feature Concentration -> paljon toiminnallisuutta yhteen komponenttiin sidottuna -> vaikeuttaa maintainability.  
+
+%Viisi hajua (4 + 1 for spl) \citep{garcia_toward_2009}: Connector envy (komponenteilla liikaa toiminnallisuutte suhteissa niiden konnektoreihin), Scattered Parasitic Functionality (korkean tason asia jaettu usealle eri komponentille -> väh. yhdellä komponentilla useita vastuita, komponentit tässä riippuvaisia toisistaan), Ambiguous Interfaces (komponentti tarjoaa vain yhden geneerisen sisääntulopisteen [entry-point]), Extraneous Adjacent Connector (kaksi eri tyypin konnektoria yhdistää kaksi komponenttia toisiinsa), Feature Concentration (SPL). \\
+%$\rightarrow$ 2kpl suoraan testaukseen vaikuttavia
+
+
 
 \subsection{Sunnittelumallien vaikutus testaukseen}
 
 Mitä on? Miten vaikuttaa rakenteeseen? Mitä  hyötyä? \citep{baudry_measuring_2003}.
 
+
 Composition-patternin analyysi -> kansio sisältää useita tiedostoja ja kansioita -> sykli. Voidaan helpottaa lisäämällä rajoite (constraint) tai rajapinta mielummin kuin abstraktiluokka. 
 
 Vaikeita patterneita testata: Mediator (similar to Observer) \& Visitor.
 
-\subsection{UML}
+\subsection{UML uusien näkymien tukena}
 
-UML + graph model to compute all possible anti-patterns that affect testability \citep{baudry_testability_2002}.
+%UML + graph model to compute all possible anti-patterns that affect testability \citep{baudry_testability_2002}.
 
-UML:n parantaminen uusilla notaatioilla \citep[s. 4]{baudry_measuring_2003}. \textbf{create}  luokka A luo luokan B, \textbf{use}  luokka A voi kutsua mitä tahansa, paitsi B:n konstruktoria. \textbf{use\_consult}  kutsumat metodit, jotka eivät koskaan muokkaa B:n sisäistä tilaa, \textbf{use\_def} -> jos vähintään yksi metodi muokkaa B:n tilaa.
+UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta tärkeitä näkökulmia arkkitehtuurisella tasolla, mutta sen tueksi on luotu useita menetelmiä, jotka hyödyntävät esimerkiksi jo valmista UML-luokkakaaviota. Eräs näistä on \textit{class dependency graph model} \citep[s. 4]{baudry_testability_2002}. Sen avulla on mahdollista nähdä 
+
+\begin{itemize}
+	\item luokkien välistä suurta interaktiota
+	\item itsekäyttöä
+	\item interaktioiden kompleksisuutta
+	\item pitkiä luokkahierarkisia haaraumia
+	\item kompleksisia rajapinta periytymiä.
+\end{itemize}
+
+%UML:n parantaminen uusilla notaatioilla \citep[s. 4]{baudry_measuring_2003}. \textbf{create}  luokka A luo luokan B, \textbf{use}  luokka A voi kutsua mitä tahansa, paitsi B:n konstruktoria. \textbf{use\_consult}  kutsumat metodit, jotka eivät koskaan muokkaa B:n sisäistä tilaa, \textbf{use\_def} -> jos vähintään yksi metodi muokkaa B:n tilaa.
+
+
+Tämä tuottaa tosin ongelmia, koska jotkut tulokset saattavat olla vääriä niiden sisältäessä virheellistä esiintymää (false-positive results). Tähän ongelmaan on ehdotettu UML-kaavion jatkamista stereotyyppien avulla. Uusia kytköksiä määritellään 4 kappaletta \citep[s. 4]{baudry_measuring_2003}
+
+\begin{itemize}
+	\item create, jos luokka A luo luokan B
+	\item use, jos luokka A voi kutsua kaikkia B:n metodeja, muttei luo sitä
+	\item use\_consult, jos A:n kutsumat metodit eivät muokkaa B:n sisäistä tilaa
+	\item use\_def, jos yksikin A:n kutsuma metodi muokkaa B:n sisäistä tilaa
+\end{itemize}
+
+\noindent
+Näiden avulla saadaan riippuvuudet ja niiden tyypit paremmin esille kaavioissa. 
 
 
 
-
-\subsection{Arkkitehtuuriset hajut}
-
-Arkkitehtuuriset suunnittelupäätökset, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuteen sekä ylläpidettävyyteen. Hajut eivät ole virheitä vaan vaikuttavat negatiivisesti laatuun \citep[s. 1]{de_andrade_architectural_2014}. Arkkitehtuuriset hajut eroavat koodihajuista abstraktiotasolla. Syitä arkkitehtuurisille hajuille on \citep[s. 2]{de_andrade_architectural_2014}: suunnittelumalli väärässä kontekstissa; design abstractions käyttö niin, että niillä on ei-haluttuja vaikutuksia; design abstractions käyttö väärällä rakeisuuden (granularity) tasolla. 
-
-Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
-
-\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
-
-Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. Maintainability. Case: Notepad SPL. Komponenttimalli + arkkitehtuurin malli. \textbf{1} testability connector envy: Combining product construction capabilities and connector responsibilities represent a reduction in testability because application functionalities and interaction functionalities cannot be seperately tested. \textbf{2}: Ambiguous interfaces 1kpl. \textbf{3}: Feature Concentration -> paljon toiminnallisuutta yhteen komponenttiin sidottuna -> vaikeuttaa maintainability.  
-
-Viisi hajua (4 + 1 for spl) \citep{garcia_toward_2009}: Connector envy (komponenteilla liikaa toiminnallisuutte suhteissa niiden konnektoreihin), Scattered Parasitic Functionality (korkean tason asia jaettu usealle eri komponentille -> väh. yhdellä komponentilla useita vastuita, komponentit tässä riippuvaisia toisistaan), Ambiguous Interfaces (komponentti tarjoaa vain yhden geneerisen sisääntulopisteen [entry-point]), Extraneous Adjacent Connector (kaksi eri tyypin konnektoria yhdistää kaksi komponenttia toisiinsa), Feature Concentration (SPL). \\
-$\rightarrow$ 2kpl suoraan testaukseen vaikuttavia
 
 
 \section{Pohdinta}

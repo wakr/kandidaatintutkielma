@@ -340,7 +340,7 @@ Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtav
 
 
 
-\subsection{Testattavuuden mittaaminen}
+\subsection{Testattavuuden mittaaminen} \label{testability_measure}
 
 % Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
 
@@ -447,11 +447,11 @@ Koska testattavuus kuuluu ylläpidettävyyteen, sitä voidaan mitata arkkitehtuu
 	\item elementin metodien ja parametrien määrä
 \end{itemize}
 
-On selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa 4 määritellyt mittarit testattavuuden mittaamiseen. Tämä samankaltaisuus johtuu siitä, että asiat, jotka vaikuttavat järjestelmän arkkitehtuurin ylläpidettävyyteen, vaikuttavat myös järjestelmän testattavuuteen.
+On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen. Tämä samankaltaisuus johtuu siitä, että asiat, jotka vaikuttavat järjestelmän arkkitehtuurin ylläpidettävyyteen, vaikuttavat myös järjestelmän testattavuuteen. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä järjestelmä-tasolla on ollut tutkimuksen kohteena jo paljon aikaisemminkin \citep{Rosane:1981} ja se määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta. 
 
 \subsection{Arkkitehtuuriset hajut}
 
-Mittareiden ohella arkkitehtuurisiin hajuihin on alettu kinnittää huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuten sekä ylläpidettävyyteen negatiivisesti. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muunmuassa 
+Mittareiden ohella arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuten sekä ylläpidettävyyteen negatiivisesti. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muunmuassa 
 
 \begin{itemize}
 	\item suunnittelumalli väärässä kontekstissa
@@ -461,35 +461,38 @@ Mittareiden ohella arkkitehtuurisiin hajuihin on alettu kinnittää huomiota ohj
 
 %Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
 
-Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää seuraavien metriikoiden avulla \citep[s. 1093]{bertran_detecting_2011}
+Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää arkkitehtuurisella tasolla seuraavien metriikoiden avulla \citep[s. 1093]{bertran_detecting_2011}
 
 \begin{itemize}
 	\item ei-haluttujen asiakas-komponenttien (client component) määrä
-	\item luokan riippuvuusten määrä, jotka ovat ei-haluttuja
-	\item luokan vastuiden määrä
 	\item komponentin vastuiden määrä
 	\item komponentin konnektoreiden määrä
 	\item komponentin erilaisten konnektoreiden määrä
 	\item komponenttien välinen riippuvuuksien hajauma.
 \end{itemize}
 
-Itse arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunnistetaan ainakin \citep{garcia_identifying_2009}
+%\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
+
+\noindent
+Näiden metriikoiden avulla sekä näkymällä moduulitasoon, olisi esimerkiksi hyvin mahdollistaa löytää yksi virhealttiillisin arkkitehtuurista löytyvä ongelmakohta \citep[s. 57]{HotSpot} \textit{Cross-Module Cycle}. \textit{Cross-Module Cycle} johtuu, jos on olemassa syklinen riippuvuussuhde moduulitasolla.
+
+
+Itse arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunnistaa olevan ainakin \citep{garcia_identifying_2009}
 
 \begin{itemize}
-	\item \textit{connector envy}
-	\item \textit{scattered parasitic functionality}.
+	\item \textit{Connector Envy}
+	\item \textit{Scattered Parasitic Functionality}.
 \end{itemize}
 
 \noindent
-\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä pitäisi jättää konnektorin toteutettavaksi, koska kyseinen tilanne huonontaa testattavuutta. Testattavuus huononee, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia, jolloin ei pystytä varmasti sanomaan, että mikä kohta komponentissa oli virheellinen. \textit{Scattered parasitic functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain ortoginaalisesta vastuusta. Testattavuus kärsii tästä, koska yksi vastuun vaihdos tai rikkoutuminen vaikuttaa laajalla alueella ja on vaikeaa määrittää vian alkuperä. 
+\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia. Tämä tilanne johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered parasitic functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virheen havaitseminen vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
 
+% Connector envyn havaitseminen jne. 
 
-%\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
+Architecture sensitive analysis (code metrics) \citep[s. 185]{macia_enhancing_2013} $\rightarrow$ God Classes were related to Connector Envy, Scattered Functionality. Misplaced Class were related to Cyclic Dependencies, Scattered Functionality.
+
 
 %Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. Maintainability. Case: Notepad SPL. Komponenttimalli + arkkitehtuurin malli. \textbf{1} testability connector envy: Combining product construction capabilities and connector responsibilities represent a reduction in testability because application functionalities and interaction functionalities cannot be seperately tested. \textbf{2}: Ambiguous interfaces 1kpl. \textbf{3}: Feature Concentration -> paljon toiminnallisuutta yhteen komponenttiin sidottuna -> vaikeuttaa maintainability.  
-
-%Viisi hajua (4 + 1 for spl) \citep{garcia_toward_2009}: Connector envy (komponenteilla liikaa toiminnallisuutte suhteissa niiden konnektoreihin), Scattered Parasitic Functionality (korkean tason asia jaettu usealle eri komponentille -> väh. yhdellä komponentilla useita vastuita, komponentit tässä riippuvaisia toisistaan), Ambiguous Interfaces (komponentti tarjoaa vain yhden geneerisen sisääntulopisteen [entry-point]), Extraneous Adjacent Connector (kaksi eri tyypin konnektoria yhdistää kaksi komponenttia toisiinsa), Feature Concentration (SPL). \\
-%$\rightarrow$ 2kpl suoraan testaukseen vaikuttavia
 
 
 

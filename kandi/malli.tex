@@ -413,9 +413,13 @@ Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittist
  
 Löydetyistä mittareista huomataan, että ne tarkastelevat korkeammalla tasolla testattavuutta, kuin aiemmat lähdekoodi-tasoiset mittarit. Ne mittaavat esimerkiksi komponenttien ominaisuuksia ja yhteyksiä, jotka tulevat esille kunnolla vasta arkkitehtuurisella tasolla. Komponenttien ja yhteyksien tarkastelu oli myös luvussa \ref{ark} esitelty eräs näkemys ohjelmistoarkkitehtuuriin. On järjestelmän todellisen testattavuuden määrittelemisen kannalta parempi, jos sitä tarkastellaan korkeammalla tasolla, koska liian tarkka kuvaus järjestelmästä vaikeuttaa todellisten ongelmien näkemistä.  
 
-\section{Arkkitehtuurin vaikutus testattavuuteen}
+\section{Testattavuus arkkitehtuurisella tasolla}
 
 Testattavuus tulee esille arkkitehtuurisella tasolla hieman eri lailla kuin ohjelmakooditasolla, ja usein on niin, että ohjelmakoodia ei tietyllä hetkellä ole edes saatavilla tai sen täydellinen läpikäynti veisi paljon aikaa. Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja sitä voidaan tutkia komponenttitasolla, jota tukevat hyvin UML-kaaviot. UML-kaavioiden avulla ohjelmistojärjestelmän rakenne, myös arkkitehtuurisena mallina, saadaan hyvin kuvattua eritasoisilla näkymillä. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun komponenttien rajapintojen toimivuus sekä komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}.
+
+Komponenttien testattavuuden (component testability analysis model) ominaisuuksia 5kpl \citep[s. 6]{gao_component_2005}.
+
+Koodi vs arkkitehtuurinen eri ongelmat ja ne voidaan havaita eri tekniikoilla, muttei samalla. Arkkitehtuurinen velka yleistä \citep[s. 186]{kazman_case_2015}.
 
 
 %Arkkitehtuuriset tyylit parantavat järjestelmän laadullisia ominaisuuksia ja tuovat järjestelmään yhdenmukaisen konseptin, jota koko järjestelmän toteutus noudattaa. Erilaiset tyylit parantavat myös erilaisia testausstrategioita \citep[s. 66]{Eickelmann:1996:MOS:243327.243602}. 
@@ -431,6 +435,10 @@ Hyvään testattavuuteen arkkitehtuurisella tasolla vaikuttaa paljon oikean tyyl
 %Testien isolaation mahdollistaminen sekä hallittavuus ja havaittavuus, jotka ovat myös ohjelmakooditasolla tärkeitä, ovat merkkejä hyvästä testattavuudesta arkkitehtuurisella tasolla.
 
 Järjestelmän tarkasteltavuus (monitorability) on yksi osatekijä ylläpidettävyydessä ja se vaikuttaa positiivisesti testattavuuteenkin \citep[s. 4]{mari_impact_2003}. Tarkasteltavuus voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen ja järjestelmätasoinen yhteistoiminnallisuus. On testattavuuden kannalta hyvä, jos komponenteista löytyy aputoiminnallisuutta testausprosessia varten. Tämä toiminnallisuus voi koostua esimerkiksi ylimääräisistä testausrajapinnoista tai komponenteista, jotka tukevat jotain edellämainitusta kolmesta tarkasteltavuuden luokasta. Yksi todella yleinen käytänne on esimerkiksi erilaisten tynkäluokkien (stub) käyttö, joissa testausta varten voidaan polymorfismia käyttää hyödyksi niin, että luokan ongelmalliset komponenttiriippuvuudet saadaan korvattua testien ajaksi jollain yksinkertaisemmalla toteutuksella. Tämän toteuttaminen vaatii järjestelmältä löyhiä riippuvuuksia rajapintojen muodossa.
+
+\citep[s. 591-592]{joshi_design_2014} tunnistaa DFT:n (Design for Testability). Vaikuttavat mittarit + yleistä. 
+
+
 
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen}
@@ -448,6 +456,8 @@ Koska testattavuus kuuluu ylläpidettävyyteen, sitä voidaan mitata arkkitehtuu
 \end{itemize}
 
 On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen. Tämä samankaltaisuus johtuu siitä, että asiat, jotka vaikuttavat järjestelmän arkkitehtuurin ylläpidettävyyteen, vaikuttavat myös järjestelmän testattavuuteen. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä järjestelmä-tasolla on ollut tutkimuksen kohteena jo paljon aikaisemminkin \citep{Rosane:1981} ja se määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta. 
+
+Komponenttien huonoa modulaarisuutta CLIO:n avulla. Cyclic Dependency, Code Clone, Poor inheritance hierarchy, unnamed coupling. \citep{wong_detecting_2011}. DSM:n käyttö. 
 
 \subsection{Arkkitehtuuriset hajut}
 
@@ -485,11 +495,20 @@ Itse arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan 
 \end{itemize}
 
 \noindent
-\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia. Tämä tilanne johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered parasitic functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virheen havaitseminen vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
+\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia. Tämä tilanne johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered Parasitic Functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virheen havaitseminen vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
 
 % Connector envyn havaitseminen jne. 
 
 Architecture sensitive analysis (code metrics) \citep[s. 185]{macia_enhancing_2013} $\rightarrow$ God Classes were related to Connector Envy, Scattered Functionality. Misplaced Class were related to Cyclic Dependencies, Scattered Functionality.
+
+
+Arkkitehtuurisia hajuja + Hybridi hajuja (koodi ja arkk.) ohjelmistojen product lineissa \citep{vale_bad_2014}
+
+
+Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
+
+
+
 
 
 %Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. Maintainability. Case: Notepad SPL. Komponenttimalli + arkkitehtuurin malli. \textbf{1} testability connector envy: Combining product construction capabilities and connector responsibilities represent a reduction in testability because application functionalities and interaction functionalities cannot be seperately tested. \textbf{2}: Ambiguous interfaces 1kpl. \textbf{3}: Feature Concentration -> paljon toiminnallisuutta yhteen komponenttiin sidottuna -> vaikeuttaa maintainability.  
@@ -541,6 +560,9 @@ Näiden avulla saadaan riippuvuudet ja niiden tyypit paremmin esille kaavioissa.
 \section{Pohdinta}
 
 Metriikat + riippuvuusgraph.
+
+Muita keinoja tutkia -> formulointi (Design Structure Matrix) \citep{mo_mapping_2013}
+
 
 \section{Yhteenveto}
 "puoli sivua"

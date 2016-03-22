@@ -201,9 +201,8 @@ Hieman samanlainen jaottelu on määritelty myös Solmsin tutkimuksessa \citep[s
 %Rakenteita korostettaessa mallinnuksessa käytetään usein UML-kaavioita, koska UML määrittelee ohjelmiston arkkitehtuuria osina, joita pystytään rekursiivisesti tarkentamaan haluttaessa. Tarkennuksen avulla osat pystytään kuvaamaan kommunikoivan keskenään erilaisten rajapintojen kautta, osia yhdistäviä suhteita pystytään tarkastelemaan ja erilaisia rajoitteita pystytään luomaan osien välille. 
 % järjestelmien välinen kommunikaatio se lähde.
 
-\noindent
-Kolmas määritelmä on paljon laajempi näkemys ohjelmistoarkkitehtuurista, koska se kuvaa ohjelmistojärjestelmän käsitteistön ja ominaisuudet siinä ympäristössä, jossa ne ilmenevät elementtien, suhteiden ja suunnittelun periaatteiden kautta. Peruskäsitteistö tarjoaa sen käsitteistön, jonka avulla sovelluslogiikka voidaan määritellä, joten esimeriksi määrittelemällä, että jokin komponentti toteuttaa palvelimen toiminnallisuutta, saadaan asiat lokeroitua käsitteellisesti erilleen toisistaan. Ominaisuudet liittyvät ohjelmistojärjestelmän laadullisiin ominaisuuksiin. Periaatteet voidaan nähdä järjestelmän keskeisinä suunnittelurajoitteina (core design constraints), joiden kokonaisuus muodostaa järjestelmän arkkitehtuurisen tyylin. Ohjelmistojärjestelmän arkkitehtuurin tyyli voi koostua esimerkiksi väylistä ja suodattimista (pipes and filters). % lisää
-\\
+%Kolmas määritelmä on paljon laajempi näkemys ohjelmistoarkkitehtuurista, koska se kuvaa ohjelmistojärjestelmän käsitteistön ja ominaisuudet siinä ympäristössä, jossa ne ilmenevät elementtien, suhteiden ja suunnittelun periaatteiden kautta. Peruskäsitteistö tarjoaa sen käsitteistön, jonka avulla sovelluslogiikka voidaan määritellä, joten esimeriksi määrittelemällä, että jokin komponentti toteuttaa palvelimen toiminnallisuutta, saadaan asiat lokeroitua käsitteellisesti erilleen toisistaan. Ominaisuudet liittyvät ohjelmistojärjestelmän laadullisiin ominaisuuksiin. Periaatteet voidaan nähdä järjestelmän keskeisinä suunnittelurajoitteina (core design constraints), joiden kokonaisuus muodostaa järjestelmän arkkitehtuurisen tyylin. Ohjelmistojärjestelmän arkkitehtuurin tyyli voi koostua esimerkiksi väylistä ja suodattimista (pipes and filters). % lisää
+
 
 Näistä kahdesta eri jaottelusta ohjelmistoarkkitehtuuri-käsitteen välillä voidaan nähdä merkittävinä tarpeina kuvata ohjelmistojärjestelmän rakenteellisuutta, komponenttien välistä kommunikaatiota ja laadullisia vaatimuksia. Kaikki nämä edellämainitut ominaisuudet on saatava  upotettua ohjelmistojärjestelmästä luotavaan arkkitehtuuriseen malliin niin, että ne vastaavat muunmuassa seuraaviin kysymyksiin \citep[s. 31 - 33]{Rozanski:2011:SSA:2072649} 
 
@@ -250,7 +249,7 @@ Muita näkymämalleja arkkitehtuuriin on useita, joista jokainen kuitenkin tuo e
 
  %moduuli, joka on järjestelmän rakenteellinen näkymä kuvaten muunmuassa luokkia, pakkauksia, moduulien eriyttämistä (decomposition) sekä periytymistä; komponentti ja konnektori, joka kuvailee järjestelmän toiminnallista puolta sekä miten komponentit ovat yhteydessä toisiinsa; allokaatio, joka kuvailee miten prosessit kuvautuvat laitteistotasolla  ja miten ne kommunikoivat keskenään. 
 
-Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. Yhteensä viittä eri mallia vertailtiin Mayn tutkimuksessa \citep{may2005survey}. Siinä kartoitettiin mahdollisimman laajaa näkymien muodostamaa näkökulmien joukkoa, jotka kattaisivat mahdollisimman laajalti ohjelmistoarkkitehtuurin aluetta (domain). Vertailtavat arkkitehtuurit olivat 4+1-malli, SEI:n (Software Engineering Institute) \textit{Views and Beyond}-malli, ISO:n (International Organization for Standardization) \textit{Reference Model of Open Distributed Processing}, Siemensin \textit{Four View Model} ja \textit{Rational Architecture Description Specification}. Malleja vertailtiin tutkimalla kuinka niiden tarjoamat näkökulmat painottavat kolmeen eri kategoriaan liittyviä asioita: sidosryhmät, laadulliset tekijät ja rakenteelliset ominaisuudet. Lopulliseen valintaan, joka painotti mahdollisimman laajasti jokaisen osa-alueen ominaisuuksia, otettiin mukaan \textit{Views and Beyond} -mallin kaikki kolme näkymää ja \textit{Rational ADS}:n vaatimukset-näkökulma (requirements viewpoint). Syy, miksi juuri nämä valittiin oli se, että \textit{Views and Beyond} sopii erittäin hyvin mallin pohjaksi, koska se kuvaa järjestelmän rakennetta kattavasti, sen näkökulmat ovat itsenäisiä ja se limittyy kokonaisuudessaan hyvin 4+1-mallin sekä Siemens'n mallin kanssa. Se ei kuitenkaan sisällä tarvittavia näkymiä kuvaamaan eri sidosryhmille tärkeitä asioita esimerkiksi loppukäyttäjiä varten oleva näkymä puuttuu kokonaan. Tämän takia mukaan on otettu \textit{Rational ADS}, jonka vaatimukset-näkökulma koostuu neljästä eri näkymästä: ei-toiminnalliset vaatimukset, alue (domain), käyttötapaus ja käyttökokemus. 
+Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. %Yhteensä viittä eri mallia vertailtiin Mayn tutkimuksessa \citep{may2005survey}. Siinä kartoitettiin mahdollisimman laajaa näkymien muodostamaa näkökulmien joukkoa, jotka kattaisivat mahdollisimman laajalti ohjelmistoarkkitehtuurin aluetta (domain). Vertailtavat arkkitehtuurit olivat 4+1-malli, SEI:n (Software Engineering Institute) \textit{Views and Beyond}-malli, ISO:n (International Organization for Standardization) \textit{Reference Model of Open Distributed Processing}, Siemensin \textit{Four View Model} ja \textit{Rational Architecture Description Specification}. Malleja vertailtiin tutkimalla kuinka niiden tarjoamat näkökulmat painottavat kolmeen eri kategoriaan liittyviä asioita: sidosryhmät, laadulliset tekijät ja rakenteelliset ominaisuudet. Lopulliseen valintaan, joka painotti mahdollisimman laajasti jokaisen osa-alueen ominaisuuksia, otettiin mukaan \textit{Views and Beyond} -mallin kaikki kolme näkymää ja \textit{Rational ADS}:n vaatimukset-näkökulma (requirements viewpoint). Syy, miksi juuri nämä valittiin oli se, että \textit{Views and Beyond} sopii erittäin hyvin mallin pohjaksi, koska se kuvaa järjestelmän rakennetta kattavasti, sen näkökulmat ovat itsenäisiä ja se limittyy kokonaisuudessaan hyvin 4+1-mallin sekä Siemens'n mallin kanssa. Se ei kuitenkaan sisällä tarvittavia näkymiä kuvaamaan eri sidosryhmille tärkeitä asioita esimerkiksi loppukäyttäjiä varten oleva näkymä puuttuu kokonaan. Tämän takia mukaan on otettu \textit{Rational ADS}, jonka vaatimukset-näkökulma koostuu neljästä eri näkymästä: ei-toiminnalliset vaatimukset, alue (domain), käyttötapaus ja käyttökokemus. 
 
 
 
@@ -296,11 +295,11 @@ Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan,
 
 \subsection{Testattavuuden arviointi} \label{contro_and_observ}
 
-Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee, kuinka mahdollista testien tuloksia on tarkastella, ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää vaikuttavatko tietyt syötteet testituloksiin, ja hallittavuus taas voidaan nähdä siitä kuinka helppo on tuottaa jokin tietty tulos syötteestä \citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
+Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee, kuinka mahdollista testien tuloksia on tarkastella, ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää vaikuttavatko tietyt syötteet testituloksiin, ja hallittavuus taas voidaan nähdä siitä kuinka helppo on tuottaa jokin tietty tulos syötteestä. %\citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
 
 %Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep[s. 20-21]{Voas:1995:STN:624607.625469}
 
-Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan sekä havaita implisiittistä tiedonkatoamista \citep[s. 20-22]{Voas:1995:STN:624607.625469} että arvioida järjestelmän havaittavuutta \citep[s. 1]{Jungmayr:2002}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon.  
+Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan havaita implisiittistä tiedonkatoamista \citep{Voas:1995:STN:624607.625469}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon.  
 
 
 
@@ -317,35 +316,33 @@ Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa
 
 %Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
 
-\citep[s. 554]{Freedman:1991:TSC:126218.126229} on määritellyt testattavan komponentin ominaisuuksiksi: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota seuraaviin tekijöihin \citep[s. 117]{voas_improving_1992} 
+\citep{Freedman:1991:TSC:126218.126229} on määritellyt testattavan komponentin ominaisuuksiksi: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota seuraaviin tekijöihin \citep{voas_improving_1992} 
 
 \begin{itemize}
-	\item dekomposition mahdollisuus
+	\item ymmärtää dekomposition mahdollisuus
 	\item tunnistaa moduulit, joiden DRR-arvo on korkea ja tehdä ne mahdollisimman pieniksi ja yksinkertaisiksi
-	\item rajapinta korkean DRR-arvon moduuleille siten, että rajapinta paljastaa tarpeeksi tietoa
+	\item tunnistaa rajapinta korkean DRR-arvon moduuleille siten, että rajapinta paljastaa tarpeeksi tietoa
 	\item eriyttää korkean DRR-arvon moduulit toisistaan \citep[s. 23]{Voas:1995:STN:624607.625469}.
 \end{itemize}
 
 
-
+On erittäin tärkeää eriyttää komponentteja mahdollisimman paljon toisistaan ja tehdä kommunikaatio mahdollisimman kontrolloitavaksi hyvän testattavuuden aikaansaamiseksi. Varsinkin helposti isoiksi muodostuvien komponenttienkin pitäisi olla kytkentätasoltaan mahdollisimman kevyitä ja riippuvuuksien minimissään.
 
 
 
 \subsection{Huono testattavuus}
 
-Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep[s. 20-22]{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Tiedon piilottaminen on hyvin yleinen tapa olio-ohjelmoinnissa, ja liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska hallittavuus heikkenee. 
+Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Tiedon piilottaminen on hyvin yleinen tapa olio-ohjelmoinnissa, ja liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska hallittavuus heikkenee. 
 
-Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää \citep[s. 554]{Freedman:1991:TSC:126218.126229}, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
+Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
 
 
 
 
 \subsection{Testattavuuden mittaaminen} \label{testability_measure}
 
-% Koskee UML-kaaviota -> Testability anti-patterns välttäminen (huono ratkaisu) suunnitteluvaiheessa\citep{baudry_measuring_2003}. \textbf{Jakaa} tämän kahtia: luokkien A ja B välinen interaktio jossa A:sta 2 tai useampi yhteys B:hen; itsekäyttö luokalla A on silloin, jos A:sta on yhteys itseensä. \textbf{Syitä}: suuri kytkentätaso, riippuvuuksissa syklejä, paljon mahdollisia vuorovaikuttavia komponentteja (viidakko). \textbf{Aiheuttaa}: vastuiden määrittely vaikeutuu ja testaus vaikeutuu, koska testicasejen määrittely vaikeutuu ja määrä kasvaa. \textbf{Estetään}: identifioimalla epäselvät suhteet.
 
-
-Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep[s. 5]{Dubey:2011:AMM:2020976.2020983}:
+Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}:
 
 \begin{itemize}
 	\item metodien määrä luokassa
@@ -357,7 +354,7 @@ Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on eri
 \noindent
 Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
 
-\citep[s. 3-4]{Khan:2009:MBT:1507195.1507204} käyttää taas seuraavaa neljää metriikkaa laskeakseen testattavuutta järjestelmissä, jotka vahvasti korreloivat edellisiin metriikoihin 
+\citep{Khan:2009:MBT:1507195.1507204} käyttää taas seuraavaa neljää metriikkaa laskeakseen testattavuutta järjestelmissä, jotka vahvasti korreloivat edellisiin metriikoihin 
 
 \begin{itemize}
 	\item enkapsulaation taso
@@ -368,7 +365,7 @@ Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metod
 
 % Testattavuuden mittareita lisää \citep{Bruntink:2004}.
 
-Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määritelty \citep[s. 9]{Bruntink:2004}. Siinä testitapausten kasvuun ja pituuteen vaikuttivat luokan 
+Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määritelty \citep{Bruntink:2004}, jossa tutkittiin hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin. Tutkimuksen testitapausten kasvuun ja pituuteen vaikuttivat eniten luokan 
 
 \begin{itemize}
 	\item toisten luokkien määrä, joita luokka kutsuu tai jonka kenttiin se viittaa
@@ -384,7 +381,7 @@ UML-luokkakaavio on todella yleisesti käytössä oleva mallinnustapa, ja juuri 
 
 %Luokkakaavion avulla on myös mahdollista nähdä eri asioita kuin suoraan lähdekoodista, koska se toimii abstraktiivisena näkymänä peilaten lähdekoodissa olevia asioita. Tämän avulla se tuo hieman korkeamman tason näkymän järjestelmään, mutta ilman liiallista tiedon piilottamista. 
 
-\citep[s. 3]{baudry_measuring_2003} määrittelee testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
+\citep{baudry_measuring_2003} määrittelee testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
 % UML \citep{baudry_testability_2002}
 
@@ -414,9 +411,9 @@ Löydetyistä mittareista huomataan, että ne tarkastelevat korkeammalla tasolla
 
 \section{Testattavuus arkkitehtuurisella tasolla}
 
-Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa \citep[s. 186]{kazman_case_2015}. Testattavuutta voidaan tutkia kuitenkin esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. 
+Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa. Testattavuutta voidaan tutkia kuitenkin esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. 
 
-Komponenttien testattavuutta on analysoitu muun muassa erilaisten mallien avulla ja näistä eräs on komponenttien testattavuus malli (component testability model) \citep[s. 6]{gao_component_2005}. Sen avulla jokaista komponenttia tarkastellaan viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muunmuassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään kehittämään.
+Komponenttien testattavuutta on analysoitu muun muassa erilaisten mallien avulla ja näistä eräs on komponenttien testattavuus malli (component testability model) \citep{gao_component_2005}. Sen avulla jokaista komponenttia tarkastellaan viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muunmuassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään kehittämään.
 
 % \citep{Binder:1994:DTO:182987.184077}
 %Testattavuus olio-perustaisissa ohjelmissa Separation of Concerns [parantaa controllability ja observability], Built-in Test [stubit yms.], Structure (Polymorfismi, enkapsulaatio, perintä [Number of Root Classes, FIN, Number Of Children, Depth of Inheritance Tree], kompleksisuus [Coupling Between Objects, koko]).

@@ -277,14 +277,14 @@ Toiselta näkökulmalta katsottuna taas voi olla, että juuri mahdollisimman pal
 %Chapt. 7 & 8 + Arch views -paperi + What is an architectural description?
 %Jos järjestelmää ei ole vielä olemassa lainkaan, voidaan järjestelmän arkkitehtuuria lähteä ensin rakentamaan iteratiivisesti kolmen eri vaiheen kautta \citep[s. 97-115]{gorton_understanding_2011}: määritellään arkkitehtuuriset vaatimukset; luodaan rakenne, joka tukee näitä vaatimuksia; testataan, että rakenne tukee vaatimuksia. Arkkitehtuurille asetetut vaatimukset syntyvät toiminnallisten ja sidosryhmien asettamien vaatimusten tuloksena, koska ne yhdessä luovat tärkeimmät vaatimukset ja rajoitukset ohjelmistojärjestelmälle. Esimerkkinä järjestelmälle asetettavista vaatimuksista saattaa olla, että sen on pystyttävä tukemaan useita eri käyttöliittymiä. Tämä vaatimus voidaan taas ryhmittää tiettyyn laatuvaatimukseen, kuten useat muutkin järjestelmälle asetetut vaatimukset \citep[s. 117]{Ran:1998:ASV:288408.288438}. Tässä tapauksessa vaatimus ryhmitettäisiin muokattavuus-laatuvaatimuksen alle. Seuraavassa vaiheessa valitaan tätä laatuvaatimusta tukeva tyyli (architectural style), jota koko järjestelmä joutuu noudattamaan. Esimerkiksi N-tason -malli tukee muokattavuutta hyvin \citep[s. 103]{gorton_understanding_2011}. Tämän jälkeen järjestelmän keskeisimmät komponentit suunnitellaan ja sijoitetaan ne oikeisiin alueisiin, jotka valittu arkkitehtuurinen tyyli tuo tullessaan. Komponenttien väliset suhteet mallinnetaan pitämällä vastuut erillään, suhteet mahdollisimman vähäisinä sekä käyttämällä hyödyksi piilottamista (architectural decomposition). Lopuksi pystytään luomaan skenaarioita ja testaamaan niiden avulla, että onko luotu arkkitehtuuri sopiva. Komponenttien määrittely mahdollistaa arkkitehtuurin rakenteen kuvaamisen ja siten järjestelmästä on mahdollista luoda erilaisia näkymiä erilaisille sidosryhmille. Rakennetta pystytään kuvaamaan N-tason -mallin avulla erittäin korkealla tasolla, jos halutaan tuoda esille juurikin näkökulma muokattavuuteen, mutta myös matalemmalla tasolla, kun ohjelmistokehittäjä haluaa ymmärtää miten komponentit kommunikoivat keskenään.
 
-\section{Ohjelmistojen laadulliset tekijät}
+%\section{Ohjelmistojen laadulliset tekijät}
 
 
-\subsection{Laatuvaatimukset}
-\subsubsection{Toiminnalliset}
-\subsubsection{Ei-toiminnalliset vaatimukset}
-\subsection{Tradeoffit}
-\subsection{Arviointi}
+%\subsection{Laatuvaatimukset}
+%\subsubsection{Toiminnalliset}
+%\subsubsection{Ei-toiminnalliset vaatimukset}
+%\subsection{Tradeoffit}
+%\subsection{Arviointi}
 
 
 \section{Testattavuus laadullisena tekijänä}
@@ -294,7 +294,7 @@ Testattavuus luetaan kuuluvaksi ylläpidettävyyden alle \citep{ISO/IEC25010:201
 Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi yleisintä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä siis löytävän itse viat, mutta testattavuus taas löytää paikat, joissa viat voivat sijaita \citep[s. 19]{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä, mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
 
 
-\subsection{Testaamisen arviointi}
+\subsection{Testattavuuden arviointi} \label{contro_and_observ}
 
 Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee, kuinka mahdollista testien tuloksia on tarkastella, ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää vaikuttavatko tietyt syötteet testituloksiin, ja hallittavuus taas voidaan nähdä siitä kuinka helppo on tuottaa jokin tietty tulos syötteestä \citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
 
@@ -417,12 +417,14 @@ Löydetyistä mittareista huomataan, että ne tarkastelevat korkeammalla tasolla
 
 Testattavuus tulee esille arkkitehtuurisella tasolla hieman eri lailla kuin ohjelmakooditasolla, ja usein on niin, että ohjelmakoodia ei tietyllä hetkellä ole edes saatavilla tai sen täydellinen läpikäynti veisi paljon aikaa. Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja sitä voidaan tutkia komponenttitasolla, jota tukevat hyvin UML-kaaviot. UML-kaavioiden avulla ohjelmistojärjestelmän rakenne, myös arkkitehtuurisena mallina, saadaan hyvin kuvattua eritasoisilla näkymillä. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun komponenttien rajapintojen toimivuus sekä komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}.
 
-Komponenttien testattavuuden (component testability analysis model) ominaisuuksia 5kpl \citep[s. 6]{gao_component_2005}.
+Komponenttien testattavuutta on analysoitu muun muassa erilaisten mallien avulla ja näistä eräs on komponenttien testattavuus malli (component testability model) \citep[s. 6]{gao_component_2005}. Sen avulla jokaista komponenttia tarkastellaan viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat kysymyksiin: kuinka helppoa on komponentin tilaa tarkastella ulkopuolisena; kuinka helposti komponentille voidaan muunmuassa automaattisesti generoida testejä; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään kehittämään.
 
-Koodi vs arkkitehtuurinen eri ongelmat ja ne voidaan havaita eri tekniikoilla, muttei samalla. Arkkitehtuurinen velka yleistä \citep[s. 186]{kazman_case_2015}.
+%Testattavuus olio-perustaisissa ohjelmissa Separation of Concerns [parantaa controllability ja observability], Built-in Test [stubit yms.], Structure (Polymorfismi, enkapsulaatio, perintä [Number of Root Classes, FIN, Number Of Children, Depth of Inheritance Tree], kompleksisuus [Coupling Between Objects, koko]).
+
+%Koodi vs arkkitehtuurinen eri ongelmat ja ne voidaan havaita eri tekniikoilla, muttei samalla. Arkkitehtuurinen velka yleistä \citep[s. 186]{kazman_case_2015}.
 
 
-%Arkkitehtuuriset tyylit parantavat järjestelmän laadullisia ominaisuuksia ja tuovat järjestelmään yhdenmukaisen konseptin, jota koko järjestelmän toteutus noudattaa. Erilaiset tyylit parantavat myös erilaisia testausstrategioita \citep[s. 66]{Eickelmann:1996:MOS:243327.243602}. 
+ 
 
 \subsection{Hyvä testattavuus arkkitehtuurissa}
 
@@ -510,7 +512,7 @@ Tietyt koodihajut voivat olla merkki arkkitehtuuristen hajujen olemassaolosta (a
 Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
 
 
-
+Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muunmuassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. "Code Smells Relation View" diagrammi \citep[s. 5]{fontana_towards_2015}. Koodihajut vaikeuttavat Coupling on kaikki, koodihajut vaikeuttavat koheesiota on GC, BM, DC. 
 
 
 
@@ -569,6 +571,7 @@ Muita keinoja tutkia -> formulointi (Design Structure Matrix) \citep{mo_mapping_
 
 Erilaisia skenaariopohjaisia menetelmiä ehdottaa \citep[s. 8-9]{mattsson2006software} testattavuuden kannalta: SAAM, ATAM, EBAE.
 
+Riippuvuuksien anti-pattern (7 kpl) ja niiden havaitseminen lähdekoodin avulla. Pystyisikö soveltamaan myös arkkitehtuurisella tasolla? \citep{binkley_dependence_2008} 
 
 \section{Yhteenveto}
 "puoli sivua"

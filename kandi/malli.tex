@@ -299,7 +299,7 @@ Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria 
 
 %Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep[s. 20-21]{Voas:1995:STN:624607.625469}
 
-Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan havaita implisiittistä tiedonkatoamista \citep{Voas:1995:STN:624607.625469}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon.  
+Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan havaita implisiittistä tiedonkatoamista \citep{Voas:1995:STN:624607.625469}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon, mutta sen käyttäminen vaatii ohjelmistojärjestelmän lähdekoodin arvioimisen tueksi.
 
 
 
@@ -326,7 +326,7 @@ Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa
 \end{itemize}
 
 
-On erittäin tärkeää eriyttää komponentteja mahdollisimman paljon toisistaan ja tehdä kommunikaatio mahdollisimman kontrolloitavaksi hyvän testattavuuden aikaansaamiseksi. Varsinkin helposti isoiksi muodostuvien komponenttienkin pitäisi olla kytkentätasoltaan mahdollisimman kevyitä ja riippuvuuksien minimissään.
+On siis todella tärkeää eriyttää komponentteja mahdollisimman paljon toisistaan ja tehdä kommunikaatio mahdollisimman kontrolloitavaksi hyvän testattavuuden aikaansaamiseksi. Varsinkin helposti isoiksi muodostuvien komponenttien pitäisi olla kytkentätasoltaan mahdollisimman kevyitä ja riippuvuuksien minimissään tai niistä luotavien testien tekeminen vaikeutuu ja testitapausten koko kasvaa erittäin suuriksi.
 
 
 
@@ -342,7 +342,7 @@ Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtav
 \subsection{Testattavuuden mittaaminen} \label{testability_measure}
 
 
-Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Olio-pohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}:
+Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Oliopohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}:
 
 \begin{itemize}
 	\item metodien määrä luokassa
@@ -354,7 +354,7 @@ Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on eri
 \noindent
 Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
 
-\citep{Khan:2009:MBT:1507195.1507204} käyttää taas seuraavaa neljää metriikkaa laskeakseen testattavuutta järjestelmissä, jotka vahvasti korreloivat edellisiin metriikoihin 
+\citep{Khan:2009:MBT:1507195.1507204} käyttävät taas seuraavaa neljää metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä. Ne vahvasti korreloivat edellisiin metriikoihin 
 
 \begin{itemize}
 	\item enkapsulaation taso
@@ -378,8 +378,6 @@ Nämä kaikki edellämainitut mittarit ovat ominaisuuksiltaan sellaisia, että n
 \subsection{UML-kaavio testattavuuden havaitsemisessa}
 
 UML-luokkakaavio on todella yleisesti käytössä oleva mallinnustapa, ja juuri sen avulla nähdään hyvin järjestelmän rakennetta. Se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002}. 
-
-%Luokkakaavion avulla on myös mahdollista nähdä eri asioita kuin suoraan lähdekoodista, koska se toimii abstraktiivisena näkymänä peilaten lähdekoodissa olevia asioita. Tämän avulla se tuo hieman korkeamman tason näkymän järjestelmään, mutta ilman liiallista tiedon piilottamista. 
 
 \citep{baudry_measuring_2003} määrittelee testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
@@ -407,45 +405,30 @@ Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittist
 %Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
  
-Löydetyistä mittareista huomataan, että ne tarkastelevat korkeammalla tasolla testattavuutta, kuin aiemmat lähdekoodi-tasoiset mittarit. Ne mittaavat esimerkiksi komponenttien ominaisuuksia ja yhteyksiä, jotka tulevat esille kunnolla vasta arkkitehtuurisella tasolla. Komponenttien ja yhteyksien tarkastelu oli myös luvussa \ref{ark} esitelty eräs näkemys ohjelmistoarkkitehtuuriin. On järjestelmän todellisen testattavuuden määrittelemisen kannalta parempi, jos sitä tarkastellaan korkeammalla tasolla, koska liian tarkka kuvaus järjestelmästä vaikeuttaa todellisten ongelmien näkemistä.  
+Löydetyistä mittareista huomataan, että ne tarkastelevat hieman korkeammalla tasolla testattavuutta, kuin aiemmat lähdekoodi-tasoiset mittarit. Ne mittaavat esimerkiksi komponenttien ominaisuuksia ja yhteyksiä, jotka tulevat esille kunnolla vasta arkkitehtuurisella tasolla. Komponenttien sekä yhteyksien tarkastelu oli myös luvussa \ref{ark} esitelty eräs näkemys ohjelmistoarkkitehtuuriin ja on järjestelmän todellisen testattavuuden määrittelemisen kannalta parempi, jos testattavuutta tarkastellaan korkealla tasolla. Liian tarkka kuvaus järjestelmästä vaikeuttaa todellisten ongelmien näkemistä, koska liian tarkka kuvaus vie aikaa ymmärtää ja keskittyy liian pikkutarkkoihin asioihin, jotka eivät kaikki välttämättä ole relevantteja testattavuuden analysoinnin kannalta.   
 
 \section{Testattavuus arkkitehtuurisella tasolla}
 
-Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa. Testattavuutta voidaan tutkia kuitenkin esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. 
+Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa. Testattavuutta voidaan tutkia esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. Toinen hyväksi osoittanut tapa on tutkia testattavuutta UML-luokkakaavioiden avulla, joiden avulla päästään tarkastelemaan tiettyä metriikoita, jotka muuten eivät näkyisi komponenttitasolla.  
 
-Komponenttien testattavuutta on analysoitu muun muassa erilaisten mallien avulla ja näistä eräs on komponenttien testattavuus malli (component testability model) \citep{gao_component_2005}. Sen avulla jokaista komponenttia tarkastellaan viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muunmuassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään kehittämään.
-
-% \citep{Binder:1994:DTO:182987.184077}
-%Testattavuus olio-perustaisissa ohjelmissa Separation of Concerns [parantaa controllability ja observability], Built-in Test [stubit yms.], Structure (Polymorfismi, enkapsulaatio, perintä [Number of Root Classes, FIN, Number Of Children, Depth of Inheritance Tree], kompleksisuus [Coupling Between Objects, koko]).
-
-%Koodi vs arkkitehtuurinen eri ongelmat ja ne voidaan havaita eri tekniikoilla, muttei samalla. Arkkitehtuurinen velka yleistä \citep[s. 186]{kazman_case_2015}.
-
-
+Komponenttien testattavuutta on analysoitu erilaisten mallien avulla ja näistä eräs on Goan ja Shihn \citep{gao_component_2005} esittämä pentagrammimalli. Sen avulla jokaista komponenttia tarkastellaan viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muunmuassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään luomaan. 
  
 
 \subsection{Hyvä testattavuus arkkitehtuurissa}
 
 %Tietyt arkkitehtuuriset tyylit sopivat tiettyihin testaustapoihin (critical module, sandwich, top-down, bottom-up, thread, big bang) \citep{Eickelmann:1996:MOS:243327.243602}. Kolmeen ensimmäiseen liittyvät vahvasti stubit ja test driverit. 
 
-%Testattavuuden parantaminen erillisen patternin avulla \citep{coelho_improving_2005}.
+Hyvää testattavuutta ei ole kovinkaan eksplisiittisesti määritelty arkkitehtuurisella tasolla, mutta esimerkiksi Eicklemann \citep{Eickelmann:1996:MOS:243327.243602} on määritellyt tiettyjen arkkitehtuuristen tyylien sopivan tietyille testausstrategioille. Useita määrittelyjä ja ominaisuuksia on pyritty kuitenkin havaitsemaan yleisellä tasolla testattavuuden kannalta.
 
-Hyvään testattavuuteen arkkitehtuurisella tasolla vaikuttaa paljon oikean tyylin valitseminen oikeaan tilanteeseen ja tyylien tuomien rajoitteiden oikeaoppinen noudattaminen \citep[s. 66]{Eickelmann:1996:MOS:243327.243602}. Arkkitehtuuri on myös pitänyt dokumentoida jollain tavalla, jotta testattavuutta pystyttäisiin arvioimaan \citep[s. 6]{mari_impact_2003}, koska sen avulla pystytään luomaan kehys, joka määrittelee järjestelmän arkkitehtuurisia päätöksiä ja rajoitteita. Se helpottaa vikojen paikallistamista ja testauksen painopisteiden määrittelyä kehittäjille, jos dokumentoinnissa on eksplisiittisesti kerrottu, että mitkä komponentit kuuluvat esimerkiksi kolmikerrosarkkitehtuurin eri tasoille. 
+Järjestelmän tarkasteltavuus (monitorability) on yksi laajalti vaikuttava ominaisuus, ja se nostaa positiivisesti testattavuudenkin tasoa \citep{mari_impact_2003}. Tarkasteltavuus voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
 
-%Testien isolaation mahdollistaminen sekä hallittavuus ja havaittavuus, jotka ovat myös ohjelmakooditasolla tärkeitä, ovat merkkejä hyvästä testattavuudesta arkkitehtuurisella tasolla.
-Oliopohjaisissa ohjelmistojärjestelmissä vastuiden jakamisen koetaan olevan hyvä lähtökohta testattavuuden määrittelemisessä, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Binder määrittelee myös muita ominaisuuksia testattavalle järjestelmälle, kuten sisäänrakennettu testausominaisuus (built-in test) ja järjestelmän jäljitettävyys. Rakenteelliselta tasolta hän painottaa kapselointia, polymorfismia, perintää ja kompleksisuuden tarkastelua, jotka vaikuttavat vahvasti järjestelmän testattavuuden arviointiin.
+%Oliopohjaisissa ohjelmistojärjestelmissä koetaan vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Binder määrittelee myös muita ominaisuuksia testattavalle järjestelmälle, kuten sisäänrakennettu testausominaisuus (built-in test) ja järjestelmän jäljitettävyys, jonka avulla testien esille tuomat viat on helppo paikallistaa. Rakenteelliselta tasolta hän painottaa kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua. Binderin metriikoista kuitenkin osa saattaa peittyä täysin abstraktiotasojen alle esimerkiksi komponenttimallissa, jolloin käytössä olisi oltava useampi näkymä tai erittäin tarkka kuvaus ohjelmistojärjestelmästä. 
 
-
-
-Järjestelmän tarkasteltavuus (monitorability) on yksi osatekijä ylläpidettävyydessä vaikuttaen positiivisesti testattavuuteenkin \citep[s. 4]{mari_impact_2003}. Se voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus ja on testattavuuden kannalta hyvä, jos komponenteista löytyy myös aputoiminnallisuutta testausprosessia varten. Tämä toiminnallisuus voi koostua muunmuassa ylimääräisistä testausrajapinnoista tai komponenteista, jotka tukevat jotain edellämainitusta kolmesta tarkasteltavuuden luokasta. Yksi todella yleinen käytänne on esimerkiksi erilaisten tynkäluokkien (stub) käyttö, joissa testausta varten voidaan polymorfismia käyttää hyödyksi niin, että luokan ongelmalliset komponenttiriippuvuudet saadaan korvattua testien ajaksi jollain yksinkertaisemmalla toteutuksella. Tämän toteuttaminen vaatii järjestelmältä löyhiä riippuvuuksia rajapintojen muodossa.
-
-\citep[s. 591-592]{joshi_design_2014} tunnistaa DFT:n (Design for Testability). Vaikuttavat mittarit + yleistä. 
-
-
-
+Joshi ja Sardana \citep{joshi_design_2014} tutkivat ominaisuuksia, joita järjestelmän pitäisi painottaa, jos järjestelmää halutaan suunnitella testauksen varalle. He määrittelevät suunnittelun näkökulmalta, joka voidaan yleistää helposti arkkitehtuurisiksi päätöksiksi, testattavuuteen vaikuttavat ominaisuudet: vaatimusten tarkkuus, sykliset riippuvuudet, kytkentä, koheesio, antipatternit, järjestelmän jäljitettävyys (traceability), havaittavuus ja hallittavuus. Näiden tukemiseksi he esittävät modulaarista rakennetta järjestelmässä ja esimerkiksi UML:n muokkaamista sekä UML-stereotyyppien käyttöä.
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen}
 
-Koska testattavuus kuuluu ylläpidettävyyteen, sitä voidaan mitata arkkitehtuurisella tasolla analysoimalla näkymää, josta nähdään järjestelmän rakennetta korkealla tasolla. Seuraavat mittarit on luotu arvioimaan ylläpidettävyyttä arkkitehtuurisella tasolla koskien arkkitehtuurisia elementtejä \citep[s. 3-4]{bengtsson1998towards}:
+Suuriosa tunnetuista testattavuutta määrittelevistä mittareista tarvitsee lähdekoodin tuekseen, mutta Bengtsson \citep{bengtsson1998towards} on määritellyt osan arkkitehtuurisen tason mittareita, jotka määrittelevät järjestelmän ylläpidettävyyttä. Tunnistetut mittarit ovat arkkitehtuurisille elementeille 
 
 \begin{itemize}
 	\item metodien määrä elementin rajapinnassa
@@ -457,13 +440,13 @@ Koska testattavuus kuuluu ylläpidettävyyteen, sitä voidaan mitata arkkitehtuu
 	\item elementin metodien ja parametrien määrä
 \end{itemize}
 
-On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen. Tämä samankaltaisuus johtuu siitä, että asiat, jotka vaikuttavat järjestelmän arkkitehtuurin ylläpidettävyyteen, vaikuttavat myös järjestelmän testattavuuteen. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä järjestelmä-tasolla on ollut tutkimuksen kohteena jo paljon aikaisemminkin \citep{Rosane:1981} ja se määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta. 
+On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason. Tämä samankaltaisuus johtuu siitä, että asiat, jotka vaikuttavat järjestelmän arkkitehtuurin ylläpidettävyyteen, vaikuttavat myös järjestelmän testattavuuteen. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta. 
 
-Komponenttien huonoa modulaarisuutta CLIO:n avulla. Cyclic Dependency, Code Clone, Poor inheritance hierarchy, unnamed coupling. \citep{wong_detecting_2011}. DSM:n käyttö. 
+% tänne vois heittää kappaleen 3.5
 
-\subsection{Arkkitehtuuriset hajut}
+\subsection{Arkkitehtuuriset hajut ja testattavuus}
 
-Mittareiden ohella arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuten sekä ylläpidettävyyteen negatiivisesti. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muunmuassa 
+Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuten sekä ylläpidettävyyteen. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muunmuassa 
 
 \begin{itemize}
 	\item suunnittelumalli väärässä kontekstissa
@@ -473,7 +456,7 @@ Mittareiden ohella arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmä
 
 %Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
 
-Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää arkkitehtuurisella tasolla seuraavien metriikoiden avulla \citep[s. 1093]{bertran_detecting_2011}
+Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää arkkitehtuurisella tasolla seuraavien metriikoiden avulla \citep{bertran_detecting_2011}
 
 \begin{itemize}
 	\item ei-haluttujen asiakas-komponenttien (client component) määrä
@@ -486,10 +469,10 @@ Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää arkkitehtuurisell
 %\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
 
 \noindent
-Näiden metriikoiden avulla sekä näkymällä moduulitasoon, olisi esimerkiksi hyvin mahdollistaa löytää yksi virhealttiillisin arkkitehtuurista löytyvä ongelmakohta \citep[s. 57]{HotSpot} \textit{Cross-Module Cycle}. \textit{Cross-Module Cycle} johtuu, jos on olemassa syklinen riippuvuussuhde moduulitasolla.
+Näiden metriikoiden avulla sekä näkymällä moduulitasoon, olisi esimerkiksi hyvin mahdollistaa löytää yksi virhealttiillisin arkkitehtuurista löytyvä ongelmakohta \citep[s. 57]{HotSpot} \textit{Cross-Module Cycle}. \textit{Cross-Module Cycle} johtuu, jos on olemassa syklinen riippuvuussuhde moduulitasolla. Sen todettiin olevan myös kappaleessa lol.
 
 
-Itse arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunnistaa olevan ainakin \citep{garcia_identifying_2009}
+Arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunnistaa olevan ainakin \citep{garcia_identifying_2009}
 
 \begin{itemize}
 	\item \textit{Connector Envy}

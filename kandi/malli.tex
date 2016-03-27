@@ -157,7 +157,7 @@ Ohjelmistoarkkitehtuuri on ohjelmistojen ymmärtämisen kannalta tärkeä konsep
 Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi, ja siihen kuuluu vahvasti ohjelmistojen testattavuus, joka taas vaatimuksena on lähempänä ohjelmoijaa kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee kuinka hyvin järjestelmään kohdistuva testaus löytää mahdolliset virheet ja kuinka helppo testitapauksia on luoda. Arkkitehtuurin ja testattavuuden yhteys on kuitenkin hieman häilyvä, vaikka arkkitehtuuri koskee jokaista kehittäjää. Tämä tutkimus pyrkii selventämään arkkitehtuurin ja testattavuuden suhdetta ja sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa. 
 
 \subsection{Tutkimuskysymys}
-Tutkimus vastaa kysymykseen miten testattavuus näkyy ohjelmistojen arkkitehtuurissa. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: mitä on testattavuus ohjelmistojärjestelmissä, miten arkkitehtuuria voidaan kuvata, miten ohjelmistojärjestelmästä luotu näkymä kertoo jotain järjestelmän testattavuudesta. 
+Tutkimus vastaa kysymykseen miten testattavuus näkyy ohjelmistojen arkkitehtuurisella tasolla. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: mitä on testattavuus ohjelmistojärjestelmissä, miten arkkitehtuuria voidaan kuvata, miten ohjelmistojärjestelmästä luotu näkymä kertoo jotain järjestelmän testattavuudesta. 
 
 \subsection{Tutkimusmenetelmä}
 Tutkimuskysymykseen vastataan kirjallisuuskatsauksen avulla ja tutkimalla mitkä arkkitehtuuriset päätökset ja elementit ovat sekä hyvän että huonon testattavuuden tekijöitä. Testattavuuden havaitsemiseen etsitään näkymää nykyisistä menetelmistä kuvata arkkitehtuuria. Näitä menetelmiä ovat pääasiassa erilaisten näkymien ja näkökulmien joukko, joiden avulla saadaan abstrahoitua järjestelmän lähdekoodia arkkitehtuurisempaan muotoon.
@@ -408,9 +408,7 @@ Suuriosa tunnetuista testattavuutta määrittelevistä mittareista tarvitsee lä
 	\item elementin metodien ja parametrien määrä
 \end{itemize}
 
-On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Toisaalta lähdekoodi-taso on aina se täydellinen kuvaus järjestelmästä, mutta joskus todellisten ongelmien esilletulo vaatii korkean tason kuvauksen järjestelmään. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta. 
-
-% tänne vois heittää kappaleen 3.5
+On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Toisaalta lähdekoodi-taso on aina se täydellinen kuvaus järjestelmästä, mutta joskus todellisten ongelmien esilletulo vaatii korkean tason kuvauksen järjestelmään. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta ja sitä voidan havaita tutkimalla ohjelmistojärjestelmän komponenttien välisiä suhteita.
 
 \subsubsection{UML-kaavio testattavuuden mittaamisessa}
 
@@ -420,7 +418,7 @@ UML-luokkakaavio on todella yleisesti käytössä oleva mallinnustapa, ja juuri 
 
 % UML \citep{baudry_testability_2002}
 
-UML:n avulla luotavalla riippuvuusgraafilla, esittävät testattavuuteen negatiivisesti vaikuttaviksi asioiksi \citep{baudry_testability_2002}
+UML:n avulla luotavalla erityisellä riippuvuusgraafilla, esittävät testattavuuteen negatiivisesti vaikuttaviksi asioiksi \citep{baudry_testability_2002}
 
 \begin{itemize} 
 	\item kompleksiset perintäsuhteet
@@ -428,7 +426,7 @@ UML:n avulla luotavalla riippuvuusgraafilla, esittävät testattavuuteen negatii
 \end{itemize}
 
 
-Näiden lisäksi \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittisten riippuvuuksien poistoa. Luokkakaaviosta saatavia mittareita tunnistetaan kolme kappaletta 
+Näiden lisäksi Jungmayr \citep{Jungmayr:2002} käsittelee testauksen kannalta kriittisten riippuvuuksien poistoa. Riippuvuudeksi lasketaan mikä tahansa komponenttien välinen interaktio, jossa komponentti joutuu käyttämään toisen komponentin tarjoamia palveluita (usein metodeja) suorittaakseen toiminnallisuuttaan.  Luokkakaaviosta saatavia mittareita tunnistetaan kolme kappaletta, joiden korkeat arvot korreloivat järjestelmän huonon testattavuuden kanssa 
 
 \begin{itemize}
 	\item komponenttien keskimääräinen riippuvuuksien määrä
@@ -482,11 +480,13 @@ Arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunni
 \noindent
 \textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia. Tämä tilanne johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered Parasitic Functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virheen havaitseminen vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
 
-Nämä hajut vaikuttavat arkkitehtuurisella tasolla, mutta niiden löytäminen arkkitehtuuriselta kuvaukselta ei ole helppoa. lol
+Nämä hajut vaikuttavat arkkitehtuurisella tasolla, mutta niiden löytäminen arkkitehtuuriselta kuvaukselta ei ole aina mahdollista.
 
 % Connector envyn havaitseminen jne. 
 
 \subsubsection{Koodihajujen ja arkkitehtuuristen hajujen suhde}
+
+
 
 Arkkitehtuurisia hajuja + Hybridi hajuja (koodi ja arkk.) ohjelmistojen product lineissa \citep{vale_bad_2014}
 
@@ -531,23 +531,26 @@ UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta 
 %UML:n parantaminen uusilla notaatioilla \citep[s. 4]{baudry_measuring_2003}. \textbf{create}  luokka A luo luokan B, \textbf{use}  luokka A voi kutsua mitä tahansa, paitsi B:n konstruktoria. \textbf{use\_consult}  kutsumat metodit, jotka eivät koskaan muokkaa B:n sisäistä tilaa, \textbf{use\_def} -> jos vähintään yksi metodi muokkaa B:n tilaa.
 
 
-Tämä tuottaa tosin ongelmia, koska jotkut tulokset saattavat olla vääriä niiden sisältäessä virheellistä esiintymää (false-positive results). Tähän ongelmaan on ehdotettu UML-kaavion jatkamista stereotyyppien avulla. Uusia kytköksiä määritellään 4 kappaletta \citep[s. 4]{baudry_measuring_2003}
+Tämä tuottaa tosin ongelmia, koska jotkut tulokset saattavat olla vääriä niiden sisältäessä virheellistä esiintymää (false-positive results). Tähän ongelmaan on ehdotettu UML-kaavion jatkamista stereotyyppien avulla. Uusia kytköksiä riippuvuuksille määritellään 4 kappaletta \citep[s. 4]{baudry_measuring_2003}
 
 \begin{itemize}
-	\item create, jos luokka A luo luokan B
-	\item use, jos luokka A voi kutsua kaikkia B:n metodeja, muttei luo sitä
-	\item use\_consult, jos A:n kutsumat metodit eivät muokkaa B:n sisäistä tilaa
-	\item use\_def, jos yksikin A:n kutsuma metodi muokkaa B:n sisäistä tilaa
+	\item \textit{create}, jos luokka A luo luokan B
+	\item \textit{use}, jos luokka A voi kutsua kaikkia B:n metodeja, muttei luo sitä
+	\item \textit{use\_consult}, jos A:n kutsumat metodit eivät muokkaa B:n sisäistä tilaa
+	\item \textit{use\_def}, jos yksikin A:n kutsuma metodi muokkaa B:n sisäistä tilaa
 \end{itemize}
 
 \noindent
-Näiden avulla saadaan riippuvuudet ja niiden tyypit paremmin esille kaavioissa. 
+Näiden sterotyyppien avulla saadaan riippuvuudet ja niiden tyypit paremmin esille kaavioissa virheellisten tuloksien välttämiseksi. On esimerkiksi usein melko normaalia oliojärjestelmissä, että yksi luokka saattaa luoda useita riippuvuuksia muihin luokkiin, mutta tämä on tehty tarkoituksella eikä vahingossa kehittäjien toimesta. Näin on esimerkiksi tehdas-mallin (factory pattern) käytössä, jossa erikseen määritelty tehdas-olio on riippuvainen useiden eri luokkien synnystä. Se vähentää globaalisti riippuvuuksien määrää, mutta itse tehdas-oliot tuottaisivat metriikoiden mukaan paljon virheellisiä riippuvuusongelmia, jos jokainen riippuvuus olisi samanarvoinen.
 
 
 
 
 
 \section{Pohdinta}
+
+
+
 
 Metriikat + riippuvuusgraph.
 
@@ -558,13 +561,14 @@ Erilaisia skenaariopohjaisia menetelmiä ehdottaa \citep[s. 8-9]{mattsson2006sof
 Riippuvuuksien anti-pattern (7 kpl) ja niiden havaitseminen lähdekoodin avulla. Pystyisikö soveltamaan myös arkkitehtuurisella tasolla? \citep{binkley_dependence_2008} 
 
 \section{Yhteenveto}
-"puoli sivua"
 
-Yleensä hieman johdantoa lyhyempi.
+Tutkimuksessa on tehty katsaus ensin ohjelmistoarkkitehtuuriin käsitteenä ja luotu sen avulla katsaus siihen miten ohjelmistoarkkitehtuuria mallinnetaan. Ohjelmistoarkkitehtuuri on nähty tapana kuvata järjestelmän todellista rakennetta tavalla, joka kertoisi mahdollisimman selkeästi järjestelmän todellisen luonteen ilman tarvetta lähdekoodille. Katsauksen jälkeen on etsitty vastausta sille mitä on järjestelmän testattavuus. Testattavuudesta on jatkettu tarkastelua arkkitehtuuriselta näkökulmalta viimeisessä luvussa ja etsitty tapoja joiden avulla arkkitehtuurin mallinnus tuottaisia mahdollisimman paljon informaatiota järjestelmän testattavuudesta.
 
-Muistuttaa mieleen tutkimuskysymyksen, mainitsee tärkeimmät tulokset ja niiden perusteet. Keskittyy impaktiin ja esimerkiksi suosituksiin. Ei vain summeeraa luku kerrallaan aikaisempaa tekstiä.
+Tästä tutkimuksesta nähdään tutkimuskysymyksien valolla, että
 
+%Muistuttaa mieleen tutkimuskysymyksen, mainitsee tärkeimmät tulokset ja niiden perusteet. Keskittyy impaktiin ja esimerkiksi suosituksiin. Ei vain summeeraa luku kerrallaan aikaisempaa tekstiä.
 
+% miten testattavuus näkyy ohjelmistojen arkkitehtuurisella tasolla
 
 % --- References ---
 %

@@ -285,6 +285,10 @@ Toiselta näkökulmalta katsottuna taas voi olla, että juuri mahdollisimman pal
 %\subsection{Tradeoffit}
 %\subsection{Arviointi}
 
+\subsection{UML}
+
+UML eli \textit{Unified Modeling Language} on kokoelma erilaisia työkaluja näkymien luomiseen. Se määrittelee x määrän eri tarkoituksiin. \citep{UML}.
+
 
 \section{Testattavuus laadullisena tekijänä}
 Testattavuus luetaan kuuluvaksi ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Laatuvaatimuksena se ei kuitenkaan ole aina edes kovin näkyvä esimerkiksi asiakkaalle mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattavaa järjestelmää on myös vaikea ylläpitää, ja ylläpidettävä järjestelmä on sekä asiakkaalle että kehittäjälle tärkeä ominaisuus.
@@ -384,15 +388,27 @@ Komponenttien testattavuutta on analysoitu erilaisten mallien avulla ja näistä
 
 \subsection{Hyvä testattavuus arkkitehtuurissa} \label{good_testability}
 
-%Tietyt arkkitehtuuriset tyylit sopivat tiettyihin testaustapoihin (critical module, sandwich, top-down, bottom-up, thread, big bang) \citep{Eickelmann:1996:MOS:243327.243602}. Kolmeen ensimmäiseen liittyvät vahvasti stubit ja test driverit. 
 
-Hyvää testattavuutta ei ole kovinkaan eksplisiittisesti määritelty arkkitehtuurisella tasolla, mutta esimerkiksi Eicklemann \citep{Eickelmann:1996:MOS:243327.243602} on määritellyt tiettyjen arkkitehtuuristen tyylien sopivan tietyille testausstrategioille. Useita määrittelyjä ja ominaisuuksia testattavalle arkkitehtuurille on pyritty kuitenkin havaitsemaan yleisellä tasolla.
+Hyvää testattavuutta ei ole kovinkaan eksplisiittisesti määritelty arkkitehtuurisella tasolla ja sen määritteleminen tarkasti vaatisi hyvin monen arkkitehtuurisen tyylin läpikäynnin, koska jokainen arkkitehtuurinen tyyli sopii tiettyyn tilanteeseen tietyllä hetkellä. Esimerkiksi Eicklemann \citep{Eickelmann:1996:MOS:243327.243602} on määritellyt tiettyjen arkkitehtuuristen tyylien sopivan tietyille testausstrategioille. Useita määrittelyjä ja ominaisuuksia testattavalle arkkitehtuurille on pyritty kuitenkin havaitsemaan yleisellä tasolla.
 
-Järjestelmän tarkasteltavuus (monitorability) on näistä yksi laajalti vaikuttava ominaisuus, ja se nostaa positiivisesti testattavuudenkin tasoa \citep{mari_impact_2003}. Tarkasteltavuus voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
+Järjestelmän tarkasteltavuus (monitorability) on näistä yksi laajalti vaikuttava ominaisuus, ja se nostaa positiivisesti testattavuudenkin tasoa \citep{mari_impact_2003}. Tarkasteltavuus ohjelmistojärjestelmissä voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
 
 %Oliopohjaisissa ohjelmistojärjestelmissä koetaan vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Binder määrittelee myös muita ominaisuuksia testattavalle järjestelmälle, kuten sisäänrakennettu testausominaisuus (built-in test) ja järjestelmän jäljitettävyys, jonka avulla testien esille tuomat viat on helppo paikallistaa. Rakenteelliselta tasolta hän painottaa kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua. Binderin metriikoista kuitenkin osa saattaa peittyä täysin abstraktiotasojen alle esimerkiksi komponenttimallissa, jolloin käytössä olisi oltava useampi näkymä tai erittäin tarkka kuvaus ohjelmistojärjestelmästä. 
 
-Joshi ja Sardana \citep{joshi_design_2014} tutkivat ominaisuuksia, joita järjestelmän pitäisi painottaa, jos järjestelmää halutaan suunnitella testauksen varalle. Näitä testattavuuteen korkealla tasolla vaikuttavia ominaisuuksia järjestelmässä ovat: vaatimusten tarkkuus, sykliset riippuvuudet, kytkentä, koheesio, antipatternit, järjestelmän jäljitettävyys (traceability), havaittavuus ja hallittavuus. He esittävät näiden tukemiseksi järjestelmän modulaarista rakennetta ja UML:n muokkaamista sekä UML-stereotyyppien käyttöä. 
+Joshi ja Sardana \citep{joshi_design_2014} tutkivat ominaisuuksia, joita järjestelmän pitäisi painottaa, jos järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava. Näitä testattavuuteen korkealla tasolla vaikuttavia ominaisuuksia järjestelmässä löydettiin olevan
+	
+\begin{itemize}
+	\item vaatimusten tarkkuus
+	\item sykliset riippuvuudet
+	\item kytkennän taso
+	\item koheesion taso
+	\item antipatternien esiintyminen
+	\item järjestelmän jäljitettävyys (traceability)
+	\item havaittavuus ja hallittavuus.
+\end{itemize}
+
+\noindent
+He esittävät mahdollisten ongelmien eliminoimiseen järjestelmän modulaarista rakennetta ja UML:n muokkaamista sekä UML-stereotyyppien käyttöä. UML kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla saadaan muokattua näkymää tiettyyn suuntaan.
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen}
 
@@ -410,7 +426,7 @@ Suuriosa tunnetuista testattavuutta määrittelevistä mittareista tarvitsee lä
 
 On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Toisaalta lähdekoodi-taso on aina se täydellinen kuvaus järjestelmästä, mutta joskus todellisten ongelmien esilletulo vaatii korkean tason kuvauksen järjestelmään. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta ja sitä voidan havaita tutkimalla ohjelmistojärjestelmän komponenttien välisiä suhteita.
 
-\subsubsection{UML-kaavio testattavuuden mittaamisessa}
+\subsubsection{UML-kaaviot testattavuuden mittaamisessa}
 
 UML-luokkakaavio on todella yleisesti käytössä oleva mallinnustapa, ja juuri sen avulla nähdään hyvin järjestelmän rakennetta. Se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002}. 
 
@@ -467,7 +483,7 @@ Yleisesti arkkitehtuuriin vaikuttavia hajuja voidaan löytää arkkitehtuurisell
 %\citep{HotSpot} arkkitehtuuriset hajut "hotspotit"\ 5kpl + kaikista altin virheille oli \citep[s. 57]{HotSpot} Unstable Interface \& Cross-Module Cycle.
 
 \noindent
-Näiden metriikoiden avulla sekä näkymällä moduulitasoon, olisi esimerkiksi hyvin mahdollistaa löytää yksi virhealttiillisin arkkitehtuurista löytyvä ongelmakohta \citep[s. 57]{HotSpot} \textit{Cross-Module Cycle}. \textit{Cross-Module Cycle} tilanne on arkkitehtuurissa, jos on olemassa syklinen riippuvuussuhde moduulitasolla. Sen todettiin olevan myös kappaleessa \ref{good_testability} yksi testattavuuteen vaikuttava tekijä.
+Näiden metriikoiden avulla sekä näkymällä moduulitasoon, olisi esimerkiksi hyvin mahdollistaa löytää yksi virhealttiillisin arkkitehtuurista löytyvä ongelmakohta \citep[s. 57]{HotSpot} \textit{Cross-Module Cycle}. \textit{Cross-Module Cycle} tilanne on arkkitehtuurissa, jos on olemassa syklinen riippuvuussuhde moduulitasolla. Se vaikeuttaa testattavuutta, siten, että testauksen aikana yhden moduulin testaaminen vaatii käytännössä myös kaikkien muiden moduulien testauksen, jolloin testitapausten isolointi vaikeutuu huomattavasti. Sen todettiin olevan myös kappaleessa \ref{good_testability} yksi testattavuuteen vaikuttava tekijä.
 
 
 Arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunnistaa olevan ainakin \citep{garcia_identifying_2009}
@@ -478,32 +494,29 @@ Arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunni
 \end{itemize}
 
 \noindent
-\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia. Tämä tilanne johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered Parasitic Functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virheen havaitseminen vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
+\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia ja tilanteena johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered Parasitic Functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virhe vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
 
-Nämä hajut vaikuttavat arkkitehtuurisella tasolla, mutta niiden löytäminen arkkitehtuuriselta kuvaukselta ei ole aina mahdollista.
+Näistä kahdesta arkkitehtuurisesta hajusta voidaan huomata, että ne pyrkivät löytämään sekä huonon koheesion että mahdollisen riippuvuuksien jakautumisen turhan laajalle. Garcian ym. tutkimuksessa ei kuitenkaan määritellä keinoja löytämään näitä arkkitehtuurisia hajuja  
 
-% Connector envyn havaitseminen jne. 
 
 \subsubsection{Koodihajujen ja arkkitehtuuristen hajujen suhde}
 
+%Arkkitehtuurisia hajuja + Hybridi hajuja (koodi ja arkk.) ohjelmistojen product lineissa \citep{vale_bad_2014}
 
-
-Arkkitehtuurisia hajuja + Hybridi hajuja (koodi ja arkk.) ohjelmistojen product lineissa \citep{vale_bad_2014}
-
-Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
-
-Architecture sensitive analysis (code metrics) \citep[s. 185]{macia_enhancing_2013} $\rightarrow$ God Classes were related to Connector Envy, Scattered Functionality. Misplaced Class were related to Cyclic Dependencies, Scattered Functionality.
-
-Tietyt koodihajut voivat olla merkki arkkitehtuuristen hajujen olemassaolosta (aspect oriented architecture + should be others too) \citep[s. 47]{macia_impact_2011}. SPF -> CB (Composition Bloat), GA (God Aspect related to God Class/God Interface), GP (God Pointcut), DP (Duplicate Pointcut). CEn -> GP. 
-
-Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muunmuassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. "Code Smells Relation View" diagrammi \citep[s. 5]{fontana_towards_2015}. Koodihajut vaikeuttavat Coupling on kaikki, koodihajut vaikeuttavat koheesiota on GC, BM, DC. 
+Vaikka arkkitehtuurisia hajuja on löydetty testattavuuden kannalta muutamia, niin niiden tunnistamiselle ei ole annettu yhtä oikeaa ratkaisua. Eräs näistä keinosta on esimerkiksi 
 
 
 
 
-%Software Product Line Arch. smells -> \citep{de_andrade_architectural_2014}. Maintainability. Case: Notepad SPL. Komponenttimalli + arkkitehtuurin malli. \textbf{1} testability connector envy: Combining product construction capabilities and connector responsibilities represent a reduction in testability because application functionalities and interaction functionalities cannot be seperately tested. \textbf{2}: Ambiguous interfaces 1kpl. \textbf{3}: Feature Concentration -> paljon toiminnallisuutta yhteen komponenttiin sidottuna -> vaikeuttaa maintainability.  
+%Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
 
+%Architecture sensitive analysis (code metrics) \citep[s. 185]{macia_enhancing_2013} $\rightarrow$ God Classes were related to Connector Envy, Scattered Functionality. Misplaced Class were related to Cyclic Dependencies, Scattered Functionality.
 
+%Tietyt koodihajut voivat olla merkki arkkitehtuuristen hajujen olemassaolosta (aspect oriented architecture + should be others too) \citep[s. 47]{macia_impact_2011}. SPF -> CB (Composition Bloat), GA (God Aspect related to God Class/God Interface), GP (God Pointcut), DP (Duplicate Pointcut). CEn -> GP. 
+
+%Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muunmuassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. "Code Smells Relation View" diagrammi \citep[s. 5]{fontana_towards_2015}. Koodihajut vaikeuttavat Coupling on kaikki, koodihajut vaikeuttavat koheesiota on GC, BM, DC. 
+
+  
 
 \subsection{Sunnittelumallien vaikutus testaukseen}
 

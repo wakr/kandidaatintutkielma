@@ -271,7 +271,7 @@ Ohjelmistoarkkitehtuuri toimii siltana ohjelmakoodin ja ohjelmalle asetettujen v
 
 Esimerkiksi ohjelmakoodin kautta luotava malli saattaa olla näkymä projektin rakenteeseen uusia ohjelmoijia varten, jotta voitaisiin helposti esittää kyseisen ohjelmistojärjestelmän päärajapinnat. Tällaisen mallin päätarkoitus on kuvata ohjelmistojärjestelmän rakennetta ja toisaalta abstrahoida pois kaikki turhan tarkat kuvaukset komponenteista, joilla ei ole juuri sillä hetkellä merkitystä. 
 
-Toiselta näkökulmalta katsottuna taas voi olla, että juuri mahdollisimman paljon halutaan nähdä katsomatta lähdekoodia, koska se joko ei ole saatavilla tai se on kehittäjälle liian monimutkaista ja aikaavievää käydä kokonaan läpi. Tähän tarkoitukseen sopii UML:n avulla luodut kaaviot järjestelmän rakenteeesta, josta pystytään näkemään erilaisia ohjelmistojärjestelmän attribuutteja esimerkiksi kuinka testattava järjestelmä on.
+Toiselta näkökulmalta katsottuna taas voi olla, että juuri mahdollisimman paljon halutaan nähdä katsomatta lähdekoodia, koska se joko ei ole saatavilla tai se on kehittäjälle liian monimutkaista ja aikaavievää käydä kokonaan läpi. Tähän tarkoitukseen sopivat UML:n avulla luodut kaaviot järjestelmän rakenteeesta, josta pystytään näkemään erilaisia ohjelmistojärjestelmän attribuutteja esimerkiksi kuinka testattava järjestelmä on.
 
 %Chapt. 7 & 8 + Arch views -paperi + What is an architectural description?
 %Jos järjestelmää ei ole vielä olemassa lainkaan, voidaan järjestelmän arkkitehtuuria lähteä ensin rakentamaan iteratiivisesti kolmen eri vaiheen kautta \citep[s. 97-115]{gorton_understanding_2011}: määritellään arkkitehtuuriset vaatimukset; luodaan rakenne, joka tukee näitä vaatimuksia; testataan, että rakenne tukee vaatimuksia. Arkkitehtuurille asetetut vaatimukset syntyvät toiminnallisten ja sidosryhmien asettamien vaatimusten tuloksena, koska ne yhdessä luovat tärkeimmät vaatimukset ja rajoitukset ohjelmistojärjestelmälle. Esimerkkinä järjestelmälle asetettavista vaatimuksista saattaa olla, että sen on pystyttävä tukemaan useita eri käyttöliittymiä. Tämä vaatimus voidaan taas ryhmittää tiettyyn laatuvaatimukseen, kuten useat muutkin järjestelmälle asetetut vaatimukset \citep[s. 117]{Ran:1998:ASV:288408.288438}. Tässä tapauksessa vaatimus ryhmitettäisiin muokattavuus-laatuvaatimuksen alle. Seuraavassa vaiheessa valitaan tätä laatuvaatimusta tukeva tyyli (architectural style), jota koko järjestelmä joutuu noudattamaan. Esimerkiksi N-tason -malli tukee muokattavuutta hyvin \citep[s. 103]{gorton_understanding_2011}. Tämän jälkeen järjestelmän keskeisimmät komponentit suunnitellaan ja sijoitetaan ne oikeisiin alueisiin, jotka valittu arkkitehtuurinen tyyli tuo tullessaan. Komponenttien väliset suhteet mallinnetaan pitämällä vastuut erillään, suhteet mahdollisimman vähäisinä sekä käyttämällä hyödyksi piilottamista (architectural decomposition). Lopuksi pystytään luomaan skenaarioita ja testaamaan niiden avulla, että onko luotu arkkitehtuuri sopiva. Komponenttien määrittely mahdollistaa arkkitehtuurin rakenteen kuvaamisen ja siten järjestelmästä on mahdollista luoda erilaisia näkymiä erilaisille sidosryhmille. Rakennetta pystytään kuvaamaan N-tason -mallin avulla erittäin korkealla tasolla, jos halutaan tuoda esille juurikin näkökulma muokattavuuteen, mutta myös matalemmalla tasolla, kun ohjelmistokehittäjä haluaa ymmärtää miten komponentit kommunikoivat keskenään.
@@ -287,14 +287,16 @@ Toiselta näkökulmalta katsottuna taas voi olla, että juuri mahdollisimman pal
 
 \subsection{UML}
 
-UML eli \textit{Unified Modeling Language} on kokoelma erilaisia työkaluja näkymien luomiseen. Se määrittelee x määrän eri tarkoituksiin. \citep{UML}.
+UML eli \textit{Unified Modeling Language} on visuaalinen formalisoitu mallinnuskieli näkymien luomiseen \citep{UML}, joka on muodostunut \textit{de facto}-standardiksi ohjelmistoarkkitehtuurin kuvauksessa ja luomisessa. UML:n avulla voidaan ohjelmistoa mallintaa kolmelta eri näkökulmalta: kehitystä täydentävät mallit, käyttäytymisen kuvaamiseen tarkoitetut mallit ja rakennetta kuvaavat mallit. Käytännössä sen avulla pystytään siis kuvaamaan esimerkiksi jokainen sekä 4+1 -mallin että \textit{Views and Beyond}-mallin näkymä käyttäen hyväksi UML:n tarjoamaa 13 erilaista kaaviota. Arkkitehtuurin kuvauksen kannalta relevanteimmat ja suosituimmat kaaviot ovat luokkakaavio ja komponenttikaavio, koska niiden avulla saadaan kuvattua erittäin tarkasti ja monipuolisesti järjestelmän rakennetta. Luokkakaaviossa huomio keskittyy konkreettisten luokkien ja niiden välisten suhteiden kuvaamiseen, kun taas komponenttikaavio kuvaa korkeammalla tasolla järjestelmää komponenteittain, joita yhdistävät niiden tarjoamat rajapinnat.   
+
+UML sopii ominaisuuksiensa takia erittäin hyvin olio-pohjaisten ohjelmien kuvaamiseen tarjoamalla tuen muunmuassa periytymisen ja rajapintojen kuvaamiseen. Tämän takia se on myös otettu tässä tutkimuksessa erityisasemaan järjestelmän kuvaamisessa.
 
 
 \section{Testattavuus laadullisena tekijänä}
 Testattavuus luetaan kuuluvaksi ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Laatuvaatimuksena se ei kuitenkaan ole aina edes kovin näkyvä esimerkiksi asiakkaalle mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattavaa järjestelmää on myös vaikea ylläpitää, ja ylläpidettävä järjestelmä on sekä asiakkaalle että kehittäjälle tärkeä ominaisuus.
 
 % Yksikkö vs integraatio vs regressio testauksessa.
-Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi yleisintä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä siis löytävän itse viat, mutta testattavuus taas löytää paikat, joissa viat voivat sijaita \citep[s. 19]{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä, mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
+Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi yleisintä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien kuten luokkien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä siis löytävän itse viat, mutta testattavuus taas löytää paikat, joissa viat voivat sijaita \citep[s. 19]{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä, mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
 
 
 \subsection{Testattavuuden arviointi} \label{contro_and_observ}
@@ -325,7 +327,7 @@ Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa
 \begin{itemize}
 	\item ymmärtää dekomposition mahdollisuus
 	\item tunnistaa moduulit, joiden DRR-arvo on korkea ja tehdä ne mahdollisimman pieniksi ja yksinkertaisiksi
-	\item tunnistaa rajapinta korkean DRR-arvon moduuleille siten, että rajapinta paljastaa tarpeeksi tietoa
+	\item tunnistaa rajapinta korkean DRR-arvon moduuleille siten, että rajapinta paljastaa tarpeeksi tietoa moduulien sisäisestä tilasta
 	\item eriyttää korkean DRR-arvon moduulit toisistaan \citep[s. 23]{Voas:1995:STN:624607.625469}.
 \end{itemize}
 
@@ -358,7 +360,7 @@ Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on eri
 \noindent
 Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
 
-\citep{Khan:2009:MBT:1507195.1507204} käyttävät taas seuraavaa neljää metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä. Ne vahvasti korreloivat edellisiin metriikoihin 
+\citep{Khan:2009:MBT:1507195.1507204} käyttävät taas seuraavaa neljää metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä, jotka vahvasti korreloivat edellisiin metriikoihin 
 
 \begin{itemize}
 	\item enkapsulaation taso
@@ -377,7 +379,8 @@ Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määrite
 	\item omien metodien määrä ja muiden luokkien metodien määrä, joita omat metodit käyttävät.
 \end{itemize} 
 
-Nämä kaikki edellämainitut mittarit ovat ominaisuuksiltaan sellaisia, että niitä voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla. Usein ohjelmistokehittäjät joutuvat tilanteisiin, joissa ainoa järkevä näkymä järjestelmään on abstraktilla tasolla oleva luokkakaavio.  
+Nämä kaikki edellämainitut mittarit ovat ominaisuuksiltaan sellaisia, että niitä voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla ja ne ottavat kantaa pelkästään testattavuuteen vain yhden luokan näkökulmasta. 
+Tietenkin olisi mahdollista laskea jokaiselle luokalla edelliset metriikat ja päätellä ohjelmistojärjestelmän testattavuudesta jotain, mutta on myös todennäköistä kehittäjän joutua tilanteisiin, joissa ainoa järkevä ja nopea näkymä järjestelmään on abstraktilla tasolla oleva luokkakaavio.   
 
 \section{Testattavuus arkkitehtuurisella tasolla}
 
@@ -393,7 +396,7 @@ Hyvää testattavuutta ei ole kovinkaan eksplisiittisesti määritelty arkkiteht
 
 Järjestelmän tarkasteltavuus (monitorability) on näistä yksi laajalti vaikuttava ominaisuus, ja se nostaa positiivisesti testattavuudenkin tasoa \citep{mari_impact_2003}. Tarkasteltavuus ohjelmistojärjestelmissä voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
 
-%Oliopohjaisissa ohjelmistojärjestelmissä koetaan vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Binder määrittelee myös muita ominaisuuksia testattavalle järjestelmälle, kuten sisäänrakennettu testausominaisuus (built-in test) ja järjestelmän jäljitettävyys, jonka avulla testien esille tuomat viat on helppo paikallistaa. Rakenteelliselta tasolta hän painottaa kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua. Binderin metriikoista kuitenkin osa saattaa peittyä täysin abstraktiotasojen alle esimerkiksi komponenttimallissa, jolloin käytössä olisi oltava useampi näkymä tai erittäin tarkka kuvaus ohjelmistojärjestelmästä. 
+Oliopohjaisissa ohjelmistojärjestelmissä koetaan vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Binder määrittelee myös muita ominaisuuksia testattavalle järjestelmälle, kuten sisäänrakennettu testausominaisuus (built-in test) ja järjestelmän jäljitettävyys, jonka avulla testien esille tuomat viat on helppo paikallistaa. Rakenteelliselta tasolta hän painottaa kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua.
 
 Joshi ja Sardana \citep{joshi_design_2014} tutkivat ominaisuuksia, joita järjestelmän pitäisi painottaa, jos järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava. Näitä testattavuuteen korkealla tasolla vaikuttavia ominaisuuksia järjestelmässä löydettiin olevan
 	
@@ -412,7 +415,7 @@ He esittävät mahdollisten ongelmien eliminoimiseen järjestelmän modulaarista
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen}
 
-Suuriosa tunnetuista testattavuutta määrittelevistä mittareista tarvitsee lähdekoodin tuekseen, mutta Bengtsson \citep{bengtsson1998towards} on määritellyt osan arkkitehtuurisen tason mittareita, jotka määrittelevät järjestelmän ylläpidettävyyttä. Ylläpidettävyys on taas vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Tunnistetut mittarit ovat arkkitehtuurisille elementeille 
+Bengtsson \citep{bengtsson1998towards} on määritellyt osan arkkitehtuurisen tason mittareita, jotka määrittelevät järjestelmän ylläpidettävyyttä. Ylläpidettävyys on taas vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Tunnistetut mittarit ovat arkkitehtuurisille elementeille 
 
 \begin{itemize}
 	\item metodien määrä elementin rajapinnassa
@@ -424,13 +427,12 @@ Suuriosa tunnetuista testattavuutta määrittelevistä mittareista tarvitsee lä
 	\item elementin metodien ja parametrien määrä
 \end{itemize}
 
-On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Toisaalta lähdekoodi-taso on aina se täydellinen kuvaus järjestelmästä, mutta joskus todellisten ongelmien esilletulo vaatii korkean tason kuvauksen järjestelmään. Edellisistä mittareista myös nähdään, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta ja sitä voidan havaita tutkimalla ohjelmistojärjestelmän komponenttien välisiä suhteita.
+On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Kyseisiä metriikoita voitaisiin havaita esimerkiksi muokatuista UML-komponenttimalleista ja ne toimivatkin enemmän yleispätevinä ohjeina komponenttien toteutuksille. Edellisistä mittareista nähdään myös, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta ja sitä voidan havaita tutkimalla ohjelmistojärjestelmän komponenttien välisiä suhteita.
 
 \subsubsection{UML-kaaviot testattavuuden mittaamisessa}
 
-UML-luokkakaavio on todella yleisesti käytössä oleva mallinnustapa, ja juuri sen avulla nähdään hyvin järjestelmän rakennetta. Se toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002}. 
-
-\citep{baudry_measuring_2003} määrittelee testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
+UML-luokkakaavio toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002}. 
+Baudry ym. määritteleekin testattavuuden anti-mallin (testability anti-pattern) juuri luokkakaavioiden avulla tulevaksi ilmiöksi \citep{baudry_measuring_2003}. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
 % UML \citep{baudry_testability_2002}
 
@@ -456,7 +458,7 @@ Näiden lisäksi Jungmayr \citep{Jungmayr:2002} käsittelee testauksen kannalta 
 %Järjestelmä voidaan suunnitella tukemaan hyvää testattavuutta \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
  
-Löydetyistä mittareista huomataan, että ne tarkastelevat hieman korkeammalla tasolla testattavuutta, kuin aiemmat lähdekoodi-tasoiset mittarit. Ne mittaavat esimerkiksi komponenttien ominaisuuksia ja yhteyksiä, jotka tulevat esille kunnolla vasta arkkitehtuurisella tasolla. Komponenttien sekä yhteyksien tarkastelu oli myös luvussa \ref{ark} esitelty eräs näkemys ohjelmistoarkkitehtuuriin ja on järjestelmän todellisen testattavuuden määrittelemisen kannalta parempi, jos testattavuutta tarkastellaan korkealla tasolla. Liian tarkka kuvaus järjestelmästä vaikeuttaa todellisten ongelmien näkemistä, koska se vie aikaa ymmärtää ja keskittyy liian pikkutarkkoihin asioihin, jotka eivät kaikki välttämättä ole relevantteja testattavuuden analysoinnin kannalta. Ylätason kuvauksella on etuna myös se, että sen avulla pystytään löytämään helposti usein esiintyviä ongelmallisia tilanteita, joiden tunnistaminen ja välttäminen auttaa järjestelmän testattavuuden hallinnassa.
+UML on selvästi mahdollistanut testattavuuden arvioimisen ohjelmistojärjestelmissä, koska löydetyistä mittareista huomataan, että ne mittaavat esimerkiksi komponenttien ominaisuuksia ja yhteyksiä, jotka tulevat esille kunnolla vasta arkkitehtuurisella tasolla. Komponenttien sekä yhteyksien tarkastelu oli myös luvussa \ref{ark} esitelty eräs näkemys ohjelmistoarkkitehtuuriin ja on järjestelmän todellisen testattavuuden määrittelemisen kannalta parempi, jos testattavuutta voidaan tarkastellaan korkealla tasolla. Liian tarkka kuvaus järjestelmästä vaikeuttaa todellisten ongelmien näkemistä, koska se vie aikaa ymmärtää ja keskittyy liian pikkutarkkoihin asioihin, jotka eivät kaikki välttämättä ole relevantteja testattavuuden analysoinnin kannalta. Ylätason kuvauksella on etuna myös se, että sen avulla pystytään löytämään helposti usein esiintyviä ongelmallisia tilanteita, joiden tunnistaminen ja välttäminen auttaa järjestelmän testattavuuden hallinnassa.
 
 \subsection{Arkkitehtuuriset hajut ja testattavuus}
 
@@ -465,7 +467,7 @@ Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmie
 \begin{itemize}
 	\item suunnittelumalli väärässä kontekstissa
 	\item suunnitteluabstrahoinnin (design abstraction) käyttö niin, että sillä on ei-toivottuja vaikutuksia
-	\item suunnitteluabstrahoinnin käyttö väärällä tarkkuuden tasolla 
+	\item suunnitteluabstrahoinnin käyttö väärällä tarkkuuden tasolla.
 \end{itemize} 
 
 %Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
@@ -494,7 +496,7 @@ Arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunni
 \end{itemize}
 
 \noindent
-\textit{Connector envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia ja tilanteena johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered Parasitic Functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virhe vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
+\textit{Connector Envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia ja tilanteena johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana tuli esille. \textit{Scattered Parasitic Functionality} taas johtuu, jos useammalla komponentilla on sama vastuu ja ne ovat vastuussa myös jostain muusta vastuusta. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virhe vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
 
 Näistä kahdesta arkkitehtuurisesta hajusta voidaan huomata, että ne pyrkivät löytämään sekä huonon koheesion että mahdollisen riippuvuuksien jakautumisen turhan laajalle. Garcian ym. tutkimuksessa ei kuitenkaan määritellä keinoja löytämään näitä arkkitehtuurisia hajuja  
 
@@ -503,29 +505,36 @@ Näistä kahdesta arkkitehtuurisesta hajusta voidaan huomata, että ne pyrkivät
 
 %Arkkitehtuurisia hajuja + Hybridi hajuja (koodi ja arkk.) ohjelmistojen product lineissa \citep{vale_bad_2014}
 
-Vaikka arkkitehtuurisia hajuja on löydetty testattavuuden kannalta muutamia, niin niiden tunnistamiselle ei ole annettu yhtä oikeaa ratkaisua. Eräs näistä keinosta on esimerkiksi 
+Vaikka arkkitehtuurisia hajuja on löydetty testattavuuden kannalta muutamia, niin niiden tunnistamiselle ei ole annettu yhtä oikeaa ratkaisua.  Vale ym. ovat myös tutkimuksessaan tuoneet esille muunmuassa hybridihajut, jotka ovat sekoitus koodihajuja ja arkkitehtuurisia hajuja \citep{vale_bad_2014}. Koodipoikkeama (code anomaly) luetaan hybridihajuksi, jos
 
+\begin{itemize}
+	\item sen vaikuttamat luokat ovat vastuussa arkkitehtuurisista elementeistä
+	\item vaikuttammissa arkkitehtuurisissa elementeissä on arkkitehtuurisia ongelmia.
+\end{itemize}
 
+\noindent
+Hybridihajujen tunnistaminen saattaa helpottaa arkkitehtuuristen hajujen löytämistä, koska löytämällä koodihajujen pohjalta arkkitehtuurisiin vaikuttavia ongelmia voidaan löytää arkkitehtuuriset hajutkin. Tämä on validi myös toiseen suuntaan, josta \citep[s. 47]{macia_impact_2011} on löytänyt.
 
+%Tietyt koodihajut voivat olla merkki arkkitehtuuristen hajujen olemassaolosta (aspect oriented architecture + should be others too) \citep[s. 47]{macia_impact_2011}. SPF -> CB (Composition Bloat), GA (God Aspect related to God Class/God Interface), GP (God Pointcut), DP (Duplicate Pointcut). CEn -> GP.
 
 %Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
 
 %Architecture sensitive analysis (code metrics) \citep[s. 185]{macia_enhancing_2013} $\rightarrow$ God Classes were related to Connector Envy, Scattered Functionality. Misplaced Class were related to Cyclic Dependencies, Scattered Functionality.
 
-%Tietyt koodihajut voivat olla merkki arkkitehtuuristen hajujen olemassaolosta (aspect oriented architecture + should be others too) \citep[s. 47]{macia_impact_2011}. SPF -> CB (Composition Bloat), GA (God Aspect related to God Class/God Interface), GP (God Pointcut), DP (Duplicate Pointcut). CEn -> GP. 
+ 
 
 %Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muunmuassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. "Code Smells Relation View" diagrammi \citep[s. 5]{fontana_towards_2015}. Koodihajut vaikeuttavat Coupling on kaikki, koodihajut vaikeuttavat koheesiota on GC, BM, DC. 
 
   
 
-\subsection{Sunnittelumallien vaikutus testaukseen}
+%\subsection{Sunnittelumallien vaikutus testaukseen}
 
-Mitä on? Miten vaikuttaa rakenteeseen? Mitä  hyötyä? \citep{baudry_measuring_2003}.
+%Mitä on? Miten vaikuttaa rakenteeseen? Mitä  hyötyä? \citep{baudry_measuring_2003}.
 
 
-Composition-patternin analyysi -> kansio sisältää useita tiedostoja ja kansioita -> sykli. Voidaan helpottaa lisäämällä rajoite (constraint) tai rajapinta mielummin kuin abstraktiluokka. 
+%Composition-patternin analyysi -> kansio sisältää useita tiedostoja ja kansioita -> sykli. Voidaan helpottaa lisäämällä rajoite (constraint) tai rajapinta mielummin kuin abstraktiluokka. 
 
-Vaikeita patterneita testata: Mediator (similar to Observer) \& Visitor.
+%Vaikeita patterneita testata: Mediator (similar to Observer) \& Visitor.
 
 \subsection{UML uusien näkymien tukena}
 

@@ -503,7 +503,6 @@ Näistä kahdesta arkkitehtuurisesta hajusta voidaan huomata, että ne pyrkivät
 
 \subsubsection{Koodihajujen ja arkkitehtuuristen hajujen suhde}
 
-%Arkkitehtuurisia hajuja + Hybridi hajuja (koodi ja arkk.) ohjelmistojen product lineissa \citep{vale_bad_2014}
 
 Vaikka arkkitehtuurisia hajuja on löydetty testattavuuden kannalta muutamia, niin niiden tunnistamiselle ei ole annettu yhtä oikeaa ratkaisua.  Vale ym. ovat myös tutkimuksessaan tuoneet esille muunmuassa hybridihajut, jotka ovat sekoitus koodihajuja ja arkkitehtuurisia hajuja \citep{vale_bad_2014}. Koodipoikkeama (code anomaly) luetaan hybridihajuksi, jos
 
@@ -513,15 +512,31 @@ Vaikka arkkitehtuurisia hajuja on löydetty testattavuuden kannalta muutamia, ni
 \end{itemize}
 
 \noindent
-Hybridihajujen tunnistaminen saattaa helpottaa arkkitehtuuristen hajujen löytämistä, koska löytämällä koodihajujen pohjalta arkkitehtuurisiin vaikuttavia ongelmia voidaan löytää arkkitehtuuriset hajutkin. Tämä on validi myös toiseen suuntaan, josta \citep[s. 47]{macia_impact_2011} on löytänyt.
+Hybridihajujen tunnistaminen saattaa helpottaa arkkitehtuuristen hajujen löytämistä. Löytämällä esimerkiksi koodihajujen pohjalta arkkitehtuurisiin vaikuttavia ongelmallisia luokkia, voidaan tunnistaa arkkitehtuurisella tasolla vastaavat arkkitehtuuriset hajut ja elementit.
 
-%Tietyt koodihajut voivat olla merkki arkkitehtuuristen hajujen olemassaolosta (aspect oriented architecture + should be others too) \citep[s. 47]{macia_impact_2011}. SPF -> CB (Composition Bloat), GA (God Aspect related to God Class/God Interface), GP (God Pointcut), DP (Duplicate Pointcut). CEn -> GP.
+Lisää arkkitehtuuristen sekä koodihajujen yhteyksistä on tutkinut Macia ym. \citep{macia_impact_2011}. He löysivät, että tietyt koodihajut ovat indikaattoreita arkkitehtuurisista hajuista. Kahteen aiemmin mainittuun testattavuutta huonontaviin hajuihin he lukivat seuraavat vastaavat koodihajut aspekti-orientoituneissa järjestelmissä
+
+\begin{center}
+	\begin{tabular}{| l | l | p{3cm} |}
+	\hline
+	Koodihaju & Indikoi arkkitehtuurisesta hajusta & Syy \\ \hline
+	\textit{God Aspect} & \textit{SPF} & Liikaa vastuita \\ \hline
+	\textit{God Pointcut} & \textit{SPF, Connector Envy} & Liikaa suoria vastuita \\ \hline
+	\textit{Composition Bloat} & \textit{SPF} & Liikaa riippuvuuksia \\ \hline
+	\textit{Duplicate Pointcut} & \textit{SPF} & Samankaltaista toiminnallisuutta \\ \hline
+	\end{tabular}
+\end{center}
 
 %Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
 
 %Architecture sensitive analysis (code metrics) \citep[s. 185]{macia_enhancing_2013} $\rightarrow$ God Classes were related to Connector Envy, Scattered Functionality. Misplaced Class were related to Cyclic Dependencies, Scattered Functionality.
 
- 
+
+\noindent
+Vaikka koodihajut eivät suoraan koske juuri olio-pohjaisia järjestelmiä, niin voidaan niistä silti nähdä, että ongelmat tulevat liiallisista vastuista, liiallisista riippuvuuksista ja samankaltaisesta toiminnallisuudesta.
+
+
+
 
 %Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muunmuassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. "Code Smells Relation View" diagrammi \citep[s. 5]{fontana_towards_2015}. Koodihajut vaikeuttavat Coupling on kaikki, koodihajut vaikeuttavat koheesiota on GC, BM, DC. 
 

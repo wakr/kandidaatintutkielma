@@ -291,23 +291,24 @@ UML sopii ominaisuuksiensa takia erittäin hyvin olio-pohjaisten ohjelmien kuvaa
 
 
 \section{Testattavuus laadullisena tekijänä} \label{testability_main}
-Testattavuus luetaan kuuluvaksi ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi laatuvaatimuuksista. Laatuvaatimuksena se ei kuitenkaan ole aina edes kovin näkyvä esimerkiksi asiakkaalle mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattavaa järjestelmää on myös vaikea ylläpitää, ja ylläpidettävä järjestelmä on sekä asiakkaalle että kehittäjälle tärkeä ominaisuus.
+Testattavuus luetaan kuuluvaksi ylläpidettävyyden alle \citep{ISO/IEC25010:2011} ja on täten yksi ohjelmistojärjestelmän laadullisista tekijöistä. Laatuvaatimuksena se ei kuitenkaan ole aina edes kovin näkyvä esimerkiksi asiakkaalle mutta ohjelmistokehittäjälle se tulee esille useassakin kontekstissa. Vaikeasti testattavaa järjestelmää on myös vaikea ylläpitää, ja ylläpidettävä järjestelmä on sekä asiakkaalle että kehittäjälle tärkeä ominaisuus.
 
 % Yksikkö vs integraatio vs regressio testauksessa.
-Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi yleisintä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien kuten luokkien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä siis löytävän itse viat, mutta testattavuus taas löytää paikat, joissa viat voivat sijaita \citep[s. 19]{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä, mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep[s. 114]{voas_improving_1992}. 
+Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan, joista kaksi yleisintä ovat yksikkö -ja integraatiotestaus. Yksikkötestauksessa varmistetaan järjestelmän komponenttien kuten luokkien toiminnallisuutta itsenäisesti, kun taas integraatiotestauksessa testaus kohdistuu järjestelmän rajapintoihin ja komponenttien yhteistoiminnallisuuteen. Testauksen voidaan nähdä siis löytävän itse viat, mutta testattavuus taas löytää paikat, joissa viat voivat sijaita \citep[s. 19]{Voas:1995:STN:624607.625469}. Testattavuus tukee täten testausta ja testausprosessia, koska sen avulla voidaan määritellä, mikä on todennäköisyys sille, että järjestelmässä olevat viat löydetään \citep{voas_improving_1992}. 
 
 
 \subsection{Testattavuuden arviointi} \label{contro_and_observ}
 
-Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee, kuinka mahdollista testien tuloksia on tarkastella, ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää vaikuttavatko tietyt syötteet testituloksiin, ja hallittavuus taas voidaan nähdä siitä kuinka helppo on tuottaa jokin tietty tulos syötteestä. %\citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
+Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee, kuinka mahdollista testien tuloksia on tarkastella, ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. 
 
-%Domain-to-range indicates observability by comparing the size of the output range of a component to size of its input domain \citep[s. 2]{Jungmayr:2002} \citep[s. 20-21]{Voas:1995:STN:624607.625469}
+Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää vaikuttavatko tietyt syötteet testituloksiin, ja hallittavuus taas voidaan nähdä siitä kuinka helppo on tuottaa jokin tietty tulos syötteestä. %\citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
+Sen parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan havaita implisiittistä tiedonkatoamista \citep{Voas:1995:STN:624607.625469}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon. DRR-analyysi on hieman ongelmallinen, koska se vaatii ohjelmistojärjestelmän täydellisen lähdekoodin tuekseen ja lähdekoodi-analyysit ovat raskaita teettää käsin.
 
-Havaittavuuden parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan havaita implisiittistä tiedonkatoamista \citep{Voas:1995:STN:624607.625469}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon, mutta sen käyttäminen vaatii ohjelmistojärjestelmän lähdekoodin arvioimisen tueksi.
+% hallittavuus???  
 
 
 
-\subsection{Hyvä testattavuus}
+\subsection{Testattavuuden parantaminen}
 
 %Hyvä testattavuus on järjestelmän laadulle hyvä ominaisuus \citep[s. 20]{Voas:1995:STN:624607.625469}. 
 
@@ -320,7 +321,7 @@ Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa
 
 %Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
 
-\citep{Freedman:1991:TSC:126218.126229} on määritellyt testattavan komponentin ominaisuuksiksi: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota seuraaviin tekijöihin \citep{voas_improving_1992} 
+Freedman on määritellyt testattavan komponentin ominaisuuksiksi \citep{Freedman:1991:TSC:126218.126229}: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota seuraaviin tekijöihin \citep{voas_improving_1992} 
 
 \begin{itemize}
 	\item ymmärtää dekomposition mahdollisuus
@@ -330,13 +331,13 @@ Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa
 \end{itemize}
 
 
-On siis todella tärkeää eriyttää komponentteja mahdollisimman paljon toisistaan ja tehdä kommunikaatio mahdollisimman kontrolloitavaksi hyvän testattavuuden aikaansaamiseksi. Varsinkin helposti isoiksi muodostuvien komponenttien pitäisi olla kytkentätasoltaan mahdollisimman kevyitä ja riippuvuuksien minimissään tai niistä luotavien testien tekeminen vaikeutuu ja testitapausten koko kasvaa erittäin suuriksi.
+On siis todella tärkeää eriyttää komponentteja mahdollisimman paljon toisistaan ja tehdä kommunikaatio mahdollisimman kontrolloitavaksi hyvän testattavuuden aikaansaamiseksi. Varsinkin helposti isoiksi muodostuvien komponenttien pitäisi olla kytkentätasoltaan mahdollisimman kevyitä ja riippuvuuksien minimissään tai niistä luotavien testien tekeminen vaikeutuu ja testitapausten koko kasvaa erittäin suuriksi. Myös ison ja tärkeän toiminnallisuuden kerääntymistä vain muutaman komponentin vastuulle voi olla merkki liiallisista DRR-arvoista, joka pitäisi hoitaa välittömästi tai testaus voi vaikeutua huomattavan paljon.
 
 
 
-\subsection{Huono testattavuus}
+\subsection{Testausta heikentävät ominaisuudet}
 
-Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Tiedon piilottaminen on hyvin yleinen tapa olio-ohjelmoinnissa, ja liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska hallittavuus heikkenee. 
+Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Tiedon piilottaminen on hyvin yleinen tapa olio-ohjelmoinnissa, ja liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska hallittavuus heikkenee. Esimerkiksi jos ohjelmistojärjestelmä suunnitellaan niin tiiviiksi, että sisäinen tila jää täysin pimentoon testauksenkin aikana. Tällöin virhetilanteessa on hyvin vaikea sanoa, että mistä päin virhe syntyi ja virheen paikallistaminen saattaa viedä aikaa.
 
 Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
 

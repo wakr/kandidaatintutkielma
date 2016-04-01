@@ -412,7 +412,7 @@ Joshi ja Sardana \citep{joshi_design_2014} tutkivat ominaisuuksia, joita järjes
 \noindent
 He esittävät mahdollisten ongelmien eliminoimiseen järjestelmän modulaarista rakennetta ja UML:n muokkaamista sekä UML-stereotyyppien käyttöä. UML kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla saadaan muokattua näkymää tiettyyn suuntaan.
 
-\subsection{Arkkitehtuurin testattavuuden mittaaminen}
+\subsection{Arkkitehtuurin testattavuuden mittaaminen} \label{arch_testability_measurement}
 
 Bengtsson \citep{bengtsson1998towards} on määritellyt osan arkkitehtuurisen tason mittareita, jotka määrittelevät järjestelmän ylläpidettävyyttä. Ylläpidettävyys on taas vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Tunnistetut mittarit ovat arkkitehtuurisille elementeille 
 
@@ -428,7 +428,7 @@ Bengtsson \citep{bengtsson1998towards} on määritellyt osan arkkitehtuurisen ta
 
 On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Kyseisiä metriikoita voitaisiin havaita esimerkiksi muokatuista UML-komponenttimalleista ja ne toimivatkin enemmän yleispätevinä ohjeina komponenttien toteutuksille. Edellisistä mittareista nähdään myös, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta ja sitä voidan havaita tutkimalla ohjelmistojärjestelmän komponenttien välisiä suhteita.
 
-\subsubsection{UML-kaaviot testattavuuden mittaamisessa}
+\subsubsection{UML-kaaviot testattavuuden mittaamisessa} \label{uml_arch_test}
 
 UML-luokkakaavio toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002}. 
 Baudry ym. määritteleekin testattavuuden anti-mallin (testability anti-pattern) juuri luokkakaavioiden avulla tulevaksi ilmiöksi \citep{baudry_measuring_2003}. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
@@ -459,7 +459,7 @@ Näiden lisäksi Jungmayr \citep{Jungmayr:2002} käsittelee testauksen kannalta 
  
 UML on selvästi mahdollistanut testattavuuden arvioimisen ohjelmistojärjestelmissä, koska löydetyistä mittareista huomataan, että ne mittaavat esimerkiksi komponenttien ominaisuuksia ja yhteyksiä, jotka tulevat esille kunnolla vasta arkkitehtuurisella tasolla. Komponenttien sekä yhteyksien tarkastelu oli myös luvussa \ref{ark} esitelty eräs näkemys ohjelmistoarkkitehtuuriin ja on järjestelmän todellisen testattavuuden määrittelemisen kannalta parempi, jos testattavuutta voidaan tarkastellaan korkealla tasolla. Liian tarkka kuvaus järjestelmästä vaikeuttaa todellisten ongelmien näkemistä, koska se vie aikaa ymmärtää ja keskittyy liian pikkutarkkoihin asioihin, jotka eivät kaikki välttämättä ole relevantteja testattavuuden analysoinnin kannalta. Ylätason kuvauksella on etuna myös se, että sen avulla pystytään löytämään helposti usein esiintyviä ongelmallisia tilanteita, joiden tunnistaminen ja välttäminen auttaa järjestelmän testattavuuden hallinnassa.
 
-\subsection{Arkkitehtuuriset hajut ja testattavuus}
+\subsection{Arkkitehtuuriset hajut ja testattavuus} \label{arch_smells_and_testability}
 
 Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla ja vaativat melkein aina lähdekoodin tunnistamisen tueksi. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuten sekä ylläpidettävyyteen. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muunmuassa 
 
@@ -513,7 +513,9 @@ Hybridihajujen tunnistaminen saattaa helpottaa arkkitehtuuristen hajujen löytä
 
 Lisää arkkitehtuuristen sekä koodihajujen yhteyksistä on tutkinut Macia ym. \citep{macia_impact_2011}. He löysivät, että tietyt koodihajut ovat indikaattoreita arkkitehtuurisista hajuista. Kahteen aiemmin mainittuun testattavuutta huonontaviin hajuihin he lukivat seuraavat vastaavat koodihajut aspekti-orientoituneissa järjestelmissä
 
+
 \begin{center}
+\begin{table}[ht]
 	\begin{tabular}{| l | l | m{3.2cm} |}
 	\hline 
 	\textbf{Koodihaju} & \textbf{Arkkitehtuurinen haju} & \textbf{Syy} \\ \hline
@@ -523,29 +525,36 @@ Lisää arkkitehtuuristen sekä koodihajujen yhteyksistä on tutkinut Macia ym. 
 	\textit{Duplicate Pointcut} & \textit{SPF} & Samankaltaista toiminnallisuutta \\ 
 	\hline
 	\end{tabular}
+	\caption{Aspekti-orientoituneiden koodihajujen suhde arkkitehtuurisiin hajuihin ja syyt hajujen esiintymisille.}
+	\label{tab:aspectSmells} 
+\end{table}
 \end{center}
 
 %Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
 
 \noindent
-Kyseiset koodihajut eivät suoraan koske juuri olio-pohjaisia järjestelmiä, mutta niistä voidaan silti nähdä, että ongelmat tulevat liiallisista vastuista, liiallisista riippuvuuksista ja samankaltaisesta toiminnallisuudesta. Nämä ominaisuudet ovat nähtävissä hyvin tavallisissakin olio-pohjaisissa järjestelmissä ja tätä faktaa tukee Macia ym. jatkotutkimus hieman samasta aiheesta, jossa tutkittiin arkkitehtuuri-herkkiä koodipoikkeamia\citep{macia_enhancing_2013}. He tulivat testattavuuden kannalta seuraaviin päätelmiin
+Vaikka taulukon \ref{tab:aspectSmells} koodihajut eivät suoraan koske juuri olio-pohjaisia järjestelmiä, niistä voidaan silti nähdä, että ongelmat tulevat liiallisista vastuista, liiallisista riippuvuuksista ja samankaltaisesta toiminnallisuudesta. Nämä ominaisuudet ovat nähtävissä hyvin tavallisissakin olio-pohjaisissa järjestelmissä ja tätä faktaa tukee Macia ym. jatkotutkimus hieman samasta aiheesta, jossa tutkittiin arkkitehtuuri-herkkiä koodipoikkeamia \citep{macia_enhancing_2013}. He tulivat testattavuuden kannalta seuraaviin päätelmiin
 
 \begin{center}
+\begin{table}[h]
 	\begin{tabular}{| l | l | m{3.5cm} |}
 	\hline
-	\textbf{Koodihaju} & \textbf{Arkkitehtuurinen haju} & \textbf{Selitys}\\ \hline
+	\textbf{Koodihaju} & \textbf{Arkkitehtuurinen haju} & \textbf{Syy}\\ \hline
 	\textit{God Class} & \textit{SPF, Connector Envy} &  Toiminnallisuus liian keskittynyttä, liialliset vastuut\\ \hline
 	\textit{Misplaced Class} & \textit{Cyclic Dependencies, SPF} & Riippuvuuksia enemmän komponentin ulkopuolelle kuin sisäpuolelle\\ \hline
 	\end{tabular}
+	\caption{Olioperäisten koodihajujen ja arkkitehtuuristen hajujen suhde sekä niiden syyt.}
+	\label{tab:codeSmells}
+\end{table}
 \end{center} 
 
 \noindent
-Arkkitehtuuristen hajujen ja koodihajujen välillä on siis jokin suhde, mutta tarkempi koodihajujen analysointi arkkitehtuuristen ongelmien tunnistamiseksi on aiheena kuitenkin tämän tutkielman ulkopuolella. 
+Taulukon \ref{tab:codeSmells} suhteista nähdään samanlaisuutta, kuin mitä taulukko \ref{tab:aspectSmells} näytti syinä sen koodihajuille. Suurimmat ongelmat kooditasollakin tulivat liiallisista riippuvuuksista ja huonosta vastuiden jaosta, joka saattaa johtaa yksittäisten komponenttien paisumiseen. Yksittäisten komponenttien paisuminen taas luo helposti huonoa kompositiota, toistuvaa toiminnallisuutta ja komponentteja, joiden harteilla on iso osa toiminnallisuuden toteuttamisesta. Nämä ongelmat realisoituvat arkkitehtuurisiksi hajuiksi arkkitehtuuritasolla ja niiden tunnistaminen kooditasolta arkkitehtuuriselle tasolle ja arkkitehtuuriselta tasolta kooditasolle on tärkeää myös testattavuuden kannalta.
 
 
 %Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muunmuassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. 
 
-Mielekkäämpi tarkastelu kohdistuukin enemmän aiheisiin kuten mistä koodihajut johtuvat tai mitkä tekijät koodihajuissa vaikuttavat arkkitehtuuristen hajujen esiintymiseen järjestelmissä. Tähän avuksi Fontana ym. loivat erityisen näkymän koodihajujen tunnistamiseksi ja tunnistivat kytkentään ja koheesioon vaikuttavia koodihajuja \citep{fontana_towards_2015}. Kytkentään vaikuttivat koodihajut, jotka olivat suoraan vastuussa muunmuassa
+Tarkastelu voidaan keskittää myös enemmän aiheisiin kuten mistä koodihajut johtuvat tai mitkä tekijät koodihajuissa vaikuttavat arkkitehtuuristen hajujen esiintymiseen järjestelmissä. Tähän avuksi Fontana ym. loivat erityisen näkymän koodihajujen tunnistamiseksi ja tunnistivat kytkentään ja koheesioon vaikuttavia koodihajuja \citep{fontana_towards_2015}. Kytkentään vaikuttivat koodihajut, jotka olivat suoraan vastuussa muunmuassa
 
 \begin{itemize}
 	\item suurista luokista (\textit{God Class})
@@ -555,9 +564,9 @@ Mielekkäämpi tarkastelu kohdistuukin enemmän aiheisiin kuten mistä koodihaju
 \end{itemize}
 
 \noindent
-Koheesioon vaikuttivat kolme ensimmäistä samaa tekijää.
+Koheesioon vaikuttivat kolme ensimmäistä samaa tekijää. Näistä löydetyistä tekijöistä arkkitehtuuritasolla kiinnostavimmat olisivat suuret luokat ja komponentit, joiden vastuualue on hajautunut liian laajalle sekä joiden toimintaa on vaikea muuttaa ilman muuttamatta muita komponentteja.
 
-On tutkimusten nojalla selvää, että hyvä kytkennän ja koheesion taso on tavoteltava ominaisuus sekä kooditasolla että arkkitehtuuri tasolla testattavuuden kannalta, mutta hyvän kytkennän ja koheesion määritteleminen on hankalaa.  
+On siis edellisten tutkimusten nojalla selvää, että hyvä kytkennän ja koheesion taso ovat tavoteltavia ominaisuuksia sekä kooditasolla että arkkitehtuuritasolla. Testattavuuden kannalta voidaan arvioida mitkä tekijät aiheuttavat kahta mainittua testattavuuteen vaikuttavaa arkkitehtuurista hajua, josta tuloksena saatiin, että merkkittäviä tekijöitä olivat vastuut, riippuvuudet, koheesio, kytkentä. Tekijöiden mittaamisen apuna arkkitehtuuriselta tasolta voidaan muunmuassa käyttää luvussa \ref{arch_testability_measurement} esiteltyjä mittareita ja tämän luvun pääluvun alussa esiteltyjä metriikoita arkkitehtuurisille hajuille.  
 
 %\subsection{Sunnittelumallien vaikutus testaukseen}
 
@@ -571,7 +580,7 @@ On tutkimusten nojalla selvää, että hyvä kytkennän ja koheesion taso on tav
 \subsection{UML uusien näkymien tukena}
 
 
-UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta tärkeitä näkökulmia arkkitehtuurisella tasolla, mutta sen tueksi on luotu useita menetelmiä, jotka hyödyntävät esimerkiksi jo valmista UML-luokkakaaviota. Eräs näistä on \textit{class dependency graph model} \citep{baudry_testability_2002}. Sen avulla on mahdollista nähdä 
+Standardi UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta tärkeitä näkökulmia arkkitehtuurisella tasolla, mutta sen tueksi on luotu useita menetelmiä, jotka hyödyntävät esimerkiksi jo valmista UML-luokkakaaviota. Eräs näistä on \textit{class dependency graph model} \citep{baudry_testability_2002}, joka kappaleessa \ref{uml_arch_test} tuli esille. Sen avulla on mahdollista nähdä 
 
 \begin{itemize}
 	\item luokkien välistä suurta interaktiota

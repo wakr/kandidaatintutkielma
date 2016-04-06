@@ -337,9 +337,9 @@ On siis todella tärkeää eriyttää komponentteja mahdollisimman paljon toisis
 
 \subsection{Testausta heikentävät ominaisuudet}
 
-Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Tiedon piilottaminen on hyvin yleinen tapa olio-ohjelmoinnissa, ja liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska hallittavuus heikkenee. Esimerkiksi jos ohjelmistojärjestelmä suunnitellaan niin tiiviiksi, että sisäinen tila jää täysin pimentoon testauksenkin aikana. Tällöin virhetilanteessa on hyvin vaikea sanoa, että mistä päin virhe syntyi ja virheen paikallistaminen saattaa viedä aikaa.
+Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Tiedon piilottaminen on esimerkiksi hyvin yleinen ja suositeltava tapa olio-ohjelmoinnissa, mutta liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska testauksen hallittavuus heikkenee. Ohjelmistojärjestelmä voidaan kuitenkin tarkoituksella suunnitella niin tiiviiksi, että sisäinen tila jää täysin tarkastelemattomaksi. Tällöin testauksen aikana syntyneessä virhetilanteessa on hyvin vaikea sanoa, että mistä päin virhe syntyi ja virheen paikallistaminen saattaa viedä aikaa.
 
-Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
+Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia \citep{Voas:1995:STN:624607.625469}. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
 
 
 
@@ -347,7 +347,28 @@ Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtav
 \subsection{Testattavuuden mittaaminen} \label{testability_measure}
 
 
-Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Oliopohjaisista järjestelmistä voidaan havaita seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}:
+Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon.
+Yksikkötestauksen näkökulmasta sitä on tutkinut Bruntink ja van Deursen \citep{Bruntink:2004}. He tutkivat hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin. Tutkimuksen testitapausten kasvuun ja pituuteen vaikuttivat eniten luokan 
+
+\begin{itemize}
+	\item toisten luokkien määrä, joita luokka kutsuu tai jonka kenttiin se viittaa
+	\item koko (rivien määrä)
+	\item omien metodien määrä ja muiden luokkien metodien määrä, joita omat metodit käyttävät.
+\end{itemize} 
+
+Khan ja Mustafa käyttävät taas seuraavaa neljää metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä \citep{Khan:2009:MBT:1507195.1507204}. 
+
+\begin{itemize}
+	\item enkapsulaation taso, jota mitataan metodien määrällä
+	\item uudelleenkäytön taso, jota mitataan luokkahierarkioiden koolla
+	\item kytkennän taso, jota mitataan luokkien välisten suhteiden määrällä
+	\item koheesion taso, jota mitataan metodien sukulaisuuden (relatedness) avulla.
+\end{itemize}   
+
+\noindent
+Ne korreloivat vahvasti edellisiin metriikoihin ja niistä voidaan nähdä, että ne ottavat kantaa neljään olio-ohjelmoinnin keskeiseen suunnitteluperiaatteisiin.
+
+Oliopohjaisista järjestelmistä voidaan havaita yleisesti seuraavat testaukseen vaikuttavat tekijät, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}
 
 \begin{itemize}
 	\item metodien määrä luokassa
@@ -357,43 +378,25 @@ Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on eri
 \end{itemize}
 
 \noindent
-Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, ja suuri periytymisaste tuo luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla, jolloin luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista. 
+Nämä tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, koska luokka käyttää hyvin paljon hyväkseen muiden luokkien toiminnallisuutta. Suuri periytymisaste tuo taas luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla. Tilanne voi johtaa siihen, että luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista ja luokan testaaminen vaatii käytännössä koko luokkahierarkien läpikäynnin. 
 
-\citep{Khan:2009:MBT:1507195.1507204} käyttävät taas seuraavaa neljää metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä, jotka vahvasti korreloivat edellisiin metriikoihin 
-
-\begin{itemize}
-	\item enkapsulaation taso
-	\item uudelleenkäytön taso
-	\item kytkennän taso
-	\item koheesion taso.
-\end{itemize}   
-
-% Testattavuuden mittareita lisää \citep{Bruntink:2004}.
-
-Lisää testattavuuden mittareita yksikkötestauksen näkökulmasta on määritelty \citep{Bruntink:2004}, jossa tutkittiin hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin. Tutkimuksen testitapausten kasvuun ja pituuteen vaikuttivat eniten luokan 
-
-\begin{itemize}
-	\item toisten luokkien määrä, joita luokka kutsuu tai jonka kenttiin se viittaa
-	\item koko (rivien määrä)
-	\item omien metodien määrä ja muiden luokkien metodien määrä, joita omat metodit käyttävät.
-\end{itemize} 
-
-Nämä kaikki edellämainitut mittarit ovat ominaisuuksiltaan sellaisia, että niitä voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla ja ne ottavat kantaa pelkästään testattavuuteen vain yhden luokan näkökulmasta. 
-Tietenkin olisi mahdollista laskea jokaiselle luokalla edelliset metriikat ja päätellä ohjelmistojärjestelmän testattavuudesta jotain, mutta on myös todennäköistä kehittäjän joutua tilanteisiin, joissa ainoa järkevä ja nopea näkymä järjestelmään on abstraktilla tasolla oleva luokkakaavio.   
+Esitellyistä mittareista nähdään paljon samanlaisuutta ja niistä voidaan kerätä yleisesti luokkien näkökulmasta muutama iso tekijä testattavuudessa; koko, itsenäinen toimiminen, riippuvuudet muista luokista ja periytyminen.  
+Osa edellämainituista mittareista on kuitenkin ominaisuuksiltaan sellaisia, että niitä voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla ja ne ottavat kantaa pelkästään testattavuuteen vain yhden luokan näkökulmasta. 
+Tietenkin olisi mahdollista laskea jokaiselle luokalle erikseen kyseiset mittarit, mutta kokonaisuuden tarkasteleminen tai keskittyminen vain tiettyyn testausta vaikuttavaan osa-alueeseen vaatii muita keinoja.
 
 \section{Testattavuus arkkitehtuurisella tasolla} \label{arch_testability_main}
 
-Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa. Testattavuutta voidaan tutkia esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. Toinen hyväksi osoittanut tapa on tutkia testattavuutta UML-luokkakaavioiden avulla, joiden avulla päästään tarkastelemaan tiettyä metriikoita, jotka muuten eivät näkyisi komponenttitasolla.  
+Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa. Testattavuutta voidaan tutkia esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. Toinen tapa on tutkia testattavuutta UML-luokkakaavioiden avulla, joiden avulla päästään tarkastelemaan tiettyä metriikoita, jotka muuten eivät näkyisi komponenttitasolla. UML-luokkakaavioiden avulla voidaan käyttää hyväksi esimerkiksi kaikkia kappaleen \ref{testability_measure} metriikoita, jotka eivät tarvitse lähdekoodia tuekseen. 
 
-Komponenttien testattavuutta on analysoitu erilaisten mallien avulla ja näistä eräs on Goan ja Shihn \citep{gao_component_2005} esittämä pentagrammimalli. Sen avulla jokaista komponenttia tarkastellaan viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muunmuassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään luomaan. 
+Yksittäisten komponenttien, eli luokista koostuvien kokonaisuuksien testattavuutta, on analysoitu erilaisten mallien avulla ja näistä eräs on Goan ja Shihn \citep{gao_component_2005} esittämä pentagrammimalli. Sen avulla jokaista komponenttia voidaan tarkastella viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muunmuassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään luomaan. 
  
 
 \subsection{Hyvä testattavuus arkkitehtuurissa} \label{good_testability}
 
+ 
+Eicklemann on määritellyt tiettyjen arkkitehtuuristen tyylien sopivan tietyille testausstrategioille \citep{Eickelmann:1996:MOS:243327.243602}, joten on selvää että valittu arkkitehtuurinen tyyli vaikuttaa jollain tasolla positiivisesti testattavuuteen. Paljon mielekkäämpää on kuitenkin tarkastella muita ominaisuuksia testattavalle arkkitehtuurille, jotta voitaisiin tarkastella enemmän, että mitkä tekijät tuovat testattavuutta arkkitehtuurille.
 
-Hyvää testattavuutta ei ole kovinkaan eksplisiittisesti määritelty arkkitehtuurisella tasolla ja sen määritteleminen tarkasti vaatisi hyvin monen arkkitehtuurisen tyylin läpikäynnin, koska jokainen arkkitehtuurinen tyyli sopii tiettyyn tilanteeseen tietyllä hetkellä. Esimerkiksi Eicklemann \citep{Eickelmann:1996:MOS:243327.243602} on määritellyt tiettyjen arkkitehtuuristen tyylien sopivan tietyille testausstrategioille. Useita määrittelyjä ja ominaisuuksia testattavalle arkkitehtuurille on pyritty kuitenkin havaitsemaan yleisellä tasolla.
-
-Järjestelmän tarkasteltavuus (monitorability) on näistä yksi laajalti vaikuttava ominaisuus, ja se nostaa positiivisesti testattavuudenkin tasoa \citep{mari_impact_2003}. Tarkasteltavuus ohjelmistojärjestelmissä voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
+Järjestelmän tarkasteltavuus (monitorability) on yksi laajalti vaikuttava ominaisuus, ja se nostaa positiivisesti testattavuudenkin tasoa \citep{mari_impact_2003}. Tarkasteltavuus ohjelmistojärjestelmissä voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
 
 Oliopohjaisissa ohjelmistojärjestelmissä koetaan vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Binder määrittelee myös muita ominaisuuksia testattavalle järjestelmälle, kuten sisäänrakennettu testausominaisuus (built-in test) ja järjestelmän jäljitettävyys, jonka avulla testien esille tuomat viat on helppo paikallistaa. Rakenteelliselta tasolta hän painottaa kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua.
 
@@ -604,21 +607,30 @@ Tämä tuottaa tosin ongelmia, koska jotkut tulokset saattavat olla vääriä ni
 Näiden sterotyyppien avulla saadaan riippuvuudet ja niiden tyypit paremmin esille kaavioissa virheellisten tuloksien välttämiseksi. On esimerkiksi usein melko normaalia oliojärjestelmissä, että yksi luokka saattaa luoda useita riippuvuuksia muihin luokkiin, mutta tämä on tehty tarkoituksella eikä vahingossa kehittäjien toimesta. Näin on esimerkiksi tehdas-mallin (factory pattern) käytössä, jossa erikseen määritelty tehdas-olio on riippuvainen useiden eri luokkien synnystä. Se vähentää globaalisti riippuvuuksien määrää, mutta itse tehdas-oliot tuottaisivat metriikoiden mukaan paljon virheellisiä riippuvuusongelmia, jos jokainen riippuvuus olisi samanarvoinen.
 
 
+\subsection{Erilaiset menetelmät UML-kaavoiden tukena}
 
 
 
-\section{Pohdinta} \label{pondering}
-
-
-
-
-Metriikat + riippuvuusgraph.
+\subsection{Havaitut testattavuuteen vaikuttavat tekijät}
+Tähän kootusti kaikki löydöt.
 
 Muita keinoja tutkia -> formulointi (Design Structure Matrix) \citep{mo_mapping_2013}
 
 Erilaisia skenaariopohjaisia menetelmiä ehdottaa \citep[s. 8-9]{mattsson2006software} testattavuuden kannalta: SAAM, ATAM, EBAE.
 
 Riippuvuuksien anti-pattern (7 kpl) ja niiden havaitseminen lähdekoodin avulla. Pystyisikö soveltamaan myös arkkitehtuurisella tasolla? \citep{binkley_dependence_2008} 
+
+\section{Pohdinta} \label{pondering}
+
+Ensin metriikat sitten esim. pentagrammimallin avulla analysointia per komponentti.
+
+Löydetyt samankaltaisuudet
+
+Metriikat + riippuvuusgraph.
+
+Onko arkkitehtuurin kuvaaminen visuaalisesti aina formaalia?
+
+% muista Viittaukset kappaleisiin
 
 \section{Yhteenveto}
 

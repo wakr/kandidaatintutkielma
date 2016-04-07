@@ -35,6 +35,7 @@
 \usepackage{amsmath}
 \numberwithin{table}{section}
 
+\usepackage{adjustbox}  
 
 \usepackage[sort]{natbib} %uncomment for a harvard-style
 %\usepackage[square,sort,comma,numbers]{natbib}
@@ -525,8 +526,9 @@ Lisää arkkitehtuuristen sekä koodihajujen yhteyksistä on tutkinut Macia ym. 
 
 % EI SELITTÄMÄTTÖMIÄ OSIA
 
-\begin{center}
+
 \begin{table}[ht]
+	\centering
 	\begin{tabular}{| l | l | m{3.2cm} |}
 	\hline 
 	\textbf{Arkkitehtuurinen haju} & \textbf{Syy kooditasolla} \\ \hline
@@ -539,7 +541,7 @@ Lisää arkkitehtuuristen sekä koodihajujen yhteyksistä on tutkinut Macia ym. 
 	\caption{Arkkitehtuurinen haju ja syy sen esiintymiselle kooditasolla. Vastaava koodihaju on jätetty pois, koska niiden tietäminen ei ole relevanttia tutkimuksen kannalta.}
 	\label{tab:aspectSmells} 
 \end{table}
-\end{center}
+
 
 %Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
 
@@ -548,8 +550,9 @@ Vaikka taulukon \ref{tab:aspectSmells} koodihajut eivät suoraan koske juuri oli
 
 % NÄÄ VOIS SELITTÄÄ ESIM ALAINDEKSISSÄ
 
-\begin{center}
+
 \begin{table}[h]
+	\centering
 	\begin{tabular}{| l | l | m{3.5cm} |}
 	\hline
 	\textbf{Koodihaju} & \textbf{Arkkitehtuurinen haju} & \textbf{Syy}\\ \hline
@@ -559,7 +562,7 @@ Vaikka taulukon \ref{tab:aspectSmells} koodihajut eivät suoraan koske juuri oli
 	\caption{Olioperäisten koodihajujen ja arkkitehtuuristen hajujen suhde sekä niiden syyt.}
 	\label{tab:codeSmells}
 \end{table}
-\end{center} 
+
 
 \noindent
 Taulukon \ref{tab:codeSmells} suhteista nähdään samanlaisuutta, kuin mitä taulukko \ref{tab:aspectSmells} näytti syinä sen koodihajuille. Suurimmat ongelmat olioperäisissäkin hajuissa tulivat liiallisista riippuvuuksista ja huonosta vastuiden jaosta, joka saattaa johtaa yksittäisten komponenttien paisumiseen. Yksittäisten komponenttien paisuminen taas luo helposti huonoa kompositiota, toistuvaa toiminnallisuutta ja komponentteja, joiden harteilla on iso osa toiminnallisuuden toteuttamisesta. Nämä ongelmat realisoituvat arkkitehtuurisiksi hajuiksi arkkitehtuuritasolla ja niiden tunnistaminen kooditasolta arkkitehtuuriselle tasolle ja arkkitehtuuriselta tasolta kooditasolle on tärkeää myös testattavuuden kannalta.
@@ -611,18 +614,48 @@ Kaikista näistä olisi mahdollista luoda erilaisia metriikoita ja saada laskett
 Kyseisten stereotyyppien avulla saadaan esille riippuvuudet ja niiden tyypit paremmin kaavioissa virheellisten tuloksien välttämiseksi. On esimerkiksi usein melko normaalia oliojärjestelmissä, että yksi luokka saattaa luoda useita riippuvuuksia muihin luokkiin, mutta tämä on tehty tarkoituksella eikä vahingossa kehittäjien toimesta. Näin on esimerkiksi tehdas-mallin (factory pattern) käytössä, jossa erikseen määritelty tehdas-olio on riippuvainen useiden eri luokkien synnystä. Se vähentää globaalisti riippuvuuksien määrää, mutta itse tehdas-oliot tuottaisivat metriikoiden mukaan paljon virheellisiä riippuvuusongelmia, jos jokainen riippuvuus olisi samanarvoinen.
 
 
-\subsection{Erilaiset menetelmät UML-kaavoiden tukena}
-Muita keinoja tutkia -> formulointi (Design Structure Matrix) \citep{mo_mapping_2013}
 
-Erilaisia skenaariopohjaisia menetelmiä ehdottaa \citep[s. 8-9]{mattsson2006software} testattavuuden kannalta: SAAM, ATAM, EBAE.
+%\subsection{Erilaiset menetelmät UML-kaavoiden tukena}
+%Muita keinoja tutkia -> formulointi (Design Structure Matrix) \citep{mo_mapping_2013}
 
-Riippuvuuksien anti-pattern (7 kpl) ja niiden havaitseminen lähdekoodin avulla. Pystyisikö soveltamaan myös arkkitehtuurisella tasolla? \citep{binkley_dependence_2008} 
+%Erilaisia skenaariopohjaisia menetelmiä ehdottaa \citep[s. 8-9]{mattsson2006software} testattavuuden kannalta: SAAM, ATAM, EBAE.
+
+%Riippuvuuksien anti-pattern (7 kpl) ja niiden havaitseminen lähdekoodin avulla. Pystyisikö soveltamaan myös arkkitehtuurisella tasolla? \citep{binkley_dependence_2008} 
+
 
 
 \subsection{Havaitut testattavuuteen vaikuttavat tekijät}
-Tähän kootusti kaikki löydöt.
 
+Kaikista tutkielman aikana löytyneistä testattavuuteen vaikuttavista tekijöistä, jotka tulevat myös arkkitehtuurisella tasolla ilmi, voidaan nyt muodostaa seuraavanlainen taulukko
 
+	%\begin{adjustbox}{center}
+	\begin{table}
+	\centering
+		\resizebox{\linewidth}{!}{
+		\begin{tabular}{| m{3cm} | m{4cm} | m{4cm} | m{3.5cm} |}
+		\hline
+	\textbf{Tekijä} & \textbf{Tarkennus} & \textbf{Menetelmä} & \textbf{Lähde}\\ \hline
+	
+		Järjestelmän ominaisuudet & Komponenttien testattavuus, vastuut, vaatimukset, havaittavuus, hallittavuus ja jäljitettävyys  & Analysointi, pentagrammimalli & sourcet tulee tähän\\ \hline	
+	
+		Kompleksisuus & Kompleksinen toteutus, kompleksiset perintäsuhteet & Metriikat, UML, Graafimalli & d\\ \hline	
+		
+		Perintä & Ongelmalliset ja liialliset perintäsuhteet & Metriikat, UML, Graafimalli & d\\ \hline	
+		
+		Kytkentä & Itsekäyttö, suuret kytkentätasot & Metriikat, UML, Graafimalli, hajut & d\\ \hline		
+		
+		Riippuvuudet & Syklimäisyys, määrä, antimalli & UML, graafimalli, hajut & d\\ \hline
+		
+		Koheesio & Toiminta huonosti keskitettyä & Metriikat, hajut, analysointi & d\\ \hline
+		
+		Vastuut & Vastuut jakautuneet huonosti & Hajut, UML & d\\ \hline
+		
+		\end{tabular}
+		}
+		\caption{Testattavuuteen vaikuttavat tekijät arkkitehtuurisella tasolla. Tarkennus-sarake antaa lisätietoa menetelmästä ja Menetelmä-sarake kuvaa miten niitä voidaan havaita. Lähde-sarake kertoo mikä tutkimus on tutkinut aihetta ja mahdollisesti esittänyt jonkun menetelmistä.}
+	\end{table}
+
+\newpage
 
 \section{Pohdinta} \label{pondering}
 
@@ -636,11 +669,15 @@ Onko arkkitehtuurin kuvaaminen visuaalisesti aina formaalia?
 
 % muista Viittaukset kappaleisiin
 
+\newpage
+
 \section{Yhteenveto}
 
 Tutkimuksessa on tehty katsaus ensin ohjelmistoarkkitehtuuriin käsitteenä ja luotu sen avulla katsaus siihen miten ohjelmistoarkkitehtuuria mallinnetaan. Ohjelmistoarkkitehtuuri on nähty tapana kuvata järjestelmän todellista rakennetta tavalla, joka kertoisi mahdollisimman selkeästi järjestelmän todellisen luonteen ilman tarvetta lähdekoodille. Katsauksen jälkeen on etsitty vastausta sille mitä on järjestelmän testattavuus. Testattavuudesta on jatkettu tarkastelua arkkitehtuuriselta näkökulmalta viimeisessä luvussa ja etsitty tapoja joiden avulla arkkitehtuurin mallinnus tuottaisia mahdollisimman paljon informaatiota järjestelmän testattavuudesta.
 
 Tästä tutkimuksesta nähdään tutkimuskysymyksien valolla, että
+
+\newpage
 
 %Muistuttaa mieleen tutkimuskysymyksen, mainitsee tärkeimmät tulokset ja niiden perusteet. Keskittyy impaktiin ja esimerkiksi suosituksiin. Ei vain summeeraa luku kerrallaan aikaisempaa tekstiä.
 

@@ -41,10 +41,16 @@
 \floatsetup[table]{capposition=top}
 \usepackage[font={small,it}]{caption}
 
+\usepackage{tabularx}
+
 \usepackage[sort]{natbib} %uncomment for a harvard-style
 %\usepackage[square,sort,comma,numbers]{natbib}
 
 \usepackage{array}
+
+% --- Auto Commands ---
+
+
 
 % Automatically set the PDF metadata fields
 \makeatletter
@@ -364,9 +370,9 @@ Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on eri
 
 
 
-Yksikkötestauksen näkökulmasta testattavuutta tutkii Bruntink ja van Deursen. He määrittelivät hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin, jossa tutkimuksen mittarina käytettiin testitapausten kasvua ja pituutta \citep{Bruntink:2004}. Khan ja Mustafa käyttivät neljää korkeamman tason metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä \citep{Khan:2009:MBT:1507195.1507204}. Ne korreloivat vahvasti edellisiin metriikoihin ja ovat hyvin keskeisiä olio-ohjelmoinnin suunnitteluperiaatteita. Oliopohjaisista järjestelmistä voidaan havaita yleisesti tiettyjä testaukseen vaikuttavia mittareita, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}. Määritetyt tekijät ovat negatiivisia asioita testauksen kannalta, koska esimerkiksi suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, koska luokka käyttää hyvin paljon hyväkseen muiden luokkien toiminnallisuutta. Suuri periytymisaste tuo taas luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla. Tilanne voi johtaa siihen, että luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista ja luokan testaaminen vaatii käytännössä koko luokkahierarkien läpikäynnin. 
+Yksikkötestauksen näkökulmasta testattavuutta tutkii Bruntink ja van Deursen. He määrittelivät hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin, jossa tutkimuksen mittarina käytettiin testitapausten kasvua ja pituutta \citep{Bruntink:2004}. Khan ja Mustafa käyttivät taas neljää korkeamman tason metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä \citep{Khan:2009:MBT:1507195.1507204}. Ne korreloivat vahvasti edellisiin metriikoihin ja ovat hyvin keskeisiä olio-ohjelmoinnin suunnitteluperiaatteita. Oliopohjaisista järjestelmistä voidaan havaita yleisesti tiettyjä testaukseen vaikuttavia mittareita, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}. Määritetyt tekijät ovat negatiivisia asioita testauksen kannalta, koska esimerkiksi suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, koska luokka käyttää hyvin paljon hyväkseen muiden luokkien toiminnallisuutta. Suuri periytymisaste tuo taas luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla. Tilanne voi johtaa siihen, että luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista ja luokan testaaminen vaatii käytännössä koko luokkahierarkien läpikäynnin. 
 
-Edellämainituissa tutkimuksissa käytetyistä mittareista voidaan muodostaa seuraava taulukko, jossa jokaisen mittarin pääidea on kiteytetty ja suhteutettu neljään korkeantason yleismetriikkaan
+Edellämainituissa tutkimuksissa käytetyistä mittareista voidaan muodostaa seuraava taulukko, jossa jokaisen mittarin pääidea on kiteytetty ja suhteutettu neljään korkeantason yleismetriikkaan.
 
 \begin{table}[ht]
 \centering
@@ -406,7 +412,7 @@ On siis hyvä tarkastella kahdelta eri näkökulmalta testattavuutta arkkitehtuu
  
 Hyvää testattavuutta arkkitehtuureissa on vaikea määrittää, koska eri järjestelmillä on tiettyyn tarkoitukseen sopiva arkkitehtuuri. Tietyt arkkitehtuuriset tyylit tukevat kuitenkin tiettyjä testausstrategioita \citep{Eickelmann:1996:MOS:243327.243602}, joten on selvää että valittu arkkitehtuurinen tyyli vaikuttaa jollain tasolla positiivisesti testattavuuteen. Paljon mielekkäämpää on kuitenkin tarkastella  ominaisuuksia testattavalle arkkitehtuurille, jotta voitaisiin tarkastella enemmän sitä, mitkä tekijät tuovat testattavuutta arkkitehtuurille.
 
-Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Suoraan rakenteelliselta tasolta voidaan taas painottaa esimerkiksi kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua. Jos taas järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava, on siihen olemassa erilaisia laadullisia ja metrisiä ominaisuuksia, joihin huomio pitäisi kiinnittää koko ohjelmistoprosessin ajan \citep{joshi_design_2014}. Mahdollisten ongelmien eliminoimiseen voidaan käyttää hyväksi järjestelmän modulaarista rakennetta, joka pitäisi olla myös vallitseva ominaisuus järjestelmässä koko sen elinkaaren ajan. Toinen apukeino on UML ja sen  muokkaaminen stereotyyppien avulla. UML kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla saadaan muokattua näkymää tiettyyn suuntaan.
+Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Suoraan rakenteelliselta tasolta voidaan taas painottaa esimerkiksi kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua. Jos järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava, on siihen olemassa erilaisia laadullisia ja metrisiä ominaisuuksia, joihin huomio pitäisi kiinnittää koko ohjelmistoprosessin ajan \citep{joshi_design_2014}. Mahdollisten ongelmien eliminoimiseen voidaan käyttää hyväksi järjestelmän modulaarista rakennetta, joka pitäisi olla myös vallitseva ominaisuus järjestelmässä koko sen elinkaaren ajan. Toinen apukeino on UML ja sen  muokkaaminen stereotyyppien avulla. UML-kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla saadaan muokattua näkymää tiettyyn suuntaan.
 
 
 %Järjestelmän tarkasteltavuus (monitorability) voidaan lukea ohjelmistojärjestelmän yhdeksi ominaisuudeksi, joka nostaa positiivisesti testattavuuden tasoa \citep{mari_impact_2003}. Tarkasteltavuus ohjelmistojärjestelmissä voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
@@ -438,7 +444,7 @@ Taulukossa \ref{tab:goodArchTestability} kootaan yhteen ominaisuudet, jotka otta
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen} \label{arch_testability_measurement}
 
-Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Ylläpidettävyyden näkökulmasta on tunnistettu erilaisia arkkitehtuurisen tason mittareita arkkitehtuurisille elementeille. Niiden avulla voidaan mitatata järjestelmän ominaisuuksia, kuten kytkennän ja koheesion tasoa \citep{bengtsson1998towards}.
+Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Ylläpidettävyyden näkökulmasta on tunnistettu erilaisia arkkitehtuurisen tason mittareita arkkitehtuurisille elementeille ja niiden avulla voidaan mitatata järjestelmän ominaisuuksia, kuten kytkennän ja koheesion tasoa \citep{bengtsson1998towards}.  
 
 \iffalse
 
@@ -459,7 +465,7 @@ Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista ta
 	\centering
 	\setlength{\extrarowheight}{4pt}%
 	\resizebox{\linewidth}{!}{
-	\begin{tabular}{|l|l|}
+	\begin{tabular}{|m{10cm}|m{4cm}|}
 	\hline 
 	\textbf{Mittari} & \textbf{Tarkkuuden taso} \\ 
 	\hline 
@@ -478,32 +484,47 @@ Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista ta
 	}
 \end{table}
 
+\newpage
 
 \noindent
-On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Edellisistä mittareista nähdään myös, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta ja sitä voidan havaita tutkimalla ohjelmistojärjestelmän komponenttien välisiä suhteita.
+Taulukkoon \ref{tab:maintainMeters} kootuista mittareista nähdään, että mittarit jakautuvat kahteen eri tarkkuuden tasoon. Arkkitehtuurisen kuvauksen ollessa abstraktio ohjelmakoodista on luonnollista, että eri tarkkuuden tasoilla on mahdollista liikkua. Tunnistetuiden mittareiden ominaisuuksista taas nähdään samankaltaisuutta kappaleen \ref{testability_measure} määriteltyjen mittareiden kanssa, mutta tunnistetut mittarit tarkastelevat korkeampaa tasoa. Kytkentä ja koheesio, joita kummatkin mittarit osittain mittaavat,  määriteltiin tavoiksi mitata järjestelmän testattavuutta. Kytkentää voidaan tutkia analysoimalla ohjelmistojärjestelmän komponenttien välisiä suhteita ja koheesiota tutkimalla kuinka itsenäisiä komponentit ovat.
 
 \subsubsection{UML-kaaviot testattavuuden mittaamisessa} \label{uml_arch_test}
 
-UML-luokkakaavio toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002}. 
-Baudry ym. määrittelee testattavuuden anti-mallin (testability anti-pattern) luokkakaavioiden avulla tulevaksi ilmiöksi \citep{baudry_measuring_2003}. Anti-mallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
+UML-luokkakaavio toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002} ja sen avulla voidaan määritellä testattavuuden antimalli (testability anti-pattern), joka on luokkakaavioiden avulla esille tuleva ilmiö \citep{baudry_measuring_2003}. Antimallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voi olla luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
-% UML \citep{baudry_testability_2002}
+Antimallin osatekijöiden löytyminen arkkitehtuurista on siis vihje siitä, että arkkitehtuuri saattaa sisältää testauttavia vaikeuttavaa rakennetta. Osatekijöitä voidaan tarkastella esimerkiksi UML:n avulla luotavalla erityisellä riippuvuusgraafilla \citep{baudry_testability_2002}. Riippuvuuksien vähentäminen on kytkennän kannalta tärkeää ja on mahdollista tarkastella testauksen kannalta kriittisten riippuvuuksien poistoa analysoimalla luokkakaaviosta saatavia ominaisuuksia \citep{Jungmayr:2002}. Riippuvuudeksi lasketaan mikä tahansa komponenttien välinen interaktio, jossa komponentti joutuu käyttämään toisen komponentin tarjoamia palveluita (usein metodeja) suorittaakseen toiminnallisuuttaan. 
 
-UML:n avulla luotavalla erityisellä riippuvuusgraafilla, esittävät Baudry, Troan ja Sunye testattavuuteen negatiivisesti vaikuttaviksi asioiksi \citep{baudry_testability_2002}
-
+\iffalse
 \begin{itemize} 
 	\item kompleksiset perintäsuhteet
 	\item abstraktien luokkien liikakäyttö rajapintojen sijasta.
 \end{itemize}
-
-
-Näiden lisäksi Jungmayr käsittelee testauksen kannalta kriittisten riippuvuuksien poistoa. Riippuvuudeksi lasketaan mikä tahansa komponenttien välinen interaktio, jossa komponentti joutuu käyttämään toisen komponentin tarjoamia palveluita (usein metodeja) suorittaakseen toiminnallisuuttaan.  Luokkakaaviosta saatavia mittareita tunnistetaan kolme kappaletta, joiden korkeat arvot korreloivat järjestelmän huonon testattavuuden kanssa \citep{Jungmayr:2002} 
 
 \begin{itemize}
 	\item komponenttien keskimääräinen riippuvuuksien määrä
 	\item komponenttien määrä riippuvuussykleissä
 	\item \textit{feedback-riippuvuuksien\footnote{\textit{Feedback-riippuvuus} on syklinen riippuvuussuhde komponenttien välillä, josta poistamalla jokin riippuvuus saadaan sykli purettua täysin.}}  määrä 
 \end{itemize}
+\fi
+
+\begin{table}[H]
+	\centering
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{|c|c|c|}
+	\hline 
+	Ominaisuus & Tapa havaita & Lähde \\ 
+	\hline 
+	Kompleksiset perintäsuhteet & Graafimalli & \citep{baudry_testability_2002} \\ 
+	\hline 
+	Abstraktien luokien liikakäyttö rajapintojen sijasta & Graafimalli & \citep{baudry_testability_2002} \\ 
+	\hline 
+	asd\newline lol & Luokkakaavio & \citep{Jungmayr:2002}\\ \hline
+	\end{tabular} 
+	\caption{Tekijöitä ongelmallisten riippuvuuksien syntymiselle.}
+	}
+\end{table}
+
 
 UML on mittareiden mukaan auttanut työkaluna löytämään yhteydellisiä ominaisuuksia arkkitehtuurissa, joita tarkastellessa voidaan sanoa tarkasteltavan  kytkennän tasoa, kompleksisuutta ja riippuvuuksia. Komponenttien sekä yhteyksien tarkastelu oli myös luvussa \ref{ark} esitelty eräs näkemys ohjelmistoarkkitehtuuriin ja on järjestelmän todellisen testattavuuden määrittelemisen kannalta parempi, jos testattavuutta voidaan tarkastellaan korkealla tasolla. Liian tarkka kuvaus järjestelmästä vaikeuttaa todellisten ongelmien näkemistä, koska se vie aikaa ymmärtää ja keskittyy liian pikkutarkkoihin asioihin, jotka eivät kaikki välttämättä ole relevantteja testattavuuden analysoinnin kannalta. Ylätason kuvauksella on etuna myös se, että sen avulla pystytään löytämään helposti usein esiintyviä ongelmallisia tilanteita, joiden tunnistaminen ja välttäminen auttaa järjestelmän testattavuuden hallinnassa.
 
@@ -539,7 +560,6 @@ Näiden metriikoiden avulla sekä näkymällä moduulitasoon, olisi esimerkiksi 
 
 \paragraph{\textit{Cross-Module Cycle}} arkkitehtuurissa on olemassa syklinen riippuvuussuhde moduulitasolla. Se vaikeuttaa testattavuutta siten, että testauksen aikana yhden moduulin testaaminen vaatii käytännössä myös kaikkien muiden moduulien testauksen, jolloin testitapausten eriyttäminen vaikeutuu huomattavasti. Sykliset riippuvuudet todettiin olevan myös kappaleessa \ref{good_testability} yksi testattavuuteen vaikuttava tekijä.
 
-\newpage
 
 Arkkitehtuurisia hajuja, jotka vaikuttavat suoraan testattavuuteen voidaan tunnistaa olevan ainakin kaksi \citep{garcia_identifying_2009}
 

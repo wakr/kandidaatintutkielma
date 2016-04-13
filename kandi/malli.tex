@@ -214,7 +214,7 @@ Hieman samanlainen jaottelu on määritelty myös Solmsin tutkimuksessa \citep{s
 %Kolmas määritelmä on paljon laajempi näkemys ohjelmistoarkkitehtuurista, koska se kuvaa ohjelmistojärjestelmän käsitteistön ja ominaisuudet siinä ympäristössä, jossa ne ilmenevät elementtien, suhteiden ja suunnittelun periaatteiden kautta. Peruskäsitteistö tarjoaa sen käsitteistön, jonka avulla sovelluslogiikka voidaan määritellä, joten esimeriksi määrittelemällä, että jokin komponentti toteuttaa palvelimen toiminnallisuutta, saadaan asiat lokeroitua käsitteellisesti erilleen toisistaan. Ominaisuudet liittyvät ohjelmistojärjestelmän laadullisiin ominaisuuksiin. Periaatteet voidaan nähdä järjestelmän keskeisinä suunnittelurajoitteina (core design constraints), joiden kokonaisuus muodostaa järjestelmän arkkitehtuurisen tyylin. Ohjelmistojärjestelmän arkkitehtuurin tyyli voi koostua esimerkiksi väylistä ja suodattimista (pipes and filters). % lisää
 
 
-Näistä kahdesta eri jaottelusta ohjelmistoarkkitehtuuri-käsitteen välillä voidaan nähdä merkittävinä tarpeina kuvata ohjelmistojärjestelmän rakenteellisuutta, komponenttien välistä kommunikaatiota ja laadullisia vaatimuksia. Kaikki nämä edellämainitut ominaisuudet on saatava  upotettua ohjelmistojärjestelmästä luotavaan arkkitehtuuriseen malliin niin, että ne vastaavat muunmuassa seuraaviin kysymyksiin \citep[s. 31 - 33]{Rozanski:2011:SSA:2072649} 
+Näistä kahdesta eri jaottelusta ohjelmistoarkkitehtuuri-käsitteen välillä voidaan nähdä merkittävinä tarpeina kuvata ohjelmistojärjestelmän rakenteellisuutta, komponenttien välistä kommunikaatiota ja laadullisia vaatimuksia. Kaikki nämä edellämainitut ominaisuudet on saatava  upotettua ohjelmistojärjestelmästä luotavaan arkkitehtuuriseen malliin niin, että ne vastaavat muun muassa seuraaviin kysymyksiin \citep[s. 31 - 33]{Rozanski:2011:SSA:2072649} 
 
 \begin{itemize}
 	\item mitkä ovat arkkitehtuurin toiminnalliset elementit
@@ -247,7 +247,7 @@ Arkkitehtuuristen näkymien tehtävänä on kuvata tietylle asialle olevat merki
 	\item skenaariollinen, jonka avulla näkymät liitetään yhteen.
 \end{itemize}
 
-%Looginen näkymä kuvailee esimerkiksi luokkakaavioiden avulla ohjelmistojärjestelmän elementtejä ja niiden välisiä suhteita tarkentaen järjestelmän rakennetta, prosessinäkymä keskittyy ajonaikaisen suorituksen kuvaamiseen tarkentamalla muunmuassa miten samanaikaisuuden hallinta tapahtuu järjestelmässä, fyysinen näkymä keskittyy siihen miten järjestelmän eri komponentit kuvautuvat fyysiselle laitteistolle jossa komponenttia ajetaan ja lopuksi kehitysnäkymä (development view) keskittyy järjestelmän sisäiseen toteutukseen tarkemmalla tasolla kuvailemalla sisäkkäisia pakkauksia tai luokkahierarkiaa. Jokainen näkymä voidaan liittää osaksi toista näkymää skenaarioiden avulla, jotka heijastelevat järjestelmälle asetettuja vaatimuksia, jolloin skenaariot voidaan nähdä ikäänkuin liimana muuten erillisille näkymille. 
+%Looginen näkymä kuvailee esimerkiksi luokkakaavioiden avulla ohjelmistojärjestelmän elementtejä ja niiden välisiä suhteita tarkentaen järjestelmän rakennetta, prosessinäkymä keskittyy ajonaikaisen suorituksen kuvaamiseen tarkentamalla muun muassa miten samanaikaisuuden hallinta tapahtuu järjestelmässä, fyysinen näkymä keskittyy siihen miten järjestelmän eri komponentit kuvautuvat fyysiselle laitteistolle jossa komponenttia ajetaan ja lopuksi kehitysnäkymä (development view) keskittyy järjestelmän sisäiseen toteutukseen tarkemmalla tasolla kuvailemalla sisäkkäisia pakkauksia tai luokkahierarkiaa. Jokainen näkymä voidaan liittää osaksi toista näkymää skenaarioiden avulla, jotka heijastelevat järjestelmälle asetettuja vaatimuksia, jolloin skenaariot voidaan nähdä ikäänkuin liimana muuten erillisille näkymille. 
 
 Muita näkymämalleja arkkitehtuuriin on useita, joista jokainen kuitenkin tuo esille vähintään jollain tavalla ohjelmistojärjestelmän rakennetta ja yhteyksiä. Tästä esimerkkinä tunnettu \textit{Views and Beyond} -malli \citep{Clements:2002:DSA:599933}. Siinä arkkitehtuurinen malli kuvataan kolmella eri näkymällä
 
@@ -257,16 +257,16 @@ Muita näkymämalleja arkkitehtuuriin on useita, joista jokainen kuitenkin tuo e
 	\item allokaatio, joka kuvaa miten prosessit kuvautuvat laitteistotasolla.
 \end{itemize}
 
- %moduuli, joka on järjestelmän rakenteellinen näkymä kuvaten muunmuassa luokkia, pakkauksia, moduulien eriyttämistä (decomposition) sekä periytymistä; komponentti ja konnektori, joka kuvailee järjestelmän toiminnallista puolta sekä miten komponentit ovat yhteydessä toisiinsa; allokaatio, joka kuvailee miten prosessit kuvautuvat laitteistotasolla  ja miten ne kommunikoivat keskenään. 
+ %moduuli, joka on järjestelmän rakenteellinen näkymä kuvaten muun muassa luokkia, pakkauksia, moduulien eriyttämistä (decomposition) sekä periytymistä; komponentti ja konnektori, joka kuvailee järjestelmän toiminnallista puolta sekä miten komponentit ovat yhteydessä toisiinsa; allokaatio, joka kuvailee miten prosessit kuvautuvat laitteistotasolla  ja miten ne kommunikoivat keskenään. 
 
-Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. Kuitenkin edellä mainitusta kahdestakin mallista jo nähdään, että kummatkin pyrkivät nostamaan esille järjestelmän rakennetta ja rakenteessa ilmeneviä suhteita, joita muunmuassa komponenttien sekä moduulien välillä on.
+Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. Kuitenkin edellä mainitusta kahdestakin mallista jo nähdään, että kummatkin pyrkivät nostamaan esille järjestelmän rakennetta ja rakenteessa ilmeneviä suhteita, joita muun muassa komponenttien sekä moduulien välillä on.
 
 %Yhteensä viittä eri mallia vertailtiin Mayn tutkimuksessa \citep{may2005survey}. Siinä kartoitettiin mahdollisimman laajaa näkymien muodostamaa näkökulmien joukkoa, jotka kattaisivat mahdollisimman laajalti ohjelmistoarkkitehtuurin aluetta (domain). Vertailtavat arkkitehtuurit olivat 4+1-malli, SEI:n (Software Engineering Institute) \textit{Views and Beyond}-malli, ISO:n (International Organization for Standardization) \textit{Reference Model of Open Distributed Processing}, Siemensin \textit{Four View Model} ja \textit{Rational Architecture Description Specification}. Malleja vertailtiin tutkimalla kuinka niiden tarjoamat näkökulmat painottavat kolmeen eri kategoriaan liittyviä asioita: sidosryhmät, laadulliset tekijät ja rakenteelliset ominaisuudet. Lopulliseen valintaan, joka painotti mahdollisimman laajasti jokaisen osa-alueen ominaisuuksia, otettiin mukaan \textit{Views and Beyond} -mallin kaikki kolme näkymää ja \textit{Rational ADS}:n vaatimukset-näkökulma (requirements viewpoint). Syy, miksi juuri nämä valittiin oli se, että \textit{Views and Beyond} sopii erittäin hyvin mallin pohjaksi, koska se kuvaa järjestelmän rakennetta kattavasti, sen näkökulmat ovat itsenäisiä ja se limittyy kokonaisuudessaan hyvin 4+1-mallin sekä Siemens'n mallin kanssa. Se ei kuitenkaan sisällä tarvittavia näkymiä kuvaamaan eri sidosryhmille tärkeitä asioita esimerkiksi loppukäyttäjiä varten oleva näkymä puuttuu kokonaan. Tämän takia mukaan on otettu \textit{Rational ADS}, jonka vaatimukset-näkökulma koostuu neljästä eri näkymästä: ei-toiminnalliset vaatimukset, alue (domain), käyttötapaus ja käyttökokemus. 
 
 
 
 \subsubsection{Näkökulmat}
-Näkökulmat liittyvät vahvasti arkkitehtuurisiin näkymiin, koska näkymien avulla halutaaan tuoda jokin näkökulma esille \citep[s. 36-42]{Rozanski:2011:SSA:2072649}. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko taas voidaan jakaa seitsemään eri osaan: kontekstuaalinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, tuotannollinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa hieman tuotannollisen sekä funktionaalisuuden näkökulmaan. Tuotannollinen näkökulma on tärkeä siksi, että se ottaa huomioon niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muunmuassa järjestelmän suorituksenaikaisia komponentteja ja niiden rajapintoja. Näiden avulla halutaan tuoda esille näkökulma testattavuuden analysoimiseen, jota kehittäjät voisivat käyttää hyödyksi.
+Näkökulmat liittyvät vahvasti arkkitehtuurisiin näkymiin, koska näkymien avulla halutaaan tuoda jokin näkökulma esille \citep[s. 36-42]{Rozanski:2011:SSA:2072649}. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko taas voidaan jakaa seitsemään eri osaan: kontekstuaalinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, tuotannollinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa hieman tuotannollisen sekä funktionaalisuuden näkökulmaan. Tuotannollinen näkökulma on tärkeä siksi, että se ottaa huomioon niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muun muassa järjestelmän suorituksenaikaisia komponentteja ja niiden rajapintoja. Näiden avulla halutaan tuoda esille näkökulma testattavuuden analysoimiseen, jota kehittäjät voisivat käyttää hyödyksi.
 
 % 4210 ISO
 IEEE:n virallinen määritelmä näkokulmalle on \citep[s. 6]{ISOIEEE42010} \textit{frames one or more concerns. A concern can be framed by more than one
@@ -300,7 +300,7 @@ Luotavan näkymän perimmäinen tarkoitus voi esimerkiksi olla, että mahdollisi
 
 UML eli \textit{Unified Modeling Language} on visuaalinen formalisoitu mallinnuskieli näkymien luomiseen \citep{UML}, joka on muodostunut \textit{de facto}-standardiksi ohjelmistoarkkitehtuurin kuvauksessa ja luomisessa. UML:n avulla voidaan ohjelmistoa mallintaa kolmelta eri näkökulmalta: kehitystä täydentävät mallit, käyttäytymisen kuvaamiseen tarkoitetut mallit ja rakennetta kuvaavat mallit. Käytännössä sen avulla pystytään siis kuvaamaan esimerkiksi jokainen sekä 4+1 -mallin että \textit{Views and Beyond}-mallin näkymä käyttäen hyväksi UML:n tarjoamaa 13 erilaista kaaviota. Arkkitehtuurin kuvauksen kannalta relevanteimmat kaaviot ovat luokkakaavio ja komponenttikaavio, koska niiden avulla saadaan kuvattua erittäin tarkasti ja monipuolisesti järjestelmän rakennetta. Luokkakaaviossa huomio keskittyy konkreettisten luokkien ja niiden välisten suhteiden kuvaamiseen, kun taas komponenttikaavio kuvaa korkeammalla tasolla järjestelmää komponenteittain, joita yhdistävät niiden tarjoamat rajapinnat.   
 
-UML sopii ominaisuuksiensa takia erittäin hyvin olio-pohjaisten ohjelmien kuvaamiseen tarjoamalla tuen muunmuassa periytymisen ja rajapintojen kuvaamiseen. Tämän takia se on otettu tässä tutkimuksessa erityisasemaan järjestelmän ja sen arkkitehtuurin kuvaamisessa.
+UML sopii ominaisuuksiensa takia erittäin hyvin olio-pohjaisten ohjelmien kuvaamiseen tarjoamalla tuen muun muassa periytymisen ja rajapintojen kuvaamiseen. Tämän takia se on otettu tässä tutkimuksessa erityisasemaan järjestelmän ja sen arkkitehtuurin kuvaamisessa.
 
 
 \section{Testattavuus laadullisena tekijänä} \label{testability_main}
@@ -360,14 +360,17 @@ Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtav
 \subsection{Testattavuuden mittaaminen} \label{testability_measure}
 
 
-Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Mittareiden käyttäminen myös tuo konkretiaa analysoimiseen ja niiden avulla on helppo tehdä esimerkiksi staattista analyysia suorittavia erillisiä ohjelmia. 
+Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Mittareiden käyttäminen tuo myös konkretiaa analysoimiseen ja niiden avulla on helppo tehdä esimerkiksi staattista analyysia suorittavia erillisiä ohjelmia. 
 
 
 
-Yksikkötestauksen näkökulmasta testattavuutta on tutkinut Bruntink ja van Deursen. He tutkivat hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin jossa tutkimuksen mittarina käytettiin testitapausten kasvua ja pituutta \citep{Bruntink:2004}. Khan ja Mustafa käyttivät neljää korkeamman tason metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä \citep{Khan:2009:MBT:1507195.1507204}. Ne korreloivat vahvasti edellisiin metriikoihin ja ovat hyvin keskeisiä olio-ohjelmoinnin suunnitteluperiaatteita. Oliopohjaisista järjestelmistä voidaan havaita yleisesti tiettyjä testaukseen vaikuttavia mittareita, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}. Kyseiset tekijät ovat negatiivisia asioita testauksen kannalta, koska suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, koska luokka käyttää hyvin paljon hyväkseen muiden luokkien toiminnallisuutta. Suuri periytymisaste tuo taas luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla. Tilanne voi johtaa siihen, että luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista ja luokan testaaminen vaatii käytännössä koko luokkahierarkien läpikäynnin. 
+Yksikkötestauksen näkökulmasta testattavuutta tutkii Bruntink ja van Deursen. He määrittelivät hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin, jossa tutkimuksen mittarina käytettiin testitapausten kasvua ja pituutta \citep{Bruntink:2004}. Khan ja Mustafa käyttivät neljää korkeamman tason metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä \citep{Khan:2009:MBT:1507195.1507204}. Ne korreloivat vahvasti edellisiin metriikoihin ja ovat hyvin keskeisiä olio-ohjelmoinnin suunnitteluperiaatteita. Oliopohjaisista järjestelmistä voidaan havaita yleisesti tiettyjä testaukseen vaikuttavia mittareita, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}. Määritetyt tekijät ovat negatiivisia asioita testauksen kannalta, koska esimerkiksi suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, koska luokka käyttää hyvin paljon hyväkseen muiden luokkien toiminnallisuutta. Suuri periytymisaste tuo taas luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla. Tilanne voi johtaa siihen, että luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista ja luokan testaaminen vaatii käytännössä koko luokkahierarkien läpikäynnin. 
+
+Edellämainituissa tutkimuksissa käytetyistä mittareista voidaan muodostaa seuraava taulukko, jossa jokaisen mittarin pääidea on kiteytetty ja suhteutettu neljään korkeantason yleismetriikkaan
 
 \begin{table}[ht]
 \centering
+	\setlength{\extrarowheight}{4pt}%
 	\resizebox{\linewidth}{!}{
 	\begin{tabular}{| m{3.5cm} | m{3.5cm} | m{6cm} |}
 	\hline
@@ -379,54 +382,63 @@ Yksikkötestauksen näkökulmasta testattavuutta on tutkinut Bruntink ja van Deu
 	Periytymisaste & Uudelleenkäyttö & \citep{Dubey:2011:AMM:2020976.2020983}\\ \hline
 \end{tabular}
 		
-	\caption{Mittarit ja niiden suhteet Khanin ja Mustafan esittämään neljään eri ominaisuuteen.}
+	\caption{Mittarit ja niiden suhteet Khanin ja Mustafan esittämään neljään eri korkeantason ominaisuuteen. Ehdotettu-sarake kertoo, mistä lähteestä mittarin ideat ovat.}
 	\label{tab:codeTestability}
 	}
 \end{table}
 
 
-Taulukkon \ref{tab:codeTestability} on kerätty mittareiden pääideat kaikista kolmesta lähteestä ja niistä voidaan kerätä yleisesti luokkien näkökulmasta muutama iso tekijä testattavuudessa: koko, itsenäinen toimiminen, riippuvuudet muista luokista ja periytyminen. Niistä on kuitenkin osa ominaisuuksiltaan sellaisia, että niitä voidaan suurimmaksi osaksi mitata vain lähdekoodin avulla ja ne ottavat kantaa pelkästään testattavuuteen vain yhden luokan näkökulmasta. 
-Tietenkin olisi mahdollista laskea jokaiselle luokalle erikseen kyseiset mittarit, mutta kokonaisuuden tarkasteleminen tai keskittyminen vain tiettyyn testausta vaikuttavaan osa-alueeseen vaatii muita keinoja.
+
+\noindent
+Taulukkon \ref{tab:codeTestability} on kerätty mittareiden pääideat kaikista kolmesta lähteestä ja niistä voidaan kerätä yleisesti luokkien näkökulmasta muutama iso tekijä testattavuudessa: koko, itsenäinen toimiminen, riippuvuudet muista luokista ja periytyminen. Niistä on kuitenkin osa ominaisuuksiltaan sellaisia, joita voidaan mitata suurimmaksi osaksi vain lähdekoodin avulla ja ne ottavat kantaa testattavuuteen vain yhden luokan näkökulmasta. Se vaikeuttaa kokonaisuuden hahmottamista, vaikka tietenkin olisi mahdollista laskea jokaiselle luokalle erikseen kyseiset mittarit. Suuremman kokonaisuuden tarkasteleminen tai keskittyminen vain tiettyyn testausta vaikuttavaan osa-alueeseen vaatii kuitenkin muita keinoja.
 
 \section{Testattavuus arkkitehtuurisella tasolla} \label{arch_testability_main}
 
-Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa, koska lähdekoodia ei aina ole saatavilla. Testattavuutta voidaan tutkia esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muunmuassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. Toinen tapa tutkia testattavuutta arkkitehtuurisella tasolla on UML-luokkakaavioiden avulla. Niiden apuna voidaan käyttää hyväksi esimerkiksi kaikkia kappaleen \ref{testability_measure} metriikoita, jotka eivät tarvitse lähdekoodia tuekseen. 
+Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen ongelmien tutkimiseen on käytettävä eri keinoja, kuin kooditason analysoinnissa, koska lähdekoodia ei aina ole saatavilla. Testattavuutta voidaan tutkia esimerkiksi komponenttitasolla, jota tukevat hyvin UML-komponenttikaaviot. Tämä käy arkkitehtuurin arvioimiseen testattavuuden kannalta hyvin, koska testattavuus tulee ilmi korkealla tasolla muun muassa integraatiotestauksen aikana, kun sekä komponenttien rajapintojen toimivuus että komponenttien toimivuus pitää validoida \citep[s. 65]{Eickelmann:1996:MOS:243327.243602}. Toinen tapa tutkia testattavuutta arkkitehtuurisella tasolla on UML-luokkakaavioiden avulla. Luokkakaavioiden apuna voidaan käyttää hyväksi esimerkiksi niitä kappaleen \ref{testability_measure} metriikoita, jotka eivät tarvitse lähdekoodia tuekseen. 
 
-Yksittäisten komponenttien, eli luokista koostuvien kokonaisuuksien testattavuutta, on analysoitu erilaisten mallien avulla ja näistä eräs on Goan ja Shihn \citep{gao_component_2005} esittämä pentagrammimalli. Sen avulla jokaista komponenttia voidaan tarkastella viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muunmuassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään luomaan. 
+Yksittäisten komponenttien, eli luokista koostuvien kokonaisuuksien testattavuutta, on analysoitu erilaisten mallien avulla ja näistä eräs on komponenttien pentagrammimalli \citep{gao_component_2005}. Sen avulla jokaista komponenttia voidaan tarkastella viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muun muassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään luomaan. 
  
-On siis hyvä tarkastella kahdelta eri näkökulmalta testattavuutta arkkitehtuurisella tasolla: metriikoista koostuva analyysi ja yksittäisten komponenttien analyysi ilman metriikoita. Analyysi ilman metriikoita keskitetään enemmän kokonaisuuksien hahmottamiseen ja ongelmakohtien löytämiseen laadullisten ominaisuuksien pohjalta.
+On siis hyvä tarkastella kahdelta eri näkökulmalta testattavuutta arkkitehtuurisella tasolla: metriikoista koostuva analyysi ja yksittäisten komponenttien analyysi ilman metriikoita. Analyysi ilman metriikoita keskitetään enemmän kokonaisuuksien hahmottamiseen ja ongelmakohtien löytämiseen laadullisten ominaisuuksien pohjalta, kun taas metriikoiden kanssa analyysi on staattista ja painottaa enemmän määrällistä tutkimusta.
 
 
 \subsection{Hyvä testattavuus arkkitehtuurissa} \label{good_testability}
 
  
-Eicklemann on määritellyt tiettyjen arkkitehtuuristen tyylien sopivan tietyille testausstrategioille \citep{Eickelmann:1996:MOS:243327.243602}, joten on selvää että valittu arkkitehtuurinen tyyli vaikuttaa jollain tasolla positiivisesti testattavuuteen. Paljon mielekkäämpää on kuitenkin tarkastella muita ominaisuuksia testattavalle arkkitehtuurille, jotta voitaisiin tarkastella enemmän, että mitkä tekijät tuovat testattavuutta arkkitehtuurille.
+Hyvää testattavuutta arkkitehtuureissa on vaikea määrittää, koska eri järjestelmillä on tiettyyn tarkoitukseen sopiva arkkitehtuuri. Tietyt arkkitehtuuriset tyylit tukevat kuitenkin tiettyjä testausstrategioita \citep{Eickelmann:1996:MOS:243327.243602}, joten on selvää että valittu arkkitehtuurinen tyyli vaikuttaa jollain tasolla positiivisesti testattavuuteen. Paljon mielekkäämpää on kuitenkin tarkastella  ominaisuuksia testattavalle arkkitehtuurille, jotta voitaisiin tarkastella enemmän sitä, mitkä tekijät tuovat testattavuutta arkkitehtuurille.
 
-Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Binder määrittelee myös muita ominaisuuksia testattavalle järjestelmälle, kuten sisäänrakennettu testausominaisuus (built-in test) ja järjestelmän jäljitettävyys, jonka avulla testien esille tuomat viat on helppo paikallistaa. Suoraan rakenteelliselta tasolta hän painottaa kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua.
+Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakamisen olevan  lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Suoraan rakenteelliselta tasolta voidaan taas painottaa esimerkiksi kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua. Jos taas järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava, on siihen olemassa erilaisia laadullisia ja metrisiä ominaisuuksia, joihin huomio pitäisi kiinnittää koko ohjelmistoprosessin ajan \citep{joshi_design_2014}. Mahdollisten ongelmien eliminoimiseen voidaan käyttää hyväksi järjestelmän modulaarista rakennetta, joka pitäisi olla myös vallitseva ominaisuus järjestelmässä koko sen elinkaaren ajan. Toinen apukeino on UML ja sen  muokkaaminen stereotyyppien avulla. UML kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla saadaan muokattua näkymää tiettyyn suuntaan.
+
 
 %Järjestelmän tarkasteltavuus (monitorability) voidaan lukea ohjelmistojärjestelmän yhdeksi ominaisuudeksi, joka nostaa positiivisesti testattavuuden tasoa \citep{mari_impact_2003}. Tarkasteltavuus ohjelmistojärjestelmissä voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
 
-Joshi ja Sardana ovat tutkineet ominaisuuksia, joita järjestelmän pitäisi painottaa, jos järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava. Näitä testattavuuteen korkealla tasolla vaikuttavia ominaisuuksia järjestelmässä löydettiin olevan \citep{joshi_design_2014}
-	
-\begin{itemize}
-	\item vaatimusten tarkkuus
-	\item sykliset riippuvuudet
-	\item kytkennän taso
-	\item koheesion taso
-	\item antipatternien esiintyminen
-	\item järjestelmän jäljitettävyys (traceability)
-	\item havaittavuus ja hallittavuus.
-\end{itemize}
+%He esittävät 
 
-%\noindent
-%He esittävät mahdollisten ongelmien eliminoimiseen järjestelmän modulaarista rakennetta ja UML:n muokkaamista sekä UML-stereotyyppien käyttöä. UML kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla saadaan muokattua näkymää tiettyyn suuntaan.
 
-Edellä olevien tutkimusten tuloksista voidaan nähdä kaksi ryhmää; mitattavat ja laadulliset ominaisuudet. On tärkeää tarkastella sekä komponenttien ulkoisia että sisäisiä ominaisuuksia, jotta voitaisiin muodostaa hyvä kuva testattavuuden tasosta. Kuitenkin suoraan rakenteellisuuden näkökulmasta esiin nousevat: kapselointi, perintä, kompleksisuus, riippuvuudet, kytkentä ja koheesio.  
+\begin{table}[H]
+	\centering
+	\setlength{\extrarowheight}{10pt}%
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{|m{3.5cm}|m{7cm}|m{5cm}|}
+	\hline 
+	Analyysimentelmä & Ominaisuus & Lähde \\ 
+	\hline 
+	Laadullinen & Testausominaisuus, jäljitettävyys, vaatimusten tarkkuus, antipatternit, havaittavuus, hallittavuus & \citetext{\citealp{Binder:1994:DTO:182987.184077}; \citealp{joshi_design_2014}} \\ 
+	\hline 
+	Metrinen & Syklisten riippuvuuksien vähyys, kytkennän taso, koheesion taso &  \citep{joshi_design_2014} \\ 
+	\hline 
+	\end{tabular} 
+	}
+	\caption{Hyvään testattavuuteen vaikuttavat ominaisuudet jaoteltuna kahteen eri luokaan: laadulliset ja metriset.}
+	\label{tab:goodArchTestability}
+\end{table}
+
+\noindent
+Taulukossa \ref{tab:goodArchTestability} kootut ominaisuudet ottavat kantaa laadullisiin ja mitattaviin ominaisuuksiin. On tärkeää tarkastella sekä komponenttien ulkoisia että sisäisiä ominaisuuksia, jotta voitaisiin muodostaa hyvä kuva testattavuuden tasosta. Kuitenkin suoraan rakenteellisuuden näkökulmasta esiin nousevat: riippuvuudet, kytkentä ja koheesio. Näistä kaikki ovat mitattavia ominaisuuksia ja niitä varten onkin kehitetty konkreettisia mittareita havaitsemisen tueksi.  
 
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen} \label{arch_testability_measurement}
 
-Bengtsson on määritellyt osan arkkitehtuurisen tason mittareita, jotka määrittelevät järjestelmän ylläpidettävyyttä. Ylläpidettävyys on taas vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Tunnistetut mittarit ovat arkkitehtuurisille elementeille \citep{bengtsson1998towards}
+Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Tunnistetut mittarit ovat arkkitehtuurisille elementeille \citep{bengtsson1998towards}
 
 \begin{itemize}
 	\item metodien määrä elementin rajapinnassa
@@ -470,7 +482,7 @@ UML on mittareiden mukaan auttanut työkaluna löytämään yhteydellisiä omina
 
 \subsection{Arkkitehtuuriset hajut ja testattavuus} \label{arch_smells_and_testability}
 
-Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla ja vaativat melkein aina lähdekoodin tunnistamisen tueksi. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muunmuassa testattavuuten sekä ylläpidettävyyteen. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muunmuassa 
+Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla ja vaativat melkein aina lähdekoodin tunnistamisen tueksi. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muun muassa testattavuuten sekä ylläpidettävyyteen. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muun muassa 
 
 \begin{itemize}
 	\item suunnittelumalli väärässä kontekstissa
@@ -567,9 +579,9 @@ Vaikka taulukon \ref{tab:aspectSmells} koodihajut eivät suoraan koske juuri oli
 Taulukon \ref{tab:codeSmells} suhteista nähdään samanlaisuutta, kuin mitä taulukko \ref{tab:aspectSmells} näytti syinä sen koodihajuille. Suurimmat ongelmat olioperäisissäkin hajuissa tulivat liiallisista riippuvuuksista ja huonosta vastuiden jaosta, joka saattaa johtaa yksittäisten komponenttien paisumiseen. Yksittäisten komponenttien paisuminen taas luo helposti huonoa kompositiota, toistuvaa toiminnallisuutta ja komponentteja, joiden harteilla on iso osa toiminnallisuuden toteuttamisesta. Nämä ongelmat realisoituvat arkkitehtuurisiksi hajuiksi arkkitehtuuritasolla ja niiden tunnistaminen kooditasolta arkkitehtuuriselle tasolle ja arkkitehtuuriselta tasolta kooditasolle on tärkeää myös testattavuuden kannalta.
 
 
-%Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muunmuassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. 
+%Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muun muassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. 
 
-Tarkastelu voidaan keskittää myös enemmän aiheisiin kuten mistä koodihajut johtuvat tai mitkä tekijät koodihajuissa vaikuttavat arkkitehtuuristen hajujen esiintymiseen järjestelmissä. Tähän avuksi Fontana, Ferme ja Zanoni loivat erityisen näkymän koodihajujen tunnistamiseksi ja tunnistivat kytkentään ja koheesioon vaikuttavia koodihajuja. Kytkentään ja koheesioon vaikuttivat koodihajut, jotka olivat suoraan vastuussa muunmuassa \citep{fontana_towards_2015}
+Tarkastelu voidaan keskittää myös enemmän aiheisiin kuten mistä koodihajut johtuvat tai mitkä tekijät koodihajuissa vaikuttavat arkkitehtuuristen hajujen esiintymiseen järjestelmissä. Tähän avuksi Fontana, Ferme ja Zanoni loivat erityisen näkymän koodihajujen tunnistamiseksi ja tunnistivat kytkentään ja koheesioon vaikuttavia koodihajuja. Kytkentään ja koheesioon vaikuttivat koodihajut, jotka olivat suoraan vastuussa muun muassa \citep{fontana_towards_2015}
 
 % SELITÄ TAI POISTA
 

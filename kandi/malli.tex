@@ -418,9 +418,9 @@ Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakami
 	\centering
 	\setlength{\extrarowheight}{10pt}%
 	\resizebox{\linewidth}{!}{
-	\begin{tabular}{|m{3.5cm}|m{7cm}|m{5cm}|}
+	\begin{tabular}{|m{4cm}|m{7cm}|m{5cm}|}
 	\hline 
-	Analyysimentelmä & Ominaisuus & Lähde \\ 
+	\textbf{Analyysimentelmä} & \textbf{Ominaisuus} & \textbf{Lähde} \\ 
 	\hline 
 	Laadullinen & Testausominaisuus, jäljitettävyys, vaatimusten tarkkuus, antipatternit, havaittavuus, hallittavuus & \citetext{\citealp{Binder:1994:DTO:182987.184077}; \citealp{joshi_design_2014}} \\ 
 	\hline 
@@ -433,12 +433,15 @@ Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakami
 \end{table}
 
 \noindent
-Taulukossa \ref{tab:goodArchTestability} kootut ominaisuudet ottavat kantaa laadullisiin ja mitattaviin ominaisuuksiin. On tärkeää tarkastella sekä komponenttien ulkoisia että sisäisiä ominaisuuksia, jotta voitaisiin muodostaa hyvä kuva testattavuuden tasosta. Kuitenkin suoraan rakenteellisuuden näkökulmasta esiin nousevat: riippuvuudet, kytkentä ja koheesio. Näistä kaikki ovat mitattavia ominaisuuksia ja niitä varten onkin kehitetty konkreettisia mittareita havaitsemisen tueksi.  
+Taulukossa \ref{tab:goodArchTestability} kootaan yhteen ominaisuudet, jotka ottavat kantaa laadullisiin tai mitattaviin ominaisuuksiin. On tärkeää tarkastella sekä komponenttien ulkoisia että sisäisiä ominaisuuksia, jotta voitaisiin muodostaa hyvä kuva testattavuuden tasosta. Kuitenkin suoraan rakenteellisuuden näkökulmasta esiin nousevat riippuvuudet, kytkentä ja koheesio. Näistä kaikki ovat mitattavia ominaisuuksia ja niitä varten onkin kehitetty konkreettisia mittareita havaitsemisen tueksi.  
 
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen} \label{arch_testability_measurement}
 
-Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Tunnistetut mittarit ovat arkkitehtuurisille elementeille \citep{bengtsson1998towards}
+Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista tarkastella myös sen kautta järjestelmän testattavuutta. Ylläpidettävyyden näkökulmasta on tunnistettu erilaisia arkkitehtuurisen tason mittareita arkkitehtuurisille elementeille. Niiden avulla voidaan mitatata järjestelmän ominaisuuksia, kuten kytkennän ja koheesion tasoa \citep{bengtsson1998towards}.
+
+\iffalse
+
 
 \begin{itemize}
 	\item metodien määrä elementin rajapinnassa
@@ -449,7 +452,34 @@ Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista ta
 	\item saatavilla olevien metodien lukumäärä muista elementeistä, jotka ovat yhteydessä tarkasteltavaan elementtiin
 	\item elementin metodien ja parametrien määrä
 \end{itemize}
+\fi
 
+
+\begin{table}[H]
+	\centering
+	\setlength{\extrarowheight}{4pt}%
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{|l|l|}
+	\hline 
+	\textbf{Mittari} & \textbf{Tarkkuuden taso} \\ 
+	\hline 
+	Metodien määrä elementin rajapinnassa & Matala \\ 
+	\hline 
+	Elementin metodien ja parametrien määrä & Matala\\ \hline
+	Saatavilla olevat metodit muualta & Matala\\ \hline
+	Lähtevien viestien määrä & Matala/Korkea\\ \hline
+	Paikkamerkkien (placeholder) määrä & Korkea\\ \hline
+	Elementtityyppien määrä, joita tarkasteltava elementti toteuttaa & Korkea\\ \hline
+	Elementtien määrä, jotka toteuttavat tarkasteltavan elementin tyypin & Korkea\\ \hline
+
+	\end{tabular} 
+	\caption{Mittarit, joiden avulla ylläpidettävyyttä voidaan mitata. Tarkkuuden taso on skaalattu arkkitehtuurin näkökulmasta matalasta korkeaan. Matala tarkoittaa, että kuvaus on lähellä ohjelmakoodia ja korkea, että mittaria pystytään käyttämään myös abstraktimmalla tasolla.}
+	\label{tab:maintainMeters}
+	}
+\end{table}
+
+
+\noindent
 On melko selvää, että nämä mittarit ovat osittain hyvin samankaltaisia kuin kappaleessa \ref{testability_measure} määritellyt mittarit testattavuuden mittaamiseen, mutta osa niistä kattaa korkeamman tason, jossa vaikutukset näkyvät paremmin. Edellisistä mittareista nähdään myös, että moni pyrkii jossain määrin määrittelemään esimerkiksi kytkennän tasoa. Kytkentä määriteltiin kappaleessa \ref{testability_measure} yhdeksi tavaksi mitata testattavuutta ja sitä voidan havaita tutkimalla ohjelmistojärjestelmän komponenttien välisiä suhteita.
 
 \subsubsection{UML-kaaviot testattavuuden mittaamisessa} \label{uml_arch_test}

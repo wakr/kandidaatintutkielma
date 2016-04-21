@@ -672,38 +672,47 @@ Kyseisten stereotyyppien avulla saadaan esille riippuvuudet ja niiden tyypit par
 
 %Riippuvuuksien anti-pattern (7 kpl) ja niiden havaitseminen lähdekoodin avulla. Pystyisikö soveltamaan myös arkkitehtuurisella tasolla? \citep{binkley_dependence_2008} 
 
-
-
 \subsection{Havaitut testattavuuteen vaikuttavat tekijät}
 
-\begin{sidewaystable}[H]
+Seuraavalla sivulla olevan taulukkoon \ref{tab:conclusions} on kerätty tutkielman aikana löydetyt tekijät, jotka testattavuuteen vaikuttavat rakenteellisella tasolla eli tasolla, jossa rakennetta pystytään analysoimaan ja tekemään johtopäätöksiä sen avulla. Siihen on pyritty keräämään vain keskeisiä asioita, joiden tarkastelu onnistuu sekä arkkitehtuurisella tasolla, että kooditasolla. Kooditasolla tarkastelu voidaan aloittaa tutkimalla näitä ominaisuuksia yksittäisille luokille, jotka ovat sidoksissa vahvasti tärkeisiin arkkitehturaalisiin elementteihin, kun taas arkkitehtuurisella tasolla paino voidaan kiinnittää. 
+
+On kuitenkin huomattava, että ominaisuudet jakautuvat varsinkin järjestelmän tasolla hyvinkin laadullisiin ominaisuuksiin, joiden miittaaminen ei aina ole edes mahdollista. Tällöin 
+
+\begin{sidewaystable}[htbp]
 	\centering
+	\captionsetup{width=\columnwidth}
 	\setlength{\extrarowheight}{10pt}%
-	\resizebox{\linewidth}{!}{
-		\begin{tabular}{| m{3cm} | m{10cm} | m{6cm} | m{4cm} |}
+	
+		\resizebox{\linewidth}{!}{
+	
+		\begin{tabular}{| m{5cm} | m{8cm} | m{6cm} | m{6cm} |}
 		\hline
 	\textbf{Tekijä} & \textbf{Tarkennus} & \textbf{Menetelmä} & \textbf{Lähde}\\ \hline
 	
-		Järjestelmän ominaisuudet & Komponenttien testattavuus, vastuut, vaatimukset, havaittavuus, hallittavuus ja jäljitettävyys  & Analysointi, pentagrammimalli & sourcet tulee tähän\\ \hline	
+		Järjestelmän ominaisuudet & Komponenttien testattavuus, vastuut, vaatimukset, havaittavuus, hallittavuus, jäljitettävyys  & Analysointi, pentagrammimalli & \citet{Binder:1994:DTO:182987.184077, baudry_measuring_2003, gao_component_2005, joshi_design_2014}  \\ \hline	
 	
-		Kompleksisuus & Kompleksinen toteutus, kompleksiset perintäsuhteet & Metriikat, UML, Graafimalli & d\\ \hline	
+		Kompleksisuus & Kompleksinen toteutus, kompleksiset perintäsuhteet & Metriikat, UML, Graafimalli & \citet{Binder:1994:DTO:182987.184077, baudry_testability_2002, baudry_measuring_2003, Dubey:2011:AMM:2020976.2020983} \\ \hline	
 		
-		Perintä & Ongelmalliset ja liialliset perintäsuhteet & Metriikat, UML, Graafimalli & d\\ \hline	
+		Perintä & Ongelmalliset ja liialliset perintäsuhteet & Metriikat, UML, Graafimalli & \citet{baudry_testability_2002, Dubey:2011:AMM:2020976.2020983} \\ \hline	
 		
-		Kytkentä & Itsekäyttö, suuret kytkentätasot & Metriikat, UML, Graafimalli, hajut & d\\ \hline		
+		Kytkentä & Itsekäyttö, suuret kytkentätasot & Metriikat, UML, Graafimalli, hajut & \citet{Dubey:2011:AMM:2020976.2020983, joshi_design_2014} \\ \hline		
 		
-		Riippuvuudet & Syklimäisyys, määrä, antimalli & UML, graafimalli, hajut & d\\ \hline
+		Riippuvuudet & Syklimäisyys, määrä, antimalli & UML, graafimalli, hajut & \citet{baudry_testability_2002,Jungmayr:2002,joshi_design_2014} \\ \hline
 		
-		Koheesio & Toiminta huonosti keskitettyä & Metriikat, hajut, analysointi & d\\ \hline
+		Koheesio & Toiminta huonosti keskitettyä & Metriikat, hajut, analysointi & \citet{garcia_identifying_2009, joshi_design_2014} \\ \hline
 		
-		Vastuut & Vastuut jakautuneet huonosti & Hajut, UML & d\\ \hline
+		Vastuut & Vastuut jakautuneet huonosti & Hajut, UML & \citet{garcia_identifying_2009} \\ \hline
 		
 		\end{tabular}
 		}
+		
 		\caption{Testattavuuteen vaikuttavat tekijät arkkitehtuurisella tasolla. Tarkennus-sarake antaa lisätietoa menetelmästä ja Menetelmä-sarake kuvaa miten niitä voidaan havaita. Lähde-sarake kertoo mikä tutkimus on tutkinut aihetta ja mahdollisesti esittänyt jonkun menetelmistä.}
+	
+	\label{tab:conclusions}		
+		
 	\end{sidewaystable}
 
-Kaikista tutkielman aikana löytyneistä testattavuuteen vaikuttavista tekijöistä, jotka tulevat myös arkkitehtuurisella tasolla ilmi, voidaan nyt muodostaa seuraavanlainen taulukko
+\newpage
 
 
 

@@ -674,9 +674,13 @@ Kyseisten stereotyyppien avulla saadaan esille riippuvuudet ja niiden tyypit par
 
 \subsection{Havaitut testattavuuteen vaikuttavat tekijät}
 
-Seuraavalla sivulla olevan taulukkoon \ref{tab:conclusions} on kerätty tutkielman aikana löydetyt tekijät, jotka testattavuuteen vaikuttavat rakenteellisella tasolla eli tasolla, jossa rakennetta pystytään analysoimaan ja tekemään johtopäätöksiä sen avulla. Siihen on pyritty keräämään vain keskeisiä asioita, joiden tarkastelu onnistuu sekä arkkitehtuurisella tasolla, että kooditasolla. Kooditasolla tarkastelu voidaan aloittaa tutkimalla näitä ominaisuuksia yksittäisille luokille, jotka ovat sidoksissa vahvasti tärkeisiin arkkitehturaalisiin elementteihin, kun taas arkkitehtuurisella tasolla paino voidaan kiinnittää. 
+Seuraavalla sivulla olevan taulukkoon \ref{tab:conclusions} on kerätty tutkielman aikana löydetyt tekijät, jotka testattavuuteen vaikuttavat rakenteellisella tasolla eli tasolla, jossa rakennetta pystytään analysoimaan ja arvioimaan erilaisten näkökulmien silmin. Taulukkoon on pyritty keräämään vain keskeisiä asioita, joiden tarkastelu onnistuu sekä arkkitehtuurisella tasolla, että kooditasolla. Kooditasolla tarkastelu voidaan aloittaa tutkimalla löydettyjä ominaisuuksia yksittäisille luokille, jotka ovat sidoksissa vahvasti tärkeisiin arkkitehturaalisiin elementteihin, kun taas arkkitehtuurisella tasolla paino voidaan kiinnittää laajempiin kokonaisuuksiin, kuten komponetteihin ja mooduleihin.  
 
-On kuitenkin huomattava, että ominaisuudet jakautuvat varsinkin järjestelmän tasolla hyvinkin laadullisiin ominaisuuksiin, joiden miittaaminen ei aina ole edes mahdollista. Tällöin 
+On kuitenkin huomattava, että ominaisuudet jakautuvat varsinkin järjestelmän tasolla laadullisiin ominaisuuksiin, joiden mittaaminen suoraan ei aina ole edes kovin mahdollista. Tällöin analyysin avuksi on otettava esimerkiksi dokumentaatiota järjestelmästä, komponenttien suunnittelusta vastuussa olevien ihmisiä, koko komponentin toteuttavaa ryhmää tai yleisesti koottua ryhmää, jonka kanssa komponentteja ja rakennetta tarkastellaan testattavuuden näkökulmasta. Näin pystytään muodostamaan hyvä kuva testattavuuden tasosta ilman metrisiä mittareita, jotka vaativat jotain formalismia taustalleen virheellisten tuloksien minimoimiseksi.
+
+Jokainen määritelty ominaisuus on kuitenkin sekä laadullinen että mitattava ominaisuus. Tällöin ei voida suoraan sanoa, että olisi olemassa yksi tapa, jonka avulla 
+
+Kuitenkin mittarit toimivat
 
 \begin{sidewaystable}[htbp]
 	\centering

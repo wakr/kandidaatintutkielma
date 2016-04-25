@@ -100,18 +100,28 @@
 \date{\today}
 \level{Kandidaatintutkielma}
 
-% ; kenelle, miksi, millaisessa ympäristössä; tutkimuskysymys; tulokset; impakti)
+% ; kenelle, miksi, millaisessa ympäristössä; tutkimuskysymys; tulokset; impakti) 100-200 sanaa
 
-\abstract{tiivistelmä (100-200 sanaa)}
+\abstract{Tässä tutkielmassa tarkastellaan ohjelmiston arkkitehtuurin ja testattavuuden suhdetta. Arkkitehtuurisella tasolla tarkasteltavaksi otetaan ohjelmistojärjestelmän rakenne, jota on mahdollista visualisoida erilaisin keinoin. Visuaalisesta kuvauksesta pyritään määrittelemään tekijöitä, joita on mahdollista arvioida sekä metrisinä että laadullisina ominaisuuksina.
+
+Tavoitteena on selvittää, minkä tekijöiden avulla järjestelmän testattavuutta olisi mahdollista tarkastella visuaalisella tasolla. Tämän lisäksi tarkastelu kiinnittyy erilaisiin keinoihin, joiden avulla metriset ja laadulliset ominaisuudet testattavuuden kannalta tulevat mahdollisimman hyvin ilmi. Tutkimuksen tulos voi täten toimia hyvänä ohjenuorana ohjelmoijille ja alustana staattisille koodianalyysi-työkaluille.
+
+Tutkimuksessa on käytetty pääosin kahdensuuntaistaista lumipallomenetelmää. Kirjallisuuskatsauksen avulla on etsitty aiheesta merkittäviä tutkimuksia ja edetty näiden viitteitä pitkin, sekä etsitty tutkimuksia jotka ovat käsitelleet aihetta ja katsottu mitkä tutkimukset ovat niihin viitanneet.
+
+Tutkielman tuloksena on saatu seitsemän päätekijää, jotka löytyvät sekä ohjelmistojärjestelmän rakenteelliselta tasolta että luokkatasolta. Osa ominaisuuksista on metrillisiä ominaisuuksia, kun taas osa laadullisia. Ominaisuudet on kerätty taulukkoon tämän tutkielman loppuun.
+
+}
 
 % The following can be used to specify keywords and classification of the paper:
 
-\keywords{ohjelmistoarkkitehtuuri, testattavuus, näkymä, näkökulma}
+\keywords{ohjelmistoarkkitehtuuri, testattavuus, metriikat}
 
 % classification according to ACM Computing Classification System (http://www.acm.org/about/class/)
 % This is probably mostly relevant for computer scientists
 % uncomment the following; contents of \classification will be printed under the abstract with a title
 % "ACM Computing Classification System (CCS):" 
+ 
+%98 D.2.4 D.2.5  D.2.8 
  
  \classification{
 	Software and its engineering $\rightarrow$ System description languages 	\\
@@ -267,7 +277,7 @@ Muita näkymämalleja arkkitehtuuriin on useita, joista jokainen kuitenkin tuo e
 
  %moduuli, joka on järjestelmän rakenteellinen näkymä kuvaten muun muassa luokkia, pakkauksia, moduulien eriyttämistä (decomposition) sekä periytymistä; komponentti ja konnektori, joka kuvailee järjestelmän toiminnallista puolta sekä miten komponentit ovat yhteydessä toisiinsa; allokaatio, joka kuvailee miten prosessit kuvautuvat laitteistotasolla  ja miten ne kommunikoivat keskenään. 
 
-Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. Kuitenkin edellä mainitusta kahdestakin mallista jo nähdään, että kummatkin pyrkivät nostamaan esille järjestelmän rakennetta ja rakenteessa ilmeneviä suhteita, joita muun muassa komponenttien sekä moduulien välillä on.
+Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. Kuitenkin edellä mainituista kahdestakin mallista jo nähdään, että kummatkin pyrkivät nostamaan esille järjestelmän rakennetta ja rakenteessa ilmeneviä suhteita, joita muun muassa komponenttien sekä moduulien välillä on.
 
 %Yhteensä viittä eri mallia vertailtiin Mayn tutkimuksessa \citep{may2005survey}. Siinä kartoitettiin mahdollisimman laajaa näkymien muodostamaa näkökulmien joukkoa, jotka kattaisivat mahdollisimman laajalti ohjelmistoarkkitehtuurin aluetta (domain). Vertailtavat arkkitehtuurit olivat 4+1-malli, SEI:n (Software Engineering Institute) \textit{Views and Beyond}-malli, ISO:n (International Organization for Standardization) \textit{Reference Model of Open Distributed Processing}, Siemensin \textit{Four View Model} ja \textit{Rational Architecture Description Specification}. Malleja vertailtiin tutkimalla kuinka niiden tarjoamat näkökulmat painottavat kolmeen eri kategoriaan liittyviä asioita: sidosryhmät, laadulliset tekijät ja rakenteelliset ominaisuudet. Lopulliseen valintaan, joka painotti mahdollisimman laajasti jokaisen osa-alueen ominaisuuksia, otettiin mukaan \textit{Views and Beyond} -mallin kaikki kolme näkymää ja \textit{Rational ADS}:n vaatimukset-näkökulma (requirements viewpoint). Syy, miksi juuri nämä valittiin oli se, että \textit{Views and Beyond} sopii erittäin hyvin mallin pohjaksi, koska se kuvaa järjestelmän rakennetta kattavasti, sen näkökulmat ovat itsenäisiä ja se limittyy kokonaisuudessaan hyvin 4+1-mallin sekä Siemens'n mallin kanssa. Se ei kuitenkaan sisällä tarvittavia näkymiä kuvaamaan eri sidosryhmille tärkeitä asioita esimerkiksi loppukäyttäjiä varten oleva näkymä puuttuu kokonaan. Tämän takia mukaan on otettu \textit{Rational ADS}, jonka vaatimukset-näkökulma koostuu neljästä eri näkymästä: ei-toiminnalliset vaatimukset, alue (domain), käyttötapaus ja käyttökokemus. 
 
@@ -306,9 +316,9 @@ Luotavan näkymän perimmäinen tarkoitus voi esimerkiksi olla, että mahdollisi
 
 \subsection{UML}
 
-UML eli \textit{Unified Modeling Language} on visuaalinen formalisoitu mallinnuskieli näkymien luomiseen \citep{UML}, joka on muodostunut \textit{de facto}-standardiksi ohjelmistoarkkitehtuurin kuvauksessa ja luomisessa. UML:n avulla voidaan ohjelmistoa mallintaa kolmelta eri näkökulmalta: kehitystä täydentävät mallit, käyttäytymisen kuvaamiseen tarkoitetut mallit ja rakennetta kuvaavat mallit. Käytännössä sen avulla pystytään siis kuvaamaan esimerkiksi jokainen sekä 4+1 -mallin että \textit{Views and Beyond}-mallin näkymä käyttäen hyväksi UML:n tarjoamaa 13 erilaista kaaviota. Arkkitehtuurin kuvauksen kannalta relevanteimmat kaaviot ovat luokkakaavio ja komponenttikaavio, koska niiden avulla saadaan kuvattua erittäin tarkasti ja monipuolisesti järjestelmän rakennetta. Luokkakaaviossa huomio keskittyy konkreettisten luokkien ja niiden välisten suhteiden kuvaamiseen, kun taas komponenttikaavio kuvaa korkeammalla tasolla järjestelmää komponenteittain, joita yhdistävät niiden tarjoamat rajapinnat.   
+UML eli \textit{Unified Modeling Language} on yksi visuaalinen formalisoitu mallinnuskieli näkymien luomiseen \citep{UML}. Sen avulla ohjelmistoa voidaan mallintaa kolmelta eri näkökulmalta: kehitystä täydentävät mallit, käyttäytymisen kuvaamiseen tarkoitetut mallit ja rakennetta kuvaavat mallit. Käytännössä sen avulla pystytään siis kuvaamaan esimerkiksi jokainen sekä 4+1 -mallin että \textit{Views and Beyond}-mallin näkymä käyttäen hyväksi UML:n tarjoamaa 13 erilaista kaaviota. Arkkitehtuurin kuvauksen kannalta relevanteimmat kaaviot ovat kuitenkin luokkakaavio ja komponenttikaavio, koska niiden avulla saadaan kuvattua erittäin tarkasti ja monipuolisesti järjestelmän rakenteellisia ominaisuuksia. Luokkakaaviossa huomio keskittyy konkreettisten luokkien ja niiden välisten suhteiden kuvaamiseen, kun taas komponenttikaavio kuvaa korkeammalla tasolla järjestelmää komponenteittain, joita yhdistävät niiden tarjoamat rajapinnat.   
 
-UML sopii ominaisuuksiensa takia erittäin hyvin olio-pohjaisten ohjelmien kuvaamiseen tarjoamalla tuen muun muassa periytymisen ja rajapintojen kuvaamiseen. Tämän takia se on otettu tässä tutkimuksessa erityisasemaan järjestelmän ja sen arkkitehtuurin kuvaamisessa.
+UML sopii ominaisuuksiensa takia erittäin hyvin olio-pohjaisten ohjelmien kuvaamiseen tarjoamalla tuen muun muassa periytymisen ja rajapintojen kuvaamiseen. Tämän takia se on otettu tässä tutkimuksessa erityisasemaan järjestelmän ja sen rakenteen kuvaamisessa.
 
 
 \section{Testattavuus laadullisena tekijänä} \label{testability_main}
@@ -322,10 +332,10 @@ Ohjelmistojärjestelmään kohdistuva testaus voidaan jakaa moneen eri luokkaan,
 
 Testattavuuden arvioimisessa voidaan käyttää hyödyksi kolmea eri parametria \citep[s. 2]{baudry_measuring_2003}: havaittavuus (observability), hallittavuus (controllability) ja vaativuus, joka tarvitaan suorittamaan tietty testi. Havaittavuus määrittelee, kuinka mahdollista testien tuloksia on tarkastella, ja hallittavuus sitä, kuinka paljon testattavaan komponentin tilaan voidaan vaikuttaa. 
 
-Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää vaikuttavatko tietyt syötteet testituloksiin, ja hallittavuus taas voidaan nähdä siitä kuinka helppo on tuottaa jokin tietty tulos syötteestä. %\citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
-Sen parametrisoimiseen on kehitetty \textit{domain-to-range} -arvo eli DRR, jonka avulla voidaan havaita implisiittistä tiedonkatoamista \citep{Voas:1995:STN:624607.625469}. DRR-arvo saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon. DRR-analyysi on hieman ongelmallinen, koska se vaatii ohjelmistojärjestelmän täydellisen lähdekoodin tuekseen ja lähdekoodi-analyysit ovat raskaita teettää käsin.
+Havaittavuus voidaan myös nähdä arvona, joka kertoo kuinka helppo on määrittää vaikuttavatko tietyt syötteet testituloksiin, ja hallittavuus taas voidaan nähdä siitä kuinka helppo on tuottaa jokin tietty tulos syötteestä \citep[s. 554]{Freedman:1991:TSC:126218.126229}. 
+Hallittavuuden parametrisoimiseen on mahdollista käyttää \textit{domain-to-range} -arvoa eli DRR-arvoa. Sen avulla voidaan havaita tiedon katoamista komponenttien sisällä \citep{Voas:1995:STN:624607.625469} ja se saadaan vertailemalla komponenttien mahdollisen tulosteen (ouput) joukon kokoa syötteen (input) kokoon. 
 
-% hallittavuus???  
+
 
 
 
@@ -342,7 +352,7 @@ Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa
 
 %Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
 
-Freedman on määritellyt testattavan komponentin ominaisuuksiksi \citep{Freedman:1991:TSC:126218.126229}: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota tekijöihin, jotka saadaan DRR-arvoja analysoimalla \citep{voas_improving_1992} 
+Testattavan komponentin ominaisuuksiksi voidaan määritellä \citep{Freedman:1991:TSC:126218.126229}: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota tekijöihin, jotka saadaan DRR-arvoja analysoimalla \citep{voas_improving_1992} 
 
 \begin{itemize}
 	\item ymmärtää dekomposition mahdollisuus
@@ -358,9 +368,9 @@ On siis todella tärkeää eriyttää komponentteja mahdollisimman paljon toisis
 
 \subsection{Testausta heikentävät ominaisuudet}
 
-Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. Tiedon piilottaminen on esimerkiksi hyvin yleinen ja suositeltava tapa olio-ohjelmoinnissa, mutta liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska testauksen hallittavuus heikkenee. Ohjelmistojärjestelmä voidaan kuitenkin tarkoituksella suunnitella niin tiiviiksi, että sisäinen tila jää täysin tarkastelemattomaksi. Tällöin testauksen aikana syntyneessä virhetilanteessa on hyvin vaikea sanoa, että mistä päin virhe syntyi ja virheen paikallistaminen saattaa viedä aikaa.
+Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. 
 
-Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia \citep{Voas:1995:STN:624607.625469}. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
+Tiedon piilottaminen on  hyvin yleinen ja suositeltava tapa olio-ohjelmoinnissa, mutta liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska testauksen hallittavuus heikkenee. Ohjelmistojärjestelmä voidaan esimerkiksi tarkoituksella suunnitella niin tiiviiksi, että sisäinen tila jää täysin tarkastelemattomaksi. Tällöin testauksen aikana syntyneessä virhetilanteessa on hyvin vaikea sanoa, että mistä päin virhe syntyi ja virheen paikallistaminen saattaa täten viedä aikaa. Tällaiset ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia \citep{Voas:1995:STN:624607.625469}. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
 
 
 
@@ -368,7 +378,7 @@ Ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtav
 \subsection{Testattavuuden mittaaminen} \label{testability_measure}
 
 
-Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Mittareiden käyttäminen tuo myös konkretiaa analysoimiseen ja niiden avulla on helppo tehdä esimerkiksi staattista analyysia suorittavia erillisiä ohjelmia. 
+Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Mittareiden käyttäminen tuo myös konkretiaa analysoimiseen ja niiden pohjalta on mahdollista tehdä esimerkiksi staattista analyysia suorittavia erillisiä ohjelmia. 
 
 
 

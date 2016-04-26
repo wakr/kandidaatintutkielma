@@ -352,17 +352,18 @@ Hyvä testattavuus auttaa järjestelmän ylläpidossa, validoinnissa ja parantaa
 
 %Isolating modules with high DDR \citep[s. 23]{Voas:1995:STN:624607.625469}.
 
-Testattavan komponentin ominaisuuksiksi voidaan määritellä \citep{Freedman:1991:TSC:126218.126229}: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo arkkitehtuurin alkuvaiheessa kiinnittää huomiota tekijöihin, jotka saadaan DRR-arvoja analysoimalla \citep{voas_improving_1992} 
+Koska ohjelmistojärjestelmä koostuu komponenteista, voidaan tutkiminen keskittää ensin itse komponentteihin. Testattavan komponentin ominaisuuksiksi voidaan määritellä \citep{Freedman:1991:TSC:126218.126229}: komponentista luotavat testitapaukset pysyvät pieninä ja ovat helposti luotavissa; komponentin testitapaukset eivät ala toistamaan itseään; komponentin testauksen aikana havaitut ongelmat on helppo jäljittää tiettyihin komponentteihin. Näitä tukemaan voidaan jo ohjelmistojärjestelmän alkuvaiheessa kiinnittää huomiota tekijöihin, jotka saadaan DRR-arvoja analysoimalla \citep{voas_improving_1992} 
 
 \begin{itemize}
 	\item ymmärtää dekomposition mahdollisuus
 	\item tunnistaa moduulit, joiden DRR-arvo on korkea ja tehdä ne mahdollisimman pieniksi ja yksinkertaisiksi
-	\item tunnistaa rajapinta korkean DRR-arvon moduuleille siten, että rajapinta paljastaa tarpeeksi tietoa moduulien sisäisestä tilasta
-	\item eriyttää korkean DRR-arvon moduulit toisistaan \citep[s. 23]{Voas:1995:STN:624607.625469}.
+	\item tunnistaa rajapinta korkean DRR-arvon moduuleille siten, että rajapinta paljastaa tarpeeksi tietoa komponenttien sisäisestä tilasta
+	\item eriyttää korkean DRR-arvon komponentit toisistaan \citep[s. 23]{Voas:1995:STN:624607.625469}.
 \end{itemize}
 
 
-On siis todella tärkeää eriyttää komponentteja mahdollisimman paljon toisistaan ja tehdä kommunikaatio mahdollisimman kontrolloitavaksi hyvän testattavuuden aikaansaamiseksi. Varsinkin helposti isoiksi muodostuvien komponenttien pitäisi olla kytkentätasoltaan mahdollisimman kevyitä ja riippuvuuksien minimissään tai niistä luotavien testien tekeminen vaikeutuu ja testitapausten koko kasvaa erittäin suuriksi. Myös ison ja tärkeän toiminnallisuuden kerääntymistä vain muutaman komponentin vastuulle voi olla merkki liiallisista DRR-arvoista, joka pitäisi hoitaa välittömästi tai testaus voi vaikeutua huomattavan paljon.
+Hyvää testattavuutta on siis mahdollista saavuttaa pelkästään analysoimalla komponentteja yksittäisinä tekijöinä. Huomio voidaan kiinnittää asioihin, kuten kuinka paljon komponentit tukevat testausprosessia ja kuinka paljon komponentit ovat riippuvaisia toisistaan. Isoihin komponentteihin pitäisi kinnittää erityistä huomioita, koska niissä saattaa piileä monia ison DRR-arvon alikomponentteja, joiden testaaminen saattaa muodostua hankalaksi. Suuria DRR-arvon komponentteja pitäisi yrittää muutenkin välttää ja eriyttää toiminnallisuus niin, että ongelmakohtia pystyttäisiin hallitsemaan järkevällä tavalla.
+
 
 
 
@@ -378,13 +379,11 @@ Tiedon piilottaminen on  hyvin yleinen ja suositeltava tapa olio-ohjelmoinnissa,
 \subsection{Testattavuuden mittaaminen} \label{testability_measure}
 
 
-Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä, on erilaisia testattavuuteen vaikuttavia mittareita tutkittu paljon. Mittareiden käyttäminen tuo myös konkretiaa analysoimiseen ja niiden pohjalta on mahdollista tehdä esimerkiksi staattista analyysia suorittavia erillisiä ohjelmia. 
+Koska suoraan hyvää tai huonoa testattavuutta on vaikeaa määritellä ongelma-alueen ollessa niin suuri, on erilaisia testattavuuteen luokkatasolla vaikuttavia mittareita tutkittu paljon. Mittareiden käyttäminen tuo konkretiaa analysoimiseen ja niiden pohjalta on mahdollista tehdä esimerkiksi staattista koodianalyysia suorittavia erillisiä ohjelmia. 
 
+Yksikkötestauksen näkökulmasta on Java-pohjaisille ohjelmistojärjestelmille määritetty metriikoita tutkimuksessa, jossa tutkimuksen mittareina käytettiin testitapausten kasvua ja pituutta \citep{Bruntink:2004}. Hieman samanlainen jaottelu tehtiin eräässä toisessa myöhemmässä tutkimuksessa, jossa määriteltiin yleisesti tiettyjä testaukseen vaikuttavia mittareita, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}. Määritetyt tekijät ovat negatiivisia asioita testauksen kannalta, koska esimerkiksi suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, koska luokka käyttää hyvin paljon hyväkseen muiden luokkien toiminnallisuutta. Suuri periytymisaste tuo taas luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla. Tilanne voi johtaa siihen, että luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista ja luokan testaaminen vaatii käytännössä koko luokkahierarkien läpikäynnin. 
 
-
-Yksikkötestauksen näkökulmasta testattavuutta tutkii Bruntink ja van Deursen. He määrittelivät hyviä testattavuuden metriikoita Java-pohjaisiin ohjelmistojärjestelmiin, jossa tutkimuksen mittarina käytettiin testitapausten kasvua ja pituutta \citep{Bruntink:2004}. Khan ja Mustafa käyttivät taas neljää korkeamman tason metriikkaa laskeakseen testattavuutta ohjelmistojärjestelmissä \citep{Khan:2009:MBT:1507195.1507204}. Ne korreloivat vahvasti edellisiin metriikoihin ja ovat hyvin keskeisiä olio-ohjelmoinnin suunnitteluperiaatteita. Oliopohjaisista järjestelmistä voidaan havaita yleisesti tiettyjä testaukseen vaikuttavia mittareita, joiden suuri arvo korreloi vahvasti huonoon testattavuuteen \citep{Dubey:2011:AMM:2020976.2020983}. Määritetyt tekijät ovat negatiivisia asioita testauksen kannalta, koska esimerkiksi suuri metodien määrä on merkki luokan liiallisesta kompleksisuudesta ja se johtaa testauksen monimutkaistumiseen. Suuri kytkennän määrä vaikeuttaa luokan itsenäistä testaamista, koska luokka käyttää hyvin paljon hyväkseen muiden luokkien toiminnallisuutta. Suuri periytymisaste tuo taas luokalle mahdollisesti paljon perittyjä metodeja, jotka on toteutettu jossain muualla. Tilanne voi johtaa siihen, että luokka on riippuvainen erittäin paljon muiden luokkien toteutuksista ja luokan testaaminen vaatii käytännössä koko luokkahierarkien läpikäynnin. 
-
-Edellämainituissa tutkimuksissa käytetyistä mittareista voidaan muodostaa seuraava taulukko, jossa jokaisen mittarin pääidea on kiteytetty ja suhteutettu neljään korkeantason yleismetriikkaan.
+Neljää korkeamman tason metriikkaa on käytetty laskemaan testattavuutta ohjelmistojärjestelmissä, jotka korreloivat vahvasti edellisten tutkimusten metriikoihin. Niitä voidaan pitää keskeisinä olio-ohjelmoinnin suunnitteluperiaatteina \citep{Khan:2009:MBT:1507195.1507204} ja edellämainituissa tutkimuksissa käytetyistä mittareista voidaankin muodostaa seuraava taulukko, jossa jokaisen mittarin pääidea on kiteytetty ja suhteutettu neljään korkean tason yleismetriikkaan.
 
 \begin{table}[ht]
 \centering
@@ -400,7 +399,7 @@ Edellämainituissa tutkimuksissa käytetyistä mittareista voidaan muodostaa seu
 	Periytymisaste & Uudelleenkäyttö & \citep{Dubey:2011:AMM:2020976.2020983}\\ \hline
 \end{tabular}
 		
-	\caption{Mittarit ja niiden suhteet Khanin ja Mustafan esittämään neljään eri korkeantason ominaisuuteen. Ehdotettu-sarake kertoo, mistä lähteestä mittarin ideat ovat.}
+	\caption{Mittarit pelkistettyinä ja niiden suhteet Khanin ja Mustafan esittämään neljään eri korkean tason metriikkaan. Ehdotettu-sarake kertoo mistä lähteestä mittarin ideat ovat.}
 	\label{tab:codeTestability}
 	}
 \end{table}
@@ -408,7 +407,7 @@ Edellämainituissa tutkimuksissa käytetyistä mittareista voidaan muodostaa seu
 
 
 \noindent
-Taulukkon \ref{tab:codeTestability} on kerätty mittareiden pääideat kaikista kolmesta lähteestä ja niistä voidaan kerätä yleisesti luokkien näkökulmasta muutama iso tekijä testattavuudessa: koko, itsenäinen toimiminen, riippuvuudet muista luokista ja periytyminen. Niistä on kuitenkin osa ominaisuuksiltaan sellaisia, joita voidaan mitata suurimmaksi osaksi vain lähdekoodin avulla ja ne ottavat kantaa testattavuuteen vain yhden luokan näkökulmasta. Se vaikeuttaa kokonaisuuden hahmottamista, vaikka tietenkin olisi mahdollista laskea jokaiselle luokalle erikseen kyseiset mittarit. Suuremman kokonaisuuden tarkasteleminen tai keskittyminen vain tiettyyn testausta vaikuttavaan osa-alueeseen vaatii kuitenkin muita keinoja.
+Taulukkon \ref{tab:codeTestability} on kerätty mittareiden pääideat kaikista kolmesta lähteestä ja niistä voidaan kerätä yleisesti luokkien näkökulmasta muutama iso tekijä testattavuudessa: koko, itsenäinen toimiminen, riippuvuudet muista luokista ja periytyminen. Mittareista osa on kuitenkin ominaisuuksiltaan sellaisia, joita voidaan mitata suurimmaksi osaksi vain lähdekoodin avulla ja ne ottavat kantaa testattavuuteen vain yhden luokan näkökulmasta. Tämä vaikeuttaa kokonaisuuden hahmottamista, koska lähdekoodin kautta tulee liikaa irrelevanttia tietoa, jolloin analysointi vaikeutuu. Suuremman kokonaisuuden tarkasteleminen tai keskittyminen vain tiettyyn testausta vaikuttavaan osa-alueeseen vaatii muita keinoja.
 
 \section{Testattavuus arkkitehtuurisella tasolla} \label{arch_testability_main}
 

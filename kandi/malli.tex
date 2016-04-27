@@ -441,7 +441,7 @@ Jos järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmisto
 	\hline 
 	\textbf{Analyysimentelmä} & \textbf{Ominaisuus} & \textbf{Lähde} \\ 
 	\hline 
-	Laadullinen & Testausominaisuus, jäljitettävyys, vaatimusten tarkkuus, antipatternit\footnote{Toistuva ratkaisu johonkin ongelmaan, joka vaikuttaa kuitenkin negatiivisesti laatuun.}, havaittavuus, hallittavuus & \citet{Binder:1994:DTO:182987.184077, joshi_design_2014} \\ 
+	Laadullinen & Testausominaisuus, jäljitettävyys, vaatimusten tarkkuus, antimallit\footnote{Toistuva ratkaisu johonkin ongelmaan, joka vaikuttaa kuitenkin negatiivisesti laatuun.}, havaittavuus, hallittavuus & \citet{Binder:1994:DTO:182987.184077, joshi_design_2014} \\ 
 	\hline 
 	Metrinen & Sykliset riippuvuudet, kytkennän taso, koheesion taso &  \citet{joshi_design_2014} \\ 
 	\hline 
@@ -515,7 +515,7 @@ Riippuvuuksiin littyviä tekijöitä voidaan havainnollistaa seuraavan taulukon 
 	\centering
 	\setlength{\extrarowheight}{10pt}%
 	\resizebox{\linewidth}{!}{
-	\begin{tabularx}{450pt}{|X|X|X|}
+	\begin{tabularx}{500pt}{|X|X|X|}
 	\hline 
 	\textbf{Ominaisuus} & \textbf{Tapa havaita} & \textbf{Lähde} \\ 
 	\hline 
@@ -544,11 +544,9 @@ UML on auttanut työkaluna löytämään yhteydellisiä ominaisuuksia arkkitehtu
 
 \subsection{Arkkitehtuuriset hajut ja testattavuus} \label{arch_smells_and_testability}
 
-Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla ja vaativat melkein aina lähdekoodin tunnistamisen tuekseen. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muun muassa testattavuuten sekä ylläpidettävyyteen. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina negatiivisesti laatuun \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muun muassa: suunnittelumalli väärässä kontekstissa;  suunnitteluabstrahoinnin (design abstraction) käyttö niin, että sillä on ei-toivottuja vaikutuksia; suunnitteluabstrahoinnin käyttö väärällä tarkkuuden tasolla.
+Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmien monimutkaistuessa ja suunnittelun tulevan yhä tärkeämmäksi osaksi ohjelmistojen elinkaarta. Ne ovat sukua tutummalle käsitteelle koodihaju, mutta tulevat esille arkkitehtuurisella tasolla, kun koodihajut tulevat esille luokkatasolla ja vaativat melkein aina lähdekoodin tunnistamisen tuekseen. Arkkitehtuuriset hajut ovat pääosin suunnittelupäätöksiä, jotka negatiivisesti vaikuttavat järjestelmän elinkaareen ja muun muassa testattavuuten sekä ylläpidettävyyteen. Niitä ei voi pitää välttämättä virheinä, mutta ne vaikuttavat vähintään aina laatuun huonontavalla tavalla \citep{de_andrade_architectural_2014}. Syitä arkkitehtuurisille hajuille voidaan nähdä olevan muun muassa: suunnittelumalli väärässä kontekstissa;  suunnitteluabstrahoinnin (design abstraction) käyttö niin, että sillä on ei-toivottuja vaikutuksia; suunnitteluabstrahoinnin käyttö väärällä tarkkuuden tasolla.
 
-%Testattavuus \citep{garcia_identifying_2009} yleisesti \citep{bertran_detecting_2011}.
-
- Arkkitehtuuristen hajujen tutkimiseen voidaan käyttää analyyttistä lähestymistapaa, koska arkkitehtuuristen hajujen lähtökohtana toimii usein joku virheellinen arkkitehtuurinen päätös. Yleisesti on kuitenkin helpompi tutkia visuaalista informaatiota ja tämän avulla arkkitehtuuriin vaikuttavia hajuja. Arkkitehtuurisia hajuja voidaan löytää seuraavien metriikoiden avulla \citep{bertran_detecting_2011}
+Arkkitehtuuristen hajujen tutkimiseen voidaan käyttää analyyttistä lähestymistapaa, koska arkkitehtuuristen hajujen lähtökohtana toimii usein joku virheellinen arkkitehtuurinen päätös. Yleisesti on kuitenkin helpompi tutkia visuaalista informaatiota ja tämän avulla arkkitehtuuriin vaikuttavia hajuja. Seuraavien metriikoiden avulla on mahdollista löytää sekä visuaalisen että analyyttisen tarkastelun avulla arkkitehtuurisia hajuja \citep{bertran_detecting_2011}
 
 \begin{itemize}
 	\item ei-haluttujen asiakas-komponenttien (client component) määrä
@@ -563,16 +561,16 @@ Arkkitehtuurisiin hajuihin on alettu kinnittää yhä enemmän huomiota ohjelmie
 \noindent
 Näiden metriikoiden avulla sekä näkymällä moduulitasoon, olisi esimerkiksi hyvin mahdollistaa löytää yksi virhealttiillisin arkkitehtuurista löytyvä ongelmakohta \textit{Cross-Module Cycle} \citep[s. 57]{HotSpot}. \textit{Cross-Module Cycle} on olemassa arkkitehtuurissa silloin, kun siinä on syklinen riippuvuussuhde moduulitasolla. Se vaikeuttaa testattavuutta siten, että testauksen aikana yhden moduulin testaaminen vaatii käytännössä myös kaikkien muiden moduulien testauksen, jolloin testitapausten eriyttäminen vaikeutuu huomattavasti. Sykliset riippuvuudet todettiin olevan myös kappaleessa \ref{good_testability} yksi testattavuuteen vaikuttava tekijä, mutta arkkitehtuurisia hajuja, jotka suoraan vaikuttavat testattavuuteen, voidaan tunnistaa olevan ainakin kaksi lisää \citep{garcia_identifying_2009}:  \textit{Connector Envy} ja \textit{Scattered Parasitic Functionality}.
 
-\textit{Connector Envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä toiminnallisuudet tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia. Tilanteena se johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana hajoaa. \textit{Scattered Parasitic Functionality} syntyy, jos useammalla komponentilla on sama korkean tason vastuu ja joidenkin näiden komponenttien täytyy toteuttaa myöskin joku oma ortogonaalinen vastuu. Tämä estää komponenttien järkevän yhdistämisen ilman, että uuteen komponettiin tulee parasiitteja eli ylimääräisiä vastuita. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virhe vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
+\textit{Connector Envy} on tilanne, jossa komponentti toteuttaa konnektorille kuuluvaa toiminnallisuutta eli toteuttaa esimerkiksi joko kommunikointia, koordinointia tai tiedon konversiota. Nämä toiminnallisuudet tulisi jättää konnektorin toteutettavaksi, koska komponentin toiminnallisuus ja interaktiot eivät ole enää erillään testattavia ominaisuuksia. Tilanteena se johtaa siihen, että ei pystytä enää varmasti sanomaan, että mikä kohta komponentissa oli virheellinen, jos se testauksen aikana hajoaa. \textit{Scattered Parasitic Functionality} taas syntyy, jos useammalla komponentilla on sama korkean tason vastuu ja joidenkin näiden komponenttien täytyy toteuttaa myöskin joku oma ortogonaalinen vastuu. Tämä estää komponenttien järkevän yhdistämisen ilman, että uuteen komponettiin tulee parasiitteja eli ylimääräisiä vastuita. Testattavuus kärsii tästä, koska esimerkiksi integraatiotestauksen aikana tapahtunut virhe vaikuttaa laajalla alueella ja vaikeuttaa vian alkuperän määrittämistä. 
 
-Testaukseen vaikuttavista arkkitehtuurisista hajusta voidaan huomata, että ne pyrkivät löytämään sykliset riippuvuudet, huonon koheesion ja mahdollisen riippuvuuksien jakautumisen turhan laajalle. Samat asiat jotka vaikuttavat luokkatasolla testattavuuteen vaikuttavat arkkitehtuurisella tasolla, mutta hieman eri tavalla. Arkkitehtuurisella tasolla tarkasteltavana voi olla usean eri luokan kokonaisuus eli komponentit tai arkkitehtuuriset elementit, kun luokkatasolla tarkastelun alla voi olla yksittäiset luokat ja jopa yksittäiset metodit.
+Testaukseen vaikuttavista arkkitehtuurisista hajusta voidaan huomata, että ne pyrkivät löytämään sykliset riippuvuudet, huonon koheesion ja mahdollisen riippuvuuksien jakautumisen turhan laajalle. Samat asiat jotka vaikuttavat luokkatasolla testattavuuteen vaikuttavat arkkitehtuurisella tasolla, mutta hieman eri näkökulmasta. Arkkitehtuurisella tasolla tarkasteltavana voi olla usean eri luokan kokonaisuudet eli komponentit tai arkkitehtuuriset elementit, kun luokkatasolla tarkastelun alla voi olla yksittäiset luokat ja jopa yksittäiset metodit.
 
 
 \subsubsection{Koodihajujen ja arkkitehtuuristen hajujen suhde}
 
-Arkkitehtuurin ja ohjelmakoodin suhde on luonnollisesti hyvin vahva ja monissa metriikoissa nähdään samankaltaisuuksia. Tätä suhdetta selittämään on tuota käsite hybridihajut, jotka ovat sekoitus koodihajuja ja arkkitehtuurisia hajuja tuoden uuden näkökulman arkkitehtuuristen hajujen löytämiseksi myös testattavuuden kannalta. Koodipoikkeama (code anomaly) luetaan hybridihajuksi, jos sen vaikuttamat luokat ovat vastuussa arkkitehtuurisista elementeistä vaikuttamissa arkkitehtuurisissa elementeissä on arkkitehtuurisia ongelmia \citep{vale_bad_2014}. Hybridihajujen tunnistaminen on siis eräs keino helpottaa arkkitehtuuristen hajujen löytämistä. Löytämällä koodihajujen pohjalta arkkitehtuurisiin vaikuttavia ongelmallisia luokkia, voidaan tunnistaa arkkitehtuurisella tasolla vastaavat arkkitehtuuriset hajut ja elementit. Arkkitehtuuristen hajujen tunnistaminen saattaa taas antaa tärkeää tietoa pinnan alla piilevistä koodihajuista.
+Arkkitehtuurin ja ohjelmakoodin suhde on luonnollisesti hyvin vahva ja monissa metriikoissakin on nähty samankaltaisuuksia. Tätä suhdetta selittämään on tuotu käsite hybridihajut, jotka ovat sekoitus koodihajuja ja arkkitehtuurisia hajuja, tuoden uuden näkökulman arkkitehtuuristen hajujen löytämiseksi myös testattavuuden kannalta. Koodipoikkeama (code anomaly) luetaan hybridihajuksi, jos sen vaikuttamat luokat ovat vastuussa arkkitehtuurisista elementeistä vaikuttamissa arkkitehtuurisissa elementeissä on arkkitehtuurisia ongelmia \citep{vale_bad_2014}. Hybridihajujen tunnistaminen on siis eräs keino helpottaa arkkitehtuuristen hajujen löytämistä. Löytämällä koodihajujen pohjalta arkkitehtuurisiin vaikuttavia ongelmallisia luokkia, voidaan tunnistaa arkkitehtuurisella tasolla vastaavat arkkitehtuuriset hajut ja elementit. Arkkitehtuuristen hajujen tunnistaminen saattaa taas antaa tärkeää tietoa pinnan alla piilevistä koodihajuista.
 
-On tutkittu, että tietyt koodihajut ovat indikaattoreita arkkitehtuurisista hajuista aspektiorientoituneissa järjestelmissä ja tietyt ominaisuudet kooditasolla ovat syynä arkkitehtuurisiin hajuihin \citep{macia_impact_2011}. Seuraavassa taulukossa on lueteltu, että mitkä havaitut kooditason ongelmat löydettiin vaikuttavan arkkitehtuurisiin hajuihin. 
+On tutkittu, että tietyt koodihajut ovat indikaattoreita arkkitehtuurisista hajuista aspektiorientoituneissa järjestelmissä ja tietyt ominaisuudet kooditasolla ovat syynä arkkitehtuurisiin hajuihin \citep{macia_impact_2011}. Seuraavassa taulukossa on lueteltu, että mitkä havaitut kooditason ongelmat löydettiin vaikuttavan arkkitehtuurisiin hajuihin aspektiorientoituneissa järjestelmissä. 
 
 % EI SELITTÄMÄTTÖMIÄ OSIA
 
@@ -599,7 +597,7 @@ On tutkittu, että tietyt koodihajut ovat indikaattoreita arkkitehtuurisista haj
 %Koodi ja arkkitehtuuri-info. Detection strategies \citep[s. 179-182]{macia_enhancing_2013}
 
 \noindent
-Vaikka taulukon \ref{tab:aspectSmells} koodihajut eivät suoraan koske olio-pohjaisia järjestelmiä, niistä voidaan silti nähdä, että ongelmat tulevat liiallisista vastuista, liiallisista riippuvuuksista ja samankaltaisesta toiminnallisuudesta. Nämä ominaisuudet ovat nähtävissä hyvin tavallisissakin olio-pohjaisissa järjestelmissä ja on määritelty, että mitkä arkkitehtuuri-herkät koodipoikkeamat olisivat vastuussa arkkitehtuurisista hajuista puhtaissa olio-järjestelmissä \citep{macia_enhancing_2013}.
+Vaikka taulukon \ref{tab:aspectSmells} koodihajut eivät suoraan koske oliopohjaisia järjestelmiä, niistä voidaan silti nähdä, että ongelmat tulevat: liiallisista vastuista, liiallisista riippuvuuksista ja samankaltaisesta toiminnallisuudesta. Nämä ominaisuudet ovat nähtävissä hyvin tavallisissakin oliojärjestelmissä, joista on mahdollista myös määrittää suoraan arkkitehtuuriherkkiä koodipoikkeamia \citep{macia_enhancing_2013}.
 
 Seuraavassa taulukossa on muodostettu löydetyt koodihajut, jotka indikoivat pahemmasta ongelmasta arkkitehtuurisella tasolla.
 
@@ -624,12 +622,13 @@ Seuraavassa taulukossa on muodostettu löydetyt koodihajut, jotka indikoivat pah
 
 
 \noindent
-Taulukon \ref{tab:codeSmells} suhteista nähdään hieman samanlaisuutta, kuin mitä taulukko \ref{tab:aspectSmells} näytti syinä sen koodihajuille. Suurimmat ongelmat olioperäisissäkin hajuissa tulivat liiallisista riippuvuuksista ja huonosta vastuiden jaosta, joka saattaa johtaa yksittäisten komponenttien paisumiseen. Yksittäisten komponenttien paisuminen taas luo helposti huonoa kompositiota, toistuvaa toiminnallisuutta ja komponentteja, joiden harteilla on iso osa toiminnallisuuden toteuttamisesta. Nämä ongelmat realisoituvat arkkitehtuurisiksi hajuiksi arkkitehtuuritasolla ja niiden tunnistaminen kooditasolta arkkitehtuuriselle tasolle ja arkkitehtuuriselta tasolta kooditasolle on tärkeää testattavuuden kannalta.
+Taulukon \ref{tab:codeSmells} suhteista nähdään hieman samanlaisuutta, kuin mitä taulukko \ref{tab:aspectSmells} näytti syinä aspektiorientoituneille koodihajuille. Suurimmat ongelmat olioperäisissäkin hajuissa tulivat liiallisista riippuvuuksista ja huonosta vastuiden jaosta, joka saattaa johtaa yksittäisten komponenttien paisumiseen. Yksittäisten komponenttien paisuminen taas luo helposti huonoa kompositiota, toistuvaa toiminnallisuutta ja komponentteja, joiden harteilla on iso osa toiminnallisuuden toteuttamisesta. 
+Ongelmat kooditasolla täten helposti realisoituvat arkkitehtuurisen tason ongelmiksi, jolloin pienet ongelmat saattavat muodostua suuriksi ja vaikeasti ratkaistaviksi ongelmiksi.
 
 
 %Koodihajujen tunnistaminen arkkitehtuurisen degraation tunnistamiseksi \citep{fontana_towards_2015}. Vaikuttavat ylläpidettävyyteen. God Class, Data Class, Brain Method, Shotgun Surgery, Dispersed Coupling, Message Chains. Metriikoina käytettiin muun muassa: Tight Class Cohesion, Access to Foreign Data, Number of Public Attributes, Maximum Nesting Level, Coupling Intensity. Co-Occurence of smells. 
 
-Tarkastelu voidaan keskittää myös enemmän aiheisiin kuten mistä koodihajut johtuvat tai mitkä tekijät koodihajuissa vaikuttavat arkkitehtuuristen hajujen esiintymiseen järjestelmissä. Tähän avuksi on luotu erityisen näkymä koodihajujen tunnistamiseksi ja sen avulla voidaan tunnistaa kytkentään ja koheesioon vaikuttavia koodihajuja \citep{fontana_towards_2015}. 
+Tarkastelu voidaan keskittää myös enemmän aiheisiin kuten mistä koodihajut johtuvat tai mitkä tekijät koodihajuissa vaikuttavat arkkitehtuuristen hajujen esiintymiseen järjestelmissä. Tähän avuksi on luotu erityisen näkymä koodihajujen tunnistamiseksi ja sen avulla voidaan tunnistaa muun muassa kytkentään ja koheesioon vaikuttavia koodihajuja \citep{fontana_towards_2015}. 
 
 \begin{table}[H]
 	\centering
@@ -650,9 +649,9 @@ Tarkastelu voidaan keskittää myös enemmän aiheisiin kuten mistä koodihajut 
 
 
 \noindent
-Taulukon \ref{tab:coupAndCohes} tekijöistä nähdään, että ongelmat syntyvät, jos jokin luokka on liian suuri, sisältää riippuvuuksia paljon muihin luokkiin ja jonka toiminnallisuus on hajautunut niin laajalle, että sen muuttaminen vaatii usean muutoksen eri kohteisiin. Tätä samaa ideaa olisi mahdollista soveltaa myös arkkitehtuurisella tasolla ja tutkia komponenttien näkökulmalta samoja asioita. 
+Taulukon \ref{tab:coupAndCohes} tekijöistä nähdään, että ongelmat syntyvät, jos jollakin luokalla on ominaisuutena: liian suuri koko; riippuvuuksia paljon muihin luokkiin; toiminnallisuus hajautunut niin laajalle, että sen muuttaminen vaatii usean muutoksen eri kohteisiin. Nämä samat ominaisuudet saadaan arkkitehtuuriselle tasolle niin, että luokkien sijaan tarkastelu kohdistuu komponentteihin. Tätä väitettä tukee edellämainittujen arkkitehtuuristen hajujen ominaisuudet ja syyt.
 
-On edellisten tarkasteluiden nojalla selvää, että hyvä kytkennän ja koheesion taso ovat tavoteltavia ominaisuuksia sekä kooditasolla että arkkitehtuuritasolla. Testattavuuden kannalta voidaan arvioida mitkä tekijät aiheuttavat kahta mainittua testattavuuteen vaikuttavaa arkkitehtuurista hajua, josta tuloksena saatiin, että merkkittäviä tekijöitä olivat vastuut, riippuvuudet, koheesio, kytkentä. Tekijöiden mittaamisen apuna arkkitehtuuriselta tasolta voidaan muun muassa käyttää luvussa \ref{arch_testability_measurement} esiteltyjä mittareita. Hybridihajujen tunnistaminen on yleisesti tärkeää, koska ne saattavat toimia kriittisenä linkkinä arkkitehtuurin ja koodipohjaisten ongelmien välillä. 
+On edellisten tarkasteluiden nojalla siis selvää, että hyvä kytkennän ja koheesion taso ovat tavoteltavia ominaisuuksia sekä kooditasolla että arkkitehtuuritasolla. Testattavuuden kannalta voidaan arvioida, että mitkä tekijät aiheuttavat esiteltyjä arkkitehtuurisia hajuja, josta tuloksena saatiin, että merkkittäviä tekijöitä olivat vastuut, riippuvuudet, koheesio ja kytkentä. Tekijöiden mittaamisen apuna arkkitehtuuriselta tasolta voidaan muun muassa käyttää luvussa \ref{arch_testability_measurement} esiteltyjä mittareita. Hybridihajujen tunnistaminen on taas yleisesti tärkeää, koska ne toimivat kriittisinä linkkeinä arkkitehtuurin ja koodipohjaisten ongelmien välillä. 
 
 
 \subsection{UML uusien näkymien tukena}

@@ -371,7 +371,7 @@ Hyvää testattavuutta on siis mahdollista saavuttaa pelkästään analysoimalla
 
 Tietyt ominaisuudet vaikuttavat yleisesti ohjelmistojärjestelmissä negatiivisesti testattavuuteen. Tiedon katoaminen on yksi näistä \citep{Voas:1995:STN:624607.625469} ja se voidaan jakaa implisiittisen ja eksplisiittisen tiedon katoamiseen. Implisiittisessä katoamisessa useat eri parametrit samaan kohteeseen tuottavat myös saman testituloksen, ja eksplisiittisessä tiedon katoamisessa tietoa piilotetaan ulkoiselta näkymältä. 
 
-Tiedon piilottaminen on  hyvin yleinen ja suositeltava tapa olio-ohjelmoinnissa, mutta liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska testauksen hallittavuus heikkenee. Ohjelmistojärjestelmä voidaan esimerkiksi tarkoituksella suunnitella niin tiiviiksi, että sisäinen tila jää täysin tarkastelemattomaksi. Tällöin testauksen aikana syntyneessä virhetilanteessa on hyvin vaikea sanoa, että mistä päin virhe syntyi ja virheen paikallistaminen saattaa täten viedä aikaa. Tällaiset ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia \citep{Voas:1995:STN:624607.625469}. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
+Tiedon piilottaminen on  hyvin yleinen tapa olio-ohjelmoinnissa, mutta liiallinen tiedon piilotus tuottaakin vaikeuksia testauksessa, koska testauksen hallittavuus heikkenee. Ohjelmistojärjestelmä voidaan esimerkiksi tarkoituksella suunnitella niin tiiviiksi, että sisäinen tila jää täysin tarkastelemattomaksi. Tällöin testauksen aikana syntyneessä virhetilanteessa on hyvin vaikea sanoa, että mistä päin virhe syntyi ja virheen paikallistaminen saattaa täten viedä aikaa. Tällaiset ongelmat syötteiden ja tulosten tarkastelussa tiedon katoamisen johdosta johtavat helposti tarpeettomiin testeihin, joita on vaikea ymmärtää, ja vaikeasti testattavan komponentin voidaankin sisältävän ulos- ja sisääntuloparametrien epäjohdonmukaisuuksia \citep{Voas:1995:STN:624607.625469}. Toisin sanoen vaikeasti testattava komponentti tuottaa eri tuloksia eri ajoilla tai ei ikinä tuota haluttua tulosta.   
 
 
 
@@ -392,11 +392,11 @@ Neljää korkeamman tason metriikkaa on käytetty laskemaan testattavuutta ohjel
 	\begin{tabular}{| m{3.5cm} | m{3.5cm} | m{6cm} |}
 	\hline
 	\textbf{Mittari} & \textbf{Korreloi} & \textbf{Ehdotettu}\\ \hline
-	Ulkoiset viittaukset & Kytkentä, Koheesio & \citep{Bruntink:2004}\\ \hline
-	Koko (rivit + metodit) & Enkapsulaatio & \citetext{\citealp{Bruntink:2004}; \citealp{Dubey:2011:AMM:2020976.2020983}}\\ \hline
-	Luokkahierarkien aktivoituminen & Enkapsulaatio & \citep{Dubey:2011:AMM:2020976.2020983}\\ \hline
-	Kytkennän määrä & Kytkentä & \citep{Dubey:2011:AMM:2020976.2020983}\\ \hline
-	Periytymisaste & Uudelleenkäyttö & \citep{Dubey:2011:AMM:2020976.2020983}\\ \hline
+	Ulkoiset viittaukset & Kytkentä, Koheesio & \citet{Bruntink:2004}\\ \hline
+	Koko (rivit + metodit) & Enkapsulaatio & \citet{Bruntink:2004, Dubey:2011:AMM:2020976.2020983}\\ \hline
+	Luokkahierarkien aktivoituminen & Enkapsulaatio & \citet{Dubey:2011:AMM:2020976.2020983}\\ \hline
+	Kytkennän määrä & Kytkentä & \citet{Dubey:2011:AMM:2020976.2020983}\\ \hline
+	Periytymisaste & Uudelleenkäyttö & \citet{Dubey:2011:AMM:2020976.2020983}\\ \hline
 \end{tabular}
 		
 	\caption{Mittarit pelkistettyinä ja niiden suhteet Khanin ja Mustafan esittämään neljään eri korkean tason metriikkaan. Ehdotettu-sarake kertoo mistä lähteestä mittarin ideat ovat.}
@@ -415,15 +415,17 @@ Arkkitehtuurisella tasolla testattavuus vaikuttaa laajemmin ja arkkitehtuuristen
 
 Yksittäisten komponenttien, eli luokista koostuvien kokonaisuuksien testattavuutta, on analysoitu erilaisten mallien avulla ja näistä eräs on komponenttien pentagrammimalli \citep{gao_component_2005}. Sen avulla jokaista komponenttia voidaan tarkastella viideltä eri näkökulmalta: havaittavuus, hallittavuus, jäljitettävyys (traceability), tuki testivalmiudelle (test support capability) ja ymmärrettävyys (understandability). Näistä kaksi ensimmäistä ovat ideoiltaan samat kuin kappaleessa \ref{contro_and_observ} ja loput vastaavat muun muassa kysymyksiin: kuinka helppoa on tarkastella komponentin tilaa ulkopuolisena; kuinka hyvin komponentti tukee erilaisia testausstrategioita; kuinka hyvin komponentin tarkoitus ymmärretään, että testejä pystytään luomaan. 
  
-On siis hyvä tarkastella kahdelta eri näkökulmalta testattavuutta arkkitehtuurisella tasolla: metriikoista koostuva analyysi ja yksittäisten komponenttien analyysi ilman metriikoita. Analyysi ilman metriikoita keskitetään enemmän kokonaisuuksien hahmottamiseen ja ongelmakohtien löytämiseen laadullisten ominaisuuksien pohjalta, kun taas metriikoiden kanssa analyysi on staattista ja painottaa enemmän määrällistä tutkimusta.
+On siis hyvä tarkastella testattavuutta arkkitehtuurisella tasolla kahdelta eri näkökulmalta: metriikoista koostuva analyysi ja yksittäisten komponenttien analyysi ilman metriikoita. Analyysi ilman metriikoita keskitetään enemmän kokonaisuuksien hahmottamiseen ja ongelmakohtien löytämiseen laadullisten ominaisuuksien pohjalta, kun taas metriikoiden kanssa analyysi on staattista ja painottaa enemmän määrällistä tutkimusta.
 
 
 \subsection{Hyvä testattavuus arkkitehtuurissa} \label{good_testability}
 
  
-Hyvää testattavuutta arkkitehtuureissa on vaikea määrittää, koska eri järjestelmillä on tiettyyn tarkoitukseen sopiva arkkitehtuuri. Tietyt arkkitehtuuriset tyylit tukevat kuitenkin tiettyjä testausstrategioita \citep{Eickelmann:1996:MOS:243327.243602}, joten on selvää että valittu arkkitehtuurinen tyyli vaikuttaa jollain tasolla positiivisesti testattavuuteen. Paljon mielekkäämpää on kuitenkin tarkastella  ominaisuuksia testattavalle arkkitehtuurille, jotta voitaisiin tarkastella enemmän sitä, mitkä tekijät tuovat testattavuutta arkkitehtuurille.
+Hyvää testattavuutta arkkitehtuureissa on vaikea määrittää, koska eri järjestelmillä on tiettyyn tarkoitukseen sopiva arkkitehtuuri. Tietyt arkkitehtuuriset tyylit tukevat kuitenkin tiettyjä testausstrategioita \citep{Eickelmann:1996:MOS:243327.243602}, joten on selvää että valittu arkkitehtuurinen tyyli vaikuttaa jollain tasolla positiivisesti testattavuuteen. Paljon mielekkäämpää on kuitenkin tarkastella  ominaisuuksia testattavalle arkkitehtuurille, jotta voitaisiin luetella erinäisiä testattavuuteen vaikuttavia tekijöitä.
 
-Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakamisen olevan lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Suoraan rakenteelliselta tasolta voidaan painottaa esimerkiksi kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkastelua. Jos järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava, on siihen olemassa erilaisia laadullisia ja metrisiä ominaisuuksia, joihin huomio pitäisi kiinnittää koko ohjelmistoprosessin ajan \citep{joshi_design_2014}. Mahdollisten ongelmien eliminoimiseen voidaan käyttää hyväksi järjestelmän modulaarista rakennetta, joka pitäisi olla myös vallitseva ominaisuus järjestelmässä koko sen elinkaaren ajan. Toinen apukeino on UML ja sen  muokkaaminen stereotyyppien avulla. UML-kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla näkymää saadaan muokattua haluttuun suuntaan.
+Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakamisen olevan lähtökohta hyvälle testattavuudelle, koska se parantaa koko järjestelmän havaittavuutta ja hallittavuutta \citep{Binder:1994:DTO:182987.184077}. Suoraan ohjelmistojärjestelmän rakenteelliselta tasolta voidaan huomio keskittää esimerkiksi kapseloinnin, polymorfismin, perinnän ja kompleksisuuden tarkasteluun. 
+
+Jos järjestelmää halutaan suunnitella testauksen varalle eli luoda ohjelmistojärjestelmästä mahdollisimman testattava, on siihen olemassa erilaisia laadullisia ja metrisiä ominaisuuksia, joihin huomio pitäisi kiinnittää koko ohjelmistoprosessin ajan \citep{joshi_design_2014}. Näiden metriikoiden avulla löydettyjen ongelmakohtien eliminoimiseen voidaan käyttää hyväksi järjestelmän modulaarista rakennetta, joka pitäisi myös olla vallitseva ominaisuus järjestelmässä koko sen elinkaaren ajan. Toinen apukeino on UML ja sen  muokkaaminen stereotyyppien avulla. UML-kaavioiden muokkaus voi tapahtua esimerkiksi luomalla uusia malleja nykyisten pohjalta tai käyttämällä UML:n geneerisiä laajennoskohtia, joiden avulla näkymää saadaan muokattua haluttuun suuntaan.
 
 
 %Järjestelmän tarkasteltavuus (monitorability) voidaan lukea ohjelmistojärjestelmän yhdeksi ominaisuudeksi, joka nostaa positiivisesti testattavuuden tasoa \citep{mari_impact_2003}. Tarkasteltavuus ohjelmistojärjestelmissä voidaan jakaa kolmeen eri luokkaan: komponentin sisäinen, komponenttien välinen sekä järjestelmätasoinen yhteistoiminnallisuus. Tarkasteltavuutta analysoitaessa huomio voidaan kiinnittää esimerkiksi siihen kuinka hyvin järjestelmän tilaa voidaan tarkastella, testien etenemistä, komponenttien interaktiota sekä testauksen hallinnoimista esimerkiksi tynkäluokkien (stub) avulla. 
@@ -435,22 +437,22 @@ Oliopohjaisissa ohjelmistojärjestelmissä koetaan vähintään vastuiden jakami
 	\centering
 	\setlength{\extrarowheight}{10pt}%
 	\resizebox{\linewidth}{!}{
-	\begin{tabular}{|m{4cm}|m{7cm}|m{5cm}|}
+	\begin{tabular}{|l|m{7cm}|m{5cm}|}
 	\hline 
 	\textbf{Analyysimentelmä} & \textbf{Ominaisuus} & \textbf{Lähde} \\ 
 	\hline 
-	Laadullinen & Testausominaisuus, jäljitettävyys, vaatimusten tarkkuus, antipatternit, havaittavuus, hallittavuus & \citetext{\citealp{Binder:1994:DTO:182987.184077}; \citealp{joshi_design_2014}} \\ 
+	Laadullinen & Testausominaisuus, jäljitettävyys, vaatimusten tarkkuus, antipatternit\footnote{Toistuva ratkaisu johonkin ongelmaan, joka vaikuttaa kuitenkin negatiivisesti laatuun.}, havaittavuus, hallittavuus & \citet{Binder:1994:DTO:182987.184077, joshi_design_2014} \\ 
 	\hline 
-	Metrinen & Syklisten riippuvuuksien vähyys, kytkennän taso, koheesion taso &  \citep{joshi_design_2014} \\ 
+	Metrinen & Sykliset riippuvuudet, kytkennän taso, koheesion taso &  \citet{joshi_design_2014} \\ 
 	\hline 
 	\end{tabular} 
 	}
-	\caption{Hyvään testattavuuteen vaikuttavat ominaisuudet jaoteltuna kahteen eri luokaan: laadulliset ja metriset.}
+	\caption{Hyvään testattavuuteen rakenteellisella tasolla vaikuttavat ominaisuudet jaoteltuna kahteen eri luokkaan: laadulliset ja metriset.}
 	\label{tab:goodArchTestability}
 \end{table}
 
 \noindent
-Taulukossa \ref{tab:goodArchTestability} on koottu yhteen ominaisuudet, jotka ottavat kantaa laadullisiin tai mitattaviin ominaisuuksiin. On tärkeää tarkastella sekä komponenttien ulkoisia että sisäisiä ominaisuuksia, jotta voitaisiin muodostaa hyvä kuva testattavuuden tasosta. Kuitenkin suoraan rakenteellisuuden näkökulmasta esiin nousevat riippuvuudet, kytkentä ja koheesio. Näistä kaikki ovat mitattavia ominaisuuksia ja niitä varten onkin kehitetty konkreettisia mittareita havaitsemisen tueksi.  
+Taulukossa \ref{tab:goodArchTestability} on koottu yhteen ominaisuudet, jotka ottavat kantaa laadullisiin ja mitattaviin ominaisuuksiin. Nähdään, että on tärkeää tarkastella sekä komponenttien ulkoisia että sisäisiä ominaisuuksia, jotta voitaisiin muodostaa hyvä kuva testattavuuden tasosta. Kuitenkin suoraan rakenteellisuuden näkökulmasta esiin nousevat riippuvuudet, kytkentä ja koheesio, jotka ovat kaikki mitattavissa olevia ominaisuuksia. 
 
 
 \subsection{Arkkitehtuurin testattavuuden mittaaminen} \label{arch_testability_measurement}
@@ -498,13 +500,13 @@ Ylläpidettävyys on vaikuttava piirre testattavuuteen, joten on luonnollista ta
 \newpage
 
 \noindent
-Taulukkoon \ref{tab:maintainMeters} kootuista mittareista nähdään, että mittarit jakautuvat karkeasti kahteen eri tarkkuuden tasoon: matalaan ja korkeaan. Syy siihen on, että arkkitehtuurisen kuvauksen ollessa abstraktio ohjelmakoodista on luonnollista, että eri tarkkuuden tasoilla on mahdollista liikkua. Tunnistetuiden mittareiden ominaisuuksista taas nähdään samankaltaisuutta kappaleen \ref{testability_measure} määriteltyjen mittareiden kanssa, mutta tunnistetut mittarit tarkastelevat korkeampaa tasoa. Kytkentä ja koheesio, joita kummatkin mittarisarjat osittain mittaavat,  määriteltiin tavoiksi mitata järjestelmän testattavuutta. Kytkentää voidaan tutkia analysoimalla ohjelmistojärjestelmän arkkitehtuuristen elementtien välisiä suhteita ja koheesiota tutkimalla kuinka itsenäisiä ne ovat ovat.
+Taulukkoon \ref{tab:maintainMeters} kootuista mittareista nähdään, että mittarit jakautuvat karkeasti kahteen eri tarkkuuden tasoon: matalaan ja korkeaan. Syy siihen on, että arkkitehtuurisen kuvauksen ollessa abstraktio ohjelmakoodista on luonnollista, että eri tarkkuuden tasoilla on mahdollista liikkua. Tunnistetuiden mittareiden ominaisuuksista taas nähdään samankaltaisuutta kappaleen \ref{testability_measure} määriteltyjen mittareiden kanssa, mutta tässä tunnistetut mittarit tarkastelevat korkeampaa tasoa. Kytkentä ja koheesio, joita kummatkin mittarisarjat osittain mittaavat,  määriteltiin tavoiksi mitata järjestelmän testattavuutta. Kytkentää voidaan tutkia analysoimalla ohjelmistojärjestelmän arkkitehtuuristen elementtien välisiä suhteita ja koheesiota tutkimalla kuinka itsenäisiä ne ovat ovat.
 
 \subsubsection{UML-kaaviot testattavuuden mittaamisessa} \label{uml_arch_test}
 
 UML-luokkakaavio toimii hyvänä pohjana, kun halutaan mitata luokkien välisiä suhteita ja riippuvuuksia \citep{baudry_testability_2002} ja sen avulla voidaan määritellä testattavuuden antimalli (testability anti-pattern), joka on luokkakaavioiden avulla esille tuleva ilmiö \citep{baudry_measuring_2003}. Antimallissa kaksi suurta tekijää vaikuttavat testattavuuteen negatiivisesti: luokkien välinen suuri interaktio ja itsekäyttö, jossa luokka on riippuvainen rekursiivisesti itsestään. Syitä näiden kahden esiintymiselle voidaan lukea olevan: luokkien välinen suuri kytkentätaso, riippuvuuksien syklimäisyys ja luokkien välinen suuri kommunikaatiotaso. Yhdessä nämä tekijät vaikeuttavat paljon vastuiden jakamista ja kasvattavat tarvittavien testitapausten määrää. 
 
-Antimallin osatekijöiden löytyminen arkkitehtuurista on siis vihje siitä, että arkkitehtuuri saattaa sisältää testausta vaikeuttavaa rakennetta. Osatekijöitä voidaan tarkastella esimerkiksi UML:n avulla luotavalla erityisellä riippuvuusgraafilla \citep{baudry_testability_2002}, jonka avulla nähdään helposti komponenttien välistä riippuvuuksien hajontaa. Riippuvuuksien tunnistaminen sekä vähentäminen on kytkennän kannalta tärkeää, koska kytkennän tasoa voidaan nähdä riippuvuuksien määrästä.  On myös mahdollista tarkastella testauksen kannalta kriittisten riippuvuuksien poistoa analysoimalla pelkästä luokkakaaviosta saatavia ominaisuuksia \citep{Jungmayr:2002}. Tällöin riippuvuudeksi lasketaan mikä tahansa komponenttien välinen interaktio, jossa komponentti joutuu käyttämään toisen komponentin tarjoamia palveluita (usein metodeja) suorittaakseen toiminnallisuuttaan. 
+Antimallin osatekijöiden löytyminen arkkitehtuurista on siis vihje siitä, että arkkitehtuuri saattaa sisältää testausta vaikeuttavaa rakennetta. Osatekijöitä voidaan tarkastella esimerkiksi UML:n avulla luotavalla erityisellä riippuvuusgraafilla \citep{baudry_testability_2002}, jonka avulla nähdään helposti komponenttien välistä riippuvuuksien hajontaa. Riippuvuuksien tunnistaminen sekä vähentäminen on kytkennän kannalta tärkeää, koska kytkennän tasoa voidaan nähdä riippuvuuksien määrästä.  On myös mahdollista tarkastella testauksen kannalta kriittisten riippuvuuksien poistoa analysoimalla pelkästä luokkakaaviosta saatavia ominaisuuksia \citep{Jungmayr:2002}. Tällöin riippuvuudeksi lasketaan mikä tahansa komponenttien välinen interaktio, jossa komponentti joutuu käyttämään toisen komponentin tarjoamia palveluita, jotka ovat usen metodeja, suorittaakseen toiminnallisuuttaan. 
 
 Riippuvuuksiin littyviä tekijöitä voidaan havainnollistaa seuraavan taulukon avulla, jossa jokaiselle testautta vaikeuttavalle ominaisuudelle on annettu myös tapa, jolla ominaisuutta on mahdollista tarkastella.
 
@@ -513,13 +515,13 @@ Riippuvuuksiin littyviä tekijöitä voidaan havainnollistaa seuraavan taulukon 
 	\centering
 	\setlength{\extrarowheight}{10pt}%
 	\resizebox{\linewidth}{!}{
-	\begin{tabularx}{500pt}{|X|X|X|}
+	\begin{tabularx}{450pt}{|X|X|X|}
 	\hline 
 	\textbf{Ominaisuus} & \textbf{Tapa havaita} & \textbf{Lähde} \\ 
 	\hline 
-	Kompleksiset perintäsuhteet & Graafimalli & \citep{baudry_testability_2002} \\ 
+	Kompleksiset perintäsuhteet & Graafimalli & \citet{baudry_testability_2002} \\ 
 	\hline 
-	Abstraktien luokkien liikakäyttö rajapintojen sijasta & Graafimalli & \citep{baudry_testability_2002} \\ 
+	Abstraktien luokkien liikakäyttö rajapintojen sijasta & Graafimalli ja luokkakaavio & \citet{baudry_testability_2002} \\ 
 	\hline 
 	Metriikat
 	\begin{itemize}
@@ -527,9 +529,9 @@ Riippuvuuksiin littyviä tekijöitä voidaan havainnollistaa seuraavan taulukon 
 		\item Komponenttien määrä riippuvuussykleissä
 		\item Feedback-riippuvuuksien määrä\footnote{Feedback-riippuvuus on syklinen riippuvuussuhde komponenttien välillä, josta poistamalla jokin riippuvuus saadaan sykli purettua täysin.}
 	\end{itemize}	 
-	& Graafimalli ja luokkakaavio & \citep{Jungmayr:2002}\\ \hline
+	& Graafimalli ja luokkakaavio & \citet{Jungmayr:2002}\\ \hline
 	\end{tabularx} 
-	\caption{Tekijöitä ongelmallisten riippuvuuksien syntymiselle.}
+	\caption{Tekijöitä ongelmallisten riippuvuuksien syntymiselle testattavuuden kannalta.}
 	\label{tab:problemDepend}
 	}
 \end{table}

@@ -649,16 +649,16 @@ Tarkastelu voidaan keskittää myös enemmän aiheisiin kuten mistä koodihajut 
 
 
 \noindent
-Taulukon \ref{tab:coupAndCohes} tekijöistä nähdään, että ongelmat syntyvät, jos jollakin luokalla on ominaisuutena: liian suuri koko; riippuvuuksia paljon muihin luokkiin; toiminnallisuus hajautunut niin laajalle, että sen muuttaminen vaatii usean muutoksen eri kohteisiin. Nämä samat ominaisuudet saadaan arkkitehtuuriselle tasolle niin, että luokkien sijaan tarkastelu kohdistuu komponentteihin. Tätä väitettä tukee edellämainittujen arkkitehtuuristen hajujen ominaisuudet ja syyt.
+Taulukon \ref{tab:coupAndCohes} tekijöistä nähdään, että ongelmat syntyvät, jos jollakin luokalla on seuraavia ominaisuuksia: liian suuri koko; riippuvuuksia paljon muihin luokkiin; toiminnallisuus hajautunut niin laajalle, että sen muuttaminen vaatii usean muutoksen eri kohteisiin. Näitä samoja ominaisuuksia on mahdollista tarkastella arkkitehtuurisella tasolla niin, että luokkien sijaan tarkastelu kohdistuu komponentteihin. 
 
-On edellisten tarkasteluiden nojalla siis selvää, että hyvä kytkennän ja koheesion taso ovat tavoteltavia ominaisuuksia sekä kooditasolla että arkkitehtuuritasolla. Testattavuuden kannalta voidaan arvioida, että mitkä tekijät aiheuttavat esiteltyjä arkkitehtuurisia hajuja, josta tuloksena saatiin, että merkkittäviä tekijöitä olivat vastuut, riippuvuudet, koheesio ja kytkentä. Tekijöiden mittaamisen apuna arkkitehtuuriselta tasolta voidaan muun muassa käyttää luvussa \ref{arch_testability_measurement} esiteltyjä mittareita. Hybridihajujen tunnistaminen on taas yleisesti tärkeää, koska ne toimivat kriittisinä linkkeinä arkkitehtuurin ja koodipohjaisten ongelmien välillä. 
+On edellisten tarkasteluiden nojalla siis selvää, että hyvä kytkennän ja koheesion taso ovat tavoteltavia ominaisuuksia sekä kooditasolla että arkkitehtuuritasolla. Testattavuuden kannalta voidaan ohjelmistojärjestelmän rakennetta arvioida esiteltyjen arkkitehtuurisiin hajuihin vaikuttavien tekijöiden näkökulmalta. Näiden tuloksena saatiin, että merkkittäviä tekijöitä myös arkkitehtuuristen hajujen synnyssä olivat vastuut, riippuvuudet, koheesio ja kytkentä. Kyseisten tekijöiden mittaamisen apuna voidaan käyttää muun muassa  luvussa \ref{arch_testability_measurement} esiteltyjä mittareita.  
 
 
 \subsection{UML uusien näkymien tukena}
 
 
-Standardi UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta tärkeitä näkökulmia arkkitehtuurisella tasolla, mutta sen tueksi on luotu useita menetelmiä, jotka hyödyntävät esimerkiksi jo valmista UML-luokkakaaviota. Eräs näistä on \textit{class dependency graph model} \citep{baudry_testability_2002}, joka kappaleessa \ref{uml_arch_test} tuli esille. Sen avulla on mahdollista nähdä muun muassa luokkien välistä suurta interaktiota, itsekäyttöä, interaktioiden kompleksisuutta, pitkiä luokkahierarkisia haaraumia ja kompleksisia periytymisiä rajapintatasoilla.
-Kaikista näistä olisi mahdollista luoda erilaisia metriikoita ja saada laskettua kytkennän, perinnän ja yleisen kompleksisuuden tasoa testattavuuden näkökulmalta. Mutta tämä tuottaa ongelmia, koska jotkut tulokset saattavat olla vääriä niiden sisältäessä virheellistä esiintymää (false-positive results). Tähän ongelmaan on ehdotettu UML-kaavion jatkamista stereotyyppien avulla. Uusia kytköksiä riippuvuuksille ehdotetaan 4 kappaletta \citep[s. 4]{baudry_measuring_2003}
+Standardi UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta tärkeitä näkökulmia arkkitehtuurisella tasolla, mutta sen tueksi on luotu useita menetelmiä, jotka hyödyntävät esimerkiksi jo valmista UML-luokkakaaviota. Eräs näistä on \textit{class dependency graph model} \citep{baudry_testability_2002}, joka myös kappaleessa \ref{uml_arch_test} tuli esille. Sen avulla on mahdollista nähdä muun muassa luokkien välistä suurta interaktiota, itsekäyttöä, interaktioiden kompleksisuutta, pitkiä luokkahierarkisia haaraumia ja kompleksisia periytymisiä rajapintatasoilla.
+Kaikista näistä on mahdollista luoda erilaisia metriikoita ja saada laskettua kytkennän, perinnän ja yleisen kompleksisuuden tasoa testattavuuden näkökulmalta. Mutta tämä tuottaa ongelmia, koska jotkut tulokset saattavat olla vääriä niiden sisältäessä virheellistä esiintymää (false-positive results). Tähän ongelmaan on ehdotettu UML-kaavion jatkamista stereotyyppien avulla. Uusia kytköksiä riippuvuuksille ehdotetaan 4 kappaletta \citep[s. 4]{baudry_measuring_2003}
 
 \begin{itemize}
 	\item \textit{create}, jos luokka A luo luokan B
@@ -668,7 +668,7 @@ Kaikista näistä olisi mahdollista luoda erilaisia metriikoita ja saada laskett
 \end{itemize}
 
 \noindent
-Kyseisten stereotyyppien avulla saadaan esille riippuvuudet ja niiden tyypit paremmin kaavioissa virheellisten tuloksien välttämiseksi. On esimerkiksi usein melko normaalia oliojärjestelmissä, että yksi luokka saattaa luoda useita riippuvuuksia muihin luokkiin, mutta tämä on tehty tarkoituksella eikä vahingossa kehittäjien toimesta. Näin on esimerkiksi tehdas-mallin (factory pattern) käytössä, jossa erikseen määritelty tehdas-olio on riippuvainen useiden eri luokkien synnystä. Se vähentää globaalisti riippuvuuksien määrää, mutta itse tehdas-oliot tuottaisivat metriikoiden mukaan paljon virheellisiä riippuvuusongelmia, jos jokainen riippuvuus olisi samanarvoinen.
+Kyseisten stereotyyppien avulla saadaan luokkakaavioissa paremmin esille riippuvuudet ja niiden tyypit virheellisten tuloksien välttämiseksi. On esimerkiksi usein melko normaalia oliojärjestelmissä, että yksi luokka saattaa luoda useita riippuvuuksia muihin luokkiin, mutta tämä on tehty tarkoituksella eikä vahingossa kehittäjien toimesta. Näin on esimerkiksi tehdas-mallin (factory pattern) käytössä, jossa erikseen määritelty tehdas-olio on riippuvainen useiden eri luokkien synnystä. Se vähentää globaalisti riippuvuuksien määrää, mutta itse tehdas-oliot tuottaisivat metriikoiden mukaan paljon virheellisiä riippuvuusongelmia, jos jokainen riippuvuus olisi samanarvoinen.
 
 
 
@@ -681,13 +681,13 @@ Kyseisten stereotyyppien avulla saadaan esille riippuvuudet ja niiden tyypit par
 
 \subsection{Havaitut testattavuuteen vaikuttavat tekijät}
 
-Seuraavalla sivulla olevan taulukkoon \ref{tab:conclusions} on kerätty tutkielman aikana löydetyt tekijät, jotka testattavuuteen vaikuttavat rakenteellisella tasolla eli tasolla, jossa rakennetta pystytään analysoimaan ja arvioimaan erilaisten näkökulmien silmin. Taulukkoon on pyritty keräämään vain keskeisiä asioita, joiden tarkastelu onnistuu sekä arkkitehtuurisella tasolla, että kooditasolla. Kooditasolla tarkastelu voidaan aloittaa tutkimalla löydettyjä ominaisuuksia yksittäisille luokille, jotka ovat sidoksissa vahvasti tärkeisiin arkkitehturaalisiin elementteihin, kun taas arkkitehtuurisella tasolla paino voidaan kiinnittää laajempiin kokonaisuuksiin, kuten komponetteihin ja mooduleihin.  
+Seuraavalla sivulla olevan taulukkoon \ref{tab:conclusions} on kerätty kootusti tutkielman aikana löydetyt tekijät, jotka testattavuuteen vaikuttavat rakenteellisella tasolla eli tasolla, jossa rakennetta pystytään analysoimaan ja arvioimaan erilaisten näkökulmien avulla. Taulukkoon on pyritty keräämään vain keskeisiä asioita, joiden tarkastelu onnistuu sekä arkkitehtuurisella tasolla, että kooditasolla. Kooditasolla tarkastelu voidaan aloittaa tutkimalla löydettyjä ominaisuuksia yksittäisille luokille, jotka ovat sidoksissa vahvasti tärkeisiin arkkitehturaalisiin elementteihin, kun taas arkkitehtuurisella tasolla paino voidaan kiinnittää laajempiin kokonaisuuksiin, kuten komponettien tarkasteluun.  
 
-On kuitenkin huomattava, että ominaisuudet jakautuvat varsinkin järjestelmän tasolla laadullisiin ominaisuuksiin, joiden mittaaminen suoraan ei aina ole edes kovin mahdollista. Tällöin analyysin avuksi on otettava esimerkiksi dokumentaatiota järjestelmästä, komponenttien suunnittelusta vastuussa olevien ihmisiä, koko komponentin toteuttavaa ryhmää tai yleisesti koottua ryhmää, jonka kanssa komponentteja ja rakennetta tarkastellaan testattavuuden näkökulmasta. Näin pystytään muodostamaan hyvä kuva testattavuuden tasosta ilman metrisiä mittareita, jotka vaativat jotain formalismia taustalleen virheellisten tuloksien minimoimiseksi.
+On kuitenkin huomattava, että ominaisuudet jakautuvat varsinkin järjestelmän tasolla pelkästään laadullisiin ominaisuuksiin, joiden mittaaminen suoraan ei  ole edes kovin mahdollista. Tällöin analyysin avuksi on otettava esimerkiksi dokumentaatiota järjestelmästä, komponenttien suunnittelusta vastuussa olevien ihmisiä, koko komponentin toteuttavaa ryhmää tai yleisesti koottua ryhmää, jonka kanssa komponentteja ja rakennetta tarkastellaan yhdessä. Näin pystytään muodostamaan hyvä kuva pelkästään järjestelmän testattavuuden tasosta ilman metrisiä mittareita, jotka vaativat jotain formalismia taustalleen virheellisten tuloksien minimoimiseksi.
 
-Jokainen määritelty ominaisuus on kuitenkin sekä laadullinen että mitattava ominaisuus. Tällöin ei voida suoraan sanoa, että olisi olemassa yksi tapa, jonka avulla 
+Kaikki muut ominaisuudet ovat kuitenkin sekä laadullisia että mitattavia ominaisuuksia. Metrisinä ne voidaan nähdä siten, että monessa jokin määrällinen ominaisuus korostuu. Esimerkiksi mitä enemmän riippuvuuksia yhdellä luokalla on, sitä enemmän siinä piilee mittarien mukaan ongelmia testattavuuden kannalta. Totuus voi kuitenkin olla toinen ja tämän takia jokainen mittari pitäisikin nähdä enemmän indikaattorina mahdollisille ongelmille. Oikeat ongelmien syyt löytyvät mittareiden osoittamien ongelmakohtien tarkemmalla analyysillä. Tässä analyysissä voidaan miettiä esimerkiksi mitkä tekijät ohjelmistojärjestelmässä ovat luoneet ongelmallisen tilanteen ja voidaanko se ratkaista miten. 
 
-Kuitenkin mittarit toimivat
+Moni taulukon ominaisuuksista on myös keskeinen osa olio-ohjelmoinnin ideologiaa ja ne heijastuvat moniin muihin osa-alueisiin ohjelmistojärjestelmässä, kuin pelkästään testattavuuteen. Tästä syystä niiden tarkastelu on mahdollista ottaa mukaan moneen muuhun ohjelmistojärjestelmän ominaisuuksia tarkastelevaan prosessiin kuten esimerkiksi modulaarisuuden tarkasteluun ja skaalautuvuuden tarkasteluun. 
 
 \begin{sidewaystable}[htbp]
 	\centering
@@ -729,15 +729,25 @@ Kuitenkin mittarit toimivat
 
 \section{Pohdinta} \label{pondering}
 
-Ensin metriikat sitten esim. pentagrammimallin avulla analysointia per komponentti.
+Testattavuuteen vaikuttavista tekijöistä on löytynyt keskeisiä metriikoita ja formaalisuus.
 
-Löydetyt samankaltaisuudet
 
-Metriikat + riippuvuusgraph.
+Tutkimuksia löytynyt melko vähän, uusia (hajut).
 
-Onko arkkitehtuurin kuvaaminen visuaalisesti aina formaalia?
+Riippuvuusgraafit ja näistä johdettavat automaattiset analyysityökalut. Miten helpottaisi kehittäjää.
 
-% muista Viittaukset kappaleisiin
+Arkkitehtuurisen tason testattavuutta melko vaikea tutkia, koska sidoksissa paljon kooditasoon, mutta kooditasolla olevat 
+
+
+Hybridihajuja ja arkkitehtuurisia hajuja olisi hyvä tutkia enemmän ja luoda kattava katalogi. Nyt katalogi hieman puutteellinen ja tutkimuksia aiheesta melko vähän.
+
+
+Testattavuus hukkuu helposti esimerkiksi skaalautuvuuden jalkoihin. Miten trade-offit? Pitäisikö testattavuus tulla aina ensin?
+
+Kuitenkin tässä oleva katalogi toimii hyvänä ohjenuorana ohjelmoijille, koska...
+
+Tulevaisuuden tutkimuksista olisi hyvä keskittää enemmän testattavuuteen. Miten?
+
 
 \newpage
 
@@ -745,9 +755,9 @@ Onko arkkitehtuurin kuvaaminen visuaalisesti aina formaalia?
 
 Tutkimuksessa on tehty katsaus ensin ohjelmistoarkkitehtuuriin käsitteenä ja luotu sen avulla katsaus siihen miten ohjelmistoarkkitehtuuria mallinnetaan. Ohjelmistoarkkitehtuuri on nähty tapana kuvata järjestelmän todellista rakennetta tavalla, joka kertoisi mahdollisimman selkeästi järjestelmän todellisen luonteen ilman tarvetta lähdekoodille. Katsauksen jälkeen on etsitty vastausta sille mitä on järjestelmän testattavuus. Testattavuudesta on jatkettu tarkastelua arkkitehtuuriselta näkökulmalta viimeisessä luvussa ja etsitty tapoja joiden avulla arkkitehtuurin mallinnus tuottaisia mahdollisimman paljon informaatiota järjestelmän testattavuudesta.
 
-Tästä tutkimuksesta nähdään tutkimuskysymyksien valolla, että
+Tutkielman tuloksena tutkimuskysymyksiin voidaan vastata seuraavalla tavalla:
 
-\newpage
+
 
 %Muistuttaa mieleen tutkimuskysymyksen, mainitsee tärkeimmät tulokset ja niiden perusteet. Keskittyy impaktiin ja esimerkiksi suosituksiin. Ei vain summeeraa luku kerrallaan aikaisempaa tekstiä.
 

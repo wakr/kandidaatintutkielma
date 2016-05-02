@@ -106,9 +106,9 @@
 
 Tavoitteena on selvittää, minkä tekijöiden avulla järjestelmän testattavuutta olisi mahdollista tarkastella visuaalisella tasolla. Tämän lisäksi tarkastelu kiinnittyy erilaisiin keinoihin, joiden avulla metriset ja laadulliset ominaisuudet testattavuuden kannalta tulevat mahdollisimman hyvin ilmi. Tutkimuksen tulos voi täten toimia hyvänä ohjenuorana ohjelmoijille ja alustana staattisille koodianalyysi-työkaluille.
 
-Tutkimuksessa on käytetty pääosin kahdensuuntaistaista lumipallomenetelmää. Kirjallisuuskatsauksen avulla on etsitty aiheesta merkittäviä tutkimuksia ja edetty näiden viitteitä pitkin, sekä etsitty tutkimuksia jotka ovat käsitelleet aihetta ja katsottu mitkä tutkimukset ovat niihin viitanneet.
+Tutkimuksessa on käytetty pääosin kahdensuuntaistaista lumipallomenetelmää. Kirjallisuuskatsauksen avulla on ensin etsitty aiheesta merkittäviä tutkimuksia, joiden lähdeluettelon tarkastelun kautta on edetty paljon viitattuihin tutkimuksiin. Tämän jälkeen lähteitä on etsitty käänteisesti eli tutkimalla niitä tutkimuksia jotka ovat viitanneet löydettyihin tutkimuksiin.
 
-Tutkielman tuloksena on saatu seitsemän päätekijää, jotka löytyvät sekä ohjelmistojärjestelmän rakenteelliselta tasolta että luokkatasolta. Osa ominaisuuksista on metrillisiä ominaisuuksia, kun taas osa laadullisia. Ominaisuudet on kerätty taulukkoon tämän tutkielman loppuun.
+Tutkielman tuloksena on saatu muodostettua seitsemän päätekijää, jotka löytyvät sekä ohjelmistojärjestelmän abstraktimmalta tasolta että konkreettisemmalta luokkatasolta. Osa näistä muodostetuista ominaisuuksista on metrillisiä ominaisuuksia, kun taas osa laadullisia ja kaikkia ominaisuuksia on mahdollista tarkastella visuaalisesta kuvauksesta riippuen kuvauksen abstraktiotasosta. Ominaisuudet on kerätty taulukkoon tämän tutkielman loppuun.
 
 }
 
@@ -182,19 +182,19 @@ Tutkielman tuloksena on saatu seitsemän päätekijää, jotka löytyvät sekä 
 
 Ohjelmistoarkkitehtuuri on ohjelmistojen ymmärtämisen kannalta tärkeä konsepti, josta jokaisen ohjelmoijan pitäisi olla tietoinen, sillä jokaisella ohjelmistojärjestelmällä on oma arkkitehtuurinsa. Tämä siksi, koska järjestelmän arkkitehtuurin voidaan nähdä olevan ne hallitsevat ominaisuudet, jotka ovat konkretisoituneet sen elementteihin ja suhteisiin \citep[s. 2]{ISOIEEE42010}. Suunnittelematon arkkitehtuuri eli niin sanottu \textit{Big Ball of Mud} saattaa pahimmassa tapauksessa olla yksi epäonnistuneen projektin tunnusmerkkejä, kun taas hyvin muodostettu arkkitehtuuri auttaa eri sidosryhmien välisessä kommunikaatiossa, tekee tuotettavasta ohjelmistojärjestelmästä helposti lähestyttävän, helpottaa sekä ohjelmiston testausta että validointia ja on yksi suurimmista onnistumistekijöistä projektin jatkon kannalta. 
 
-Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi, ja siihen kuuluu vahvasti ohjelmistojen testattavuus, joka taas vaatimuksena on lähempänä ohjelmoijaa kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee kuinka hyvin järjestelmään kohdistuva testaus löytää mahdolliset virheet ja kuinka helppo testitapauksia on luoda. Arkkitehtuurin ja testattavuuden yhteys on kuitenkin hieman häilyvä, vaikka monelle kehittäjälle ovatkin tuttuja hyvät käytänneet olio-ohjelmoinnissa. Suuriosa opituista käytänneistä kuitenkin ottaa kantaa vain lähdekooditasolla tapahtuviin ongelmakohtiin, jolloin arkkitehtuurinen puoli saattaa jäädä kokonaan huomioimatta. Testauksen aikana löytyneet arkkitehtuuriset ongelmat taas kuluttuvat turhaa aikaa ja hidastavat koko ohjelmistotuotantoprosessia, koska ne löydetään usein liian myöhään. Tämä tutkielma pyrkii selventämään ohjelmistojärjestelmän rakenteen ja testattavuuden suhdetta sekä sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa. 
+Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi, ja siihen kuuluu vahvasti ohjelmistojen testattavuus, joka taas vaatimuksena on lähempänä ohjelmoijaa kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee kuinka hyvin järjestelmään kohdistuva testaus löytää mahdolliset virheet ja kuinka helppo testitapauksia on luoda. Arkkitehtuurin ja testattavuuden yhteys on kuitenkin hieman häilyvä, vaikka monelle kehittäjälle ovatkin tuttuja hyvät käytänneet esimerkiksi olio-ohjelmoinnissa. Suuriosa opituista käytänneistä kuitenkin ottaa kantaa vain lähdekooditasolla tapahtuviin ongelmakohtiin, jolloin arkkitehtuurinen puoli saattaa jäädä kokonaan huomioimatta. Testauksen aikana löytyneet arkkitehtuuriset ongelmat taas kuluttuvat turhaa aikaa ja hidastavat koko ohjelmistotuotantoprosessia, koska ne löydetään usein liian myöhään. Tämä tutkielma pyrkii selventämään ohjelmistojärjestelmän rakenteen ja testattavuuden suhdetta sekä sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa, kun ohjelmistoarkkitehtuuri nähdään ohjelmistojärjestelmän rakenteena. 
 
 \subsection{Tutkimuskysymys}
-Tutkimus vastaa kysymykseen miten testattavuus näkyy ohjelmistojen arkkitehtuurisella tasolla. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: mitä ylipäätänsä on testattavuus ohjelmistojärjestelmissä ja mitkä tekijät siihen vaikuttavat, miten arkkitehtuuria on mahdollista kuvata, miten ohjelmistojärjestelmän arkkitehtuurista luotu näkymä kertoo jotain järjestelmän testattavuudesta. 
+Tutkielma vastaa kysymykseen miten testattavuus näkyy ohjelmistojen arkkitehtuurisella tasolla. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: mitä on testattavuus ohjelmistojärjestelmissä ja mitkä tekijät siihen vaikuttavat, miten arkkitehtuuria on mahdollista kuvata, miten ohjelmistojärjestelmän arkkitehtuurista luotu näkymä kertoo jotain järjestelmän testattavuudesta. 
 
 \subsection{Tutkimusmenetelmä}
 Tutkimuskysymykseen vastataan kirjallisuuskatsauksen avulla ja tutkimalla mitkä seikat tuovat testattavuutta ohjelmistojärjestelmään. Näiden perusteella pyritään tunnistamaan kriittisiä arkkitehtuurisia ominaisuuksia, joiden avulla testattavuuden tasoa olisi mahdollista tarkastella järjestelmässä. Testattavuuden havaitsemiseen etsitään näkymää nykyisistä menetelmistä kuvata arkkitehtuuria. Näitä menetelmiä ovat pääasiassa erilaisten näkymien ja näkökulmien joukko, joiden avulla on mahdollista tuoda ohjelmistojärjestelmästä esiin joitain sen erityispiirteitä.
 
-Itse tutkimus on rajattu pääosin ainoastaan oliopohjaiseen arkkitehtuuriin ja sen erilaisiin kuvaamistapoihin. Testaustavoista on tuotu esille yksikkö- ja integraatiotestaus. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois, koska ne eivät tarjoa visuaalista näkymää arkkitehtuuriin ja ovat harvemmin käytössä monimutkaisuutensa vuoksi. Myöskään erilaisia arkkitehtuurisia tyylejä ei vertailla tutkimuksessa testattavuuden kannalta, vaan tutkimus keskittyy nimenomaan ohjelmistojärjestelmän konkreettisen rakenteen arvioimiseen testattavuuden kannalta.
+Itse tutkimus on rajattu ainoastaan oliopohjaiseen arkkitehtuuriin ja sen erilaisiin kuvaamistapoihin. Testaustavoista on tuotu esille yksikkö- ja integraatiotestaus. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois, koska ne eivät tarjoa visuaalista näkymää arkkitehtuuriin, kuin piirtämiseen keskittyvät mallinnustavat. Myöskään erilaisia arkkitehtuurisia tyylejä ei vertailla tutkimuksessa testattavuuden kannalta, vaan tutkimus keskittyy nimenomaan ohjelmistojärjestelmän konkreettisen rakenteen arvioimiseen testattavuuden kannalta.
 
 \subsection{Tutkimuksen rakenne}
 
-Kappaleessa \ref{software_architecture_main} käydään läpi ohjelmistoarkkitehtuuria käsitteenä ja luodaan pohja eri kuvaustavoille ohjelmistoarkkitehtuuria varten. Samalla kuvataan miten ja mistä näkymä voidaan luoda ohjelmistojärjestelmälle. Kappale \ref{testability_main} tarkentaa testattavuutta laadullisena tekijänä ja pyrkii määrittelemään mitä on testattavuus ohjelmistojärjestelmissä. Kappale \ref{arch_testability_main} etsii arkkitehtuurin ja testattavuuden välistä suhdetta. Viimeinen kappale \ref{pondering} tuo mukaan kirjoittajan omat pohdinnat ja ehdottaa tutkimuksia tulevaisuuteen. 
+Kappaleessa \ref{software_architecture_main} käydään läpi ohjelmistoarkkitehtuuria käsitteenä ja luodaan pohja eri kuvaustavoille ohjelmistoarkkitehtuuria varten. Samalla kuvataan miten ja mistä näkymä voidaan luoda ohjelmistojärjestelmälle. Kappale \ref{testability_main} tarkentaa testattavuutta laadullisena tekijänä ja pyrkii määrittelemään mitä on testattavuus ohjelmistojärjestelmissä. Kappale \ref{arch_testability_main} etsii arkkitehtuurin ja testattavuuden välistä suhdetta ja sen lopussa on muodostettu kokoava taulukko tutkielman aikana löydetyistä testattavuuteen vaikuttavista tekijöistä. Viimeinen kappale \ref{pondering} tuo mukaan kirjoittajan omat pohdinnat ja ehdottaa tutkimuksia tulevaisuuteen. 
 
 
 \section{Ohjelmistoarkkitehtuuri} \label{software_architecture_main}
@@ -657,8 +657,10 @@ On edellisten tarkasteluiden nojalla siis selvää, että hyvä kytkennän ja ko
 \subsection{UML uusien näkymien tukena}
 
 
-Standardi UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta tärkeitä näkökulmia arkkitehtuurisella tasolla, mutta sen tueksi on luotu useita menetelmiä, jotka hyödyntävät esimerkiksi jo valmista UML-luokkakaaviota. Eräs näistä on \textit{class dependency graph model} \citep{baudry_testability_2002}, joka myös kappaleessa \ref{uml_arch_test} tuli esille. Sen avulla on mahdollista nähdä muun muassa luokkien välistä suurta interaktiota, itsekäyttöä, interaktioiden kompleksisuutta, pitkiä luokkahierarkisia haaraumia ja kompleksisia periytymisiä rajapintatasoilla.
-Kaikista näistä on mahdollista luoda erilaisia metriikoita ja saada laskettua kytkennän, perinnän ja yleisen kompleksisuuden tasoa testattavuuden näkökulmalta. Mutta tämä tuottaa ongelmia, koska jotkut tulokset saattavat olla vääriä niiden sisältäessä virheellistä esiintymää (false-positive results). Tähän ongelmaan on ehdotettu UML-kaavion jatkamista stereotyyppien avulla. Uusia kytköksiä riippuvuuksille ehdotetaan 4 kappaletta \citep[s. 4]{baudry_measuring_2003}
+Standardi UML-kaavio ei itsessään riitä näyttämään kaikkia testattavuuden kannalta tärkeitä näkökulmia arkkitehtuurisella tasolla, mutta sen tueksi on luotu useita menetelmiä, jotka hyödyntävät esimerkiksi jo valmista UML-luokkakaaviota. Eräs näistä on \textit{class dependency graph model} \citep{baudry_testability_2002}, joka myös kappaleessa \ref{uml_arch_test} mainittiin. Sen avulla on mahdollista nähdä muun muassa luokkien välistä suurta interaktiota, itsekäyttöä, interaktioiden kompleksisuutta, pitkiä luokkahierarkisia haaraumia ja kompleksisia periytymisiä rajapintatasoilla.
+Kaikista näistä on mahdollista luoda erilaisia metriikoita ja saada laskettua kytkennän, perinnän ja yleisen kompleksisuuden tasoa testattavuuden näkökulmalta. 
+
+Tämä tuottaa kuitenkin ongelmia, koska jotkut tulokset saattavat olla vääriä niiden sisältäessä virheellistä esiintymää (false-positive results). Tähän ongelmaan on ehdotettu UML-kaavion jatkamista stereotyyppien avulla. Uusia kytköksiä riippuvuuksille ehdotetaan 4 kappaletta \citep[s. 4]{baudry_measuring_2003}
 
 \begin{itemize}
 	\item \textit{create}, jos luokka A luo luokan B
@@ -668,7 +670,7 @@ Kaikista näistä on mahdollista luoda erilaisia metriikoita ja saada laskettua 
 \end{itemize}
 
 \noindent
-Kyseisten stereotyyppien avulla saadaan luokkakaavioissa paremmin esille riippuvuudet ja niiden tyypit virheellisten tuloksien välttämiseksi. On esimerkiksi usein melko normaalia oliojärjestelmissä, että yksi luokka saattaa luoda useita riippuvuuksia muihin luokkiin, mutta tämä on tehty tarkoituksella eikä vahingossa kehittäjien toimesta. Näin on esimerkiksi tehdas-mallin (factory pattern) käytössä, jossa erikseen määritelty tehdas-olio on riippuvainen useiden eri luokkien synnystä. Se vähentää globaalisti riippuvuuksien määrää, mutta itse tehdas-oliot tuottaisivat metriikoiden mukaan paljon virheellisiä riippuvuusongelmia, jos jokainen riippuvuus olisi samanarvoinen.
+Kyseisten stereotyyppien avulla saadaan luokkakaavioissa paremmin esille riippuvuudet ja niiden tyypit virheellisten tuloksien välttämiseksi. On esimerkiksi usein melko normaalia oliojärjestelmissä, että yksi luokka saattaa luoda useita riippuvuuksia muihin luokkiin, mutta tämä on tehty tarkoituksella eikä vahingossa kehittäjien toimesta. Näin on esimerkiksi tehdas-mallin\footnote{Lisätietoa: \url{http://www.oodesign.com/factory-pattern.html}} (factory pattern) käytössä, jossa erikseen määritelty tehdas-olio on riippuvainen useiden eri luokkien synnystä. Se vähentää globaalisti riippuvuuksien määrää, mutta itse tehdas-oliottuottaisivat metriikoiden mukaan paljon virheellisiä riippuvuusongelmia, jos jokainen riippuvuus olisi samanarvoinen.
 
 
 
@@ -729,27 +731,19 @@ Moni taulukon ominaisuuksista on myös keskeinen osa olio-ohjelmoinnin ideologia
 
 \section{Pohdinta} \label{pondering}
 
-Testattavuuteen vaikuttavista tekijöistä on löytynyt keskeisiä metriikoita ja formaalisuus.
+
+Testattavuuteen löydetyt tekijät ovat osoittautuneet mielestäni hyvin keskeisiksi oliojärjestelmien ominaisuuksiksi, jotka heijastelevat olio-ohjelmoinnin hyviä käytänteitä. Taulukossa \ref{tab:conclusions} olevien ominaisuuksien huomioon ottaminen ja noudattaminen nostaa ohjelmistojen laatua myös muullakin kuin vain testattavuuden saralla. Esimerkiksi järjestelmän modulaarisuuden parantaminen vaikuttaa sekä muunneltavuuteen että testattavuuteen.
+
+Tutkimuksissa esiin tulleet metriikat ovat kuitenkin hieman vaikea käyttöisiä oikeissa projekteissa, koska usein järjestelmää ei mallinneta täydellisesti ja saattaa olla, ettei järjestelmän visuaalinen kuvaus noudattele täysin, tai edes etäisesti, UML-standardia. On myös mielestäni vaikeaa määritellä, että mitä kaikkea pystytään metrisesti löytämään ilman laadullista analyysiä. Ilman metriikoiden osoittamien ongelmakohtien analyysia saatetaan nimittäin helposti joutua tilanteeseen, jossa metriikka on sokea todellisille ongelmille tai hälyttää vääristä virheistä. 
+
+Tutkielman aikana ovat nousseet esille arkkitehtuuriset hajut ja riippuvuusgraafeista saatava data, jotka kummatkin voivat olla hyvinkin potentiaalisia keinoja ohjelmistokehittäjän tueksi löytämään ongelmakohtia projekteista. Näiden automatisointi olisi mielestäni hyvin läpimurtavaa ja koen, että itsekin käyttäisin tällaista hyväksi, jos analyysityökalu olisi olemassa. Arkkitehtuurista analyysia suorittavia työkaluja ei tällä hetkellä kovinkaan paljoa ole ja harva edes ottaa huomioon esimerkiksi arkkitehtuurisia hajuja, vaan ne keskittyvät enemmän koodihajuihin ja niiden löytämiseen\footnote{Esimerkkinä analyysityökalu SonarQube: \url{http://www.sonarqube.org}}. Tämä painottuneisuus kuitenkin on todennäköisesti siitä syystä, että arkkitehtuurisia hajuja on hyvin vaikeaa koneellisesti staattisen analyysin keinoin tuoda ilmi, koska ohjelmistojärjestelmän rakenteen taustalla on jokin ihmisen tekemä piilevä päätös, jota ei voida havaita välttämättä kooditasolta ollenkaan.
+
+Testattavuuteen vaikuttavia arkkitehtuurisia hajuja pitäisikin mielestäni tutkia lisää ja muodostaa niistä yhtä kattava katalogi, kuin koodihajuista on muodostettu\footnote{Koodihajut katalogina: \url{https://refactoring.guru/catalog}}. Näihin arkkitehtuurisiin hajuihin voitaisiin yhdistää vielä hybridihajut, jolloin olisi mahdollista löytää arkkitehtuurisia ongelmakohtia kooditasolta alkaen. Näistä olevia tutkimuksia on kuitenkin melko vähän ja vielä harvempi ottaa mukaan edes testattavuutta, joka on harmi koska testattavuus on osoittautunut merkittäväksi tekijäksi ohjelmiston rakenteen kannalta.
+
+Tulevaisuuden tutkimuksista voitaisiinkin painottaa enemmän testattavuuden saralle, koska nyt aiheesta löytyy vaihtelevasti tutkimuksia, jotka painottavat eri asioita. Testattavuutta laatutekijänä pitäisi tutkia enemmän ja varsinkin rakenteen ja jopa eri arkkitehtuuristen tyylien vaikutusta testattavuuteen. 
 
 
-Tutkimuksia löytynyt melko vähän, uusia (hajut).
 
-Riippuvuusgraafit ja näistä johdettavat automaattiset analyysityökalut. Miten helpottaisi kehittäjää.
-
-Arkkitehtuurisen tason testattavuutta melko vaikea tutkia, koska sidoksissa paljon kooditasoon, mutta kooditasolla olevat 
-
-
-Hybridihajuja ja arkkitehtuurisia hajuja olisi hyvä tutkia enemmän ja luoda kattava katalogi. Nyt katalogi hieman puutteellinen ja tutkimuksia aiheesta melko vähän.
-
-
-Testattavuus hukkuu helposti esimerkiksi skaalautuvuuden jalkoihin. Miten trade-offit? Pitäisikö testattavuus tulla aina ensin?
-
-Kuitenkin tässä oleva katalogi toimii hyvänä ohjenuorana ohjelmoijille, koska...
-
-Tulevaisuuden tutkimuksista olisi hyvä keskittää enemmän testattavuuteen. Miten?
-
-
-\newpage
 
 \section{Yhteenveto}
 
@@ -757,7 +751,7 @@ Tutkimuksessa on tehty katsaus ensin ohjelmistoarkkitehtuuriin käsitteenä ja l
 
 Tutkielman tuloksena tutkimuskysymyksiin voidaan vastata seuraavalla tavalla:
 
-
+\newpage
 
 %Muistuttaa mieleen tutkimuskysymyksen, mainitsee tärkeimmät tulokset ja niiden perusteet. Keskittyy impaktiin ja esimerkiksi suosituksiin. Ei vain summeeraa luku kerrallaan aikaisempaa tekstiä.
 

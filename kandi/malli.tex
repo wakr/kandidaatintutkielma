@@ -4,6 +4,8 @@
 
 \documentclass[finnish]{tktltiki2}
 
+
+
 % tktltiki2 automatically loads babel, so you can simply
 % give the language parameter (e.g. finnish, swedish, english, british) as
 % a parameter for the class: \documentclass[finnish]{tktltiki2}.
@@ -53,7 +55,6 @@
 % --- Auto Commands ---
 
 
-
 % Automatically set the PDF metadata fields
 \makeatletter
 \AtBeginDocument{\hypersetup{pdftitle = {\@title}, pdfauthor = {\@author}}}
@@ -86,6 +87,8 @@
 
 \theoremstyle{remark}
 \newtheorem*{huom}{Huomautus}
+
+
 
 
 % --- tktltiki2 options ---
@@ -148,7 +151,7 @@ Tutkielman tuloksena on saatu muodostettua seitsemän päätekijää, jotka löy
 
 
 \begin{document}
-
+\renewcommand*{\harvardand}{\&}
 % --- Front matter ---
 
 \frontmatter      % roman page numbering for front matter
@@ -768,7 +771,7 @@ Tutkielman tuloksena tutkimuskysymyksiin voidaan vastata seuraavalla tavalla:
 % instead.
 
 %\bibliographystyle{babalpha-lf}
-\bibliographystyle{apsr}
+\bibliographystyle{apsrfin}
 \bibliography{references-fi}
 
 

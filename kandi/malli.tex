@@ -105,19 +105,19 @@
 
 % ; kenelle, miksi, millaisessa ympäristössä; tutkimuskysymys; tulokset; impakti) 100-200 sanaa
 
-\abstract{Tässä tutkielmassa tarkastellaan ohjelmiston arkkitehtuurin ja testattavuuden suhdetta. Arkkitehtuurisella tasolla tarkasteltavaksi otetaan ohjelmistojärjestelmän rakenne, jota on mahdollista visualisoida erilaisin keinoin. Visuaalisesta kuvauksesta pyritään määrittelemään tekijöitä, joita voidaan arvioida sekä metrisinä että laadullisina ominaisuuksina.
+\abstract{Tässä tutkielmassa tarkastellaan ohjelmiston arkkitehtuurin ja testattavuuden suhdetta. Arkkitehtuurisella tasolla tarkasteltavaksi otetaan ohjelmistojärjestelmän rakenne, jota on mahdollista visualisoida erilaisin keinoin. Arkkitehtuurin kuvauksesta pyritään määrittelemään tekijöitä, joita voidaan arvioida sekä metrisinä että laadullisina ominaisuuksina.
 
-Tavoitteena on selvittää, minkä tekijöiden avulla järjestelmän testattavuutta olisi mahdollista tarkastella visuaalisella tasolla. Tämän lisäksi tarkastelu kiinnittyy erilaisiin keinoihin, joiden avulla metriset ja laadulliset ominaisuudet testattavuuden kannalta tulevat mahdollisimman hyvin ilmi. Tutkimuksen tulos voi täten toimia hyvänä ohjenuorana ohjelmoijille ja alustana staattisille koodianalyysi-työkaluille.
+Tavoitteena on selvittää, minkä tekijöiden avulla järjestelmän testattavuutta olisi mahdollista tarkastella visuaalisella tasolla. Tämän lisäksi tarkastelu kiinnittyy erilaisiin keinoihin, joiden avulla metriset ja laadulliset ominaisuudet testattavuuden kannalta tulevat mahdollisimman hyvin ilmi. Tutkimuksen tulos voi täten toimia hyvänä ohjenuorana ohjelmoijille ja alustana koodianalyysi-työkaluille.
 
-Tässä tutkielmassa on käytetty pääosin kahdensuuntaista lumipallomenetelmää. Kirjallisuuskatsauksen avulla on ensin etsitty aiheesta merkittäviä tutkimuksia, joiden lähdeluettelon kautta on edetty kohti paljon viitattuihin tutkimuksiin. Tämän jälkeen lähteitä on etsitty käänteisesti eli tutkimalla niitä teoksia, jotka ovat viitanneet löydettyihin teoksiin.
+Tässä tutkielmassa on käytetty pääosin kahdensuuntaista lumipallomenetelmää. Kirjallisuuskatsauksen avulla on ensin etsitty aiheesta merkittäviä tutkimuksia, joiden lähdeluettelon kautta on etsitty paljon viitattuja tutkimuksia. Tämän jälkeen lähteitä on käytetty käänteisesti eli etsitty niitä teoksia, jotka ovat viitanneet löydettyihin teoksiin.
 
-Tutkielman tuloksena on saatu muodostettua seitsemän päätekijää, jotka löytyvät sekä ohjelmistojärjestelmän abstraktimmalta tasolta että konkreettisemmalta luokkatasolta. Osa näistä muodostetuista ominaisuuksista on metrillisiä ominaisuuksia, osa laadullisia. Kaikkia ominaisuuksia on kuitenkin mahdollista tarkastella ohjelmistojärjestelmän rakenteen visuaalisesta kuvauksesta, jonka abstraktiotaso voi vaihdella riippuen siitä, halutaanko jotain tiettyä kohtaa painottaa enemmän. Ominaisuudet on kerätty taulukkoon tämän tutkielman loppuun.
+Tutkielman tuloksena on saatu muodostettua seitsemän päätekijää, jotka löytyvät sekä ohjelmistojärjestelmän abstraktimmalta tasolta että konkreettisemmalta luokkatasolta. Osa näistä muodostetuista ominaisuuksista on metrillisiä ominaisuuksia, osa laadullisia. Kaikkia ominaisuuksia on kuitenkin mahdollista tarkastella ohjelmistojärjestelmän rakenteen visuaalisesta kuvauksesta, jonka abstraktiotaso voi vaihdella riippuen siitä, halutaanko jotain tiettyä asiaa painottaa enemmän. Seitsemän päätekijää on kerätty kootusti taulukkoon tämän tutkielman loppuun.
 
 }
 
 % The following can be used to specify keywords and classification of the paper:
 
-\keywords{ohjelmistoarkkitehtuuri, testattavuus, metriikat}
+\keywords{ohjelmistoarkkitehtuuri, testattavuus, metriikka, näkymä}
 
 % classification according to ACM Computing Classification System (http://www.acm.org/about/class/)
 % This is probably mostly relevant for computer scientists
@@ -167,13 +167,6 @@ Tutkielman tuloksena on saatu muodostettua seitsemän päätekijää, jotka löy
 
 \section{Johdanto}
 
-% Write some science here.
-
-%Esimerkkilause ja lähdeviite~\cite{esimerkki} ja \cite{esimerkki2}.
-%jäsennelty asianmukaisesti (kenelle, miksi, millaisessa ympäristössä; ratkaisun lähestymistapa; tutkimuskysymys, tulokset ja impakti; loppulukujen roolitus).
-
-
-
 
 %\section{Johdanto}
 %purkaa auki teknisemmälle yleisölle samalla käsitteitä määritellen tutkimuskysymyksen, ratkaisuille ympäristöstä esiintulevat vaatimukset ja keskeiset käsitteet näiden asioiden esittelemiseksi.
@@ -183,62 +176,56 @@ Tutkielman tuloksena on saatu muodostettua seitsemän päätekijää, jotka löy
 
 %Viimeistä edellinen luku on varsinaisen kontribuution koti: vertailu, soveltaminen, osien synteesi ja mahdolliset evaluointimenetelmät ja -tulokset pääroolissa.
 
-Ohjelmistoarkkitehtuuri on ohjelmistojen ymmärtämisen kannalta tärkeä konsepti, josta jokaisen ohjelmoijan pitäisi olla tietoinen, sillä jokaisella ohjelmistojärjestelmällä on oma arkkitehtuurinsa. Järjestelmän arkkitehtuurin voidaan nähdä muodostuvan niistä hallitsevista ominaisuuksista, jotka ovat konkretisoituneet sen elementteihin ja suhteisiin \citep[s. 2]{ISOIEEE42010}. Suunnittelematon arkkitehtuuri eli niin sanottu \textit{Big Ball of Mud} saattaa pahimmassa tapauksessa olla yksi epäonnistuneen projektin tunnusmerkkejä, kun taas hyvin muodostettu arkkitehtuuri auttaa eri sidosryhmien välisessä kommunikaatiossa ja tekee tuotettavasta ohjelmistojärjestelmästä helposti lähestyttävän. Hyvä arkkitehtuuri myös helpottaa sekä ohjelmiston testausta että validointia ja on yksi suurimmista onnistumistekijöistä projektin jatkon kannalta. 
+Ohjelmistoarkkitehtuuri on ohjelmistojen ymmärtämisen kannalta tärkeä konsepti, josta jokaisen ohjelmoijan pitäisi olla tietoinen, sillä jokaisella ohjelmistojärjestelmällä on oma arkkitehtuurinsa. Järjestelmän arkkitehtuurin voidaan nähdä muodostuvan niistä hallitsevista ominaisuuksista, jotka ovat konkretisoituneet sen elementteihin ja suhteisiin \citep[s. 2]{ISOIEEE42010}. Suunnittelematon arkkitehtuuri eli niin sanottu \textit{Big Ball of Mud} \footnote{Lisätietoa \textit{Big Ball of Mud}-mallista: \url{http://www.laputan.org/mud/}} saattaa pahimmassa tapauksessa olla yksi epäonnistuneen projektin tunnusmerkkejä, kun taas hyvin muodostettu arkkitehtuuri auttaa eri sidosryhmien välisessä kommunikaatiossa ja tekee tuotettavasta ohjelmistojärjestelmästä helposti lähestyttävän. Onnistunut arkkitehtuuri taas helpottaa sekä ohjelmiston testausta että validointia ja on yksi suurimmista onnistumistekijöistä projektin jatkon kannalta. 
 
-Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi, ja siihen kuuluu vahvasti ohjelmistojen testattavuus \citep{ISO/IEC25010:2011}, joka taas vaatimuksena on lähempänä ohjelmoijaa kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee, kuinka hyvin järjestelmään kohdistuva testaus löytää mahdolliset virheet ja kuinka helppo testitapauksia on luoda. Arkkitehtuurin ja testattavuuden yhteys on kuitenkin hieman häilyvä, vaikka monelle kehittäjälle hyvät käytänteet ovatkin tuttuja esimerkiksi olio-ohjelmoinnissa. Suuri osa opituista käytänteistä kuitenkin ottaa kantaa vain lähdekooditasolla tapahtuviin ongelmakohtiin, jolloin arkkitehtuurinen puoli saattaa jäädä kokonaan huomioimatta. Testauksen aikana löytyneet arkkitehtuuriset ongelmat taas kuluttuvat aikaa ja hidastavat koko ohjelmistotuotantoprosessia, koska ne löydetään usein liian myöhään. Tämä tutkielma pyrkii selventämään ohjelmistojärjestelmän rakenteen ja testattavuuden suhdetta sekä sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa, kun ohjelmistoarkkitehtuuri nähdään ohjelmistojärjestelmän rakenteena. Tutkielma edellyttää lukijalta tuntemusta olio-ohjelmoinnin paradigmasta, tietoa siitä miten oliopohjaisia järjestelmiä on mahdollista testata sekä hieman ymmärrystä käsitteistä \textit{yksikkötestaus} ja \textit{integraatiotestaus}. 
+Ohjelmistojen ylläpidettävyys lasketaan yhdeksi ei-toiminnalliseksi laatuvaatimukseksi, ja siihen kuuluu vahvasti ohjelmistojen testattavuus \citep{ISO/IEC25010:2011}, joka taas vaatimuksena on lähempänä ohjelmoijaa kuin asiakasta. Testausta tapahtuu ohjelmistojärjestelmän elinaikana useita kertoja, joista  aikaisimmat jo projektin alkumetreillä, kun halutaan evaluoida järjestelmän toiminnallisuutta. Testattavuus taas määrittelee, kuinka hyvin järjestelmään kohdistuva testaus löytää mahdolliset virheet ja kuinka helppo on erilaisia testitapauksia luoda järjestelmää varten. Arkkitehtuurin ja testattavuuden yhteys on kuitenkin hieman häilyvä, vaikka monelle kehittäjälle hyvät käytänteet ovatkin tuttuja esimerkiksi oliopohjaisten järjestelmien arkkitehtuurista. Suuri osa opituista käytänteistä kuitenkin ottaa kantaa vain lähdekooditasolla tapahtuviin ongelmakohtiin, jolloin arkkitehtuurinen puoli saattaa jäädä kokonaan huomioimatta. Tämä tutkielma pyrkii selkeyttämään ohjelmistojärjestelmän rakenteen ja testattavuuden suhdetta sekä sitä, miten testattavuus tulee ilmi ohjelmistoarkkitehtuurissa, kun ohjelmistoarkkitehtuuri nähdään ohjelmistojärjestelmän rakenteena. Tutkielma edellyttää lukijalta tuntemusta olio-ohjelmoinnin paradigmasta, tietoa siitä miten oliopohjaisia järjestelmiä on mahdollista testata sekä hieman ymmärrystä käsitteistä \textit{yksikkötestaus} ja \textit{integraatiotestaus}. 
 
 \subsection{Tutkimuskysymys}
-Tutkielma vastaa kysymykseen miten testattavuus näkyy ohjelmistojen arkkitehtuurisella tasolla. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: mitä on testattavuus ohjelmistojärjestelmissä ja mitkä tekijät siihen vaikuttavat, miten arkkitehtuuria on mahdollista kuvata, miten ohjelmistojärjestelmän arkkitehtuurista luotu näkymä kertoo jotain järjestelmän testattavuudesta. 
+Tutkielma vastaa kysymykseen miten testattavuus näkyy ohjelmistojen arkkitehtuurisella tasolla. Itse kysymys voidaan jakaa vielä tarkentaviin kysymyksiin: mitä on testattavuus ohjelmistojärjestelmissä ja mitkä tekijät siihen vaikuttavat, miten arkkitehtuuria on mahdollista kuvata ja miten ohjelmistojärjestelmän arkkitehtuurista luotu näkymä kertoo jotain järjestelmän testattavuudesta. 
 
 \subsection{Tutkimusmenetelmä}
 Tutkimuskysymykseen vastataan kirjallisuuskatsauksen avulla ja tutkimalla mitkä seikat tuovat testattavuutta ohjelmistojärjestelmään. Näiden perusteella pyritään tunnistamaan kriittisiä arkkitehtuurisia ominaisuuksia, joiden avulla testattavuuden tasoa olisi mahdollista tarkastella järjestelmässä. Testattavuuden havaitsemiseen etsitään näkymää nykyisistä menetelmistä kuvata arkkitehtuuria. Näitä menetelmiä ovat pääasiassa erilaisten näkymien ja näkökulmien joukko, joiden avulla on mahdollista tuoda ohjelmistojärjestelmästä esiin joitain sen erityispiirteitä.
 
-Itse tutkimus on rajattu ainoastaan oliopohjaiseen arkkitehtuuriin ja sen erilaisiin kuvaamistapoihin. Testaustavoista on tuotu esille yksikkö- ja integraatiotestaus. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois, koska ne eivät tarjoa visuaalista näkymää arkkitehtuuriin, kuin piirtämiseen keskittyvät mallinnustavat. Myöskään erilaisia arkkitehtuurisia tyylejä ei vertailla tutkimuksessa testattavuuden kannalta, vaan tutkimus keskittyy nimenomaan ohjelmistojärjestelmän konkreettisen rakenteen arvioimiseen testattavuuden kannalta.
+Itse tutkimus on rajattu ainoastaan oliopohjaiseen arkkitehtuuriin ja sen erilaisiin kuvaamistapoihin. Testaustavoista on mainittu yksikkö- ja integraatiotestaus, koska niiden oletetaan olevan tuttuja lukijalle. Arkkitehtuurin mallintamisesta on jätetty ADL:t (architecture description languages) pois, koska ne eivät tarjoa visuaalista näkymää arkkitehtuuriin, kuin piirtämiseen keskittyvät mallinnustavat. Myöskään erilaisia arkkitehtuurisia tyylejä ei vertailla tutkimuksessa testattavuuden kannalta, vaan tutkimus keskittyy nimenomaan ohjelmistojärjestelmän konkreettisen rakenteen arvioimiseen testattavuuden kannalta.
 
 \subsection{Tutkimuksen rakenne}
 
-Luvussa \ref{software_architecture_main} käydään läpi ohjelmistoarkkitehtuuria käsitteenä ja luodaan pohja eri kuvaustavoille ohjelmistoarkkitehtuuria varten. Samalla kuvataan miten ja mistä näkymä voidaan luoda ohjelmistojärjestelmälle. Luku \ref{testability_main} tarkentaa testattavuutta laadullisena tekijänä ja pyrkii määrittelemään mitä on testattavuus ohjelmistojärjestelmissä. Luku \ref{arch_testability_main} etsii arkkitehtuurin ja testattavuuden välistä suhdetta ja sen lopussa on muodostettu kokoava taulukko tutkielman aikana löydetyistä testattavuuteen vaikuttavista tekijöistä. Viimeinen luku \ref{pondering} tuo mukaan kirjoittajan omat pohdinnat ja ehdottaa tutkimuksia tulevaisuuteen. 
+Luvussa \ref{software_architecture_main} käydään läpi ohjelmistoarkkitehtuuria käsitteenä ja luodaan pohja eri kuvaustavoille ohjelmistoarkkitehtuuria varten. Samalla kuvataan miten ja mistä näkymä voidaan luoda ohjelmistojärjestelmälle. Luku \ref{testability_main} tarkentaa testattavuutta laadullisena tekijänä ja pyrkii määrittelemään mitä on testattavuus ohjelmistojärjestelmissä. Luku \ref{arch_testability_main} määrittelee arkkitehtuurin ja testattavuuden välistä suhdetta ja sen lopussa on muodostettu kokoava taulukko tutkielman aikana löydetyistä testattavuuteen vaikuttavista tekijöistä. Viimeinen luku \ref{pondering} esittää kirjoittajan omat pohdinnat ja ehdottaa tutkimuksia tulevaisuuteen. 
 
 
 \section{Ohjelmistoarkkitehtuuri} \label{software_architecture_main}
 Arkkitehtuuri ohjelmistojärjestelmissä on käsite, joka ei ole kovin yksiselitteinen eikä siitä ole yksimielistä määritelmää \citep[s. 363]{solms_what_2012}. 
-Ohjelmistoarkkitehtuuri kuitenkin kuvaa vähintään aina abstraktilla tasolla toteutettavaa ohjelmistojärjestelmää niin, että on mahdollista keskittyä vain suppeaan alueeseen jättämällä pois eri sidosryhmien kannalta epärelevantteja asioita. Arkkitehtuurin kuvaaminen tapahtuu usein visuaalisella tavalla, koska visuaalisesta mallista on nopea ja helppo saada ulos tarvittava informaatio. Visuaalisen mallin avulla voidaan ohjelmistojärjestelmästä myös nähdä uutta informaatioita, joka muuten olisi piilotettu lähdekoodiin kehittäjän omina ajatuksina.   
+Ohjelmistoarkkitehtuuri kuitenkin kuvaa vähintään aina abstraktilla tasolla toteutettavaa ohjelmistojärjestelmää niin, että sitä tarkastelevan tahon on mahdollista keskittyä vain suppeeseen alueeseen kerrallaan. Arkkitehtuurin kuvaaminen tapahtuu usein visuaalisella tavalla, koska visuaalisesta mallista on nopea ja helppo saada ulos tarvittava informaatio. Visuaalisen mallin avulla on mahdollista myös nähdä ohjelmistojärjestelmästä sellaista lähdekoodiin piilotettua informaatiota, joka muuten jäisi sen kirjoittaneen kehittäjän omiksi ajatuksiksi.   
 
 \subsection{Ohjelmistojen arkkitehtuuri käsitteenä} \label{ark}
 Ohjelmistoarkkitehtuuri voidaan nähdä karkeasti neljästä eri näkökulmasta  \citep[s. 2-7]{gorton_understanding_2011}:  ohjelmiston rakenteen kuvaajana, kuvaajana ohjelmiston komponenttien välisille suhteille, ei-toiminnalliset (non-functional) vaatimukset huomioon ottavana mallina ja yleisenä abstraktiona. 
 
-Hieman samanlainen jaottelu on määritelty myös Solmsin tutkimuksessa \citep{solms_what_2012}. Siinä ohjelmistoarkkitehtuuri-määritelmä jaetaan kolmeen eri luokkaan: korkean tason abstraktioon ohjelmistojärjestelmästä, rakenteita sekä ulkoisia ominaisuuksia korostavaan määritelmään ja käsitteistöön sekä rajoitteisiin, joiden puitteissa ohjelmistojärjestelmää kehitetään. Näistä kaksi ensimmäistä määritelmää vastaavat samoja kuin \cite{gorton_understanding_2011} ja niitä voidaan mallintaa erilaisten näkymien ja UML-kaavioiden avulla
+Toiselta näkökulmalta arkkitehtuuri määritelmänä voidaan jakaa kolmeen eri luokkaan \citep{solms_what_2012}: korkean tason abstraktioon ohjelmistojärjestelmästä, rakenteita sekä ulkoisia ominaisuuksia korostavaan määritelmään ja käsitteistöön sekä rajoitteisiin, joiden puitteissa ohjelmistojärjestelmää kehitetään. Näistä kaksi ensimmäistä määritelmää vastaavat samoja kuin \cite{gorton_understanding_2011} ja niitä voidaan mallintaa erilaisten näkymien ja UML-kaavioiden avulla
 
 \begin{itemize}
 	\item korkean tason abstraktioita mallinnetaan erilaisten näkymien kautta tai käyttämällä IEEE:n määrittelemiä käytänteitä
-	\item rakenteita korostavassa mallinnuksessa käytetään usein UML-kaavioita ja niiden tuomia keinoja abstrahoida järjestelmää.
+	\item rakenteita korostavassa mallinnuksessa voidaan käyttää UML-kaavioita ja niiden tuomia keinoja abstrahoida järjestelmää.
 	
 \end{itemize}
 
-% IEEE:stä voisi kirjoittaa enemmän    
-%Rakenteita korostettaessa mallinnuksessa käytetään usein UML-kaavioita, koska UML määrittelee ohjelmiston arkkitehtuuria osina, joita pystytään rekursiivisesti tarkentamaan haluttaessa. Tarkennuksen avulla osat pystytään kuvaamaan kommunikoivan keskenään erilaisten rajapintojen kautta, osia yhdistäviä suhteita pystytään tarkastelemaan ja erilaisia rajoitteita pystytään luomaan osien välille. 
-% järjestelmien välinen kommunikaatio se lähde.
 
-%Kolmas määritelmä on paljon laajempi näkemys ohjelmistoarkkitehtuurista, koska se kuvaa ohjelmistojärjestelmän käsitteistön ja ominaisuudet siinä ympäristössä, jossa ne ilmenevät elementtien, suhteiden ja suunnittelun periaatteiden kautta. Peruskäsitteistö tarjoaa sen käsitteistön, jonka avulla sovelluslogiikka voidaan määritellä, joten esimeriksi määrittelemällä, että jokin komponentti toteuttaa palvelimen toiminnallisuutta, saadaan asiat lokeroitua käsitteellisesti erilleen toisistaan. Ominaisuudet liittyvät ohjelmistojärjestelmän laadullisiin ominaisuuksiin. Periaatteet voidaan nähdä järjestelmän keskeisinä suunnittelurajoitteina (core design constraints), joiden kokonaisuus muodostaa järjestelmän arkkitehtuurisen tyylin. Ohjelmistojärjestelmän arkkitehtuurin tyyli voi koostua esimerkiksi väylistä ja suodattimista (pipes and filters). % lisää
-
-
-Näistä kahdesta eri jaottelusta ohjelmistoarkkitehtuuri-käsitteen välillä voidaan nähdä merkittävinä tarpeina kuvata ohjelmistojärjestelmän rakenteellisuutta, komponenttien välistä kommunikaatiota ja laadullisia vaatimuksia. Kaikki nämä edellämainitut ominaisuudet on saatava  upotettua ohjelmistojärjestelmästä luotavaan arkkitehtuuriseen malliin niin, että ne vastaavat muun muassa seuraaviin kysymyksiin \citep[s. 31 - 33]{Rozanski:2011:SSA:2072649}: mitkä ovat arkkitehtuurin toiminnalliset elementit; miten nämä elementit kommunikoivat keskenään ja ulkomaailman kanssa; mitä tietoa käsitellään, talletetaan ja esitetään; mitä fyysisiä ja ohjelmallisia elementtejä tarvitaan tukemaan näitä. elementtejä.
+Näistä kahdesta määrittelystä ohjelmistoarkkitehtuuri-käsitteen välillä voidaan nähdä merkittävinä tarpeina kuvata ohjelmistojärjestelmän rakenteellisuutta ja kommunikaatiota. Kaikki nämä edellämainitut ominaisuudet on saatava  upotettua ohjelmistojärjestelmästä luotavaan arkkitehtuuriseen malliin niin, että ne vastaavat muun muassa seuraaviin kysymyksiin \citep[s. 31 - 33]{Rozanski:2011:SSA:2072649}: mitkä ovat arkkitehtuurin toiminnalliset elementit; miten nämä elementit kommunikoivat keskenään ja ulkomaailman kanssa; mitä tietoa käsitellään, talletetaan ja esitetään; mitä fyysisiä ja ohjelmallisia elementtejä tarvitaan tukemaan näitä elementtejä.
 
 Arkkitehtuurista luotava malli ei kuitenkaan saisi olla monoliittinen malli, koska arkkitehtuuria ei ole mahdollista kuvata vain yhden mallin avulla \citep{Rozanski:2011:SSA:2072649}. Tämä johtuu siitä, että monoliittinen malli paisuu liian suureksi, jolloin sitä on vaikea kenenkään osapuolen enää ymmärtää ja siitä on vaikeaa löytää arkkitehtuurin tärkeimmät ominaisuudet. Monoliittinen malli on usein myös puutteellinen, jäljessä eikä vastaa enää nykyistä ohjelmistojärjestelmää.  
 
 
 \subsection{Arkkitehtuurin kuvaus}
 
-Ratkaisu monoliittiseen malliin on jakaa arkkitehtuurin kuvaus useisiin toisiinsa liittyviin näkymiin (views), jotka esittävät jokainen yhden näkökulman (viewpoint) järjestelmän arkkitehtuuriin keräämällä yhteen sekä toiminnalliset piirteet että laadulliset ominaisuudet \citetext{\citealp{Ran:1998:ASV:288408.288438}; \citealp[s. 33-34]{Rozanski:2011:SSA:2072649}; \citealp[s. 8-9]{gorton_understanding_2011}; }.
+Ratkaisu monoliittiseen malliin on jakaa arkkitehtuurin kuvaus useisiin toisiinsa liittyviin näkymiin (views), jotka esittävät jokainen yhden näkökulman (viewpoint) järjestelmän arkkitehtuuriin keräämällä yhteen sekä toiminnalliset piirteet että laadulliset ominaisuudet \citetext{\citealp{Ran:1998:ASV:288408.288438}; \citealp[s. 33-34]{Rozanski:2011:SSA:2072649}; \citealp[s. 8-9]{gorton_understanding_2011}}.
 
 Useiden erilaisten näkymien avulla on helpompi kommunikoida eri sidosryhmien välillä ja ne mahdollistavat järjestelmän tarkastelun vain niiltä osin, jotka tietty sidosryhmä kokee tärkeiksi. Yleisesti voidaan sanoa, että erilaiset näkymät auttavat jakamaan arkkitehtuurin vastuista pienempiin palasiin \citep[s. 2]{Galster:2011:DTC:2031759.2031761}. Vastuiden ja näkymien jakaminen taas auttaa jokaista ohjelmistoarkkitehtuuriin liittyvää prosessia tehden ohjelmistoarkkitehtuurin tarkastelusta, suunnittelusta ja toteutuksesta modulaarisempaa.
 
 %Arkkitehtuurin kuvaaminen sallii myös kommunikoinnin eri sidosryhmien välille ja mahdollistaa järjestelmän tarkastelemisen vain niiltä osin, jotka tiettyä sidosryhmää kiinnostavat \citetext{\citealp[s. 329]{ARaHVeSCiSDu}; \citealp[s. 60]{Brondum:2010:TAV:1833335.1833344}}. Kuvaaminen tapahtuu näkymien avulla, jotka auttavat erottelemaan (separation of concerns) arkkitehtuuria pienempiin palasiin \citep[s. 2]{Galster:2011:DTC:2031759.2031761}. Itse näkymät luodaan käyttämällä ennaltamäärättyjä näkökulmia, jotka edustavat tiettyä tai useampaa sidosryhmälle tärkeää asiaa. 
 
 \subsubsection{Näkymät}
-Arkkitehtuuristen näkymien tehtävänä on kuvata tietylle asialle olevat merkitykselliset näkökulmat arkkitehtuurista. Yksi tunnetuimmista määritelmistä arkkitehtuuriselle näkymälle on Krutchenin 4+1 näkymämalli (4+1 View Model) \citep{krutchen1995}. 
+Arkkitehtuuristen näkymien tehtävänä on kuvata tietylle asialle olevat merkitykselliset näkökulmat arkkitehtuurista. Yksi määritelmistä arkkitehtuuriselle näkymälle on Krutchenin 4+1 näkymämalli (4+1 View Model) \citep{krutchen1995}. 
 
-4+1 -mallissa arkkitehtuuri kuvataan neljän näkymän ja yhden tekstuaalisen kuvauksen avulla 
+4+1 -mallissa arkkitehtuurin kuvaus muodostetaan neljän näkymän ja yhden tekstuaalisen kuvauksen avulla 
 
 \begin{itemize}
 	\item looginen, joka kuvailee järjestelmän rakennetta ja suhteita
@@ -247,20 +234,16 @@ Arkkitehtuuristen näkymien tehtävänä on kuvata tietylle asialle olevat merki
 	\item kehityksellinen, joka kuvailee järjestelmän sisäistä toteutusta
 	\item skenaariollinen, jonka avulla näkymät liitetään yhteen.
 \end{itemize}
-
-%Looginen näkymä kuvailee esimerkiksi luokkakaavioiden avulla ohjelmistojärjestelmän elementtejä ja niiden välisiä suhteita tarkentaen järjestelmän rakennetta, prosessinäkymä keskittyy ajonaikaisen suorituksen kuvaamiseen tarkentamalla muun muassa miten samanaikaisuuden hallinta tapahtuu järjestelmässä, fyysinen näkymä keskittyy siihen miten järjestelmän eri komponentit kuvautuvat fyysiselle laitteistolle jossa komponenttia ajetaan ja lopuksi kehitysnäkymä (development view) keskittyy järjestelmän sisäiseen toteutukseen tarkemmalla tasolla kuvailemalla sisäkkäisia pakkauksia tai luokkahierarkiaa. Jokainen näkymä voidaan liittää osaksi toista näkymää skenaarioiden avulla, jotka heijastelevat järjestelmälle asetettuja vaatimuksia, jolloin skenaariot voidaan nähdä ikäänkuin liimana muuten erillisille näkymille. 
-
-Muita näkymämalleja arkkitehtuuriin on useita, joista jokainen kuitenkin tuo esille vähintään jollain tavalla ohjelmistojärjestelmän rakennetta ja yhteyksiä. Tästä esimerkkinä tunnettu \textit{Views and Beyond} -malli \citep{Clements:2002:DSA:599933}. Siinä arkkitehtuurinen malli kuvataan kolmella eri näkymällä
+ 
+Muita näkymämalleja arkkitehtuuriin on useita, joista jokainen kuitenkin tuo esille vähintään jollain tavalla ohjelmistojärjestelmän rakennetta ja yhteyksiä. Tästä esimerkkinä on tunnettu \textit{Views and Beyond} -malli \citep{Clements:2002:DSA:599933}. Siinä arkkitehtuurinen malli kuvataan kolmella eri näkymällä
 
 \begin{itemize}
 	\item moduuli, joka on rakenteellinen näkymä järjestelmään
 	\item komponentit ja konnektorit, jotka kuvailevat järjestelmän toiminnallista puolta ja yhteyksiä
 	\item allokaatio, joka kuvaa miten prosessit kuvautuvat laitteistotasolla.
 \end{itemize}
-
- %moduuli, joka on järjestelmän rakenteellinen näkymä kuvaten muun muassa luokkia, pakkauksia, moduulien eriyttämistä (decomposition) sekä periytymistä; komponentti ja konnektori, joka kuvailee järjestelmän toiminnallista puolta sekä miten komponentit ovat yhteydessä toisiinsa; allokaatio, joka kuvailee miten prosessit kuvautuvat laitteistotasolla  ja miten ne kommunikoivat keskenään. 
-
-Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. Kuitenkin edellä mainituista kahdestakin mallista jo nähdään, että kummatkin pyrkivät nostamaan esille järjestelmän rakennetta ja rakenteessa ilmeneviä suhteita, joita muun muassa komponenttien sekä moduulien välillä on.
+ 
+Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin sopivia näkymämalleja, joilla on omat vahvuutensa ja heikkoutensa. Kuitenkin edellä mainituista kahdestakin mallista jo nähdään, että niissä pyritään nostamaan esille järjestelmän rakennetta ja rakenteessa ilmeneviä suhteita, joita muun muassa komponenttien sekä moduulien välillä on.
 
 %Yhteensä viittä eri mallia vertailtiin Mayn tutkimuksessa \citep{may2005survey}. Siinä kartoitettiin mahdollisimman laajaa näkymien muodostamaa näkökulmien joukkoa, jotka kattaisivat mahdollisimman laajalti ohjelmistoarkkitehtuurin aluetta (domain). Vertailtavat arkkitehtuurit olivat 4+1-malli, SEI:n (Software Engineering Institute) \textit{Views and Beyond}-malli, ISO:n (International Organization for Standardization) \textit{Reference Model of Open Distributed Processing}, Siemensin \textit{Four View Model} ja \textit{Rational Architecture Description Specification}. Malleja vertailtiin tutkimalla kuinka niiden tarjoamat näkökulmat painottavat kolmeen eri kategoriaan liittyviä asioita: sidosryhmät, laadulliset tekijät ja rakenteelliset ominaisuudet. Lopulliseen valintaan, joka painotti mahdollisimman laajasti jokaisen osa-alueen ominaisuuksia, otettiin mukaan \textit{Views and Beyond} -mallin kaikki kolme näkymää ja \textit{Rational ADS}:n vaatimukset-näkökulma (requirements viewpoint). Syy, miksi juuri nämä valittiin oli se, että \textit{Views and Beyond} sopii erittäin hyvin mallin pohjaksi, koska se kuvaa järjestelmän rakennetta kattavasti, sen näkökulmat ovat itsenäisiä ja se limittyy kokonaisuudessaan hyvin 4+1-mallin sekä Siemens'n mallin kanssa. Se ei kuitenkaan sisällä tarvittavia näkymiä kuvaamaan eri sidosryhmille tärkeitä asioita esimerkiksi loppukäyttäjiä varten oleva näkymä puuttuu kokonaan. Tämän takia mukaan on otettu \textit{Rational ADS}, jonka vaatimukset-näkökulma koostuu neljästä eri näkymästä: ei-toiminnalliset vaatimukset, alue (domain), käyttötapaus ja käyttökokemus. 
 

@@ -32,8 +32,8 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 \usepackage{amsfonts,amsmath,amssymb,amsthm,booktabs,color,enumitem,graphicx}
+\usepackage[hyphens]{url}
 \usepackage[pdftex,hidelinks]{hyperref}
-
 \usepackage{amsmath}
 \numberwithin{table}{section}
 
@@ -250,15 +250,15 @@ Näiden kahden esitellyn mallin lisäksi on olemassa joukko eri tarkoituksiin so
 
 
 \subsubsection{Näkökulmat}
-Näkökulmat liittyvät vahvasti arkkitehtuurisiin näkymiin, koska näkymien avulla halutaaan tuoda jokin näkökulma esille \citep[s. 36-42]{Rozanski:2011:SSA:2072649}. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko taas voidaan jakaa seitsemään eri osaan: kontekstuaalinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, tuotannollinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkimuksen myöhemmässä vaiheessa hieman tuotannollisen sekä funktionaalisuuden näkökulmaan. Tuotannollinen näkökulma on tärkeä siksi, että se ottaa huomioon niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muun muassa järjestelmän suorituksenaikaisia komponentteja ja niiden rajapintoja. Näiden avulla halutaan tuoda esille näkökulma testattavuuden analysoimiseen, jota kehittäjät voisivat käyttää hyödyksi.
+Näkökulmat liittyvät vahvasti arkkitehtuurisiin näkymiin, koska näkymien avulla halutaaan tuoda jokin näkökulma esille \citep[s. 36-42]{Rozanski:2011:SSA:2072649}. Näkökulma voidaan määritellä olevan kokoelma malleja (patterns), templaatteja sekä konventioita, joiden avulla näkymä pystytään rakentamaan.  Näkökulmien joukko taas voidaan jakaa seitsemään eri osaan: kontekstuaalinen, funktionaalinen, informaatiollinen, samanaikaisuudellinen, tuotannollinen, käyttöönotollinen ja operationaalinen. Näistä keskitytään tämän tutkielman myöhemmässä vaiheessa hieman tuotannollisen sekä funktionaalisuuden näkökulmaan. Tuotannollinen näkökulma on tärkeä siksi, että se ottaa huomioon niiden sidosryhmien asiat, jotka ovat mukana järjestelmän kehityksessä, testauksessa, ylläpidossa ja parantamisessa. Funktionaalinen näkökulma taas painottaa muun muassa järjestelmän suorituksenaikaisia komponentteja ja niiden rajapintoja. Näiden avulla halutaan tuoda esille näkökulma testattavuuden analysoimiseen, jota esimerkiksi kehittäjät voisivat höydyntää.
 
 % 4210 ISO
-IEEE:n virallinen määritelmä näkokulmalle on \citep[s. 6]{ISOIEEE42010} \textit{frames one or more concerns. A concern can be framed by more than one
+IEEE:n virallinen määritelmä näkokulmalle on \citep[s. 6]{ISOIEEE42010} \textit{A concern can be framed by more than one
 viewpoint.
 A view is governed by its viewpoint: the viewpoint establishes the conventions for constructing, interpreting
 and analyzing the view to address concerns framed by that viewpoint. Viewpoint conventions can include
 languages, notations, model kinds, design rules, and/or modelling methods, analysis techniques and other
-operations on views. } Se on määritelmä, jota tullaan käyttämään myös tässä tutkimuksessa.
+operations on views. } Se on määritelmä, jota tullaan käyttämään myös tässä tutkielmassa.
 
 
 \subsection{Näkymän luominen} % aika turha kappale
@@ -266,13 +266,13 @@ operations on views. } Se on määritelmä, jota tullaan käyttämään myös t�
 Ohjelmistoarkkitehtuuri toimii siltana ohjelmakoodin ja ohjelmalle asetettujen vaatimusten välillä \citep[s. 94]{Garlan:2000:SAR:336512.336537}, joten on luonnollista, että näkymä luodaan näiden pohjalta. Sitä luodessa on myös otettava huomioon kenelle näkymä on tarkoitettu, minkälaisia asioita halutaan näkymän painottavan ja millä abstraktiotasolla näkymän tulisi olla. 
 
 
-Luotavan näkymän perimmäinen tarkoitus voi esimerkiksi olla, että mahdollisimman paljon halutaan nähdä arkkitehtuurisia ominaisuuksia katsomatta lähdekoodia, koska lähdekoodi joko ei ole saatavilla tai se on kehittäjälle liian monimutkaista ja aikaavievää käydä kokonaan läpi ajatuksen kanssa. Tällaiseen näkymän tarpeeseen sopivat esimerkiksi UML:n avulla luodut kaaviot järjestelmän rakenteeesta, joiden avulla erilaisten suhteiden ja rakenteellisten ominaisuuksien tarkastelu helpottuu huomattavasti.
+Luotavan näkymän perimmäinen tarkoitus voi esimerkiksi olla, että mahdollisimman paljon halutaan nähdä arkkitehtuurisia ominaisuuksia katsomatta lähdekoodia. Syy tähän voi olla esimerkiksi ettei lähdekoodi ole saatavilla tai se on kehittäjälle liian monimutkaista ja aikaavievää käydä kokonaan läpi ajatuksen kanssa. Toisen kirjoittamaa ohjelmakoodia koetaan yleisesti olevan myös vaikea ymmärtää\footnote{Syitä miksi toisen ohjelmakoodia on vaikea lukea: \url{http://www.preposterousuniverse.com/blog/2013/04/24/why-is-code-hard-to-understand/}}. Tällaiseen näkymän tarpeeseen sopivat esimerkiksi UML:n avulla luodut kaaviot järjestelmän rakenteeesta, joiden avulla erilaisten suhteiden ja rakenteellisten ominaisuuksien tarkastelu helpottuu huomattavasti.
 
 \subsection{UML}
 
-UML eli \textit{Unified Modeling Language} on yksi visuaalinen formalisoitu mallinnuskieli näkymien luomiseen \citep{UML}. Sen avulla ohjelmistoa voidaan mallintaa kolmelta eri näkökulmalta: kehitystä täydentävät mallit, käyttäytymisen kuvaamiseen tarkoitetut mallit ja rakennetta kuvaavat mallit. Käytännössä sen avulla pystytään siis kuvaamaan esimerkiksi jokainen sekä 4+1 -mallin että \textit{Views and Beyond}-mallin näkymä käyttäen hyväksi UML:n tarjoamaa 13 erilaista kaaviota. Arkkitehtuurin kuvauksen kannalta relevanteimmat kaaviot ovat kuitenkin luokkakaavio ja komponenttikaavio, koska niiden avulla saadaan kuvattua erittäin tarkasti ja monipuolisesti järjestelmän rakenteellisia ominaisuuksia. Luokkakaaviossa huomio keskittyy konkreettisten luokkien ja niiden välisten suhteiden kuvaamiseen, kun taas komponenttikaavio kuvaa korkeammalla tasolla järjestelmää komponenteittain, joita yhdistävät niiden tarjoamat rajapinnat.   
+UML eli \textit{Unified Modeling Language} on yksi visuaalinen formalisoitu mallinnuskieli näkymien luomiseen \citep{UML}. Sen avulla ohjelmistoa voidaan mallintaa kolmelta eri näkökulmalta: kehitystä täydentävät mallit, käyttäytymisen kuvaamiseen tarkoitetut mallit ja rakennetta kuvaavat mallit. Käytännössä sen avulla pystytään siis kuvaamaan esimerkiksi jokainen sekä 4+1 -mallin että \textit{Views and Beyond}-mallin näkymä käyttäen hyväksi UML:n 13 erilaista kaaviota. Arkkitehtuurin kuvauksen kannalta relevanteimmat kaaviot ovat luokkakaavio ja komponenttikaavio, koska niiden avulla saadaan kuvattua erittäin tarkasti ja monipuolisesti järjestelmän rakenteellisia ominaisuuksia ja rajoitteita. Luokkakaaviossa huomio keskittyy konkreettisten luokkien ja niiden välisten suhteiden kuvaamiseen, kun taas komponenttikaavio kuvaa korkeammalla tasolla järjestelmää kuvaavia komponentteja, joita yhdistävät erilaiset rajapinnat.   
 
-UML sopii ominaisuuksiensa takia erittäin hyvin olio-pohjaisten ohjelmien kuvaamiseen tarjoamalla tuen muun muassa periytymisen ja rajapintojen kuvaamiseen. Tämän takia se on otettu tässä tutkimuksessa erityisasemaan järjestelmän ja sen rakenteen kuvaamisessa.
+UML sopii ominaisuuksiensa takia erittäin hyvin oliojärjestelmien kuvaamiseen tarjoamalla tuen muun muassa periytymisen ja rajapintojen kuvaamiselle. Tämän takia se on otettu tässä tutkielmassa erityisasemaan järjestelmän ja sen rakenteen kuvaamisessa.
 
 
 \section{Testattavuus laadullisena tekijänä} \label{testability_main}

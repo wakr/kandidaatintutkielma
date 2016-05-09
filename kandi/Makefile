@@ -16,4 +16,4 @@ bib:
 
 clean:
 
-	rm -f *.aux *.log *~ *.toc *.pdf *.out *.gz *.log *.bbl *.blg
+	rm -f *.aux *.log *~ *.toc *.out *.gz *.log *.bbl *.blg
